@@ -1,0 +1,297 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<Layout title="Misa Chien | Lorem Ipsum Showcase">
+	<main>
+		<section class="hero-section" id="section-one">
+			<div class="hero-content">
+				<span class="kicker">Lorem Ipsum Dolor Sit</span>
+				<h1>Lorem ipsum dolor sit <span class="serif-italic">amet elit</span>.</h1>
+				<p class="hero-body">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+				</p>
+				<div class="action-wrapper">
+					<a href="#" class="btn-filled">Lorem Ipsum</a>
+				</div>
+			</div>
+			
+			<div class="hero-image-container">
+				<div class="accent-border-box"></div>
+				<div class="visual-canvas">
+					<span class="canvas-label">Lorem Ipsum Canvas</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="statement-section" id="section-two">
+			<div class="statement-container">
+				<h2>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."</h2>
+				<div class="decorative-line"></div>
+				<span class="statement-author">Lorem Ipsum, 2026</span>
+			</div>
+		</section>
+
+		<section class="pillars-section" id="section-three">
+			<div class="section-lead">
+				<span class="kicker">Consectetur Adipiscing</span>
+				<h2>Dolor Sit Amet</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+			</div>
+
+			<div class="pillars-grid">
+				<div class="pillar-card">
+					<span class="card-index">01</span>
+					<h3>Lorem Ipsum</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<a href="#" class="card-action">Read More &rarr;</a>
+				</div>
+
+				<div class="pillar-card">
+					<span class="card-index">02</span>
+					<h3>Dolor Sit</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<a href="#" class="card-action">Read More &rarr;</a>
+				</div>
+
+				<div class="pillar-card">
+					<span class="card-index">03</span>
+					<h3>Amet Consectetur</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<a href="#" class="card-action">Read More &rarr;</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	
+	.hero-section {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 7rem 2rem;
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: 5rem;
+		align-items: center;
+	}
+
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.kicker {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		font-weight: 600;
+	}
+
+	h1 {
+		font-size: 4.25rem;
+		line-height: 1.15;
+		font-weight: 400;
+	}
+
+	.serif-italic {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--burgundy);
+	}
+
+	.hero-body {
+		font-size: 1.1rem;
+		line-height: 1.75;
+		font-weight: 300;
+		max-width: 540px;
+	}
+
+	.btn-filled {
+		background-color: var(--burgundy);
+		color: var(--white);
+		padding: 1.1rem 2.5rem;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-weight: 600;
+		display: inline-block;
+		transition: background-color 0.3s ease;
+	}
+
+	.btn-filled:hover {
+		background-color: var(--coral);
+		color: var(--white);
+	}
+
+	.hero-image-container {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 4 / 5;
+	}
+
+	.accent-border-box {
+		position: absolute;
+		inset: 0;
+		border: 1px solid var(--coral);
+		transform: translate(20px, 20px);
+		z-index: 1;
+		opacity: 0.5;
+	}
+
+	.visual-canvas {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		background-color: #FAF8F6;
+		border: 1px solid rgba(89, 54, 58, 0.1);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 2;
+	}
+
+	.canvas-label {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--burgundy);
+		opacity: 0.4;
+		font-size: 1.1rem;
+	}
+
+	
+	.statement-section {
+		background-color: var(--burgundy);
+		padding: 7rem 2rem;
+		text-align: center;
+	}
+
+	.statement-container {
+		max-width: 850px;
+		margin: 0 auto;
+	}
+
+	.statement-container h2 {
+		color: var(--white);
+		font-size: 2.25rem;
+		font-weight: 300;
+		line-height: 1.5;
+		letter-spacing: 0.5px;
+	}
+
+	.decorative-line {
+		width: 60px;
+		height: 1px;
+		background-color: var(--coral);
+		margin: 2.5rem auto;
+	}
+
+	.statement-author {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: var(--coral);
+		font-weight: 500;
+	}
+
+	/* Core Pillars Matrix Styles */
+	.pillars-section {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 8rem 2rem;
+	}
+
+	.section-lead {
+		text-align: center;
+		margin-bottom: 5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.section-lead h2 {
+		font-size: 2.75rem;
+	}
+
+	.section-lead p {
+		font-weight: 300;
+		font-size: 0.95rem;
+		max-width: 480px;
+		line-height: 1.6;
+	}
+
+	.pillars-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2.5rem;
+	}
+
+	.pillar-card {
+		border: 1px solid rgba(89, 54, 58, 0.1);
+		padding: 3rem 2rem;
+		background-color: var(--white);
+		transition: border-color 0.3s ease;
+	}
+
+	.pillar-card:hover {
+		border-color: var(--coral);
+	}
+
+	.card-index {
+		font-family: var(--font-display);
+		color: var(--coral);
+		font-size: 2.25rem;
+		display: block;
+		margin-bottom: 1.5rem;
+	}
+
+	.pillar-card h3 {
+		margin-bottom: 1rem;
+		font-size: 1.6rem;
+	}
+
+	.pillar-card p {
+		font-size: 0.9rem;
+		line-height: 1.7;
+		margin-bottom: 2rem;
+		font-weight: 300;
+	}
+
+	.card-action {
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: 600;
+		color: var(--burgundy);
+		transition: color 0.3s ease;
+	}
+
+	.pillar-card:hover .card-action {
+		color: var(--coral);
+	}
+
+	/* Responsive mode */
+	@media (max-width: 960px) {
+		.hero-section {
+			grid-template-columns: 1fr;
+			padding: 4rem 2rem;
+			gap: 4rem;
+		}
+		
+		.pillars-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		h1 {
+			font-size: 3rem;
+		}
+		
+		.statement-container h2 {
+			font-size: 1.75rem;
+		}
+	}
+</style>
