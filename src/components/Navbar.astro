@@ -1,5 +1,6 @@
 <nav class="navbar">
   <a href="#" class="logo">Misa Chien.</a>
+  
   <div class="nav-links">
     <a href="#" class="nav-item">
       <span class="nav-text" data-text="About Me">About Me</span>
@@ -10,8 +11,13 @@
     <a href="#" class="nav-item">
       <span class="nav-text" data-text="Courses">Courses</span>
     </a>
+    
+    <a href="#contact" class="nav-button nav-button--mobile">
+      <span>Get In Touch</span>
+    </a>
   </div>
-  <a href="#contact" class="nav-button">
+
+  <a href="#contact" class="nav-button nav-button--desktop">
     <span>Get In Touch</span>
   </a>
   
@@ -27,13 +33,11 @@
   const menuToggle = document.querySelector('.menu-toggle');
   let lastScrollY = window.scrollY;
 
- 
   menuToggle?.addEventListener('click', () => {
     navbar?.classList.toggle('navbar--open');
   });
 
   window.addEventListener('scroll', () => {
-  
     if (navbar?.classList.contains('navbar--open')) return;
     
     if (window.scrollY < 50) {
@@ -165,12 +169,16 @@
     transform: scaleX(1); 
   }
 
+  /* Hide mobile version of the button on desktop layouts */
+  .nav-button--mobile {
+    display: none;
+  }
 
   .menu-toggle {
     display: none;
   }
 
-
+  /* Responsive Adjustments */
   @media (max-width: 768px) {
     .navbar {
       padding: 1.25rem 2rem;
@@ -180,7 +188,6 @@
       font-size: 2.25rem;
       z-index: 110;
     }
-
 
     .menu-toggle {
       display: flex;
@@ -201,7 +208,6 @@
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
 
-   
     .navbar--open .menu-toggle span:nth-child(1) {
       transform: translateY(8px) rotate(45deg);
     }
@@ -211,7 +217,6 @@
     .navbar--open .menu-toggle span:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
     }
-
 
     .nav-links {
       display: flex;
@@ -239,18 +244,15 @@
       font-size: 1.5rem;
     }
 
-
-    .nav-button {
+  
+    .nav-button--desktop {
       display: none;
     }
 
-    .navbar--open .nav-button {
+    
+    .nav-button--mobile {
       display: inline-block;
-      position: absolute;
-      bottom: 15vh;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 105;
+      margin-top: 1rem;
     }
   }
 </style>
