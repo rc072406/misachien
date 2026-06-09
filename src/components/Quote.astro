@@ -1,197 +1,562 @@
+---
+// src/components/Quote.astro
+interface Props {
+  introText?: string;
+  quote?: string;
+  author?: string;
+}
+
+const { 
+  introText = "shed limiting beliefs", 
+  quote = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.", 
+  author = "Lorem Ipsum, 2026" 
+} = Astro.props;
+---
+
 <section class="statement-section" id="section-two">
-	<div class="animation-stage">
-		<h2 class="intro-text">shed limiting beliefs</h2>
-		
-		<div class="lily-wrapper">
-			<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path class="lily-petal center-petal" d="M50 25 C35 50 35 70 50 80 C65 70 65 50 50 25 Z" stroke="var(--coral)" stroke-width="1.5" />
-				<path class="lily-petal side-petal-left" d="M50 35 C20 50 20 70 50 80 C35 70 35 50 50 35 Z" stroke="var(--coral)" stroke-dasharray="2 2" stroke-width="1" />
-				<path class="lily-petal side-petal-right" d="M50 35 C80 50 80 70 50 80 C65 70 65 50 50 35 Z" stroke="var(--coral)" stroke-dasharray="2 2" stroke-width="1" />
-				<path class="lily-petal outer-petal-left" d="M50 45 C5 55 15 75 50 80 C20 75 30 60 50 45 Z" stroke="var(--coral)" stroke-width="1" />
-				<path class="lily-petal outer-petal-right" d="M50 45 C95 55 85 75 50 80 C80 75 70 60 50 45 Z" stroke="var(--coral)" stroke-width="1" />
-			</svg>
-		</div>
-	</div>
+  <div class="animation-stage">
+    <h2 class="intro-text">{introText}</h2>
+    
+    <div class="flowers-container">
+      <div class="flowers">
+        <div class="flower flower--1">
+          <div class="flower__leafs flower__leafs--1">
+            <div class="flower__leaf flower__leaf--1"></div>
+            <div class="flower__leaf flower__leaf--2"></div>
+            <div class="flower__leaf flower__leaf--3"></div>
+            <div class="flower__leaf flower__leaf--4"></div>
+            <div class="flower__white-circle"></div>
+            <div class="flower__light flower__light--1"></div>
+            <div class="flower__light flower__light--2"></div>
+            <div class="flower__light flower__light--3"></div>
+            <div class="flower__light flower__light--4"></div>
+            <div class="flower__light flower__light--5"></div>
+            <div class="flower__light flower__light--6"></div>
+            <div class="flower__light flower__light--7"></div>
+            <div class="flower__light flower__light--8"></div>
+          </div>
+          <div class="flower__line">
+            <div class="flower__line__leaf flower__line__leaf--1"></div>
+            <div class="flower__line__leaf flower__line__leaf--2"></div>
+            <div class="flower__line__leaf flower__line__leaf--3"></div>
+            <div class="flower__line__leaf flower__line__leaf--4"></div>
+            <div class="flower__line__leaf flower__line__leaf--5"></div>
+            <div class="flower__line__leaf flower__line__leaf--6"></div>
+          </div>
+        </div>
 
-	<div class="statement-container final-quote-stage">
-		<h2>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."</h2>
-		<div class="decorative-line"></div>
-		<span class="statement-author">Misa Chien</span>
-	</div>
+        <div class="flower flower--2">
+          <div class="flower__leafs flower__leafs--2">
+            <div class="flower__leaf flower__leaf--1"></div>
+            <div class="flower__leaf flower__leaf--2"></div>
+            <div class="flower__leaf flower__leaf--3"></div>
+            <div class="flower__leaf flower__leaf--4"></div>
+            <div class="flower__white-circle"></div>
+            <div class="flower__light flower__light--1"></div>
+            <div class="flower__light flower__light--2"></div>
+            <div class="flower__light flower__light--3"></div>
+            <div class="flower__light flower__light--4"></div>
+            <div class="flower__light flower__light--5"></div>
+            <div class="flower__light flower__light--6"></div>
+            <div class="flower__light flower__light--7"></div>
+            <div class="flower__light flower__light--8"></div>
+          </div>
+          <div class="flower__line">
+            <div class="flower__line__leaf flower__line__leaf--1"></div>
+            <div class="flower__line__leaf flower__line__leaf--2"></div>
+            <div class="flower__line__leaf flower__line__leaf--3"></div>
+            <div class="flower__line__leaf flower__line__leaf--4"></div>
+          </div>
+        </div>
+
+        <div class="flower flower--3">
+          <div class="flower__leafs flower__leafs--3">
+            <div class="flower__leaf flower__leaf--1"></div>
+            <div class="flower__leaf flower__leaf--2"></div>
+            <div class="flower__leaf flower__leaf--3"></div>
+            <div class="flower__leaf flower__leaf--4"></div>
+            <div class="flower__white-circle"></div>
+            <div class="flower__light flower__light--1"></div>
+            <div class="flower__light flower__light--2"></div>
+            <div class="flower__light flower__light--3"></div>
+            <div class="flower__light flower__light--4"></div>
+            <div class="flower__light flower__light--5"></div>
+            <div class="flower__light flower__light--6"></div>
+            <div class="flower__light flower__light--7"></div>
+            <div class="flower__light flower__light--8"></div>
+          </div>
+          <div class="flower__line">
+            <div class="flower__line__leaf flower__line__leaf--1"></div>
+            <div class="flower__line__leaf flower__line__leaf--2"></div>
+            <div class="flower__line__leaf flower__line__leaf--3"></div>
+            <div class="flower__line__leaf flower__line__leaf--4"></div>
+          </div>
+        </div>
+
+        <div class="grow-ans" style="--d:1.2s">
+          <div class="flower__g-long">
+            <div class="flower__g-long__top"></div>
+            <div class="flower__g-long__bottom"></div>
+          </div>
+        </div>
+
+        <div class="growing-grass">
+          <div class="flower__grass flower__grass--1">
+            <div class="flower__grass--top"></div>
+            <div class="flower__grass--bottom"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+            <div class="flower__grass__overlay"></div>
+          </div>
+        </div>
+
+        <div class="growing-grass">
+          <div class="flower__grass flower__grass--2">
+            <div class="flower__grass--top"></div>
+            <div class="flower__grass--bottom"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+            <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+            <div class="flower__grass__overlay"></div>
+          </div>
+        </div>
+
+        <div class="grow-ans" style="--d:2.4s"><div class="flower__g-right flower__g-right--1"><div class="leaf"></div></div></div>
+        <div class="grow-ans" style="--d:2.8s"><div class="flower__g-right flower__g-right--2"><div class="leaf"></div></div></div>
+
+        <div class="grow-ans" style="--d:2.8s">
+          <div class="flower__g-front">
+            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1"><div class="flower__g-front__leaf"></div></div>
+            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2"><div class="flower__g-front__leaf"></div></div>
+            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3"><div class="flower__g-front__leaf"></div></div>
+            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4"><div class="flower__g-front__leaf"></div></div>
+            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5"><div class="flower__g-front__leaf"></div></div>
+            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6"><div class="flower__g-front__leaf"></div></div>
+            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7"><div class="flower__g-front__leaf"></div></div>
+            <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8"><div class="flower__g-front__leaf"></div></div>
+            <div class="flower__g-front__line"></div>
+          </div>
+        </div>
+
+        <div class="grow-ans" style="--d:3.2s">
+          <div class="flower__g-fr">
+            <div class="leaf"></div>
+            <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+            <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+            <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+            <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+            <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+            <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+            <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+            <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+          </div>
+        </div>
+
+        <div class="long-g long-g--0">
+          <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
+          <div class="grow-ans" style="--d:2.2s"><div class="leaf leaf--1"></div></div>
+          <div class="grow-ans" style="--d:3.4s"><div class="leaf leaf--2"></div></div>
+          <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+        <div class="long-g long-g--1">
+          <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--0"></div></div>
+          <div class="grow-ans" style="--d:3.8s"><div class="leaf leaf--1"></div></div>
+          <div class="grow-ans" style="--d:4s"><div class="leaf leaf--2"></div></div>
+          <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--3"></div></div>
+        </div>
+        <div class="long-g long-g--2">
+          <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+          <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+          <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--2"></div></div>
+          <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+        <div class="long-g long-g--3">
+          <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+          <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+          <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+          <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+        <div class="long-g long-g--4">
+          <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+          <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+          <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+          <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+        <div class="long-g long-g--5">
+          <div class="grow-ans" style="--d:4s"><div class="leaf leaf--0"></div></div>
+          <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--1"></div></div>
+          <div class="grow-ans" style="--d:3s"><div class="leaf leaf--2"></div></div>
+          <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+        <div class="long-g long-g--6">
+          <div class="grow-ans" style="--d:4.2s"><div class="leaf leaf--0"></div></div>
+          <div class="grow-ans" style="--d:4.4s"><div class="leaf leaf--1"></div></div>
+          <div class="grow-ans" style="--d:4.6s"><div class="leaf leaf--2"></div></div>
+          <div class="grow-ans" style="--d:4.8s"><div class="leaf leaf--3"></div></div>
+        </div>
+        <div class="long-g long-g--7">
+          <div class="grow-ans" style="--d:3s"><div class="leaf leaf--0"></div></div>
+          <div class="grow-ans" style="--d:3.2s"><div class="leaf leaf--1"></div></div>
+          <div class="grow-ans" style="--d:3.5s"><div class="leaf leaf--2"></div></div>
+          <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="statement-container final-quote-stage">
+    <h2>"{quote}"</h2>
+    <div class="decorative-line"></div>
+    <span class="statement-author">{author}</span>
+  </div>
 </section>
+
 <script>
-import { initScrollReveal } from '../scripts/scroll-reveal.js';
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initSectionTwoAnimation() {
+    const triggerElement = document.querySelector('#section-two');
+    const flowersWrapper = document.querySelector('.flowers-container');
+    if (!triggerElement || !flowersWrapper) return;
+
+ 
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        start: 'top 50%',
+        toggleActions: 'play none none none',
+      }
+    });
 
 
-	gsap.registerPlugin(ScrollTrigger);
+    tl.to('.intro-text', {
+      opacity: 1,
+      filter: 'blur(0px)',
+      scale: 1,
+      duration: 1.4,
+      ease: 'power2.out'
+    })
+  
+    .to('.intro-text', {
+      opacity: 0,
+      filter: 'blur(30px)',
+      scale: 1.1,
+      duration: 1.2,
+      ease: 'power2.in',
+      delay: 1.2
+    })
+    .set('.intro-text', { display: 'none' })
+    
+   
+    .set('.flowers-container', { display: 'block' })
+    .to('.flowers-container', {
+      opacity: 1,
+      scale: 1,
+      duration: 0.5,
+      onStart: () => {
+        flowersWrapper.classList.remove('not-loaded');
+      }
+    })
+ 
+    .to({}, { duration: 5.2 })
+    
+ 
+    .to('.flowers-container', {
+      opacity: 0,
+      scale: 0.95,
+      duration: 1.2,
+      ease: 'power2.inOut'
+    })
+    .set('.animation-stage', { display: 'none' })
+    
+   
+    .set('.final-quote-stage', { display: 'flex' })
+    .to('.final-quote-stage', {
+      opacity: 1,
+      duration: 0.8
+    })
+    .from('.final-quote-stage h2', {
+      y: 25,
+      opacity: 0,
+      filter: 'blur(6px)',
+      duration: 1.4,
+      ease: 'power3.out'
+    }, '-=0.4')
+    .from('.decorative-line', {
+      scaleX: 0,
+      duration: 1,
+      ease: 'power2.out'
+    }, '-=0.8')
+    .from('.statement-author', {
+      y: 15,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out'
+    }, '-=0.6');
+  }
 
-	function initSectionTwoAnimation() {
-		const triggerElement = document.querySelector('#section-two');
-		if (!triggerElement) return;
-
-
-		const tl = gsap.timeline({
-			scrollTrigger: {
-				trigger: triggerElement,
-				start: 'top 55%',
-				toggleActions: 'play none none none', 
-			}
-		});
-
-		tl.to('.intro-text', {
-			opacity: 1,
-			filter: 'blur(0px)',
-			scale: 1,
-			duration: 1.4,
-			ease: 'power2.out'
-		})
-	
-		.to('.intro-text', {
-			opacity: 0,
-			filter: 'blur(25px)',
-			scale: 1.1,
-			duration: 1.2,
-			ease: 'power2.in',
-			delay: 1.5 
-		})
-		
-		.set('.intro-text', { display: 'none' })
-	
-		.set('.lily-wrapper', { display: 'block' })
-		.to('.lily-wrapper', {
-			opacity: 1,
-			scale: 1,
-			rotate: 0,
-			duration: 1.6,
-			ease: 'elastic.out(1, 0.75)'
-		})
-		
-		.to('.lily-wrapper', {
-			opacity: 0,
-			scale: 0.9,
-			duration: 1,
-			ease: 'power2.inOut',
-			delay: 1.5
-		})
-		.set('.animation-stage', { display: 'none' })
-		
-		.set('.final-quote-stage', { display: 'flex' })
-		.to('.final-quote-stage', {
-			opacity: 1,
-			duration: 0.8
-		})
-	
-		.from('.final-quote-stage h2', {
-			y: 25,
-			opacity: 0,
-			filter: 'blur(5px)',
-			duration: 1.2,
-			ease: 'power3.out'
-		}, '-=0.4')
-		.from('.decorative-line', {
-			scaleX: 0,
-			duration: 0.8,
-			ease: 'power2.out'
-		}, '-=0.6')
-		.from('.statement-author', {
-			y: 15,
-			opacity: 0,
-			duration: 0.8,
-			ease: 'power2.out'
-		}, '-=0.5');
-	}
-
-
-	const runAllScripts = () => {
-		initScrollReveal();
-		initSectionTwoAnimation();
-	};
-
-	runAllScripts();
-	document.addEventListener('astro:page-load', runAllScripts);
+  
+  initSectionTwoAnimation();
+  document.addEventListener('astro:page-load', initSectionTwoAnimation);
 </script>
 
 <style>
-	.statement-section {
-		background-color: var(--burgundy);
-		padding: 12rem 2rem; 
-		display: grid;
-		grid-template-columns: 1fr;
-		align-items: center;
-		justify-content: center;
-		min-height: 80vh; 
-		position: relative;
-		overflow: hidden;
-	}
+ 
+  .statement-section {
+    background-color: var(--burgundy);
+    padding: 8rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    min-height: 95vh;
+    position: relative;
+    overflow: hidden;
+  }
 
-	.animation-stage, 
-	.final-quote-stage {
-		grid-area: 1 / 1; 
-		width: 100%;
-		max-width: 850px;
-		margin: 0 auto;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
+  .animation-stage, 
+  .final-quote-stage {
+    grid-area: 1 / 1;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-text {
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(0.95);
+    text-align: center;
+  }
+
+ 
+  .flowers-container {
+    width: 100%;
+    height: 450px;
+    position: relative;
+    display: none;
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .flowers {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
 
-	.intro-text {
-		color: var(--white);
-		font-family: var(--font-display);
-		font-size: 3.5rem;
-		font-weight: 300;
-		letter-spacing: 1px;
-		opacity: 0;
-		filter: blur(20px); 
-		transform: scale(0.95);
-		text-align: center;
-	}
-
-	.lily-wrapper {
-		width: 140px;
-		height: 140px;
-		opacity: 0;
-		transform: scale(0.5) rotate(-15deg);
-		margin-top: 2rem;
-		display: none; 
-	}
-
-	.lily-wrapper svg {
-		width: 100%;
-		height: 100%;
-	}
+  :root {
+    --c-line: rgba(231, 120, 96, 0.45);
+    --c-petal: var(--coral);
+    --c-highlight: var(--white);
+    --glass-overlay: rgba(89, 54, 58, 0.3);
+  }
 
 
-	.final-quote-stage {
-		opacity: 0;
-		display: none;
-	}
+  .flower {
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-	.final-quote-stage h2 {
-		color: var(--white);
-		font-size: 2.25rem;
-		font-weight: 300;
-		line-height: 1.5;
-		letter-spacing: 0.5px;
-		text-align: center;
-	}
+  .flower--1 { transform: scale(0.9); }
+  .flower--2 { transform: translateX(-60px) rotate(-10deg) scale(0.75); }
+  .flower--3 { transform: translateX(60px) rotate(10deg) scale(0.75); }
 
-	.decorative-line {
-		width: 60px;
-		height: 1px;
-		background-color: var(--coral);
-		margin: 2.5rem auto;
-	}
+  .flower__line {
+    width: 2px;
+    height: 220px;
+    background-image: linear-gradient(to top, rgba(0,0,0,0), var(--c-line), var(--c-petal));
+    box-shadow: 0 0 10px rgba(237, 120, 96, 0.2);
+    transform-origin: bottom center;
+    animation: growLine 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
 
-	.statement-author {
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		color: var(--coral);
-		font-weight: 500;
-	}
+  .flowers-container.not-loaded .flower__line {
+    animation: none;
+  }
+
+  .flower__leafs {
+    position: absolute;
+    bottom: 215px;
+    width: 100px;
+    height: 100px;
+    transform-origin: center bottom;
+    opacity: 0;
+    transform: scale(0);
+    animation: bloomPetals 2s 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  .flowers-container.not-loaded .flower__leafs {
+    animation: none;
+  }
+
+  .flower__leaf {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 40px;
+    height: 70px;
+    background-image: linear-gradient(to top, var(--c-petal), var(--c-highlight));
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform-origin: bottom center;
+    box-shadow: inset 0 0 15px rgba(89, 54, 58, 0.2);
+  }
+
+  .flower__leaf--1 { transform: translateX(-50%) rotate(0deg); }
+  .flower__leaf--2 { transform: translateX(-50%) rotate(45deg); }
+  .flower__leaf--3 { transform: translateX(-50%) rotate(-45deg); }
+  .flower__leaf--4 { transform: translateX(-50%) rotate(90deg); }
+
+  .flower__white-circle {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background-color: var(--c-highlight);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--c-highlight);
+  }
+
+
+  .flower__light {
+    position: absolute;
+    bottom: 30px;
+    width: 5px;
+    height: 5px;
+    background-color: var(--c-highlight);
+    border-radius: 50%;
+    opacity: 0.6;
+    filter: blur(0.5px);
+  }
+
+  .flower__light--1 { left: 20%; animation: floatUp 4s infinite linear; }
+  .flower__light--2 { right: 20%; animation: floatUp 3.5s infinite linear; }
+  .flower__light--3 { left: 40%; animation: floatUp 5s infinite linear; }
+  .flower__light--4 { right: 40%; animation: floatUp 4.5s infinite linear; }
+
+ 
+  .flower__line__leaf {
+    position: absolute;
+    width: 12px;
+    height: 25px;
+    background-image: linear-gradient(to top, var(--c-line), var(--c-petal));
+    border-radius: 50% 50% 0 50% / 50% 50% 0 50%;
+    transform-origin: bottom left;
+  }
+
+  .flower__line__leaf--1 { top: 30%; left: 100%; transform: rotate(45deg); }
+  .flower__line__leaf--2 { top: 50%; left: 100%; transform: rotate(60deg); }
+  .flower__line__leaf--3 { top: 40%; right: 100%; transform: rotate(-45deg) scaleX(-1); }
+  .flower__line__leaf--4 { top: 60%; right: 100%; transform: rotate(-60deg) scaleX(-1); }
+
+
+  .growing-grass {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+
+  .flower__grass {
+    position: relative;
+    width: 4px;
+    background-color: var(--c-line);
+    transform-origin: bottom center;
+    animation: growLine 4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .flower__grass--1 { height: 70px; transform: translateX(-80px) rotate(-15deg); }
+  .flower__grass--2 { height: 55px; transform: translateX(80px) rotate(15deg); }
+
+
+  @keyframes growLine {
+    0% { height: 0; opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes bloomPetals {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 0.6; }
+    100% { transform: translateY(-100px) scale(0.4); opacity: 0; }
+  }
+
+
+  .grow-ans {
+    animation: growLine 3s var(--d) cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  
+  .final-quote-stage {
+    opacity: 0;
+    display: none;
+  }
+
+  .final-quote-stage h2 {
+    color: var(--white);
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  .decorative-line {
+    width: 60px;
+    height: 1px;
+    background-color: var(--coral);
+    margin: 2.5rem auto;
+  }
+
+  .statement-author {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--coral);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .intro-text { font-size: 2.5rem; }
+    .final-quote-stage h2 { font-size: 1.65rem; }
+    .flowers-container { height: 350px; }
+  }
 </style>
