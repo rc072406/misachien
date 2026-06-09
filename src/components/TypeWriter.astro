@@ -1,0 +1,97 @@
+---
+// src/components/TypeWriter.astro
+interface Props {
+  staticText: string;
+  words: string[];
+}
+
+const { staticText, words } = Astro.props;
+---
+
+<h1 class="typewriter-container" transition:name="hero-title">
+  <span class="static">{staticText}</span>
+  <span class="dynamic-text" data-words={JSON.stringify(words)}></span>
+  <span class="cursor">.</span>
+</h1>
+
+<style>
+  .typewriter-container {
+    font-size: 4.25rem; 
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .static {
+    display: inline; 
+  }
+
+  .dynamic-text {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    color: var(--burgundy);
+    font-weight: 400;  
+    display: inline-block;
+  }
+
+  .cursor {
+    font-weight: 200;
+    color: var(--coral);
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @media (max-width: 960px) {
+    .typewriter-container {
+      font-size: 3rem;
+    }
+  }
+</style>
+
+<script>
+  const typeEffect = async (el: HTMLElement, words: string[]) => {
+    let wordIndex = 0;
+
+    while (true) {
+      let currentWord = words[wordIndex];
+      
+     
+      for (let i = 0; i <= currentWord.length; i++) {
+        el.textContent = currentWord.substring(0, i);
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+
+     
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      
+      for (let i = currentWord.length; i >= 0; i--) {
+        el.textContent = currentWord.substring(0, i);
+        await new Promise(resolve => setTimeout(resolve, 50));
+      }
+
+      wordIndex = (wordIndex + 1) % words.length;
+    }
+  };
+
+  const initTypewriter = () => {
+    const dynamicSpans = document.querySelectorAll('.dynamic-text');
+    
+    dynamicSpans.forEach((span) => {
+    
+      if (span.getAttribute('data-typewriter-running') === 'true') return;
+      span.setAttribute('data-typewriter-running', 'true');
+
+      const wordsArray = JSON.parse(span.getAttribute('data-words') || '[]');
+      typeEffect(span as HTMLElement, wordsArray);
+    });
+  };
+
+
+  initTypewriter();
+  document.addEventListener('astro:page-load', initTypewriter);
+</script>
