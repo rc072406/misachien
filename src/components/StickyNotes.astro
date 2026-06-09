@@ -1,0 +1,187 @@
+---
+const notes = [
+  { text: "Crush limiting beliefs today.", color: "#FEF08A", rotate: "-6deg", top: "15%", left: "12%" },
+  { text: "Stay authentic, always.", color: "#FFCFDF", rotate: "4deg", top: "22%", left: "45%" },
+  { text: "Heal at your own pace.", color: "#D1FAE5", rotate: "-3deg", top: "18%", left: "75%" },
+  { text: "Remember to breathe.", color: "#E0F2FE", rotate: "8deg", top: "55%", left: "18%" },
+  { text: "You are doing beautifully.", color: "#FEF08A", rotate: "-5deg", top: "62%", left: "50%" },
+  { text: "Progress over perfection.", color: "#F3E8FF", rotate: "5deg", top: "52%", left: "78%" }
+];
+---
+
+
+<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+
+<section class="sticky-notes-section">
+  <div class="background-canvas">
+    <div class="image-overlay"></div>
+    <span class="canvas-fallback-label">Misa Chien Canvas Background</span>
+  </div>
+
+  <div class="notes-container">
+    {notes.map((note) => (
+      <div 
+        class="sticky-note" 
+        style={`
+          background-color: ${note.color}; 
+          --desktop-rotate: ${note.rotate}; 
+          --desktop-top: ${note.top}; 
+          --desktop-left: ${note.left};
+        `}
+      >
+        <div class="tape-accent"></div>
+        <p class="note-text">{note.text}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initStickyAnimation = () => {
+    const section = document.querySelector(".sticky-notes-section");
+    const notes = gsap.utils.toArray(".sticky-note").reverse();
+
+    if (!section || notes.length === 0) return;
+
+    const scrollDuration = notes.length * window.innerHeight * 0.8;
+
+    gsap.to(notes, {
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: `+=${scrollDuration}`,
+        scrub: 1.2,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+      x: () => (Math.random() > 0.5 ? window.innerWidth * 1.5 : -window.innerWidth * 1.5),
+      y: () => -window.innerHeight * (1.2 + Math.random()), 
+      rotation: () => Math.random() * 180 - 90,
+      scale: 1.5,
+      opacity: 0, 
+      force3D: true,
+      ease: "power1.inOut",
+      stagger: {
+        each: 1,
+        from: "start"
+      }
+    });
+  };
+
+  initStickyAnimation();
+
+  document.addEventListener("astro:page-load", initStickyAnimation);
+</script>
+
+<style>
+  .sticky-notes-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--white);
+  }
+
+  .background-canvas {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1518655061766-48f23af9307a?q=80&w=2070');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(89, 54, 58, 0.15); 
+    z-index: 2;
+  }
+
+  .canvas-fallback-label {
+    position: relative;
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    color: var(--white);
+    opacity: 0.6;
+    font-size: 2rem;
+    z-index: 3;
+  }
+
+  .notes-container {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sticky-note {
+    position: absolute;
+    width: 240px;
+    aspect-ratio: 1 / 1;
+    padding: 2rem 1.5rem;
+    box-shadow: 
+      0 10px 15px -3px rgba(0, 0, 0, 0.05), 
+      0 4px 6px -4px rgba(0, 0, 0, 0.05),
+      inset 0 -10px 20px rgba(0,0,0,0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .tape-accent {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(1px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+
+  .note-text {
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 2rem;
+    line-height: 1.1;
+    color: #2D2526; 
+    word-wrap: break-word;
+  }
+
+  @media (min-width: 769px) {
+    .sticky-note {
+      top: var(--desktop-top);
+      left: var(--desktop-left);
+      transform: rotate(var(--desktop-rotate));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sticky-note {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(4deg);
+      width: 220px;
+    }
+
+    .sticky-note:nth-child(2n) {
+      transform: translate(-46%, -54%) rotate(-6deg);
+    }
+    .sticky-note:nth-child(3n) {
+      transform: translate(-52%, -48%) rotate(2deg);
+    }
+  }
+</style>
