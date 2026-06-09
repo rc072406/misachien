@@ -303,17 +303,8 @@ import StickyNotes from '../components/StickyNotes.astro';
 		color: var(--coral);
 	}
 
-	/* Premium Scroll Animation States */
-	.reveal-on-scroll {
-		opacity: 0;
-		transform: translateY(40px);
-	}
-
-	.reveal-on-scroll.is-visible {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
+	
+	
 	/* Responsive mode */
 	@media (max-width: 960px) {
 		.hero-section {
@@ -337,12 +328,3 @@ import StickyNotes from '../components/StickyNotes.astro';
 	}
 </style>
 
-<script>
-	import { initScrollReveal } from '../scripts/scroll-reveal.js';
-
-
-	initScrollReveal();
-	
-
-	document.addEventListener('astro:page-load', initScrollReveal);
-</script>
