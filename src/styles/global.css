@@ -4,7 +4,7 @@
 		--coral: #E77860;
 		--white: #FFFFFF;
 		
---font-display: 'GF Didot', 'Bodoni Moda',  serif;
+--font-display: 'GF Didot', 'Didot', 'Bodoni Moda', 'Georgia', serif;
 --font-sans: 'Poppins', sans-serif;
 	}
 
@@ -27,8 +27,8 @@
 	}
 
 	/* Typography Rules */
-	h1, h2, h3, h4, h5, h6, {
-		font-family: 'GF Didot', serif;
+	h1, h2, h3, h4, h5, h6, .logo {
+		font-family: var(--font-display);
 		color: var(--burgundy);
 		font-weight: 400;
 	}
