@@ -10,20 +10,30 @@ const { staticText, words } = Astro.props;
 
 <h1 class="typewriter-container" transition:name="hero-title">
   <span class="static">{staticText}</span>
-  <span class="dynamic-text" data-words={JSON.stringify(words)}></span>
-  <span class="cursor">.</span>
+  <span class="dynamic-wrapper">
+    <span class="dynamic-text" data-words={JSON.stringify(words)}></span>
+    <span class="cursor">.</span>
+  </span>
 </h1>
 
 <style>
   .typewriter-container {
-    font-size: 4.25rem; 
-    line-height: 1.15;
+    font-size: 4.25rem;
+    line-height: 1.2; 
     font-weight: 400;
     letter-spacing: -0.02em;
+    display: flex;
+    flex-direction: column; 
+    gap: 0.25rem; 
   }
 
   .static {
-    display: inline; 
+    display: block; 
+    color: inherit;
+  }
+
+  .dynamic-wrapper {
+    display: block;
   }
 
   .dynamic-text {
@@ -37,6 +47,7 @@ const { staticText, words } = Astro.props;
   .cursor {
     font-weight: 200;
     color: var(--coral);
+    display: inline-block;
     animation: blink 1s infinite;
   }
 
@@ -59,16 +70,13 @@ const { staticText, words } = Astro.props;
     while (true) {
       let currentWord = words[wordIndex];
       
-     
       for (let i = 0; i <= currentWord.length; i++) {
         el.textContent = currentWord.substring(0, i);
         await new Promise(resolve => setTimeout(resolve, 100));
       }
 
-     
       await new Promise(resolve => setTimeout(resolve, 2000));
 
-      
       for (let i = currentWord.length; i >= 0; i--) {
         el.textContent = currentWord.substring(0, i);
         await new Promise(resolve => setTimeout(resolve, 50));
@@ -82,7 +90,6 @@ const { staticText, words } = Astro.props;
     const dynamicSpans = document.querySelectorAll('.dynamic-text');
     
     dynamicSpans.forEach((span) => {
-    
       if (span.getAttribute('data-typewriter-running') === 'true') return;
       span.setAttribute('data-typewriter-running', 'true');
 
@@ -90,7 +97,6 @@ const { staticText, words } = Astro.props;
       typeEffect(span as HTMLElement, wordsArray);
     });
   };
-
 
   initTypewriter();
   document.addEventListener('astro:page-load', initTypewriter);
