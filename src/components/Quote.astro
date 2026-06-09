@@ -12,7 +12,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="statement-section" id="section-two">
+<section class="statement-section" id="section-two" data-intro={introText}>
   <div class="animation-stage">
     <div class="canvas-container">
       <canvas id="particleCanvas"></canvas>
@@ -32,174 +32,156 @@ const {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  class Particle {
-    canvas: HTMLCanvasElement;
-    ctx: CanvasRenderingContext2D;
+  class Petal {
     x: number;
     y: number;
     originX: number;
     originY: number;
     isSecondText: boolean;
-    size: number;
-    speedX: number;
-    speedY: number;
+    length: number;
+    width: number;
     opacity: number;
+    maxOpacity: number;
     fadeSpeed: number;
     wobbleSpeed: number;
     wobbleCount: number;
+    angle: number;
+    rotationSpeed: number;
+    speedX: number;
+    speedY: number;
 
-    constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, x: number, y: number, isSecondText: boolean) {
-      this.canvas = canvas;
-      this.ctx = ctx;
+    constructor(x: number, y: number, isSecondText: boolean) {
       this.x = x;
       this.y = y;
       this.originX = x;
       this.originY = y;
       this.isSecondText = isSecondText;
       
-      this.size = Math.random() * 2 + 0.5;
-      this.opacity = Math.random() * 0.6 + 0.4;
+      this.length = Math.random() * 5 + 4;
+      this.width = Math.random() * 1.5 + 0.8;
+      this.maxOpacity = Math.random() * 0.4 + 0.6;
+      this.opacity = isSecondText ? 0 : this.maxOpacity;
       
-      this.speedY = Math.random() * -2.2 - 0.6;
-      this.speedX = (Math.random() - 0.5) * 2;
-      this.fadeSpeed = Math.random() * 0.006 + 0.003;
-      this.wobbleSpeed = Math.random() * 0.06 + 0.02;
+      this.speedY = Math.random() * -1.5 - 0.5;
+      this.speedX = Math.random() * 1.5 + 0.5;
+      this.fadeSpeed = Math.random() * 0.005 + 0.003;
+      this.wobbleSpeed = Math.random() * 0.04 + 0.01;
       this.wobbleCount = Math.random() * Math.PI * 2;
+      this.angle = (Math.random() - 0.5) * 0.5;
+      this.rotationSpeed = (Math.random() - 0.5) * 0.05;
     }
 
-    update(intensity: number, triggerSecondPhase: boolean) {
+    update(timelineProgress: number) {
       if (!this.isSecondText) {
-        if (intensity > 0) {
+        if (timelineProgress > 1.0) {
+          const factor = timelineProgress - 1.0;
           this.wobbleCount += this.wobbleSpeed;
-          this.x += this.speedX + Math.sin(this.wobbleCount) * 0.4 * intensity;
-          this.y += this.speedY * intensity;
-          this.opacity -= this.fadeSpeed * intensity;
-        } else {
-          this.x = this.originX + (Math.random() - 0.5) * 0.3;
-          this.y = this.originY + (Math.random() - 0.5) * 0.3;
+          this.x += (this.speedX + Math.sin(this.wobbleCount) * 0.8) * factor;
+          this.y += this.speedY * factor;
+          this.angle += this.rotationSpeed * factor;
+          this.opacity -= this.fadeSpeed * factor;
         }
       } else {
-        if (triggerSecondPhase) {
+        if (timelineProgress > 2.0 && timelineProgress <= 3.0) {
+          this.x = this.originX + (Math.random() - 0.5) * 0.2;
+          this.y = this.originY + (Math.random() - 0.5) * 0.2;
+          if (this.opacity < this.maxOpacity) this.opacity += 0.05;
+        } else if (timelineProgress > 3.0) {
+          const factor = timelineProgress - 3.0;
           this.wobbleCount += this.wobbleSpeed;
-          this.x += this.speedX + Math.sin(this.wobbleCount) * 0.6;
-          this.y += this.speedY * 1.2;
-          this.opacity -= this.fadeSpeed * 0.8;
-        } else {
-          this.x = this.originX + (Math.random() - 0.5) * 0.3;
-          this.y = this.originY + (Math.random() - 0.5) * 0.3;
-          if (this.opacity < 0.8) {
-            this.opacity += 0.02;
-          }
+          this.x += (this.speedX + Math.sin(this.wobbleCount) * 1.0) * factor;
+          this.y += this.speedY * factor;
+          this.angle += this.rotationSpeed * factor;
+          this.opacity -= this.fadeSpeed * factor;
         }
       }
     }
 
-    draw() {
+    draw(ctx: CanvasRenderingContext2D) {
       if (this.opacity <= 0) return;
-      this.ctx.beginPath();
-      this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
       
-      if (!this.isSecondText) {
-        this.ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-        this.ctx.shadowBlur = this.size * 1.2;
-        this.ctx.shadowColor = 'rgba(255, 255, 255, 0.4)';
-      } else {
-        this.ctx.fillStyle = `rgba(231, 120, 96, ${this.opacity})`;
-        this.ctx.shadowBlur = this.size * 1.8;
-        this.ctx.shadowColor = 'rgba(231, 120, 96, 0.7)';
-      }
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.quadraticCurveTo(this.width, -this.length / 2, 0, -this.length);
+      ctx.quadraticCurveTo(-this.width, -this.length / 2, 0, 0);
       
-      this.ctx.fill();
+      ctx.fillStyle = !this.isSecondText 
+        ? `rgba(245, 245, 240, ${this.opacity})` 
+        : `rgba(231, 120, 96, ${this.opacity})`;
+        
+      ctx.fill();
+      ctx.restore();
     }
   }
 
   function initSectionTwoAnimation() {
-    const triggerElement = document.querySelector('#section-two');
+    const triggerElement = document.querySelector('#section-two') as HTMLElement;
     const canvas = document.getElementById('particleCanvas') as HTMLCanvasElement;
     if (!triggerElement || !canvas) return;
 
-    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let textParticles: Particle[] = [];
-    let state = {
-      intensity1: 0,
-      showSecondText: false,
-      intensity2: false
-    };
-
-    let text1 = "shed limiting beliefs";
+    let animState = { timelineProgress: 0.0 };
+    let text1 = triggerElement.getAttribute('data-intro') || "shed limiting beliefs";
     let text2 = "Learn to Heal";
-
-    function resizeCanvas() {
-      const container = canvas.parentElement;
-      if (!container) return;
-      canvas.width = container.clientWidth;
-      canvas.height = container.clientHeight;
-      generateAllParticles();
-    }
+    let p1: Petal[] = [];
+    let p2: Petal[] = [];
 
     function scanText(text: string, isSecond: boolean) {
+      if (!ctx || !canvas) return [];
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      let fontSize = canvas.width > 768 ? 52 : 34;
+      let fontSize = canvas.width > 768 ? 54 : 34;
       ctx.font = `300 ${fontSize}px serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillStyle = '#ffffff';
       ctx.fillText(text, canvas.width / 2, canvas.height / 2);
 
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
+      const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const gap = canvas.width > 768 ? 3 : 2;
-      const scanned: Particle[] = [];
+      const gap = canvas.width > 768 ? 6 : 4;
+      const scanned: Petal[] = [];
 
       for (let y = 0; y < canvas.height; y += gap) {
         for (let x = 0; x < canvas.width; x += gap) {
-          const index = (y * canvas.width + x) * 4;
-          const alpha = data[index + 3];
-          
-          if (alpha > 128) {
-            scanned.push(new Particle(canvas, ctx, x, y, isSecond));
+          if (data[(y * canvas.width + x) * 4 + 3] > 128) {
+            scanned.push(new Petal(x, y, isSecond));
           }
         }
       }
       return scanned;
     }
 
-    let p1: Particle[] = [];
-    let p2: Particle[] = [];
-
-    function generateAllParticles() {
+    function resizeCanvas() {
+      const container = canvas.parentElement;
+      if (!container) return;
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
       p1 = scanText(text1, false);
       p2 = scanText(text2, true);
     }
 
-    resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
     let animationFrameId: number;
     function render() {
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      if (!state.showSecondText) {
-        p1.forEach((particle, index) => {
-          particle.update(state.intensity1, false);
-          particle.draw();
-          if (particle.opacity <= 0 || particle.y < 0) {
-            p1.splice(index, 1);
-          }
-        });
-      } else {
-        p2.forEach((particle, index) => {
-          particle.update(0, state.intensity2);
-          particle.draw();
-          if (particle.opacity <= 0 || particle.y < 0) {
-            p2.splice(index, 1);
-          }
-        });
+      const prog = animState.timelineProgress;
+
+      if (prog <= 2.0) {
+        p1.forEach(p => { p.update(prog); p.draw(ctx); });
+      }
+      if (prog >= 2.0) {
+        p2.forEach(p => { p.update(prog); p.draw(ctx); });
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -211,49 +193,27 @@ const {
         trigger: triggerElement,
         start: 'top 40%',
         toggleActions: 'play none none none',
-      },
-      onComplete: () => {
-        cancelAnimationFrame(animationFrameId);
       }
     });
 
-    tl.to(state, {
-      intensity1: 1.5,
-      duration: 2.8,
-      ease: 'power2.inOut',
-      delay: 0.8
+    tl.to(animState, {
+      timelineProgress: 4.0,
+      duration: 8.0,
+      ease: 'none'
     })
-    .set(state, { showSecondText: true })
-    .to({}, { duration: 1.5 })
-    .to(state, {
-      intensity2: true,
-      duration: 3.2,
-      onStart: () => { state.intensity2 = true; }
-    })
-    .set('.animation-stage', { display: 'none' })
+    .to('.animation-stage', {
+      opacity: 0,
+      duration: 0.6,
+      onComplete: () => {
+        cancelAnimationFrame(animationFrameId);
+        gsap.set('.animation-stage', { display: 'none' });
+      }
+    }, '-=0.6')
     .set('.final-quote-stage', { display: 'flex' })
-    .to('.final-quote-stage', {
-      opacity: 1,
-      duration: 0.8
-    })
-    .from('.final-quote-stage h2', {
-      y: 25,
-      opacity: 0,
-      filter: 'blur(6px)',
-      duration: 1.4,
-      ease: 'power3.out'
-    }, '-=0.4')
-    .from('.decorative-line', {
-      scaleX: 0,
-      duration: 1,
-      ease: 'power2.out'
-    }, '-=0.8')
-    .from('.statement-author', {
-      y: 15,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power2.out'
-    }, '-=0.6');
+    .to('.final-quote-stage', { opacity: 1, duration: 0.8 })
+    .from('.final-quote-stage h2', { y: 25, opacity: 0, filter: 'blur(6px)', duration: 1.4, ease: 'power3.out' }, '-=0.4')
+    .from('.decorative-line', { scaleX: 0, duration: 1, ease: 'power2.out' }, '-=0.8')
+    .from('.statement-author', { y: 15, opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.6');
   }
 
   initSectionTwoAnimation();
