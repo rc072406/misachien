@@ -1,5 +1,4 @@
 ---
-// src/components/Quote.astro
 interface Props {
   introText?: string;
   quote?: string;
@@ -233,7 +232,6 @@ const {
     const flowersWrapper = document.querySelector('.flowers-container');
     if (!triggerElement || !flowersWrapper) return;
 
- 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: triggerElement,
@@ -242,7 +240,6 @@ const {
       }
     });
 
-
     tl.to('.intro-text', {
       opacity: 1,
       filter: 'blur(0px)',
@@ -250,7 +247,6 @@ const {
       duration: 1.4,
       ease: 'power2.out'
     })
-  
     .to('.intro-text', {
       opacity: 0,
       filter: 'blur(30px)',
@@ -260,8 +256,6 @@ const {
       delay: 1.2
     })
     .set('.intro-text', { display: 'none' })
-    
-   
     .set('.flowers-container', { display: 'block' })
     .to('.flowers-container', {
       opacity: 1,
@@ -271,10 +265,7 @@ const {
         flowersWrapper.classList.remove('not-loaded');
       }
     })
- 
     .to({}, { duration: 5.2 })
-    
- 
     .to('.flowers-container', {
       opacity: 0,
       scale: 0.95,
@@ -282,8 +273,6 @@ const {
       ease: 'power2.inOut'
     })
     .set('.animation-stage', { display: 'none' })
-    
-   
     .set('.final-quote-stage', { display: 'flex' })
     .to('.final-quote-stage', {
       opacity: 1,
@@ -309,13 +298,11 @@ const {
     }, '-=0.6');
   }
 
-  
   initSectionTwoAnimation();
   document.addEventListener('astro:page-load', initSectionTwoAnimation);
 </script>
 
 <style>
- 
   .statement-section {
     background-color: var(--burgundy);
     padding: 8rem 2rem;
@@ -352,7 +339,6 @@ const {
     text-align: center;
   }
 
- 
   .flowers-container {
     width: 100%;
     height: 450px;
@@ -372,14 +358,12 @@ const {
     align-items: center;
   }
 
-
   :root {
-    --c-line: rgba(231, 120, 96, 0.45);
+    --c-line: rgba(231, 120, 96, 0.6);
     --c-petal: var(--coral);
     --c-highlight: var(--white);
     --glass-overlay: rgba(89, 54, 58, 0.3);
   }
-
 
   .flower {
     position: absolute;
@@ -390,15 +374,16 @@ const {
     align-items: center;
   }
 
-  .flower--1 { transform: scale(0.9); }
-  .flower--2 { transform: translateX(-60px) rotate(-10deg) scale(0.75); }
-  .flower--3 { transform: translateX(60px) rotate(10deg) scale(0.75); }
+  .flower--1 { transform: scale(1); }
+  .flower--2 { transform: translateX(-65px) rotate(-14deg) scale(0.8); }
+  .flower--3 { transform: translateX(65px) rotate(14deg) scale(0.8); }
 
   .flower__line {
-    width: 2px;
+    width: 3px;
     height: 220px;
     background-image: linear-gradient(to top, rgba(0,0,0,0), var(--c-line), var(--c-petal));
-    box-shadow: 0 0 10px rgba(237, 120, 96, 0.2);
+    box-shadow: 0 0 12px rgba(237, 120, 96, 0.3);
+    border-radius: 2px;
     transform-origin: bottom center;
     animation: growLine 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
@@ -426,63 +411,63 @@ const {
     position: absolute;
     bottom: 0;
     left: 50%;
-    width: 40px;
-    height: 70px;
+    width: 38px;
+    height: 75px;
     background-image: linear-gradient(to top, var(--c-petal), var(--c-highlight));
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
     transform-origin: bottom center;
-    box-shadow: inset 0 0 15px rgba(89, 54, 58, 0.2);
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.4), inset 0 -10px 20px rgba(89, 54, 58, 0.15), 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   .flower__leaf--1 { transform: translateX(-50%) rotate(0deg); }
-  .flower__leaf--2 { transform: translateX(-50%) rotate(45deg); }
-  .flower__leaf--3 { transform: translateX(-50%) rotate(-45deg); }
-  .flower__leaf--4 { transform: translateX(-50%) rotate(90deg); }
+  .flower__leaf--2 { transform: translateX(-50%) rotate(40deg); }
+  .flower__leaf--3 { transform: translateX(-50%) rotate(-40deg); }
+  .flower__leaf--4 { transform: translateX(-50%) rotate(80deg); }
 
   .flower__white-circle {
     position: absolute;
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
-    width: 14px;
-    height: 14px;
-    background-color: var(--c-highlight);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, var(--c-highlight) 40%, var(--c-petal) 100%);
     border-radius: 50%;
-    box-shadow: 0 0 12px var(--c-highlight);
+    box-shadow: 0 0 15px var(--c-highlight), 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 2;
   }
-
 
   .flower__light {
     position: absolute;
     bottom: 30px;
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     background-color: var(--c-highlight);
     border-radius: 50%;
-    opacity: 0.6;
-    filter: blur(0.5px);
+    opacity: 0.7;
+    filter: blur(0.3px);
+    box-shadow: 0 0 6px var(--c-highlight);
   }
 
-  .flower__light--1 { left: 20%; animation: floatUp 4s infinite linear; }
-  .flower__light--2 { right: 20%; animation: floatUp 3.5s infinite linear; }
-  .flower__light--3 { left: 40%; animation: floatUp 5s infinite linear; }
-  .flower__light--4 { right: 40%; animation: floatUp 4.5s infinite linear; }
+  .flower__light--1 { left: 20%; animation: floatUp 4.5s infinite linear; }
+  .flower__light--2 { right: 20%; animation: floatUp 3.8s infinite linear; }
+  .flower__light--3 { left: 40%; animation: floatUp 5.2s infinite linear; }
+  .flower__light--4 { right: 40%; animation: floatUp 4.7s infinite linear; }
 
- 
   .flower__line__leaf {
     position: absolute;
-    width: 12px;
-    height: 25px;
-    background-image: linear-gradient(to top, var(--c-line), var(--c-petal));
-    border-radius: 50% 50% 0 50% / 50% 50% 0 50%;
+    width: 14px;
+    height: 28px;
+    background-image: linear-gradient(to top right, var(--c-line), var(--c-petal));
+    border-radius: 0 100% 0 100%;
     transform-origin: bottom left;
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2), 0 2px 5px rgba(0, 0, 0, 0.08);
   }
 
   .flower__line__leaf--1 { top: 30%; left: 100%; transform: rotate(45deg); }
-  .flower__line__leaf--2 { top: 50%; left: 100%; transform: rotate(60deg); }
-  .flower__line__leaf--3 { top: 40%; right: 100%; transform: rotate(-45deg) scaleX(-1); }
-  .flower__line__leaf--4 { top: 60%; right: 100%; transform: rotate(-60deg) scaleX(-1); }
-
+  .flower__line__leaf--2 { top: 52%; left: 100%; transform: rotate(60deg); }
+  .flower__line__leaf--3 { top: 41%; right: 100%; transform: rotate(-45deg) scaleX(-1); }
+  .flower__line__leaf--4 { top: 63%; right: 100%; transform: rotate(-60deg) scaleX(-1); }
 
   .growing-grass {
     position: absolute;
@@ -494,15 +479,15 @@ const {
 
   .flower__grass {
     position: relative;
-    width: 4px;
+    width: 3px;
     background-color: var(--c-line);
     transform-origin: bottom center;
     animation: growLine 4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    border-radius: 2px;
   }
 
-  .flower__grass--1 { height: 70px; transform: translateX(-80px) rotate(-15deg); }
-  .flower__grass--2 { height: 55px; transform: translateX(80px) rotate(15deg); }
-
+  .flower__grass--1 { height: 75px; transform: translateX(-85px) rotate(-18deg); }
+  .flower__grass--2 { height: 60px; transform: translateX(85px) rotate(18deg); }
 
   @keyframes growLine {
     0% { height: 0; opacity: 0; }
@@ -515,16 +500,14 @@ const {
   }
 
   @keyframes floatUp {
-    0% { transform: translateY(0) scale(1); opacity: 0.6; }
-    100% { transform: translateY(-100px) scale(0.4); opacity: 0; }
+    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    100% { transform: translateY(-120px) scale(0.3); opacity: 0; }
   }
-
 
   .grow-ans {
     animation: growLine 3s var(--d) cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  
   .final-quote-stage {
     opacity: 0;
     display: none;
