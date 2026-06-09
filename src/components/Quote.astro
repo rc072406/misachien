@@ -70,7 +70,8 @@ const {
     });
 
     
-    const computedCoral = getComputedStyle(document.documentElement).getPropertyValue('--coral').trim() || '#e77860';
+    
+    const computedWhite = getComputedStyle(document.documentElement).getPropertyValue('--white').trim() || '#ffffff';
 
     class Particle {
       x!: number;
@@ -135,7 +136,7 @@ const {
         ctx.moveTo(0, 0);
         ctx.lineTo(0, this.size * 6);
         
-        ctx.strokeStyle = computedCoral;
+        ctx.strokeStyle = computedWhite;
         ctx.globalAlpha = this.opacity;
         ctx.lineWidth = 0.5;
         ctx.stroke();
@@ -145,7 +146,7 @@ const {
 
    
     particles = [];
-    const particleCount = 45; 
+    const particleCount = 240; 
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
@@ -164,7 +165,7 @@ const {
     animate();
   }
 
- 
+
   function initSectionTwoAnimation() {
     const triggerElement = document.querySelector('#section-two');
     if (!triggerElement) return;
@@ -263,7 +264,7 @@ const {
     overflow: hidden;
   }
 
-  /* Unobtrusive absolute backdrop canvas layer mapping */
+ 
   #dandelion-canvas {
     position: absolute;
     top: 0;
