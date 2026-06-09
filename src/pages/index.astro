@@ -24,8 +24,7 @@ import StickyNotes from '../components/StickyNotes.astro';
 			
 			<div class="hero-image-container">
 				<div class="accent-border-box" transition:name="hero-accent-border"></div>
-				<div class="visual-canvas" transition:name="hero-canvas">
-				</div>
+				<img src="/images/_51A5829.webp" alt="Misa Chien" class="visual-canvas-image" transition:name="hero-canvas" />
 			</div>
 		</section>
 
@@ -171,17 +170,14 @@ import StickyNotes from '../components/StickyNotes.astro';
 		opacity: 0.5;
 	}
 
-	.visual-canvas {
-		position: relative;
-		width: 100%;
-		height: 100%;
-	    background-image: url('/images/_51A5829.webp');
-		border: 1px solid rgba(89, 54, 58, 0.1);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		z-index: 2;
-	}
+	.visual-canvas-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border: 1px solid rgba(89, 54, 58, 0.1);
+    z-index: 2;
+}
 
 
 
