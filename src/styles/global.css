@@ -72,17 +72,44 @@ h1, h2, h3, h4, h5, h6 {
 		gap: 2.5rem;
 	}
 
+	
+	.nav-links {
+		display: flex;
+		gap: 2.5rem;
+		align-items: center;
+	}
+
 	.nav-item {
 		font-size: 0.85rem;
 		text-transform: uppercase;
 		letter-spacing: 2px;
-		color:var(--coral);
 		font-weight: 500;
-		transition: color 0.3s ease;
+		color: var(--coral);
+		text-decoration: none;
+		display: inline-block;
+		overflow: hidden; 
+		vertical-align: middle;
 	}
 
-	.nav-item:hover {
-		color: var(--burgundy);
+	.nav-text {
+		position: relative;
+		display: block;
+		transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+
+	.nav-text::after {
+		content: attr(data-text);
+		position: absolute;
+		top: 100%;
+		left: 0;
+		display: block;
+		color: var(--white); 
+		white-space: nowrap;
+	}
+
+	.nav-item:hover .nav-text {
+		transform: translateY(-100%);
 	}
 
 	.nav-button {
