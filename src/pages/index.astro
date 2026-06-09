@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Typewriter from '../components/TypeWriter.astro';
 ---
 
 <BaseLayout title="Misa Chien | Lorem Ipsum Showcase">
@@ -7,7 +8,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		<section class="hero-section" id="section-one">
 			<div class="hero-content">
 				<span class="kicker">Lorem Ipsum Dolor Sit</span>
-				<h1 transition:name="hero-title">Together let's <span class="serif-italic">amet elit</span>.</h1>
+				<TypeWriter 
+					staticText="Together let's " 
+					words={["amet elit", "consectetur", "incididunt ut"]} 
+				/>
 				<p class="hero-body">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
 				</p>
