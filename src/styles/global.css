@@ -4,10 +4,8 @@
 		--coral: #E77860;
 		--white: #FFFFFF;
 		
-font-family: 'GF Didot', serif;
- Bronco;
-		--font-display: 'Didot', 'Bodoni Moda', 'Georgia', serif;
-		--font-sans: 'Poppins', sans-serif;
+--font-display: 'GF Didot', 'Didot', 'Bodoni Moda', 'Georgia', serif;
+--font-sans: 'Poppins', sans-serif;
 	}
 
 	* {
