@@ -5,8 +5,9 @@
 		--white: #FFFFFF;
 		
 font-family: 'GF Didot', serif;
-font-family: 'Bodoni Moda', serif;
-font-family: 'Poppins', sans-serif;
+ Bronco;
+		--font-display: 'Didot', 'Bodoni Moda', 'Georgia', serif;
+		--font-sans: 'Poppins', sans-serif;
 	}
 
 	* {
