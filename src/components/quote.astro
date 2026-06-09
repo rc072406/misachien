@@ -1,0 +1,197 @@
+<section class="statement-section" id="section-two">
+	<div class="animation-stage">
+		<h2 class="intro-text">shed limiting beliefs</h2>
+		
+		<div class="lily-wrapper">
+			<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path class="lily-petal center-petal" d="M50 25 C35 50 35 70 50 80 C65 70 65 50 50 25 Z" stroke="var(--coral)" stroke-width="1.5" />
+				<path class="lily-petal side-petal-left" d="M50 35 C20 50 20 70 50 80 C35 70 35 50 50 35 Z" stroke="var(--coral)" stroke-dasharray="2 2" stroke-width="1" />
+				<path class="lily-petal side-petal-right" d="M50 35 C80 50 80 70 50 80 C65 70 65 50 50 35 Z" stroke="var(--coral)" stroke-dasharray="2 2" stroke-width="1" />
+				<path class="lily-petal outer-petal-left" d="M50 45 C5 55 15 75 50 80 C20 75 30 60 50 45 Z" stroke="var(--coral)" stroke-width="1" />
+				<path class="lily-petal outer-petal-right" d="M50 45 C95 55 85 75 50 80 C80 75 70 60 50 45 Z" stroke="var(--coral)" stroke-width="1" />
+			</svg>
+		</div>
+	</div>
+
+	<div class="statement-container final-quote-stage">
+		<h2>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."</h2>
+		<div class="decorative-line"></div>
+		<span class="statement-author">Misa Chien</span>
+	</div>
+</section>
+<script>
+import { initScrollReveal } from '../scripts/scroll-reveal.js';
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	function initSectionTwoAnimation() {
+		const triggerElement = document.querySelector('#section-two');
+		if (!triggerElement) return;
+
+
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: triggerElement,
+				start: 'top 55%',
+				toggleActions: 'play none none none', 
+			}
+		});
+
+		tl.to('.intro-text', {
+			opacity: 1,
+			filter: 'blur(0px)',
+			scale: 1,
+			duration: 1.4,
+			ease: 'power2.out'
+		})
+	
+		.to('.intro-text', {
+			opacity: 0,
+			filter: 'blur(25px)',
+			scale: 1.1,
+			duration: 1.2,
+			ease: 'power2.in',
+			delay: 1.5 
+		})
+		
+		.set('.intro-text', { display: 'none' })
+	
+		.set('.lily-wrapper', { display: 'block' })
+		.to('.lily-wrapper', {
+			opacity: 1,
+			scale: 1,
+			rotate: 0,
+			duration: 1.6,
+			ease: 'elastic.out(1, 0.75)'
+		})
+		
+		.to('.lily-wrapper', {
+			opacity: 0,
+			scale: 0.9,
+			duration: 1,
+			ease: 'power2.inOut',
+			delay: 1.5
+		})
+		.set('.animation-stage', { display: 'none' })
+		
+		.set('.final-quote-stage', { display: 'flex' })
+		.to('.final-quote-stage', {
+			opacity: 1,
+			duration: 0.8
+		})
+	
+		.from('.final-quote-stage h2', {
+			y: 25,
+			opacity: 0,
+			filter: 'blur(5px)',
+			duration: 1.2,
+			ease: 'power3.out'
+		}, '-=0.4')
+		.from('.decorative-line', {
+			scaleX: 0,
+			duration: 0.8,
+			ease: 'power2.out'
+		}, '-=0.6')
+		.from('.statement-author', {
+			y: 15,
+			opacity: 0,
+			duration: 0.8,
+			ease: 'power2.out'
+		}, '-=0.5');
+	}
+
+
+	const runAllScripts = () => {
+		initScrollReveal();
+		initSectionTwoAnimation();
+	};
+
+	runAllScripts();
+	document.addEventListener('astro:page-load', runAllScripts);
+</script>
+
+<style>
+	.statement-section {
+		background-color: var(--burgundy);
+		padding: 12rem 2rem; 
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: center;
+		justify-content: center;
+		min-height: 80vh; 
+		position: relative;
+		overflow: hidden;
+	}
+
+	.animation-stage, 
+	.final-quote-stage {
+		grid-area: 1 / 1; 
+		width: 100%;
+		max-width: 850px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+
+	.intro-text {
+		color: var(--white);
+		font-family: var(--font-display);
+		font-size: 3.5rem;
+		font-weight: 300;
+		letter-spacing: 1px;
+		opacity: 0;
+		filter: blur(20px); 
+		transform: scale(0.95);
+		text-align: center;
+	}
+
+	.lily-wrapper {
+		width: 140px;
+		height: 140px;
+		opacity: 0;
+		transform: scale(0.5) rotate(-15deg);
+		margin-top: 2rem;
+		display: none; 
+	}
+
+	.lily-wrapper svg {
+		width: 100%;
+		height: 100%;
+	}
+
+
+	.final-quote-stage {
+		opacity: 0;
+		display: none;
+	}
+
+	.final-quote-stage h2 {
+		color: var(--white);
+		font-size: 2.25rem;
+		font-weight: 300;
+		line-height: 1.5;
+		letter-spacing: 0.5px;
+		text-align: center;
+	}
+
+	.decorative-line {
+		width: 60px;
+		height: 1px;
+		background-color: var(--coral);
+		margin: 2.5rem auto;
+	}
+
+	.statement-author {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: var(--coral);
+		font-weight: 500;
+	}
+</style>
