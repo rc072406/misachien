@@ -1,0 +1,289 @@
+---
+interface Props {
+  introText?: string;
+  quote?: string;
+  author?: string;
+}
+
+const { 
+  introText = "shed limiting beliefs", 
+  quote = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.", 
+  author = "Lorem Ipsum, 2026" 
+} = Astro.props;
+---
+
+<section class="statement-section" id="section-two">
+  <div class="animation-stage">
+    <h2 class="intro-text">{introText}</h2>
+    <div class="canvas-container">
+      <canvas id="particleCanvas"></canvas>
+    </div>
+  </div>
+
+  <div class="statement-container final-quote-stage">
+    <h2>"{quote}"</h2>
+    <div class="decorative-line"></div>
+    <span class="statement-author">{author}</span>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  class Particle {
+    canvas: HTMLCanvasElement;
+    ctx: CanvasRenderingContext2D;
+    x: number;
+    y: number;
+    size: number;
+    baseSpeedY: number;
+    speedY: number;
+    speedX: number;
+    opacity: number;
+    fadeSpeed: number;
+
+    constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, isExploding: boolean) {
+      this.canvas = canvas;
+      this.ctx = ctx;
+      
+      this.x = canvas.width / 2 + (Math.random() - 0.5) * 40;
+      this.y = canvas.height * 0.85 + (Math.random() - 0.5) * 20;
+      
+      this.size = Math.random() * 2.5 + 0.5;
+      this.opacity = Math.random() * 0.5 + 0.2;
+      
+      if (isExploding) {
+        this.baseSpeedY = Math.random() * -3 - 1; 
+        this.speedX = (Math.random() - 0.5) * 3;
+        this.fadeSpeed = Math.random() * 0.004 + 0.002;
+      } else {
+        this.baseSpeedY = Math.random() * -0.5 - 0.2;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.fadeSpeed = 0;
+      }
+      this.speedY = this.baseSpeedY;
+    }
+
+    update(intensity: number) {
+      if (intensity > 0) {
+        this.speedY = this.baseSpeedY * (1 + intensity * 2);
+        this.speedX += (Math.random() - 0.5) * 0.2 * intensity;
+        this.opacity -= this.fadeSpeed * intensity;
+      }
+
+      this.x += this.speedX;
+      this.y += this.speedY;
+    }
+
+    draw() {
+      if (this.opacity <= 0) return;
+      this.ctx.beginPath();
+      this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      this.ctx.fillStyle = `rgba(231, 120, 96, ${this.opacity})`;
+      this.ctx.shadowBlur = this.size * 2;
+      this.ctx.shadowColor = 'rgba(231, 120, 96, 0.8)';
+      this.ctx.fill();
+    }
+  }
+
+  function initSectionTwoAnimation() {
+    const triggerElement = document.querySelector('#section-two');
+    const canvas = document.getElementById('particleCanvas') as HTMLCanvasElement;
+    if (!triggerElement || !canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      canvas.width = rect?.width || 850;
+      canvas.height = rect?.height || 450;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    let particles: Particle[] = [];
+    const maxParticles = 120;
+    let isExploding = false;
+    
+    const animationController = { intensity: 0 };
+
+    for (let i = 0; i < maxParticles; i++) {
+      particles.push(new Particle(canvas, ctx, false));
+    }
+
+    let animationFrameId: number;
+    function render() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (particles.length < maxParticles && (!isExploding || animationController.intensity < 0.8)) {
+        particles.push(new Particle(canvas, ctx, isExploding));
+      }
+
+      particles.forEach((particle, index) => {
+        particle.update(animationController.intensity);
+        particle.draw();
+
+        if (particle.y < 0 || particle.opacity <= 0 || particle.x < 0 || particle.x > canvas.width) {
+          particles.splice(index, 1);
+        }
+      });
+
+      animationFrameId = requestAnimationFrame(render);
+    }
+    render();
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: triggerElement,
+        start: 'top 40%',
+        toggleActions: 'play none none none',
+      },
+      onComplete: () => {
+        cancelAnimationFrame(animationFrameId);
+      }
+    });
+
+    tl.to('.intro-text', {
+      opacity: 1,
+      filter: 'blur(0px)',
+      scale: 1,
+      duration: 1.5,
+      ease: 'power2.out'
+    })
+    .to(animationController, {
+      intensity: 1,
+      duration: 3.5,
+      ease: 'power1.inOut',
+      onStart: () => { isExploding = true; }
+    }, '-=0.5')
+    .to('.intro-text', {
+      opacity: 0,
+      y: -40,
+      filter: 'blur(15px)',
+      duration: 1.5,
+      ease: 'power2.in'
+    }, '-=2.5')
+    .set('.animation-stage', { display: 'none' })
+    .set('.final-quote-stage', { display: 'flex' })
+    .to('.final-quote-stage', {
+      opacity: 1,
+      duration: 0.8
+    })
+    .from('.final-quote-stage h2', {
+      y: 25,
+      opacity: 0,
+      filter: 'blur(6px)',
+      duration: 1.4,
+      ease: 'power3.out'
+    }, '-=0.4')
+    .from('.decorative-line', {
+      scaleX: 0,
+      duration: 1,
+      ease: 'power2.out'
+    }, '-=0.8')
+    .from('.statement-author', {
+      y: 15,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out'
+    }, '-=0.6');
+  }
+
+  initSectionTwoAnimation();
+  document.addEventListener('astro:page-load', initSectionTwoAnimation);
+</script>
+
+<style>
+  .statement-section {
+    background-color: var(--burgundy, #2b0c15);
+    padding: 8rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    min-height: 95vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animation-stage, 
+  .final-quote-stage {
+    grid-area: 1 / 1;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .intro-text {
+    color: var(--white, #ffffff);
+    font-family: var(--font-display, serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(0.95);
+    text-align: center;
+    z-index: 2;
+  }
+
+  .canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 450px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  #particleCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .final-quote-stage {
+    opacity: 0;
+    display: none;
+  }
+
+  .final-quote-stage h2 {
+    color: var(--white, #ffffff);
+    font-size: 2.25rem;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  .decorative-line {
+    width: 60px;
+    height: 1px;
+    background-color: var(--coral, #e77860);
+    margin: 2.5rem auto;
+  }
+
+  .statement-author {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--coral, #e77860);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .intro-text { font-size: 2.5rem; }
+    .final-quote-stage h2 { font-size: 1.65rem; }
+    .canvas-container { height: 350px; }
+  }
+</style>
