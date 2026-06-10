@@ -1,5 +1,6 @@
 ---
 // TypeWriter2.astro
+
 ---
 
 <section class="typewriter-section" data-theme="light">
@@ -17,7 +18,7 @@
 
 		<div class="interactive-display">
 			<h2 class="statement-heading">
-				<span class="static-phrase">To transform your reality, you must first learn to</span>
+				To transform your reality, you must first learn to <br />
 				<span class="typewriter-wrapper">
 					<span id="typewriter-text" class="typewriter-target"></span><span class="typewriter-cursor">|</span>
 				</span>
@@ -28,6 +29,7 @@
 </section>
 
 <script>
+	
 	const phrases = [
 		"decode your hidden scripts.",
 		"shatter generational cycles.",
@@ -48,42 +50,48 @@
 		const currentPhrase = phrases[phraseIndex];
 
 		if (isDeleting) {
+			
 			target.textContent = currentPhrase.substring(0, characterIndex - 1);
 			characterIndex--;
 			typingSpeed = 40; 
 		} else {
+			
 			target.textContent = currentPhrase.substring(0, characterIndex + 1);
 			characterIndex++;
-			typingSpeed = 80;
+			typingSpeed = 80; // Normal typing speed
 		}
 
+		
 		if (!isDeleting && characterIndex === currentPhrase.length) {
-			typingSpeed = 2500;
+			typingSpeed = 2500; // Pause at completion of phrase
 			isDeleting = true;
 		} else if (isDeleting && characterIndex === 0) {
 			isDeleting = false;
 			phraseIndex = (phraseIndex + 1) % phrases.length;
-			typingSpeed = 600;
+			typingSpeed = 600; // Brief pause before typing next phrase
 		}
 
 		setTimeout(handleTypewriter, typingSpeed);
 	}
 
+	
 	document.addEventListener('DOMContentLoaded', handleTypewriter);
 	document.addEventListener('astro:page-load', handleTypewriter);
 </script>
 
 <style>
-	.typewriter-section {
-		width: 100%;
-		background-color: #FEF4EF; 
-		padding: 4rem 2rem; 
-		box-sizing: border-box;
-		font-family: 'Poppins', sans-serif;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+
+
+.typewriter-section {
+	width: 100%;
+	background-color: #FEF4EF; 
+	padding: 2.5rem 2rem; 
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 	.typewriter-container {
 		width: 100%;
@@ -93,6 +101,7 @@
 		align-items: center;
 		text-align: center;
 	}
+
 
 	.quote-wrapper {
 		max-width: 850px;
@@ -135,35 +144,25 @@
 		margin-bottom: 4.5rem;
 	}
 
+	
 	.interactive-display {
 		max-width: 950px;
-		width: 100%;
 	}
 
 	.statement-heading {
 		font-size: 2.75rem;
 		font-weight: 400;
-		line-height: 1.5;
+		line-height: 1.4;
 		color: var(--burgundy, #59363A);
 		letter-spacing: -0.5px;
-		display: flex;
-		flex-direction: column; 
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.static-phrase {
-		display: block;
-		width: 100%;
+        white-space: nowrap;
 	}
 
 	.typewriter-wrapper {
-		display: inline-block;
-		position: relative;
-		font-family: 'GF Didot', serif;
-		max-width: 100%;
-		word-wrap: break-word;
-		overflow-wrap: break-word;
+       display: inline-block;
+	position: relative;
+	margin-top: 0.5rem;
+	font-family: 'GF Didot', serif;
 	}
 
 	.typewriter-target {
@@ -173,8 +172,8 @@
 		padding-bottom: 2px;
 	}
 
+
 	.typewriter-cursor {
-		display: inline-block; 
 		font-weight: 300;
 		color: var(--coral, #D67A6B);
 		margin-left: 4px;
@@ -190,7 +189,7 @@
 	/* Responsive Media Framework */
 	@media (max-width: 768px) {
 		.typewriter-section {
-			padding: 4rem 1.5rem;
+			padding: 6rem 1.5rem;
 		}
 
 		.quote-text {
@@ -199,7 +198,6 @@
 
 		.statement-heading {
 			font-size: 1.85rem;
-			gap: 0.75rem;
 		}
 	}
 </style>
