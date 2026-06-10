@@ -10,28 +10,29 @@ import heroImage from '../../public/images/_51A5829.webp';
 <BaseLayout title="Misa Chien | Lorem Ipsum Showcase">
 	<main transition:animate="fade">
 		<section class="hero-section" id="section-one" data-theme="light">
-			<div class="hero-content">
-				<span class="kicker">Lorem Ipsum Dolor Sit</span>
-				<TypeWriter 
-					staticText="Together let's " 
-					words={["stay authentic", "crush limiting beliefs", "heal"]} 
-				/>
-				<p class="hero-body">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
-				</p>
-				<div class="action-wrapper">
-					<a href="#" class="btn-filled">Start Your Journey</a>
+			<div class="hero-container">
+				<div class="hero-content">
+					<span class="kicker">Lorem Ipsum Dolor Sit</span>
+					<TypeWriter 
+						staticText="Together let's " 
+						words={["stay authentic", "crush limiting beliefs", "heal"]} 
+					/>
+					<p class="hero-body">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+					</p>
+					<div class="action-wrapper">
+						<a href="#" class="btn-filled">Start Your Journey</a>
+					</div>
+				</div>
+				
+				<div class="hero-image-container">
+					<div class="accent-border-box" transition:name="hero-accent-border"></div>
+					<img src={heroImage.src} alt="Misa Chien" class="visual-canvas-image" transition:name="hero-canvas" />
 				</div>
 			</div>
-			
-			<div class="hero-image-container">
-	<div class="accent-border-box" transition:name="hero-accent-border"></div>
-	<img src={heroImage.src} alt="Misa Chien" class="visual-canvas-image" transition:name="hero-canvas" />
-</div>
 		</section>
 
-	<Testimonials client:visible />
- 
+		<Testimonials client:visible />
 
 		<section class="pillars-section" id="section-three" data-theme="light">
 			<div class="section-lead">
@@ -63,12 +64,17 @@ import heroImage from '../../public/images/_51A5829.webp';
 				</div>
 			</div>
 		</section>
-   <StickyNotes client:visible />
+		<StickyNotes client:visible />
 	</main>
 </BaseLayout>
 
 <style>
 	.hero-section {
+		width: 100%;
+		background: linear-gradient(to right, #59363A 0%, #59363A 4%, #FEF4EF 22%, #FEF4EF 100%);
+	}
+
+	.hero-container {
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 7rem 2rem;
@@ -110,7 +116,6 @@ import heroImage from '../../public/images/_51A5829.webp';
 		max-width: 540px;
 	}
 
-
 	.btn-filled {
 		position: relative;
 		border: 1px solid var(--burgundy); 
@@ -127,13 +132,11 @@ import heroImage from '../../public/images/_51A5829.webp';
 		transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
-
 	.btn-filled span {
 		position: relative;
 		z-index: 2;
 	}
 
-	
 	.btn-filled::before {
 		content: '';
 		position: absolute;
@@ -173,15 +176,13 @@ import heroImage from '../../public/images/_51A5829.webp';
 	}
 
 	.visual-canvas-image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    border: 1px solid rgba(89, 54, 58, 0.1);
-    z-index: 2;
-}
-
-
+		position: relative;
+		width: 100%;
+		height: 100%;
+		object-fit: cover; 
+		border: 1px solid rgba(89, 54, 58, 0.1);
+		z-index: 2;
+	}
 
 	.statement-section {
 		background-color: var(--burgundy);
@@ -217,12 +218,11 @@ import heroImage from '../../public/images/_51A5829.webp';
 		font-weight: 500;
 	}
 
-	/* Core Pillars Matrix Styles */
 	.pillars-section {
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 8rem 2rem;
-        background: #FEF4EF; 
+		background: #FEF4EF; 
 	}
 
 	.section-lead {
@@ -255,7 +255,6 @@ import heroImage from '../../public/images/_51A5829.webp';
 		border: 1px solid rgba(89, 54, 58, 0.1);
 		padding: 3rem 2rem;
 		background-color: var(--white);
-		
 		transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease, border-color 0.3s ease;
 	}
 
@@ -296,11 +295,12 @@ import heroImage from '../../public/images/_51A5829.webp';
 		color: var(--coral);
 	}
 
-	
-	
-	/* Responsive mode */
 	@media (max-width: 960px) {
 		.hero-section {
+			background: linear-gradient(to bottom, #59363A 0%, #59363A 5%, #FEF4EF 25%, #FEF4EF 100%);
+		}
+
+		.hero-container {
 			grid-template-columns: 1fr;
 			padding: 4rem 2rem;
 			gap: 4rem;
