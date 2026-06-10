@@ -18,17 +18,17 @@ import heroImage from '../../public/images/_51A5829.webp';
 						staticText="Together let's " 
 						words={["stay authentic", "crush limiting beliefs", "heal", "grow"]} 
 					/>
-					<p class="-body">
-						Release your scaricty mindset with mindset coach, Misa Chien. 
+					<p class="hero-body">
+						Release your scaricty mindset with NLP mindset coach, Misa Chien. 
 					</p>
 					<div class="action-wrapper">
 						<a href="#" class="btn-filled">Start Your Journey</a>
 					</div>
 				</div>
 				
-				<div class="-image-container">
-					<div class="accent-border-box" transition:name="-accent-border"></div>
-					<img src={Image.src} alt="Misa Chien" class="visual-canvas-image" transition:name="-canvas" />
+				<div class="hero-image-container">
+					<div class="accent-border-box" transition:name="hero-accent-border"></div>
+					<img src={heroImage.src} alt="Misa Chien" class="visual-canvas-image" transition:name="hero-canvas" />
 				</div>
 			</div>
 		</section>
@@ -85,6 +85,7 @@ import heroImage from '../../public/images/_51A5829.webp';
     #FEF4EF 100%
   );
   overflow: hidden;
+  overflow-x: hidden;
 }
 
 
@@ -95,7 +96,6 @@ import heroImage from '../../public/images/_51A5829.webp';
   width: 100%; height: 100%;
   opacity: 0.035; 
   pointer-events: none;
-   box-sizing: border-box;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='studio'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23studio)'/%3E%3C/svg%3E");
 }
 
@@ -190,7 +190,6 @@ import heroImage from '../../public/images/_51A5829.webp';
 		position: relative;
 		width: 100%;
 		aspect-ratio: 4 / 5;
-        overflow: hidden;
 	}
 
 	.accent-border-box {
@@ -200,7 +199,6 @@ import heroImage from '../../public/images/_51A5829.webp';
 		transform: translate(20px, 20px);
 		z-index: 1;
 		opacity: 0.5;
-        
 	}
 
 	.visual-canvas-image {
