@@ -1,25 +1,27 @@
 <nav class="navbar navbar--dark">
-  <a href="#" class="logo">Misa <em>Chien.</em></a>
+ <a href={import.meta.env.BASE_URL} class="logo">Misa <em>Chien.</em></a>
   
-  <div class="nav-links">
-    <a href="#" class="nav-item">
-      <span class="nav-text" data-text="About Me">About Me</span>
-    </a>
-    <a href="#" class="nav-item">
-      <span class="nav-text" data-text="Work">Work</span>
-    </a>
-    <a href="#" class="nav-item">
-      <span class="nav-text" data-text="Courses">Courses</span>
-    </a>
-    
-    <a href="#contact" class="nav-button nav-button--mobile">
-      <span>Get In Touch</span>
-    </a>
-  </div>
-
-  <a href="#contact" class="nav-button nav-button--desktop">
+<div class="nav-links">
+  <a href={`${import.meta.env.BASE_URL}about`} class="nav-item">
+    <span class="nav-text" data-text="About Me">About Me</span>
+  </a>
+  
+  <a href={`${import.meta.env.BASE_URL}work`} class="nav-item">
+    <span class="nav-text" data-text="Work">Work</span>
+  </a>
+  
+  <a href={`${import.meta.env.BASE_URL}courses`} class="nav-item">
+    <span class="nav-text" data-text="Courses">Courses</span>
+  </a>
+  
+  <a href="#contact" class="nav-button nav-button--mobile">
     <span>Get In Touch</span>
   </a>
+</div>
+
+<a href="#contact" class="nav-button nav-button--desktop">
+  <span>Get In Touch</span>
+</a>
   
   <button class="menu-toggle" aria-label="Toggle navigation">
     <span></span>
