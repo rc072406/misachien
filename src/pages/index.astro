@@ -72,9 +72,30 @@ import heroImage from '../../public/images/_51A5829.webp';
 
 <style>
 .hero-section {
+  position: relative;
   width: 100%;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%2359363A"/><stop offset="8%" stop-color="%2359363A"/><stop offset="22%" stop-color="%238A6266"/><stop offset="35%" stop-color="%23BA9699"/><stop offset="45%" stop-color="%23DFCDC9"/><stop offset="55%" stop-color="%23FEF4EF"/><stop offset="100%" stop-color="%23FEF4EF"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/></svg>');
-  background-size: cover;
+  background: linear-gradient(
+    to right, 
+    #59363A 0%, 
+    #59363A 6%, 
+    #8A6266 25%,
+    #BA9699 38%,
+    #DFCDC9 48%,
+    #FEF4EF 58%, 
+    #FEF4EF 100%
+  );
+  overflow: hidden;
+}
+
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  opacity: 0.04; 
+  pointer-events: none; 
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 
