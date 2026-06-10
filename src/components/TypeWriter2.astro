@@ -159,28 +159,30 @@
         overflow-wrap: break-word;
 	}
 
-	.typewriter-wrapper {
-       display: inline-block;
-	position: relative;
-	margin-top: 0.5rem;
-	font-family: 'GF Didot', serif;
-	}
 
-	.typewriter-target {
-		font-weight: 600;
-		color: var(--burgundy, #59363A);
-		border-bottom: 2px solid rgba(214, 122, 107, 0.3); 
-		padding-bottom: 2px;
-	}
+.typewriter-wrapper {
+    display: inline; 
+    position: relative;
+    margin-top: 0.5rem;
+    font-family: 'GF Didot', serif;
+}
 
 
-	.typewriter-cursor {
-		font-weight: 300;
-		color: var(--coral, #D67A6B);
-		margin-left: 4px;
-		animation: blink-animation 0.9s infinite steps(2, start);
-	}
+.typewriter-target {
+    font-weight: 600;
+    color: var(--burgundy, #59363A);
+    border-bottom: 2px solid rgba(214, 122, 107, 0.3); 
+    padding-bottom: 2px;
+    white-space: pre-wrap; 
+}
 
+.typewriter-cursor {
+    display: inline-block; 
+    font-weight: 300;
+    color: var(--coral, #D67A6B);
+    margin-left: 4px;
+    animation: blink-animation 0.9s infinite steps(2, start);
+}
 	@keyframes blink-animation {
 		to {
 			visibility: hidden;
