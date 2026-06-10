@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeWriter from '../components/TypeWriter.astro';
 import Quote from '../components/Quote.astro';
 import StickyNotes from '../components/StickyNotes.astro';
+
+import heroImage from '../../public/images/_51A5829.webp';
 ---
 
 <BaseLayout title="Misa Chien | Lorem Ipsum Showcase">
@@ -23,9 +25,9 @@ import StickyNotes from '../components/StickyNotes.astro';
 			</div>
 			
 			<div class="hero-image-container">
-				<div class="accent-border-box" transition:name="hero-accent-border"></div>
-				<img src="/images/_51A5829.webp" alt="Misa Chien" class="visual-canvas-image"/>
-			</div>
+	<div class="accent-border-box" transition:name="hero-accent-border"></div>
+	<img src={heroImage.src} alt="Misa Chien" class="visual-canvas-image" transition:name="hero-canvas" />
+</div>
 		</section>
 
 	<Quote client:visible />
