@@ -11,8 +11,7 @@ const { staticText, words } = Astro.props;
 <h1 class="typewriter-container" transition:name="hero-title">
   <span class="static">{staticText}</span>
   <span class="dynamic-wrapper">
-    <span class="dynamic-text" data-words={JSON.stringify(words)}></span>
-    <span class="cursor">.</span>
+    <span class="dynamic-text" data-words={JSON.stringify(words)}></span><span class="cursor">.</span>
   </span>
 </h1>
 
@@ -41,7 +40,7 @@ const { staticText, words } = Astro.props;
     font-style: italic;
     color: var(--coral);
     font-weight: 400;  
-  display: inline;
+    display: inline;
   }
 
   .cursor {
