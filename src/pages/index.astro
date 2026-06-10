@@ -10,7 +10,7 @@ import heroImage from '../../public/images/_51A5829.webp';
 
 <BaseLayout title="Misa Chien | Lorem Ipsum Showcase">
 	<main transition:animate="fade">
-		<section class="hero-section" id="section-one" data-theme="light" style="background: linear-gradient(in oklab to right, #59363A 0%, #59363A 8%, #8A6266 22%, #BA9699 35%, #DFCDC9 45%, #FEF4EF 55%, #FEF4EF 100%);">
+		<section class="hero-section" id="section-one" data-theme="light" >
 			<div class="hero-container">
 				<div class="hero-content">
 					<span class="kicker">Lorem Ipsum Dolor Sit</span>
@@ -71,6 +71,11 @@ import heroImage from '../../public/images/_51A5829.webp';
 </BaseLayout>
 
 <style>
+.hero-section {
+  width: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="%2359363A"/><stop offset="8%" stop-color="%2359363A"/><stop offset="22%" stop-color="%238A6266"/><stop offset="35%" stop-color="%23BA9699"/><stop offset="45%" stop-color="%23DFCDC9"/><stop offset="55%" stop-color="%23FEF4EF"/><stop offset="100%" stop-color="%23FEF4EF"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/></svg>');
+  background-size: cover;
+}
 
 
 	.hero-container {
