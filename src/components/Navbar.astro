@@ -210,6 +210,23 @@
     border-color: var(--white); 
   }
 
+ .navbar--start {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .navbar--start .logo { color: var(--white); }
+  .navbar--start .nav-item { color: var(--coral); }
+  .navbar--start .nav-text::after { color: var(--burgundy); } 
+  .navbar--start .nav-button { color: var(--coral); border-color: var(--coral); }
+ .navbar--start .nav-button::before { background-color: var(--white); } 
+.navbar--start .nav-button:hover::before { 
+    transform: scaleX(1); 
+  }
+  .navbar--start .nav-button:hover { 
+    color: var(--burgundy); 
+    border-color: var(--white); 
+  }
+
   .nav-button--mobile {
     display: none;
   }
