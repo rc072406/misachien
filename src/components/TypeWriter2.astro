@@ -1,0 +1,201 @@
+---
+// TypeWriter2.astro
+
+---
+
+<section class="typewriter-section">
+	<div class="typewriter-container">
+		
+		<div class="quote-wrapper">
+			<span class="section-kicker">Core Philosophy</span>
+			<p class="quote-text">
+				"Until you make the unconscious conscious, it will direct your life and you will call it fate."
+			</p>
+			<span class="quote-author">— Carl Jung</span>
+		</div>
+
+		<hr class="section-divider" />
+
+		<div class="interactive-display">
+			<h2 class="statement-heading">
+				To transform your reality, you must first learn to <br />
+				<span class="typewriter-wrapper">
+					<span id="typewriter-text" class="typewriter-target"></span><span class="typewriter-cursor">|</span>
+				</span>
+			</h2>
+		</div>
+
+	</div>
+</section>
+
+<script>
+	
+	const phrases = [
+		"decode your hidden scripts.",
+		"shatter generational cycles.",
+		"rewire automatic behaviors.",
+		"confront the shadow profiles.",
+		"reclaim your conscious choice."
+	];
+
+	let phraseIndex = 0;
+	let characterIndex = 0;
+	let isDeleting = false;
+	let typingSpeed = 80;
+
+	function handleTypewriter() {
+		const target = document.getElementById('typewriter-text');
+		if (!target) return;
+
+		const currentPhrase = phrases[phraseIndex];
+
+		if (isDeleting) {
+			
+			target.textContent = currentPhrase.substring(0, characterIndex - 1);
+			characterIndex--;
+			typingSpeed = 40; 
+		} else {
+			
+			target.textContent = currentPhrase.substring(0, characterIndex + 1);
+			characterIndex++;
+			typingSpeed = 80; // Normal typing speed
+		}
+
+		
+		if (!isDeleting && characterIndex === currentPhrase.length) {
+			typingSpeed = 2500; // Pause at completion of phrase
+			isDeleting = true;
+		} else if (isDeleting && characterIndex === 0) {
+			isDeleting = false;
+			phraseIndex = (phraseIndex + 1) % phrases.length;
+			typingSpeed = 600; // Brief pause before typing next phrase
+		}
+
+		setTimeout(handleTypewriter, typingSpeed);
+	}
+
+	
+	document.addEventListener('DOMContentLoaded', handleTypewriter);
+	document.addEventListener('astro:page-load', handleTypewriter);
+</script>
+
+<style>
+
+
+.typewriter-section {
+	width: 100%;
+	background-color: #FEF4EF; 
+	padding: 2.5rem 2rem; 
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+	.typewriter-container {
+		width: 100%;
+		max-width: 1100px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+
+	.quote-wrapper {
+		max-width: 850px;
+		margin-bottom: 4.5rem;
+	}
+
+	.section-kicker {
+		display: block;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		font-weight: 600;
+		color: var(--burgundy, #59363A);
+		opacity: 0.6;
+		margin-bottom: 1.5rem;
+	}
+
+	.quote-text {
+		font-size: 2rem;
+		font-weight: 300;
+		line-height: 1.5;
+		color: var(--burgundy, #59363A);
+		letter-spacing: -0.5px;
+	}
+
+	.quote-author {
+		display: block;
+		margin-top: 1.25rem;
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-weight: 500;
+		color: var(--coral, #D67A6B);
+	}
+
+	.section-divider {
+		width: 40px;
+		border: none;
+		border-top: 1px solid rgba(89, 54, 58, 0.15);
+		margin-bottom: 4.5rem;
+	}
+
+	
+	.interactive-display {
+		max-width: 950px;
+	}
+
+	.statement-heading {
+		font-size: 2.75rem;
+		font-weight: 400;
+		line-height: 1.4;
+		color: var(--burgundy, #59363A);
+		letter-spacing: -0.5px;
+	}
+
+	.typewriter-wrapper {
+		display: inline-block;
+		position: relative;
+		margin-top: 0.5rem;
+	}
+
+	.typewriter-target {
+		font-weight: 600;
+		color: var(--burgundy, #59363A);
+		border-bottom: 2px solid rgba(214, 122, 107, 0.3); 
+		padding-bottom: 2px;
+	}
+
+
+	.typewriter-cursor {
+		font-weight: 300;
+		color: var(--coral, #D67A6B);
+		margin-left: 4px;
+		animation: blink-animation 0.9s infinite steps(2, start);
+	}
+
+	@keyframes blink-animation {
+		to {
+			visibility: hidden;
+		}
+	}
+
+	/* Responsive Media Framework */
+	@media (max-width: 768px) {
+		.typewriter-section {
+			padding: 6rem 1.5rem;
+		}
+
+		.quote-text {
+			font-size: 1.5rem;
+		}
+
+		.statement-heading {
+			font-size: 1.85rem;
+		}
+	}
+</style>
