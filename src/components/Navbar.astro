@@ -56,16 +56,21 @@
 
   const sections = document.querySelectorAll('[data-theme]');
   
-  const themeObserver = new IntersectionObserver((entries) => {
+const themeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const theme = entry.target.getAttribute('data-theme');
-        if (theme === 'light') {
+        
+       
+        navbar?.classList.remove('navbar--start', 'navbar--light', 'navbar--dark');
+        
+       
+        if (theme === 'start') {
+          navbar?.classList.add('navbar--start');
+        } else if (theme === 'light') {
           navbar?.classList.add('navbar--light');
-          navbar?.classList.remove('navbar--dark');
         } else {
           navbar?.classList.add('navbar--dark');
-          navbar?.classList.remove('navbar--light');
         }
       }
     });
