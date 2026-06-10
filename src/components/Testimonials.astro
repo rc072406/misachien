@@ -1,0 +1,240 @@
+---
+interface Testimonial {
+  quote: string;
+  author: string;
+  role?: string;
+}
+
+interface Props {
+  title?: string;
+  testimonials?: Testimonial[];
+}
+
+const { 
+  title = "Testimonials",
+  testimonials = [
+    {
+      quote: "Filler fillerFiller fillerFiller fillerFiller fillerFiller fillerFiller filler",
+      author: "Filler filler",
+      role: "Filler filler"
+    },
+    {
+      quote: "Filler fillerFiller fillerFiller fillerFiller fillerFiller filler",
+      author: "Filler filler",
+      role: "Filler filler"
+    },
+    {
+      quote: "Filler fillerFiller fillerFiller fillerFiller fillerFiller filler",
+      author: "Filler filler",
+      role: "Filler filler"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="testimonials-section">
+  <div class="sticky-title-container">
+    <h2 class="section-title">{title}</h2>
+  </div>
+
+  <div class="testimonials-grid">
+    {testimonials.map((item, index) => (
+      <div class={`testimonial-card ${index % 2 === 0 ? 'left-track' : 'right-track'}`}>
+        <span class="card-number">0{index + 1} //</span>
+        <p class="testimonial-quote">"{item.quote}"</p>
+        <div class="testimonial-meta">
+          <span class="testimonial-author">{item.author}</span>
+          {item.role && <span class="testimonial-role">{item.role}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initTestimonialsLayout() {
+    const section = document.querySelector('.testimonials-section');
+    if (!section) return;
+
+    
+    gsap.to('.section-title', {
+      scrollTrigger: {
+        trigger: '.testimonials-section',
+        start: 'top top',
+        end: 'center top',
+        scrub: true,
+      },
+      opacity: 0,
+      scale: 0.9,
+      filter: 'blur(12px)',
+      y: -40,
+      ease: 'none'
+    });
+
+
+    gsap.utils.toArray('.left-track').forEach((card: any) => {
+      gsap.fromTo(card,
+        { x: -100, y: 120, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom-=50',
+            end: 'top center-=100',
+            scrub: 1.2,
+          },
+          x: 0,
+          y: 0,
+          opacity: 1,
+          ease: 'power3.out'
+        }
+      );
+    });
+
+    gsap.utils.toArray('.right-track').forEach((card: any) => {
+      gsap.fromTo(card,
+        { x: 100, y: 120, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom-=50',
+            end: 'top center-=100',
+            scrub: 1.2,
+          },
+          x: 0,
+          y: 0,
+          opacity: 1,
+          ease: 'power3.out'
+        }
+      );
+    });
+  }
+
+
+  initTestimonialsLayout();
+  document.addEventListener('astro:page-load', initTestimonialsLayout);
+</script>
+
+<style>
+  .testimonials-section {
+    background-color: var(--burgundy);
+    position: relative;
+    width: 100%;
+    min-height: 180vh; 
+    overflow: visible;
+  }
+
+
+  .sticky-title-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-family: 'GF Didot', serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 400;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin: 0;
+    will-change: transform, opacity, filter;
+  }
+
+  .testimonials-grid {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: -100vh auto 0 auto; 
+    padding: 30vh 2rem 25vh 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 35vh; 
+    z-index: 2;
+  }
+
+  .testimonial-card {
+    width: 100%;
+    max-width: 580px;
+    display: flex;
+    flex-direction: column;
+    will-change: transform, opacity;
+  }
+
+  .testimonial-card.left-track {
+    align-self: flex-start;
+  }
+
+  .testimonial-card.right-track {
+    align-self: flex-end;
+    padding-right: 4vw;
+  }
+
+  .card-number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: var(--coral);
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+  }
+
+  .testimonial-quote {
+    font-family: 'GF Didot', serif;
+    font-size: clamp(1.75rem, 2.4vw, 2.65rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--white);
+    margin: 0 0 2.5rem 0;
+    letter-spacing: -0.2px;
+  }
+
+  .testimonial-meta {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--coral);
+    padding-left: 1.25rem;
+  }
+
+  .testimonial-author {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+
+  .testimonial-role {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.35rem;
+  }
+
+
+  @media (max-width: 1024px) {
+    .testimonials-grid { gap: 20vh; }
+    .testimonial-card.right-track { padding-right: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-section { min-height: 120vh; }
+    .sticky-title-container { height: 60vh; }
+    .testimonials-grid { margin-top: -60vh; padding-top: 45vh; gap: 15vh; }
+    .testimonial-quote { font-size: 1.5rem; }
+  }
+</style>
