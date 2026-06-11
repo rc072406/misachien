@@ -14,7 +14,7 @@ const {
   title = "Testimonials",
   testimonials = [
     {
-      quote: "Filler fillerFiller fillerFiller fillerFiller fillerFiller filler fillerFiller filler",
+      quote: "Filler fillerFiller fillerFiller fillerFiller fillerFiller fillerFiller filler",
       author: "Filler filler",
       role: "Filler filler"
     },
@@ -60,13 +60,11 @@ const {
   let testimonialsContext: any;
 
   function initTestimonialsLayout() {
-    
     if (testimonialsContext) testimonialsContext.revert();
 
     const section = document.querySelector('.testimonials-section');
     if (!section) return;
 
-    
     testimonialsContext = gsap.context(() => {
       
       gsap.to('.section-title', {
@@ -119,9 +117,8 @@ const {
         );
       });
 
-    }, section); 
+    }, section);
   }
-
 
   document.addEventListener('DOMContentLoaded', initTestimonialsLayout);
   document.addEventListener('astro:page-load', initTestimonialsLayout);
@@ -138,17 +135,15 @@ const {
 
 <style>
   .testimonials-section {
-    background-color: var(--burgundy, #59363A);
+    background-color: var(--burgundy);
     position: relative;
     width: 100%;
     min-height: 180vh; 
     overflow: visible;
-
-    /* --- CRITICAL PAGE INTEGRATION SAFEGUARDS --- */
     display: block;
     clear: both;
-    z-index: 2;                
-    isolation: isolate;        
+    z-index: 2;
+    isolation: isolate;
     box-sizing: border-box;
   }
 
@@ -161,14 +156,14 @@ const {
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
   }
 
   .section-title {
-    font-family: var(--font-display), 'Tenor Sans', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(3.5rem, 9vw, 8rem);
     font-weight: 400;
-    color: var(--white, #FEF4EF);
+    color: var(--white);
     letter-spacing: 6px;
     margin: 0;
     will-change: transform, opacity, filter;
@@ -183,7 +178,7 @@ const {
     display: flex;
     flex-direction: column;
     gap: 35vh; 
-    z-index: 2;
+    z-index: 1;
     box-sizing: border-box;
   }
 
@@ -208,18 +203,18 @@ const {
   .card-number {
     font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
-    color: var(--coral, #E77860);
+    color: var(--coral);
     letter-spacing: 2px;
     margin-bottom: 1.5rem;
     opacity: 0.8;
   }
 
   .testimonial-quote {
-    font-family: var(--font-display), 'Tenor Sans', sans-serif;
+    font-family: var(--font-display);
     font-size: clamp(1.75rem, 2.4vw, 2.65rem);
     font-weight: 400;
     line-height: 1.4;
-    color: var(--white, #FEF4EF);
+    color: var(--white);
     margin: 0 0 2.5rem 0;
     letter-spacing: -0.2px;
   }
@@ -227,7 +222,7 @@ const {
   .testimonial-meta {
     display: flex;
     flex-direction: column;
-    border-left: 1px solid var(--coral, #E77860);
+    border-left: 1px solid var(--coral);
     padding-left: 1.25rem;
   }
 
@@ -237,7 +232,7 @@ const {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--white, #FEF4EF);
+    color: var(--white);
   }
 
   .testimonial-role {
@@ -255,10 +250,10 @@ const {
   }
 
   @media (max-width: 768px) {
-    .testimonials-section { min-height: auto; height: auto; padding: 4rem 0; }
-    .sticky-title-container { position: relative; height: auto; min-height: 150px; }
-    .testimonials-grid { margin-top: 0; padding-top: 2rem; padding-bottom: 2rem; gap: 4rem; }
+    .testimonials-section { min-height: 120vh; }
+    .sticky-title-container { height: 60vh; z-index: 1; }
+    .testimonials-grid { margin-top: -60vh; padding-top: 45vh; gap: 15vh; z-index: 2; }
     .testimonial-quote { font-size: 1.5rem; }
-    .section-title { font-size: 3rem; text-align: center; }
+    .section-title { font-size: clamp(2rem); }
   }
 </style>
