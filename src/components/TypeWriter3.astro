@@ -1,0 +1,142 @@
+---
+interface Props {
+  words?: string[];
+  speed?: number;
+  delay?: number;
+}
+
+const { 
+  words = ["Reclaim the unconscious mind", "Go from 250k to 1 million," "Release limiting beliefs", "Dismantle scarcity mindset,"], 
+  speed = 80, 
+  delay = 2500 
+} = Astro.props;
+---
+
+<div class="thin-ticker-strip" data-words={JSON.stringify(words)} data-speed={speed} data-delay={delay}>
+  <div class="ticker-content">
+    <span class="ticker-label">ALIGNMENT /</span>
+    <span class="ticker-text"></span><span class="ticker-cursor">|</span>
+  </div>
+</div>
+
+<script>
+
+  class TickerTypewriter {
+    private el: HTMLElement;
+    private textEl: HTMLElement;
+    private words: string[];
+    private speed: number;
+    private delay: number;
+    private wordIdx = 0;
+    private charIdx = 0;
+    private isDeleting = false;
+
+    constructor(element: HTMLElement) {
+      this.el = element;
+      this.textEl = element.querySelector('.ticker-text') as HTMLElement;
+      this.words = JSON.parse(element.getAttribute('data-words') || '[]');
+      this.speed = parseInt(element.getAttribute('data-speed') || '80', 10);
+      this.delay = parseInt(element.getAttribute('data-delay') || '2500', 10);
+
+      if (this.words.length > 0) {
+        this.tick();
+      }
+    }
+
+    private tick = (): void => {
+      const currentWord = this.words[this.wordIdx];
+      
+      if (this.isDeleting) {
+        this.charIdx--;
+      } else {
+        this.charIdx++;
+      }
+
+      this.textEl.textContent = currentWord.substring(0, this.charIdx);
+
+      let delta = this.speed;
+
+      if (this.isDeleting) {
+        delta /= 2; // Delete faster for snappy micro-interactions
+      }
+
+      if (!this.isDeleting && this.charIdx === currentWord.length) {
+        delta = this.delay;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.charIdx === 0) {
+        this.isDeleting = false;
+        this.wordIdx = (this.wordIdx + 1) % this.words.length;
+        delta = 500; 
+      }
+
+      setTimeout(() => this.tick(), delta);
+    };
+  }
+
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        new TickerTypewriter(entry.target as HTMLElement);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.thin-ticker-strip').forEach(strip => observer.observe(strip));
+</script>
+
+<style>
+  .thin-ticker-strip {
+    width: 100%;
+    background-color: #FEF4EF;
+    padding: 0.5rem 2rem; 
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .ticker-content {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white, #FFFFFF);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+
+  .ticker-label {
+    color: var(--coral, #E77860);
+    margin-right: 0.75rem;
+    font-weight: 600;
+  }
+
+  .ticker-text {
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  .ticker-cursor {
+    color: var(--coral, #E77860);
+    margin-left: 2px;
+    animation: blink 0.8s infinite steps(2);
+  }
+
+  @keyframes blink {
+    to { opacity: 0; }
+  }
+
+  @media (max-width: 768px) {
+    .thin-ticker-strip {
+      padding: 0.5rem 1rem;
+    }
+    .ticker-content {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+    }
+  }
+</style>
