@@ -27,7 +27,7 @@
   <span>Get In Touch</span>
 </a>
   
-  <button class="menu-toggle" aria-label="Toggle navigation">
+  <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
     <span></span>
     <span></span>
     <span></span>
@@ -40,7 +40,12 @@
   let lastScrollY = window.scrollY;
 
   menuToggle?.addEventListener('click', () => {
-    navbar?.classList.toggle('navbar--open');
+    const isOpen = navbar?.classList.toggle('navbar--open');
+    
+   
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
   window.addEventListener('scroll', () => {
@@ -62,15 +67,16 @@
 
   const sections = document.querySelectorAll('[data-theme]');
   
-const themeObserver = new IntersectionObserver((entries) => {
+  const themeObserver = new IntersectionObserver((entries) => {
+   
+    if (navbar?.classList.contains('navbar--open')) return;
+
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const theme = entry.target.getAttribute('data-theme');
         
-       
         navbar?.classList.remove('navbar--start', 'navbar--light', 'navbar--dark');
         
-       
         if (theme === 'start') {
           navbar?.classList.add('navbar--start');
         } else if (theme === 'light') {
@@ -304,13 +310,18 @@ const themeObserver = new IntersectionObserver((entries) => {
       align-items: center;
       gap: 3rem;
       transform: translateY(-100%);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      
+    
+      visibility: hidden;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+      
       z-index: 100;
       box-sizing: border-box;
     }
 
     .navbar--open .nav-links {
       transform: translateY(0);
+      visibility: visible;
     }
 
     .nav-item {
