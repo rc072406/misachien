@@ -39,6 +39,7 @@ const notes = [
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
 
   let stickyNotesContext: any;
   let lastWidth = typeof window !== "undefined" ? window.innerWidth : 0;
@@ -64,13 +65,6 @@ const notes = [
           return (Math.abs(hash) % 1000) / 1000;
         };
 
-        notesElements.forEach((item) => {
-          const text = item.querySelector(".note-text")?.textContent || "";
-          const randValue = seedRandom(text);
-          const initialRotation = randValue * 30 - 15;
-          gsap.set(item, { rotation: initialRotation, x: 0, y: 0, scale: 1, opacity: 1 });
-        });
-
         const mobileTl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
@@ -78,30 +72,39 @@ const notes = [
             end: `+=${scrollDuration}`,
             scrub: 1,
             pin: true,
+            anticipatePin: 1,
             invalidateOnRefresh: true
           }
         });
 
-        mobileTl.fromTo(".sticky-note", 
-          {
-            x: 0,
-            y: 0,
-            scale: 1,
-            opacity: 1
-          },
-          {
-            x: window.innerWidth,
-            y: window.innerHeight * -1,
-            rotation: 45,
-            scale: 2,
-            opacity: 0,
-            ease: "none",
-            stagger: {
-              each: 0.5,
-              from: "end"
-            }
-          }
-        );
+        const mobileNotes = [...notesElements].reverse();
+
+        mobileNotes.forEach((item, index) => {
+          const text = item.querySelector(".note-text")?.textContent || "";
+          const randValue = seedRandom(text);
+          const initialRotation = randValue * 30 - 15;
+
+          mobileTl.fromTo(item, 
+            {
+              x: 0,
+              y: 0,
+              rotation: initialRotation,
+              scale: 1,
+              opacity: 1
+            },
+            {
+              x: window.innerWidth,
+              y: window.innerHeight * -1,
+              rotation: 45,
+              scale: 2,
+              opacity: 0,
+              force3D: true,
+              immediateRender: false,
+              ease: "none"
+            },
+            index * 0.5
+          );
+        });
 
       } else {
         const notes = [...notesElements].reverse();
