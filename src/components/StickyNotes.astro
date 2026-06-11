@@ -55,43 +55,70 @@ const notes = [
       const scrollDuration = notesElements.length * window.innerHeight;
 
       if (isMobile) {
+        const seedRandom = (str: string) => {
+          let hash = 0;
+          for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+          }
+          return (Math.abs(hash) % 1000) / 1000;
+        };
+
         notesElements.forEach((item) => {
-          item.style.transform = `rotate(${Math.random() * (15 + 15) - 15}deg)`;
+          const text = item.querySelector(".note-text")?.textContent || "";
+          const randValue = seedRandom(text);
+          const initialRotation = randValue * 30 - 15;
+          gsap.set(item, { rotation: initialRotation, x: 0, y: 0, scale: 1, opacity: 1 });
         });
 
-        gsap.to(".sticky-note", {
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: `+=${scrollDuration}`,
-            scrub: 1,
-            pin: true,
-            invalidateOnRefresh: true
+        gsap.fromTo(".sticky-note", 
+          {
+            x: 0,
+            y: 0,
+            scale: 1,
+            opacity: 1
           },
-          x: window.innerWidth,
-          y: window.innerHeight * -1,
-          rotation: 45,
-          scale: 2,
-          ease: "none",
-          stagger: {
-            each: 1,
-            from: "end"
+          {
+            scrollTrigger: {
+              trigger: section,
+              start: "top top",
+              end: `+=${scrollDuration}`,
+              scrub: 1,
+              pin: true,
+              invalidateOnRefresh: true
+            },
+            x: window.innerWidth,
+            y: window.innerHeight * -1,
+            rotation: 45,
+            scale: 2,
+            opacity: 0,
+            ease: "none",
+            stagger: {
+              each: 1,
+              from: "end"
+            }
           }
-        });
+        );
 
       } else {
         const notes = [...notesElements].reverse();
         
         const animationTargets = notes.map((card: HTMLElement) => {
-          const leaveLeft = Math.random() > 0.5;
+          const text = card.querySelector(".note-text")?.textContent || "";
+          let hash = 0;
+          for (let i = 0; i < text.length; i++) {
+            hash = text.charCodeAt(i) + ((hash << 5) - hash);
+          }
+          const seed = (Math.abs(hash) % 1000) / 1000;
+
+          const leaveLeft = seed > 0.5;
           const baseRotation = parseFloat(card.style.getPropertyValue('--desktop-rotate')) || 0;
 
           return {
             card: card,
             baseRotation: baseRotation,
             targetX: leaveLeft ? window.innerWidth * 1.5 : -window.innerWidth * 1.5,
-            targetY: -window.innerHeight * (1.2 + Math.random()),
-            targetRotation: Math.random() * 140 - 70
+            targetY: -window.innerHeight * (1.2 + seed),
+            targetRotation: seed * 140 - 70
           };
         });
 
