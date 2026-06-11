@@ -61,14 +61,10 @@ a {
   transform: translateY(0);
 }
 
-/* --- THE REVEAL MECHANICS --- */
-
 .main-content-wrapper {
   position: relative;
   width: 100%;
-  
   z-index: 2; 
- 
   margin-bottom: 100vh; 
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
 }
@@ -83,8 +79,10 @@ a {
   background-color: var(--burgundy);
   z-index: 1;
   
+ 
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   padding: 0 4rem; 
 }
 
@@ -141,9 +139,23 @@ a {
 }
 
 
+.footer-bottom {
+  width: 100%;
+  max-width: 1200px;
+  margin: 4rem auto 0 auto;
+  text-align: left;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.4); 
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+
 @media (max-width: 768px) {
   .main-content-wrapper {
-
     margin-bottom: 0;
   }
 
@@ -163,5 +175,11 @@ a {
 
   .footer-brand p {
     margin: 0 auto; 
+  }
+
+ 
+  .footer-bottom {
+    margin: 2.5rem auto 0 auto;
+    text-align: center;
   }
 }
