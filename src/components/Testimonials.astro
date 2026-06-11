@@ -14,7 +14,7 @@ const {
   title = "Testimonials",
   testimonials = [
     {
-      quote: "Filler fillerFiller fillerFiller fillerFiller fillerFiller fillerFiller filler",
+      quote: "Filler fillerFiller fillerFiller fillerFiller fillerFiller filler fillerFiller filler",
       author: "Filler filler",
       role: "Filler filler"
     },
@@ -57,77 +57,100 @@ const {
 
   gsap.registerPlugin(ScrollTrigger);
 
+  let testimonialsContext: any;
+
   function initTestimonialsLayout() {
+    
+    if (testimonialsContext) testimonialsContext.revert();
+
     const section = document.querySelector('.testimonials-section');
     if (!section) return;
 
     
-    gsap.to('.section-title', {
-      scrollTrigger: {
-        trigger: '.testimonials-section',
-        start: 'top top',
-        end: 'center top',
-        scrub: true,
-      },
-      opacity: 0,
-      scale: 0.9,
-      filter: 'blur(12px)',
-      y: -40,
-      ease: 'none'
-    });
+    testimonialsContext = gsap.context(() => {
+      
+      gsap.to('.section-title', {
+        scrollTrigger: {
+          trigger: '.testimonials-section',
+          start: 'top top',
+          end: 'center top',
+          scrub: true,
+        },
+        opacity: 0,
+        scale: 0.9,
+        filter: 'blur(12px)',
+        y: -40,
+        ease: 'none'
+      });
 
+      gsap.utils.toArray('.left-track').forEach((card: any) => {
+        gsap.fromTo(card,
+          { x: -100, y: 120, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom-=50',
+              end: 'top center-=100',
+              scrub: 1.2,
+            },
+            x: 0,
+            y: 0,
+            opacity: 1,
+            ease: 'power3.out'
+          }
+        );
+      });
 
-    gsap.utils.toArray('.left-track').forEach((card: any) => {
-      gsap.fromTo(card,
-        { x: -100, y: 120, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: card,
-            start: 'top bottom-=50',
-            end: 'top center-=100',
-            scrub: 1.2,
-          },
-          x: 0,
-          y: 0,
-          opacity: 1,
-          ease: 'power3.out'
-        }
-      );
-    });
+      gsap.utils.toArray('.right-track').forEach((card: any) => {
+        gsap.fromTo(card,
+          { x: 100, y: 120, opacity: 0 },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top bottom-=50',
+              end: 'top center-=100',
+              scrub: 1.2,
+            },
+            x: 0,
+            y: 0,
+            opacity: 1,
+            ease: 'power3.out'
+          }
+        );
+      });
 
-    gsap.utils.toArray('.right-track').forEach((card: any) => {
-      gsap.fromTo(card,
-        { x: 100, y: 120, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: card,
-            start: 'top bottom-=50',
-            end: 'top center-=100',
-            scrub: 1.2,
-          },
-          x: 0,
-          y: 0,
-          opacity: 1,
-          ease: 'power3.out'
-        }
-      );
-    });
+    }, section); 
   }
 
 
-  initTestimonialsLayout();
+  document.addEventListener('DOMContentLoaded', initTestimonialsLayout);
   document.addEventListener('astro:page-load', initTestimonialsLayout);
+  
+  let resizeTimer: any;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      initTestimonialsLayout();
+      ScrollTrigger.refresh();
+    }, 150);
+  });
 </script>
 
 <style>
   .testimonials-section {
-    background-color: var(--burgundy);
+    background-color: var(--burgundy, #59363A);
     position: relative;
     width: 100%;
     min-height: 180vh; 
     overflow: visible;
-  }
 
+    /* --- CRITICAL PAGE INTEGRATION SAFEGUARDS --- */
+    display: block;
+    clear: both;
+    z-index: 2;                
+    isolation: isolate;        
+    box-sizing: border-box;
+  }
 
   .sticky-title-container {
     position: sticky;
@@ -142,10 +165,10 @@ const {
   }
 
   .section-title {
-    font-family: var(--font-display);
+    font-family: var(--font-display), 'Tenor Sans', sans-serif;
     font-size: clamp(3.5rem, 9vw, 8rem);
     font-weight: 400;
-    color: var(--white);
+    color: var(--white, #FEF4EF);
     letter-spacing: 6px;
     margin: 0;
     will-change: transform, opacity, filter;
@@ -161,6 +184,7 @@ const {
     flex-direction: column;
     gap: 35vh; 
     z-index: 2;
+    box-sizing: border-box;
   }
 
   .testimonial-card {
@@ -169,6 +193,7 @@ const {
     display: flex;
     flex-direction: column;
     will-change: transform, opacity;
+    box-sizing: border-box;
   }
 
   .testimonial-card.left-track {
@@ -183,18 +208,18 @@ const {
   .card-number {
     font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
-    color: var(--coral);
+    color: var(--coral, #E77860);
     letter-spacing: 2px;
     margin-bottom: 1.5rem;
     opacity: 0.8;
   }
 
   .testimonial-quote {
-    font-family: var(--font-display);
+    font-family: var(--font-display), 'Tenor Sans', sans-serif;
     font-size: clamp(1.75rem, 2.4vw, 2.65rem);
     font-weight: 400;
     line-height: 1.4;
-    color: var(--white);
+    color: var(--white, #FEF4EF);
     margin: 0 0 2.5rem 0;
     letter-spacing: -0.2px;
   }
@@ -202,7 +227,7 @@ const {
   .testimonial-meta {
     display: flex;
     flex-direction: column;
-    border-left: 1px solid var(--coral);
+    border-left: 1px solid var(--coral, #E77860);
     padding-left: 1.25rem;
   }
 
@@ -212,7 +237,7 @@ const {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--white);
+    color: var(--white, #FEF4EF);
   }
 
   .testimonial-role {
@@ -224,20 +249,16 @@ const {
     margin-top: 0.35rem;
   }
 
-
   @media (max-width: 1024px) {
     .testimonials-grid { gap: 20vh; }
     .testimonial-card.right-track { padding-right: 0; }
   }
 
   @media (max-width: 768px) {
-    .testimonials-section { min-height: 120vh; }
-    .sticky-title-container { height: 60vh; }
-    .testimonials-grid { margin-top: -60vh; padding-top: 45vh; gap: 15vh; }
+    .testimonials-section { min-height: auto; height: auto; padding: 4rem 0; }
+    .sticky-title-container { position: relative; height: auto; min-height: 150px; }
+    .testimonials-grid { margin-top: 0; padding-top: 2rem; padding-bottom: 2rem; gap: 4rem; }
     .testimonial-quote { font-size: 1.5rem; }
-      .section-title {
-    font-size: clamp(2rem);
- 
-  }
+    .section-title { font-size: 3rem; text-align: center; }
   }
 </style>
