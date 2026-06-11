@@ -54,62 +54,6 @@ h1, h2, h3, h4, h5, h6 {
 
 	
 
-	/* Global Footer Section */
-	.footer {
-		background-color: var(--burgundy);
-		padding: 5rem 4rem;
-	}
-
-	.footer-container {
-		max-width: 1200px;
-		margin: 0 auto;
-		display: grid;
-		grid-template-columns: 2fr 1fr;
-		gap: 4rem;
-	}
-
-	.footer class .logo {
-		color: var(--white);
-	}
-
-	.footer-brand .logo {
-		color: var(--white);
-		margin-bottom: 1rem;
-	}
-
-	.footer-brand p {
-		color: rgba(255, 255, 255, 0.7);
-		font-size: 0.9rem;
-		font-weight: 300;
-		max-width: 320px;
-		line-height: 1.6;
-	}
-
-	.footer-group h4 {
-		color: var(--coral);
-		margin-bottom: 1.25rem;
-		font-size: 1.1rem;
-		letter-spacing: 1px;
-	}
-
-	.footer-group ul {
-		list-style: none;
-	}
-
-	.footer-group li {
-		margin-bottom: 0.75rem;
-	}
-
-	.footer-group a {
-		color: rgba(255, 255, 255, 0.8);
-		font-size: 0.85rem;
-		font-weight: 300;
-		transition: color 0.3s ease;
-	}
-
-	.footer-group a:hover {
-		color: var(--coral);
-	}
 .reveal-on-scroll {
     opacity: 0;
     transform: translateY(40px);
@@ -126,10 +70,81 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-	/* Responsive Adaptations */
-	@media (max-width: 768px) {
-		.footer-container {
-			grid-template-columns: 1fr;
-			gap: 3rem;
-		}
+.footer {
+	background-color: var(--burgundy);
+	padding: 5rem 4rem; 
+}
+
+.footer-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 4rem;
+}
+
+
+.footer .logo {
+	color: var(--white);
+}
+
+.footer-brand .logo {
+	color: var(--white);
+	margin-bottom: 1rem;
+}
+
+.footer-brand p {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 0.9rem;
+	font-weight: 300;
+	max-width: 320px;
+	line-height: 1.6;
+}
+
+.footer-group h4 {
+	color: var(--coral);
+	margin-bottom: 1.25rem;
+	font-size: 1.1rem;
+	letter-spacing: 1px;
+}
+
+.footer-group ul {
+	list-style: none;
+}
+
+.footer-group li {
+	margin-bottom: 0.75rem;
+}
+
+.footer-group a {
+	color: rgba(255, 255, 255, 0.8);
+	font-size: 0.85rem;
+	font-weight: 300;
+	transition: color 0.3s ease;
+}
+
+.footer-group a:hover {
+	color: var(--coral);
+}
+
+
+
+/* Responsive Adaptations */
+@media (max-width: 768px) {
+	.footer {
+	
+		padding: 4rem 1.5rem; 
 	}
+
+	.footer-container {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+	
+		text-align: center; 
+	}
+
+	.footer-brand p {
+	
+		margin: 0 auto; 
+	}
+}
