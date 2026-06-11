@@ -84,15 +84,18 @@ const themeObserver = new IntersectionObserver((entries) => {
 </script>
 
 <style>
-  .navbar {
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 4rem;
     position: fixed;
     top: 0;
+    
     left: 0;
-    width: 100%;
+    right: 0;   
+   
+    
     z-index: 100;
     box-sizing: border-box;
     backdrop-filter: blur(12px);
