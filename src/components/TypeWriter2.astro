@@ -1,6 +1,5 @@
 ---
 // TypeWriter2.astro
-
 ---
 
 <section class="typewriter-section" data-theme="light">
@@ -18,7 +17,7 @@
 
 		<div class="interactive-display">
 			<h2 class="statement-heading">
-				To transform your reality, you must first learn to <br />
+				To transform your reality, you must first learn to <br class="desktop-only" />
 				<span class="typewriter-wrapper">
 					<span id="typewriter-text" class="typewriter-target"></span><span class="typewriter-cursor">|</span>
 				</span>
@@ -29,7 +28,6 @@
 </section>
 
 <script>
-	
 	const phrases = [
 		"decode your hidden scripts.",
 		"shatter generational cycles.",
@@ -42,6 +40,7 @@
 	let characterIndex = 0;
 	let isDeleting = false;
 	let typingSpeed = 80;
+	let timeoutId: number | null = null; 
 
 	function handleTypewriter() {
 		const target = document.getElementById('typewriter-text');
@@ -50,48 +49,56 @@
 		const currentPhrase = phrases[phraseIndex];
 
 		if (isDeleting) {
-			
 			target.textContent = currentPhrase.substring(0, characterIndex - 1);
 			characterIndex--;
 			typingSpeed = 40; 
 		} else {
-			
 			target.textContent = currentPhrase.substring(0, characterIndex + 1);
 			characterIndex++;
-			typingSpeed = 80; // Normal typing speed
+			typingSpeed = 80;
 		}
 
-		
 		if (!isDeleting && characterIndex === currentPhrase.length) {
-			typingSpeed = 2500; // Pause at completion of phrase
+			typingSpeed = 2500; 
 			isDeleting = true;
 		} else if (isDeleting && characterIndex === 0) {
 			isDeleting = false;
 			phraseIndex = (phraseIndex + 1) % phrases.length;
-			typingSpeed = 600; // Brief pause before typing next phrase
+			typingSpeed = 600; 
 		}
 
-		setTimeout(handleTypewriter, typingSpeed);
+		timeoutId = window.setTimeout(handleTypewriter, typingSpeed);
 	}
 
+	function init() {
 	
-	document.addEventListener('DOMContentLoaded', handleTypewriter);
-	document.addEventListener('astro:page-load', handleTypewriter);
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+		}
+	
+		phraseIndex = 0;
+		characterIndex = 0;
+		isDeleting = false;
+		
+		handleTypewriter();
+	}
+
+
+	document.addEventListener('DOMContentLoaded', init);
+	document.addEventListener('astro:page-load', init);
 </script>
 
 <style>
-
-
-.typewriter-section {
-	width: 100%;
-	background-color: #FEF4EF; 
-	padding: 2.5rem 2rem; 
-	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
+	.typewriter-section {
+		width: 100%;
+		background-color: #FEF4EF; 
+		padding: 5rem 1.5rem; 
+		box-sizing: border-box;
+		font-family: 'Poppins', sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
 	.typewriter-container {
 		width: 100%;
@@ -102,10 +109,9 @@
 		text-align: center;
 	}
 
-
 	.quote-wrapper {
 		max-width: 850px;
-		margin-bottom: 4.5rem;
+		margin-bottom: 3rem;
 	}
 
 	.section-kicker {
@@ -120,7 +126,7 @@
 	}
 
 	.quote-text {
-		font-size: 2rem;
+		font-size: 1.75rem;
 		font-weight: 300;
 		line-height: 1.5;
 		color: var(--burgundy, #59363A);
@@ -141,28 +147,27 @@
 		width: 40px;
 		border: none;
 		border-top: 1px solid rgba(89, 54, 58, 0.15);
-		margin-bottom: 4.5rem;
+		margin-bottom: 3rem;
 	}
 
-	
 	.interactive-display {
+		width: 100%;
 		max-width: 950px;
 	}
 
 	.statement-heading {
-		font-size: 2.75rem;
+		font-size: 2.25rem; 
 		font-weight: 400;
 		line-height: 1.4;
 		color: var(--burgundy, #59363A);
 		letter-spacing: -0.5px;
-        white-space: nowrap;
+		word-wrap: break-word; 
 	}
 
 	.typewriter-wrapper {
-       display: inline-block;
-	position: relative;
-	margin-top: 0.5rem;
-	font-family: 'GF Didot', serif;
+		display: inline; 
+		position: relative;
+		font-family: 'GF Didot', serif;
 	}
 
 	.typewriter-target {
@@ -172,12 +177,15 @@
 		padding-bottom: 2px;
 	}
 
-
 	.typewriter-cursor {
 		font-weight: 300;
 		color: var(--coral, #D67A6B);
 		margin-left: 4px;
 		animation: blink-animation 0.9s infinite steps(2, start);
+	}
+
+	.desktop-only {
+		display: block;
 	}
 
 	@keyframes blink-animation {
@@ -189,15 +197,30 @@
 	/* Responsive Media Framework */
 	@media (max-width: 768px) {
 		.typewriter-section {
-			padding: 6rem 1.5rem;
+			padding: 4rem 1rem;
+		}
+
+		.quote-wrapper {
+			margin-bottom: 2rem;
 		}
 
 		.quote-text {
-			font-size: 1.5rem;
+			font-size: 1.35rem;
+			line-height: 1.6;
+		}
+
+		.section-divider {
+			margin-bottom: 2rem;
 		}
 
 		.statement-heading {
-			font-size: 1.85rem;
+			font-size: 1.65rem;
+			line-height: 1.5;
+		}
+
+		
+		.desktop-only {
+			display: none;
 		}
 	}
 </style>
