@@ -138,8 +138,6 @@ const {
     background-color: var(--burgundy);
     position: relative;
     width: 100%;
-    min-height: 180vh; 
-    overflow: visible;
     display: block;
     clear: both;
     z-index: 2;
@@ -155,8 +153,8 @@ const {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 5;
     pointer-events: none;
-    z-index: 2;
   }
 
   .section-title {
@@ -173,8 +171,8 @@ const {
     position: relative;
     width: 100%;
     max-width: 1400px;
-    margin: -100vh auto 0 auto; 
-    padding: 30vh 2rem 25vh 2rem;
+    margin-top: -100vh;
+    padding: 110vh 2rem 25vh 2rem;
     display: flex;
     flex-direction: column;
     gap: 35vh; 
@@ -250,10 +248,9 @@ const {
   }
 
   @media (max-width: 768px) {
-    .testimonials-section { min-height: 120vh; }
-    .sticky-title-container { height: 60vh; z-index: 1; }
-    .testimonials-grid { margin-top: -60vh; padding-top: 45vh; gap: 15vh; z-index: 2; }
+    .sticky-title-container { height: 40vh; }
+    .testimonials-grid { margin-top: -40vh; padding-top: 50vh; gap: 15vh; }
     .testimonial-quote { font-size: 1.5rem; }
-    .section-title { font-size: clamp(2rem); }
+    .section-title { font-size: clamp(2rem, 6vw, 3.5rem); }
   }
 </style>
