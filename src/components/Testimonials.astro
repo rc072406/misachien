@@ -6,10 +6,12 @@ interface Testimonial {
 }
 
 interface Props {
+  title?: string;
   testimonials?: Testimonial[];
 }
 
 const { 
+  title = "Testimonials",
   testimonials = [
     {
       quote: "Filler fillerFiller fillerFiller fillerFiller fillerFiller fillerFiller filler",
@@ -31,11 +33,11 @@ const {
 ---
 
 <section class="testimonials-section" data-theme="dark">
-  <div class="testimonials-grid">
-    <div class="testimonials-main-heading">
-      <h2 class="section-title">Testimonials</h2>
-    </div>
+  <div class="sticky-title-container">
+    <h2 class="section-title">{title}</h2>
+  </div>
 
+  <div class="testimonials-grid">
     {testimonials.map((item, index) => (
       <div class={`testimonial-card ${index % 2 === 0 ? 'left-track' : 'right-track'}`}>
         <span class="card-number">0{index + 1} //</span>
@@ -67,9 +69,9 @@ const {
       
       gsap.to('.section-title', {
         scrollTrigger: {
-          trigger: '.testimonials-main-heading',
-          start: 'top center-=100',
-          end: 'bottom top+=100',
+          trigger: '.testimonials-section',
+          start: 'top top',
+          end: 'center top',
           scrub: true,
         },
         opacity: 0,
@@ -136,17 +138,20 @@ const {
     background-color: var(--burgundy);
     position: relative;
     width: 100%;
-    min-height: 100vh; 
+    min-height: 180vh; 
     overflow: visible;
   }
 
-  .testimonials-main-heading {
+  .sticky-title-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 40vh;
-    margin-bottom: 10vh;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
   }
 
   .section-title {
@@ -156,7 +161,6 @@ const {
     color: var(--white);
     letter-spacing: 6px;
     margin: 0;
-    text-align: center;
     will-change: transform, opacity, filter;
   }
 
@@ -164,12 +168,12 @@ const {
     position: relative;
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto; 
-    padding: 20vh 2rem 25vh 2rem;
+    margin: -100vh auto 0 auto; 
+    padding: 50vh 2rem 25vh 2rem;
     display: flex;
     flex-direction: column;
     gap: 35vh; 
-    box-sizing: border-box;
+    z-index: 1;
   }
 
   .testimonial-card {
@@ -178,7 +182,6 @@ const {
     display: flex;
     flex-direction: column;
     will-change: transform, opacity;
-    box-sizing: border-box;
   }
 
   .testimonial-card.left-track {
@@ -240,9 +243,10 @@ const {
   }
 
   @media (max-width: 768px) {
-    .testimonials-grid { padding-top: 10vh; gap: 15vh; }
-    .testimonials-main-heading { min-height: 20vh; margin-bottom: 5vh; }
+    .testimonials-section { min-height: 120vh; }
+    .sticky-title-container { height: 60vh; z-index: 10; }
+    .testimonials-grid { margin-top: -60vh; padding-top: 45vh; gap: 15vh; z-index: 1; }
     .testimonial-quote { font-size: 1.5rem; }
-    .section-title { font-size: clamp(2.5rem, 7vw, 4rem); }
+    .section-title { font-size: clamp(2rem); }
   }
 </style>
