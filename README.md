@@ -1,2 +1,2 @@
 # misachien
-An Astro website for my favorite person Misa Chien 🥰❤️❤️❤️❤️
+An Astro website for  Misa Chien ❤️❤️❤️
