@@ -43,51 +43,93 @@ const notes = [
   let stickyNotesContext: any;
 
   const initStickyAnimation = () => {
-    
     if (stickyNotesContext) stickyNotesContext.revert();
 
     const section = document.querySelector(".sticky-notes-section") as HTMLElement;
-    const notesElements = gsap.utils.toArray(".sticky-note");
+    const notesElements = gsap.utils.toArray(".sticky-note") as HTMLElement[];
 
     if (!section || notesElements.length === 0) return;
 
     stickyNotesContext = gsap.context(() => {
-      const notes = [...notesElements].reverse();
-      const scrollDuration = notes.length * window.innerHeight * 0.8;
+      const isMobile = window.innerWidth <= 768;
+      const scrollDuration = notesElements.length * window.innerHeight;
 
-      const animationTargets = notes.map((card: any) => {
-        const leaveLeft = Math.random() > 0.5;
-        return {
-          card: card,
-          targetX: leaveLeft ? window.innerWidth * 1.5 : -window.innerWidth * 1.5,
-          targetY: -window.innerHeight * (1.2 + Math.random()),
-          targetRotation: Math.random() * 140 - 70
-        };
-      });
+      if (isMobile) {
+        notesElements.forEach((item) => {
+          item.style.transform = `rotate(${Math.random() * (15 + 15) - 15}deg)`;
+        });
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: `+=${scrollDuration}`,
-          scrub: 1.2,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true
-        }
-      });
+        gsap.to(".sticky-note", {
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: `+=${scrollDuration}`,
+            scrub: 1,
+            pin: true,
+            invalidateOnRefresh: true
+          },
+          x: window.innerWidth,
+          y: window.innerHeight * -1,
+          rotation: 45,
+          scale: 2,
+          ease: "none",
+          stagger: {
+            each: 1,
+            from: "end"
+          }
+        });
 
-      animationTargets.forEach((target, index) => {
-        tl.to(target.card, {
-          x: target.targetX,
-          y: target.targetY,
-          rotation: target.targetRotation,
-          scale: 1.4,
-          opacity: 0,
-          force3D: true,
-          ease: "power1.inOut",
-        }, index * 0.75); 
-      });
+      } else {
+        const notes = [...notesElements].reverse();
+        
+        const animationTargets = notes.map((card: HTMLElement) => {
+          const leaveLeft = Math.random() > 0.5;
+          const baseRotation = parseFloat(card.style.getPropertyValue('--desktop-rotate')) || 0;
+
+          return {
+            card: card,
+            baseRotation: baseRotation,
+            targetX: leaveLeft ? window.innerWidth * 1.5 : -window.innerWidth * 1.5,
+            targetY: -window.innerHeight * (1.2 + Math.random()),
+            targetRotation: Math.random() * 140 - 70
+          };
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: `+=${scrollDuration * 0.8}`,
+            scrub: 1.2,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true
+          }
+        });
+
+        animationTargets.forEach((target, index) => {
+          tl.fromTo(target.card, 
+            {
+              x: 0,
+              y: 0,
+              rotation: target.baseRotation,
+              scale: 1,
+              opacity: 1
+            },
+            {
+              x: target.targetX,
+              y: target.targetY,
+              rotation: target.targetRotation,
+              scale: 1.4,
+              opacity: 0,
+              force3D: true,
+              immediateRender: false,
+              ease: "power1.inOut"
+            }, 
+            index * 0.75
+          ); 
+        });
+      }
 
     }, section); 
   };
@@ -112,8 +154,6 @@ const notes = [
     height: 100vh;
     overflow: hidden;
     background-color: var(--white, #FEF4EF);
-
-    /* --- PAGE INTEGRATION ARCHITECTURE --- */
     display: block;
     clear: both;
     z-index: 3;                  
@@ -194,13 +234,11 @@ const notes = [
   }
 
   @media (max-width: 768px) {
-   
     .sticky-notes-section {
       height: 100vh !important;
       overflow: hidden !important;
     }
     
-   
     .notes-container {
       display: flex;
       align-items: center;
@@ -214,13 +252,5 @@ const notes = [
       top: auto;
       left: auto;
     }
-
-   
-    .sticky-note:nth-child(6n+1) { transform: rotate(-3deg); }
-    .sticky-note:nth-child(6n+2) { transform: rotate(4deg); }
-    .sticky-note:nth-child(6n+3) { transform: rotate(-5deg); }
-    .sticky-note:nth-child(6n+4) { transform: rotate(2deg); }
-    .sticky-note:nth-child(6n+5) { transform: rotate(-2deg); }
-    .sticky-note:nth-child(6n)   { transform: rotate(5deg); }
   }
 </style>
