@@ -41,6 +41,7 @@ const notes = [
   gsap.registerPlugin(ScrollTrigger);
 
   let stickyNotesContext: any;
+  let lastWidth = typeof window !== "undefined" ? window.innerWidth : 0;
 
   const initStickyAnimation = () => {
     if (stickyNotesContext) stickyNotesContext.revert();
@@ -70,7 +71,18 @@ const notes = [
           gsap.set(item, { rotation: initialRotation, x: 0, y: 0, scale: 1, opacity: 1 });
         });
 
-        gsap.fromTo(".sticky-note", 
+        const mobileTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: `+=${scrollDuration}`,
+            scrub: 1,
+            pin: true,
+            invalidateOnRefresh: true
+          }
+        });
+
+        mobileTl.fromTo(".sticky-note", 
           {
             x: 0,
             y: 0,
@@ -78,14 +90,6 @@ const notes = [
             opacity: 1
           },
           {
-            scrollTrigger: {
-              trigger: section,
-              start: "top top",
-              end: `+=${scrollDuration}`,
-              scrub: 1,
-              pin: true,
-              invalidateOnRefresh: true
-            },
             x: window.innerWidth,
             y: window.innerHeight * -1,
             rotation: 45,
@@ -93,7 +97,7 @@ const notes = [
             opacity: 0,
             ease: "none",
             stagger: {
-              each: 1,
+              each: 0.5,
               from: "end"
             }
           }
@@ -166,6 +170,9 @@ const notes = [
 
   let resizeTimer: any;
   window.addEventListener("resize", () => {
+    if (window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
       initStickyAnimation();
@@ -183,7 +190,7 @@ const notes = [
     background-color: var(--white, #FEF4EF);
     display: block;
     clear: both;
-    z-index: 3;                  
+    z-index: 3;          
     isolation: isolate;         
     box-sizing: border-box;
   }
@@ -261,11 +268,6 @@ const notes = [
   }
 
   @media (max-width: 768px) {
-    .sticky-notes-section {
-      height: 100vh !important;
-      overflow: hidden !important;
-    }
-    
     .notes-container {
       display: flex;
       align-items: center;
