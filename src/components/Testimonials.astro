@@ -151,7 +151,7 @@ const {
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    z-index: 1;
+    z-index: 10;
   }
 
   .section-title {
@@ -173,7 +173,7 @@ const {
     display: flex;
     flex-direction: column;
     gap: 35vh; 
-    z-index: 2;
+    z-index: 1;
   }
 
   .testimonial-card {
@@ -244,8 +244,8 @@ const {
 
   @media (max-width: 768px) {
     .testimonials-section { min-height: 120vh; }
-    .sticky-title-container { height: 60vh; }
-    .testimonials-grid { margin-top: -60vh; padding-top: 45vh; gap: 15vh; }
+    .sticky-title-container { height: 60vh; z-index: 10; }
+    .testimonials-grid { margin-top: -60vh; padding-top: 45vh; gap: 15vh; z-index: 1; }
     .testimonial-quote { font-size: 1.5rem; }
     .section-title { font-size: clamp(2rem); }
   }
