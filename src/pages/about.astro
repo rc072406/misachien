@@ -8,60 +8,63 @@ import TypeWriter2 from '../components/TypeWriter2.astro';
 <BaseLayout title="About | Misa Chien">
   <main class="about-container" data-theme="start">
     
-    <section class="about-hero reveal-on-scroll">
-      <span class="subtitle">The Story Behind The Work</span>
-      <h1 class="main-title">
-        Helping Asians Release <br class="desktop-only" />
-        <span class="serif-italic">Scarcity Mindset</span>
-      </h1>
-    </section>
+    <div class="about-gradient-wrapper">
+      <section class="about-hero reveal-on-scroll">
+        <span class="subtitle">The Story Behind The Work</span>
+        <h1 class="main-title">
+          Helping Asians Release <br class="desktop-only" />
+          <span class="serif-italic">Scarcity Mindset</span>
+        </h1>
+      </section>
 
-    <section class="about-content-grid">
-      
-      <div class="content-left reveal-on-scroll">
-        <div class="about-image-wrapper">
-          <div class="accent-border-box"></div>
-          <img src={aboutImage.src} alt="Misa Chien portrait" class="visual-canvas-image" />
-        </div>
-
-        <div class="editorial-card">
-          <p class="quote-text">
-            “You are not alone.”
-          </p>
-          <div class="card-line"></div>
-        </div>
-      </div>
-
-      <div class="content-right reveal-on-scroll">
-        <h2 class="section-heading">Biography</h2>
-        <div class="bio-text">
-          <p>
-            Misa Chien is an authentic leader who is known for inspiring others, and helps people feel less alone and more connected through positivity and transparency.
-
-          </p>
-          <p>
-           Misa’s engaging and charismatic communication style stems from her experience through multiple forms of communication through being on TV, speaking at renowned institutions (Harvard Business School and The Harvard Club), and gracing the runway for brands such as Neutrogena and Target.
-          </p>
-<p>Misa's exceptional leadership and entrepreneurial style have propelled her into high demand as a speaker, podcast host, television personality, and has even earned her the distinction of being ranked as the 23rd most viewed woman on LinkedIn worldwide and #1 most viewed Asian American woman nationwide with 16 million+ views per month.</p>
-<p>Her past speaking clients include Harvard Business School, UCLA, USC, and University of Washington. She has been featured in Inc. Magazine 30 under 30 entrepreneurs, Forbes Women to Watch, LinkedIn Top Voices, and as a serial entrepreneur on the Food Network’s Great Food Truck Race embarrassing herself in front of over 60 million viewers worldwide.</p>
-<p>In terms of her background as an entrepreneur, over the years Misa has founded several companies from food trucks to software that have reached 7 figures in revenue, a milestone that less than 2% of female entrepreneurs are able to achieve.</p>
-<p>As an Asian American female founder for 18+ years, Misa founded and launched The Authentic Asian in October 2023, an AAPI Female Leadership Community, to help AAPI Female Founders and C-Levels feel less alone and more connected.</p>
-        </div>
-
-        <div class="philosophies">
-          <div class="philosophy-item">
-            <span>01 / Core Mission</span>
-            <p>Through Neuro-Linguistic Programming (NLP), Misa empowers individuals of Asian descent to dismantle deeply rooted limiting beliefs and immigrant scarcity mindsets. Offered across two specialized tracks, her work guides clients to reclaim their unconscious minds and step into authentic leadership. </p>
+      <section class="about-content-grid">
+        <div class="content-left reveal-on-scroll">
+          <div class="about-image-wrapper">
+            <div class="accent-border-box"></div>
+            <img src={aboutImage.src} alt="Misa Chien portrait" class="visual-canvas-image" />
           </div>
-          <div class="philosophy-item">
-            <span>02 / Growth and Rest</span>
-            <p>Misa helps entrepreneurs scale from $250k to $1 million through high-impact business strategy and mindset coaching. For C-level executives and late-stage founders, she provides a space to release immigrant scarcity mindsets, step back from burnout, and truly enjoy their hard-earned success.</p>
+
+          <div class="editorial-card">
+            <p class="quote-text">
+              “You are not alone.”
+            </p>
+            <div class="card-line"></div>
           </div>
         </div>
-      </div>
 
+        <div class="content-right reveal-on-scroll">
+          <h2 class="section-heading">Biography</h2>
+          <div class="bio-text">
+            <p>
+              Misa Chien is an authentic leader who is known for inspiring others, and helps people feel less alone and more connected through positivity and transparency.
+            </p>
+            <p>
+              Misa’s engaging and charismatic communication style stems from her experience through multiple forms of communication through being on TV, speaking at renowned institutions (Harvard Business School and The Harvard Club), and gracing the runway for brands such as Neutrogena and Target.
+            </p>
+            <p>Misa's exceptional leadership and entrepreneurial style have propelled her into high demand as a speaker, podcast host, television personality, and has even earned her the distinction of being ranked as the 23rd most viewed woman on LinkedIn worldwide and #1 most viewed Asian American woman nationwide with 16 million+ views per month.</p>
+            <p>Her past speaking clients include Harvard Business School, UCLA, USC, and University of Washington. She has been featured in Inc. Magazine 30 under 30 entrepreneurs, Forbes Women to Watch, LinkedIn Top Voices, and as a serial entrepreneur on the Food Network’s Great Food Truck Race embarrassing herself in front of over 60 million viewers worldwide.</p>
+            <p>In terms of her background as an entrepreneur, over the years Misa has founded several companies from food trucks to software that have reached 7 figures in revenue, a milestone that less than 2% of female entrepreneurs are able to achieve.</p>
+            <p>As an Asian American female founder for 18+ years, Misa founded and launched The Authentic Asian in October 2023, an AAPI Female Leadership Community, to help AAPI Female Founders and C-Levels feel less alone and more connected.</p>
+          </div>
+
+          <div class="philosophies">
+            <div class="philosophy-item">
+              <span>01 / Core Mission</span>
+              <p>Through Neuro-Linguistic Programming (NLP), Misa empowers individuals of Asian descent to dismantle deeply rooted limiting beliefs and immigrant scarcity mindsets. Offered across two specialized tracks, her work guides clients to reclaim their unconscious minds and step into authentic leadership. </p>
+            </div>
+            <div class="philosophy-item">
+              <span>02 / Growth and Rest</span>
+              <p>Misa helps entrepreneurs scale from $250k to $1 million through high-impact business strategy and mindset coaching. For C-level executives and late-stage founders, she provides a space to release immigrant scarcity mindsets, step back from burnout, and truly enjoy their hard-earned success.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="typewriter-section">
+      <TypeWriter2 client:visible />
     </section>
-<TypeWriter2  client:visible </>
+
   </main>
 </BaseLayout>
 
@@ -73,10 +76,15 @@ import TypeWriter2 from '../components/TypeWriter2.astro';
   }
 
   .about-container {
-    position: relative;
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
+    background-color: var(--white);
+  }
+
+  .about-gradient-wrapper {
+    position: relative;
+    width: 100%;
     overflow: hidden;
     background: linear-gradient(
       to right, 
@@ -91,7 +99,7 @@ import TypeWriter2 from '../components/TypeWriter2.astro';
     padding: calc(6rem + 80px) 4rem 6rem 4rem; 
   }
 
-  .about-container::before {
+  .about-gradient-wrapper::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -256,12 +264,18 @@ import TypeWriter2 from '../components/TypeWriter2.astro';
     line-height: 1.6;
   }
 
+  .typewriter-section {
+    padding: 6rem 4rem;
+    background-color: var(--white);
+    color: var(--burgundy);
+  }
+
   .desktop-only {
     display: block;
   }
 
   @media (max-width: 820px) {
-    .about-container {
+    .about-gradient-wrapper {
       background: linear-gradient(
         to bottom, 
         #59363A 0%, 
@@ -273,6 +287,10 @@ import TypeWriter2 from '../components/TypeWriter2.astro';
         #FEF4EF 100%
       );
       padding: calc(5rem + 70px) 1.5rem 5rem 1.5rem;
+    }
+
+    .typewriter-section {
+      padding: 4rem 1.5rem;
     }
 
     .desktop-only {
