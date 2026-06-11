@@ -6,7 +6,13 @@ interface Props {
 }
 
 const { 
-  words = '["Reclaim the unconscious mind", "Go from 250k to 1 million," "Release limiting beliefs", "Dismantle scarcity mindset,"]', 
+
+  words = [
+    "Reclaim the unconscious mind", 
+    "Go from 250k to 1 million", 
+    "Release limiting beliefs", 
+    "Dismantle scarcity mindset"
+  ], 
   speed = 80, 
   delay = 2500 
 } = Astro.props;
@@ -14,13 +20,11 @@ const {
 
 <div class="thin-ticker-strip" data-words={JSON.stringify(words)} data-speed={speed} data-delay={delay}>
   <div class="ticker-content">
-    <span class="ticker-label">ALIGNMENT /</span>
     <span class="ticker-text"></span><span class="ticker-cursor">|</span>
   </div>
 </div>
 
 <script>
-
   class TickerTypewriter {
     private el: HTMLElement;
     private textEl: HTMLElement;
@@ -57,7 +61,7 @@ const {
       let delta = this.speed;
 
       if (this.isDeleting) {
-        delta /= 2; // Delete faster for snappy micro-interactions
+        delta /= 2;
       }
 
       if (!this.isDeleting && this.charIdx === currentWord.length) {
@@ -72,7 +76,6 @@ const {
       setTimeout(() => this.tick(), delta);
     };
   }
-
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -96,6 +99,8 @@ const {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border-top: 1px solid rgba(89, 54, 58, 0.08);
+    border-bottom: 1px solid rgba(89, 54, 58, 0.08);
   }
 
   .ticker-content {
@@ -103,16 +108,10 @@ const {
     font-size: 0.75rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--white, #FFFFFF);
+    color: #59363A;
     white-space: nowrap;
     display: flex;
     align-items: center;
-  }
-
-  .ticker-label {
-    color: var(--coral, #E77860);
-    margin-right: 0.75rem;
-    font-weight: 600;
   }
 
   .ticker-text {
