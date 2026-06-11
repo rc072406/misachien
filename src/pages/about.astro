@@ -1,15 +1,16 @@
 ---
-// src/pages/about.astro
 import BaseLayout from '../layouts/BaseLayout.astro'; 
+
+import aboutImage from '../../public/images/placeholder';
 ---
 
 <BaseLayout title="About | Misa Chien">
-  <main class="about-container" data-theme="light">
+  <main class="about-container" data-theme="start">
     
     <section class="about-hero reveal-on-scroll">
       <span class="subtitle">The Story Behind The Work</span>
       <h1 class="main-title">
-        Helping Asians Release
+        Helping Asians Release <br class="desktop-only" />
         <span class="serif-italic">Scarcity Mindset</span>
       </h1>
     </section>
@@ -17,10 +18,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="about-content-grid">
       
       <div class="content-left reveal-on-scroll">
+        <div class="about-image-wrapper">
+          <div class="accent-border-box"></div>
+          <img src={aboutImage.src} alt="Misa Chien portrait" class="visual-canvas-image" />
+        </div>
+
         <div class="editorial-card">
           <p class="quote-text">
-            “UHXUSDGHUDHS
-            <em>structure</em> and clarity coming together on a screen.”
+            “Structure and clarity coming together on a screen.”
           </p>
           <div class="card-line"></div>
         </div>
@@ -43,12 +48,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <div class="philosophies">
           <div class="philosophy-item">
-            <span>01 / filler</span>
-            <p> Filler</p>
+            <span>01 / Core Mission</span>
+            <p>Cultivating visibility and intentional spaces designed to break down long-held creative narratives.</p>
           </div>
           <div class="philosophy-item">
-            <span>02 / Filler</span>
-            <p>Filler</p>
+            <span>02 / Design Excellence</span>
+            <p>Fusing technical responsiveness with high-end typography to craft digital experiences that linger long after browsing.</p>
           </div>
         </div>
       </div>
@@ -58,18 +63,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  :root {
+    --burgundy: #59363A;
+    --coral: #E77860;
+    --white: #FFFFFF;
+  }
+
   .about-container {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-color: #FEF4EF; 
-    color: #59363A; 
-    padding: 12rem 4rem 6rem 4rem;
     box-sizing: border-box;
     overflow: hidden;
+    background: linear-gradient(
+      to right, 
+      #59363A 0%, 
+      #59363A 6%, 
+      #8A6266 25%,
+      #BA9699 38%,
+      #DFCDC9 48%,
+      #FEF4EF 58%, 
+      #FEF4EF 100%
+    );
+    padding: calc(6rem + 80px) 4rem 6rem 4rem; 
   }
 
-  
   .about-container::before {
     content: "";
     position: absolute;
@@ -81,10 +99,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='silk'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23silk)'/%3E%3C/svg%3E");
   }
 
- 
   .about-hero {
     max-width: 1200px;
     margin: 0 auto 6rem auto;
+    color: var(--white);
   }
 
   .subtitle {
@@ -92,7 +110,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-transform: uppercase;
     letter-spacing: 0.2em;
     font-size: 0.85rem;
-    color: var(--coral, #BA9699);
+    color: rgba(255, 255, 255, 0.7); 
     display: block;
     margin-bottom: 1rem;
   }
@@ -105,16 +123,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     letter-spacing: -0.01em;
     text-transform: uppercase;
     margin: 0;
+    color: var(--white);
   }
 
   .serif-italic {
     font-family: 'GF Didot', serif;
     font-style: italic;
     text-transform: none; 
-    color: var(--coral, #BA9699);
+    color: #DFCDC9; 
   }
 
-  /* --- Layout Grid --- */
   .about-content-grid {
     max-width: 1200px;
     margin: 0 auto;
@@ -124,12 +142,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     align-items: start;
   }
 
-  /* --- Left Editorial Card --- */
+  .content-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem; 
+  }
+
+  .about-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 4 / 5;
+    margin-bottom: 1rem;
+  }
+
+  .accent-border-box {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--white);
+    transform: translate(20px, 20px);
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  .visual-canvas-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 2;
+  }
+
   .editorial-card {
-    background-color: rgba(89, 54, 58, 0.03); 
-    border: 1px solid rgba(89, 54, 58, 0.08);
+    background-color: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 3rem;
     position: relative;
+    color: var(--white);
+    max-width: 480px;
   }
 
   .quote-text {
@@ -142,17 +193,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .quote-text em {
     font-style: italic;
-    color: var(--coral, #BA9699);
+    color: #DFCDC9;
   }
 
   .card-line {
     width: 40px;
     height: 1px;
-    background-color: #59363A;
+    background-color: var(--white);
     margin-top: 2rem;
   }
 
-  /* --- Right Narrative Column --- */
+  .content-right {
+    color: var(--burgundy); 
+  }
+
   .section-heading {
     font-family: 'Tenor Sans', sans-serif;
     text-transform: uppercase;
@@ -172,7 +226,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     opacity: 0.9;
   }
 
-  /* --- Philosophy Section --- */
   .philosophies {
     margin-top: 4rem;
     display: flex;
@@ -187,7 +240,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--coral, #BA9699);
+    color: var(--coral);
     display: block;
     margin-bottom: 0.5rem;
   }
@@ -200,14 +253,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 1.6;
   }
 
-  /* --- Responsive Breakpoints --- */
-  @media (max-width: 960px) {
+  .desktop-only {
+    display: block;
+  }
+
+  @media (max-width: 820px) {
     .about-container {
-      padding: 10rem 2rem 4rem 2rem;
+      background: linear-gradient(
+        to bottom, 
+        #59363A 0%, 
+        #59363A 22%, 
+        #8A6266 40%,
+        #BA9699 55%,
+        #DFCDC9 70%,
+        #FEF4EF 85%, 
+        #FEF4EF 100%
+      );
+      padding: calc(5rem + 70px) 1.5rem 5rem 1.5rem;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    .about-hero {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .main-title {
-      font-size: 3.25rem;
+      font-size: 2.75rem;
     }
 
     .about-content-grid {
@@ -215,12 +294,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       gap: 4rem;
     }
 
+    .content-left {
+      align-items: center;
+    }
+
+    .about-image-wrapper {
+      max-width: 420px;
+    }
+
+    .accent-border-box {
+      transform: translate(12px, 12px); 
+      border-color: var(--white);
+    }
+
     .editorial-card {
       padding: 2rem;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .card-line {
+      margin: 2rem auto 0 auto;
     }
 
     .quote-text {
-      font-size: 1.5rem;
+      font-size: 1.45rem;
+    }
+
+    .content-right {
+      color: var(--burgundy);
+      text-align: center;
+    }
+
+    .philosophies {
+      text-align: left; 
     }
   }
 </style>
