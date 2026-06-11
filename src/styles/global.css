@@ -1,150 +1,149 @@
+:root {
+  --burgundy: #59363A;
+  --coral: #E77860;
+  --white: #FFFFFF;
+  --font-display: "Tenor Sans", sans-serif;
+  --font-logo: "Tenor Sans", sans-serif;
+  --font-sans: 'Poppins', sans-serif;
+}
 
-	:root {
-		--burgundy: #59363A;
-		--coral: #E77860;
-		--white: #FFFFFF;
-		
---font-display: "Tenor Sans", sans-serif;
---font-logo: "Tenor Sans", sans-serif;
---font-sans: 'Poppins', sans-serif;
-	}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-	}
-
-
-	html {
-		scroll-behavior: smooth;
-		background-color: var(--white);
-	}
-
-	body {
-		font-family: var(--font-sans);
-		color: var(--white);
-		background-color: var(--white);
-		-webkit-font-smoothing: antialiased;
-	}
-
+html, body {
+  scroll-behavior: smooth;
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+}
 
 h1, h2, h3, h4, h5, h6 {
-		font-family: var(--font-display);
-		color: var(--coral);
-		font-weight: 400;
-	}
-.content {
-    padding-top: 120px; 
-  }
+  font-family: var(--font-display);
+  color: var(--coral);
+  font-weight: 400;
+}
 
+.logo {
+  font-family: var(--font-logo);
+  color: var(--white);
+  font-size: 3.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
 
-	.logo {
-		font-family: var(--font-logo);
-		color: var(--white);
-		font-size: 3.5rem;
-		font-weight: 600;
-		letter-spacing: 2px;
-	}
-
-	a {
-		text-decoration: none;
-		color: inherit;
-	}
-
-	
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(40px);
-
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
-                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-
-    will-change: opacity, transform; 
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform; 
 }
 
 .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
+.main-content-wrapper {
+  position: relative;
+  width: 100%;
+  background-color: var(--white);
+  z-index: 2; 
+  margin-bottom: 100vh; 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
 
 .footer {
-	background-color: var(--burgundy);
-	padding: 5rem 4rem; 
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; 
+  min-height: 600px;
+  background-color: var(--burgundy);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 4rem;
 }
 
 .footer-container {
-	max-width: 1200px;
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: 2fr 1fr;
-	gap: 4rem;
-}
-
-
-.footer .logo {
-	color: var(--white);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
 }
 
 .footer-brand .logo {
-	color: var(--white);
-	margin-bottom: 1rem;
+  color: var(--white);
+  margin-bottom: 1rem;
 }
 
 .footer-brand p {
-	color: rgba(255, 255, 255, 0.7);
-	font-size: 0.9rem;
-	font-weight: 300;
-	max-width: 320px;
-	line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 300;
+  max-width: 320px;
+  line-height: 1.6;
 }
 
 .footer-group h4 {
-	color: var(--coral);
-	margin-bottom: 1.25rem;
-	font-size: 1.1rem;
-	letter-spacing: 1px;
+  color: var(--coral);
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
 }
 
 .footer-group ul {
-	list-style: none;
+  list-style: none;
 }
 
 .footer-group li {
-	margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .footer-group a {
-	color: rgba(255, 255, 255, 0.8);
-	font-size: 0.85rem;
-	font-weight: 300;
-	transition: color 0.3s ease;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  font-weight: 300;
+  transition: color 0.3s ease;
 }
 
 .footer-group a:hover {
-	color: var(--coral);
+  color: var(--coral);
 }
 
-
-
-/* Responsive Adaptations */
+/* --- RESPONSIVE MOBILE OVERRIDES --- */
 @media (max-width: 768px) {
-	.footer {
-	
-		padding: 4rem 1.5rem; 
-	}
+  .main-content-wrapper {
+    margin-bottom: 0;
+  }
 
-	.footer-container {
-		grid-template-columns: 1fr;
-		gap: 2.5rem;
-	
-		text-align: center; 
-	}
+  .footer {
+    position: relative;
+    height: auto;
+    min-height: initial;
+    padding: 5rem 1.5rem;
+    z-index: 2;
+  }
 
-	.footer-brand p {
-	
-		margin: 0 auto; 
-	}
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center; 
+  }
+
+  .footer-brand p {
+    margin: 0 auto; 
+  }
 }
