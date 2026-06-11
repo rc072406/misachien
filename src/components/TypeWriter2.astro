@@ -24,10 +24,54 @@
 			</h2>
 		</div>
 
+		<div class="proof-visualization-container">
+			
+			<div class="graph-background-canvas">
+				<div class="graph-axis">
+					
+					<div class="graph-column">
+						<div class="bar bar-baseline"></div>
+						<div class="graph-meta">
+							<span class="bar-value">1.7%</span>
+							<span class="bar-label">Average Female Founders</span>
+						</div>
+					</div>
+
+					<div class="graph-column">
+						<div class="bar bar-breakthrough"></div>
+						<div class="graph-meta">
+							<span class="bar-value">$1M+</span>
+							<span class="bar-label">The Misa Framework</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="proof-foreground-content">
+				<h3 class="narrative-accent">But Misa did it.</h3>
+				<p class="narrative-subtext">
+					She conquered the hidden architectural scripts of scarcity, scaling past the noise to join the elite margin of female earners.
+				</p>
+				<h4 class="narrative-callout">She can help you break the ceiling too.</h4>
+			</div>
+
+		</div>
+
+		<div class="source-citation-footer">
+			<p>*Data Synthesized via: U.S. Census Bureau Annual Business Survey & The JPMorgan Chase Institute <em>(Scaling to $1 Million Study)</em></p>
+		</div>
+
 	</div>
 </section>
 
 <script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	
+	gsap.registerPlugin(ScrollTrigger);
+
 	const phrases = [
 		"decode your hidden scripts.",
 		"shatter generational cycles.",
@@ -70,8 +114,44 @@
 		timeoutId = window.setTimeout(handleTypewriter, typingSpeed);
 	}
 
+
+	function initScrollDrivenGraph() {
+		
+		ScrollTrigger.getAll().forEach(t => t.kill());
+
+		
+		gsap.set(".bar-baseline", { scaleY: 0.22, transformOrigin: "bottom center" });
+		gsap.set(".bar-breakthrough", { scaleY: 1.0, transformOrigin: "bottom center" });
+
+		
+		const scrollTimeline = gsap.timeline({
+			scrollTrigger: {
+				trigger: ".proof-visualization-container",
+				start: "top bottom", 
+				end: "bottom top",   
+				scrub: 1.2,         
+			}
+		});
+
+		
+		scrollTimeline.fromTo(".graph-column:nth-child(1)", 
+			{ x: -100, opacity: 0.3 }, 
+			{ x: 40, opacity: 0.9 }
+		)
+		.fromTo(".graph-column:nth-child(2)", 
+			{ x: 100, opacity: 0.3 }, 
+			{ x: -40, opacity: 0.9 }, 
+			0 
+		)
+		
+		.fromTo(".proof-foreground-content",
+			{ y: 30 },
+			{ y: -30 },
+			0
+		);
+	}
+
 	function init() {
-	
 		if (timeoutId) {
 			clearTimeout(timeoutId);
 		}
@@ -81,8 +161,8 @@
 		isDeleting = false;
 		
 		handleTypewriter();
+		initScrollDrivenGraph();
 	}
-
 
 	document.addEventListener('DOMContentLoaded', init);
 	document.addEventListener('astro:page-load', init);
@@ -92,12 +172,13 @@
 	.typewriter-section {
 		width: 100%;
 		background-color: #FEF4EF; 
-		padding: 5rem 1.5rem; 
+		padding: 7rem 1.5rem; 
 		box-sizing: border-box;
 		font-family: 'Poppins', sans-serif;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		overflow: hidden; /* Encapsulates the horizontal sliding elements cleanly */
 	}
 
 	.typewriter-container {
@@ -153,6 +234,7 @@
 	.interactive-display {
 		width: 100%;
 		max-width: 950px;
+		margin-bottom: 5rem;
 	}
 
 	.statement-heading {
@@ -188,6 +270,144 @@
 		display: block;
 	}
 
+	/* --- BACKGROUND GRAPH FRAMEWORK --- */
+	.proof-visualization-container {
+		position: relative;
+		width: 100%;
+		max-width: 900px;
+		min-height: 450px;
+		margin-top: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4rem 2rem;
+		box-sizing: border-box;
+	}
+
+	.graph-background-canvas {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		pointer-events: none; 
+	}
+
+	.graph-axis {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 8rem;
+		align-items: flex-end;
+		border-bottom: 1px solid rgba(89, 54, 58, 0.08);
+	}
+
+	.graph-column {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 100%;
+		justify-content: flex-end;
+		will-change: transform; 
+	}
+
+	.bar {
+		width: 100%;
+		max-width: 160px;
+		height: 100%;
+		border-radius: 4px 4px 0 0;
+	}
+
+	.bar-baseline {
+		background-color: rgba(89, 54, 58, 0.035); 
+	}
+
+	.bar-breakthrough {
+		background: linear-gradient(to top, rgba(89, 54, 58, 0.045), rgba(231, 120, 96, 0.07));
+	}
+
+	.graph-meta {
+		position: absolute;
+		bottom: -55px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.bar-value {
+		font-family: 'Tenor Sans', sans-serif;
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: var(--burgundy, #59363A);
+		opacity: 0.5;
+	}
+
+	.bar-label {
+		font-size: 0.65rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: var(--burgundy, #59363A);
+		opacity: 0.4;
+		font-weight: 500;
+		white-space: nowrap;
+	}
+
+
+	.proof-foreground-content {
+		position: relative;
+		z-index: 2;
+		max-width: 620px;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+		pointer-events: auto;
+		will-change: transform;
+	}
+
+	.narrative-accent {
+		font-family: 'GF Didot', serif;
+		font-size: 3.5rem;
+		color: var(--burgundy, #59363A);
+		font-style: italic;
+		line-height: 1.1;
+	}
+
+	.narrative-subtext {
+		font-size: 1.15rem;
+		line-height: 1.8;
+		color: var(--burgundy, #59363A);
+		font-weight: 300;
+	}
+
+	.narrative-callout {
+		font-family: 'Tenor Sans', sans-serif;
+		font-size: 1.15rem;
+		color: var(--coral, #E77860);
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		margin-top: 0.5rem;
+		font-weight: 500;
+	}
+
+	.source-citation-footer {
+		width: 100%;
+		margin-top: 6rem;
+		text-align: center;
+	}
+
+	.source-citation-footer p {
+		font-size: 0.7rem;
+		color: var(--burgundy, #59363A);
+		opacity: 0.4;
+		letter-spacing: 0.5px;
+		font-weight: 300;
+	}
+
 	@keyframes blink-animation {
 		to {
 			visibility: hidden;
@@ -197,11 +417,7 @@
 	/* Responsive Media Framework */
 	@media (max-width: 768px) {
 		.typewriter-section {
-			padding: 4rem 1rem;
-		}
-
-		.quote-wrapper {
-			margin-bottom: 2rem;
+			padding: 5rem 1rem 8rem 1rem;
 		}
 
 		.quote-text {
@@ -209,18 +425,53 @@
 			line-height: 1.6;
 		}
 
-		.section-divider {
-			margin-bottom: 2rem;
+		.interactive-display {
+			margin-bottom: 3rem;
 		}
 
 		.statement-heading {
 			font-size: 1.65rem;
 			line-height: 1.5;
 		}
-
 		
 		.desktop-only {
 			display: none;
+		}
+
+		.proof-visualization-container {
+			min-height: initial;
+			padding: 2rem 0;
+		}
+
+		.graph-axis {
+			gap: 2rem;
+		}
+
+		.bar {
+			max-width: 90px;
+		}
+
+		.narrative-accent {
+			font-size: 2.5rem;
+		}
+
+		.narrative-subtext {
+			font-size: 1rem;
+			line-height: 1.7;
+		}
+
+		.graph-meta {
+			bottom: -65px;
+		}
+
+		.bar-label {
+			white-space: normal;
+			max-width: 110px;
+			line-height: 1.3;
+		}
+
+		.source-citation-footer {
+			margin-top: 7rem;
 		}
 	}
 </style>
