@@ -61,9 +61,9 @@ import TypeWriter2 from '../components/TypeWriter2.astro';
       </section>
     </div>
 
-    <section class="typewriter-section">
+    
       <TypeWriter2 client:visible />
-    </section>
+
 
   </main>
 </BaseLayout>
@@ -264,11 +264,6 @@ import TypeWriter2 from '../components/TypeWriter2.astro';
     line-height: 1.6;
   }
 
-  .typewriter-section {
-    padding: 6rem 4rem;
-    background-color: var(--white);
-    color: var(--burgundy);
-  }
 
   .desktop-only {
     display: block;
@@ -289,9 +284,6 @@ import TypeWriter2 from '../components/TypeWriter2.astro';
       padding: calc(5rem + 70px) 1.5rem 5rem 1.5rem;
     }
 
-    .typewriter-section {
-      padding: 4rem 1.5rem;
-    }
 
     .desktop-only {
       display: none;
