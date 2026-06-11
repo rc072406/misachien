@@ -1,0 +1,937 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TypeWriter3 from '../components/TypeWriter3.astro';
+---
+
+<BaseLayout title="Scarcity Mindset Quiz | Misa Chien">
+  <main class="quiz-page-container" data-theme="light">
+    
+    <div id="quiz-intro" class="quiz-screen active">
+      <div class="intro-bg-lines">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="intro-content">
+        <h1 class="intro-title">QUIZ TIME</h1>
+        <p class="intro-subtitle">Do you have a scarcity mindset?</p>
+        <p class="intro-description">
+          Answer honestly. No one's grading you — <br />
+          except your own nervous system.
+        </p>
+        <div class="intro-meta-pill">
+          <span>10 questions</span>
+          <span class="dot-separator">•</span>
+          <span>Count your B & C answers</span>
+          <span class="dot-separator">•</span>
+          <span>Score at the end</span>
+        </div>
+        <button id="start-quiz-btn" class="quiz-action-btn">
+          <span>Start The Assessment</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="quiz-gameplay" class="quiz-screen">
+      <div class="quiz-top-bar">
+        <span id="question-counter" class="counter-text">QUESTION 1 OF 10</span>
+        <div id="progress-dots" class="dots-container">
+          </div>
+      </div>
+
+      <div class="question-card-container">
+        <div id="question-text-box" class="question-prompt-box">
+          </div>
+
+        <div class="options-wrapper">
+          <button class="option-row type-a" data-choice="A">
+            <span class="option-badge">A</span>
+            <p class="option-text"></p>
+          </button>
+          <button class="option-row type-b" data-choice="B">
+            <span class="option-badge">B</span>
+            <p class="option-text"></p>
+          </button>
+          <button class="option-row type-c" data-choice="C">
+            <span class="option-badge">C</span>
+            <p class="option-text"></p>
+          </button>
+        </div>
+
+        <div id="scarcity-feedback-box" class="scarcity-signal-panel">
+          <span class="signal-highlight">💡 Scarcity signal:</span>
+          <p id="feedback-text" class="signal-desc"></p>
+        </div>
+      </div>
+
+      <div class="quiz-navigation">
+        <button id="next-question-btn" class="quiz-action-btn hidden">
+          <span>Next Question</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="quiz-results" class="quiz-screen">
+      <div class="results-inner-container">
+        <h2 class="results-title">HOW DID YOU SCORE?</h2>
+        <p class="results-meta">Count how many B or C answers you chose.</p>
+
+        <div class="score-tiers-stack">
+          <div class="tier-card tier-0-2" data-tier="abundance">
+            <div class="tier-score-badge">0–2</div>
+            <div class="tier-details">
+              <h3>Abundance Oriented</h3>
+              <p>You've largely broken free. Stay conscious — it can creep back under stress.</p>
+            </div>
+          </div>
+
+          <div class="tier-card tier-3-5" data-tier="selective">
+            <div class="tier-score-badge">3–5</div>
+            <div class="tier-details">
+              <h3>Selective Scarcity</h3>
+              <p>You have pockets of scarcity thinking. Great self-awareness potential here.</p>
+            </div>
+          </div>
+
+          <div class="tier-card tier-6-8" data-tier="dominant">
+            <div class="tier-score-badge">6–8</div>
+            <div class="tier-details">
+              <h3>Scarcity Dominant</h3>
+              <p>It's running much of your decision-making. This is the work to do.</p>
+            </div>
+          </div>
+
+          <div class="tier-card tier-9-10" data-tier="survival">
+            <div class="tier-score-badge">9–10</div>
+            <div class="tier-details">
+              <h3>Deep Survival Mode</h3>
+              <p>You're still protecting a version of yourself that no longer needs protecting. Healing is possible.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="verdict-footer">Every point is a doorway, not a verdict.</p>
+
+        <div class="transformation-matrix">
+          <div class="matrix-header">BREAKING FREE: FROM SCARCITY TO ABUNDANCE</div>
+          <div class="matrix-body">
+            <div class="matrix-row">
+              <div class="shift-from">"My work speaks for itself"</div>
+              <div class="shift-arrow">→</div>
+              <div class="shift-to">Make your work visible. Advocate for yourself.</div>
+            </div>
+            <div class="matrix-row">
+              <div class="shift-from">"That coach is too expensive"</div>
+              <div class="shift-arrow">→</div>
+              <div class="shift-to">Ask: what is NOT investing actually costing me?</div>
+            </div>
+            <div class="matrix-row">
+              <div class="shift-from">"I can't take that risk"</div>
+              <div class="shift-arrow">→</div>
+              <div class="shift-to">Reframe: what is the cost of NOT taking it?</div>
+            </div>
+            <div class="matrix-row">
+              <div class="shift-from">"There's only one seat for us"</div>
+              <div class="shift-arrow">→</div>
+              <div class="shift-to">Lift as you climb. Build tables, not queues.</div>
+            </div>
+            <div class="matrix-row">
+              <div class="shift-from">"I must be practical"</div>
+              <div class="shift-arrow">→</div>
+              <div class="shift-to">Passion and mission are also valid currencies.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="funnel-coaching-cta">
+          <p class="funnel-accent-text">Ready to reprogram your unconscious frameworks?</p>
+          <a href={`${import.meta.env.BASE_URL}/coaching`} class="quiz-coaching-link">
+            <span>Explore Subconscious Rewiring Frameworks</span>
+          </a>
+        </div>
+      </div>
+    </div>
+<TypeWriter3  </>
+
+  </main>
+</BaseLayout>
+
+<script>
+  
+  const quizData = [
+    {
+      question: "You need to park downtown for an important meeting. There's a $9 lot right next to the building. What do you do?",
+      choices: {
+        A: "Pay the $9 — my time is worth more.",
+        B: "Drive around looking for free street parking, even if it takes 20 minutes.",
+        C: "Spend 10 minutes on an app finding a $6 spot three blocks away."
+      },
+      signal: "B & C signal scarcity — you're trading time, stress, and opportunity to save a few dollars."
+    },
+    {
+      question: "A coach who specializes in board placements charges $500/session. You want a board seat. What do you think?",
+      choices: {
+        A: "That's an investment — a board seat is worth 100x that.",
+        B: "That's a lot of money. I can figure it out on my own.",
+        C: "Maybe later, when I feel more ready."
+      },
+      signal: "B & C reflect scarcity — letting a small cost block a large opportunity."
+    },
+    {
+      question: "You are setting pricing configurations for your professional services. You realize your baseline rates are below market standards. You:",
+      choices: {
+        A: "Raise rates immediately to match output value metrics.",
+        B: "Keep rates low because you fear losing existing clients.",
+        C: "Offer arbitrary discounts before the prospect even fields pricing questions."
+      },
+      signal: "B & C reflect low pricing tolerances born from a persistent fear of losing transaction pipelines."
+    },
+    {
+      question: "A critical operations bottleneck emerges. You have capital to outsource it, but you're working 70 hours a week instead. Why?",
+      choices: {
+        A: "I will hire a specialized expert immediately to trade money for operational focus.",
+        B: "No one can duplicate my operational standard, so I have to keep running it.",
+        C: "It is safer to conserve liquid capital reserves right now."
+      },
+      signal: "B & C show tactical labor hoarding caused by mistrusting scale frameworks."
+    },
+    {
+      question: "An industry colleague requests a discovery conversation regarding your operational tool stacks. You feel:",
+      choices: {
+        A: "Expansive. Strategic resource sharing opens broader industry alignments.",
+        B: "Guarded. If they optimize their operations, they could undercut my market share.",
+        C: "Neutral, but you intentionally omit critical details to maintain an advantage."
+      },
+      signal: "B & C flag zero-sum frameworks rooted in the illusion that market opportunities are strictly finite."
+    },
+    {
+      question: "Another Asian American in your industry gets a big feature in a major publication. You feel:",
+      choices: {
+        A: "Inspired — if they can do it, so can I.",
+        B: "A little threatened — there's only so much room for 'us.'",
+        C: "Happy for them, but quietly wonder why not me."
+      },
+      signal: "B signals zero-sum scarcity thinking. C can too, if it comes from comparison rather than aspiration."
+    },
+    {
+      question: "You're offered a leadership role that involves public speaking and high visibility. You think:",
+      choices: {
+        A: "This is a great chance to grow and be seen.",
+        B: "I'm not sure I'm ready — I should wait until I know more.",
+        C: "What if I fail publicly? Better to stay in a role I've mastered."
+      },
+      signal: "B & C reveal scarcity-rooted fear of visibility — a key reason Asian Americans hit the bamboo ceiling."
+    },
+    {
+      question: "You want to switch to a more fulfilling career. Your income would temporarily drop 20%. You:",
+      choices: {
+        A: "Make a plan and go for it — a 20% dip is temporary.",
+        B: "It's too risky — what if it doesn't work out?",
+        C: "Feel guilty — my parents sacrificed so much for my stability."
+      },
+      signal: "B & C are scarcity patterns — risk aversion and survivor's guilt keeping you from your own life."
+    },
+    {
+      question: "You hate your job and dread going in every day. A friend recommends a program by a successful career coach that could change everything — but it costs $4,000. You:",
+      choices: {
+        A: "Invest in it. Staying miserable costs more than $4K.",
+        B: "It's too expensive. I'll figure it out on my own.",
+        C: "I'll wait and see if things get better on their own."
+      },
+      signal: "B & C are scarcity patterns — putting a price tag on your happiness and betting on a future that never changes itself."
+    },
+    {
+      question: "Your business just crossed $100K. You're maxed out on capacity. What do you do?",
+      choices: {
+        A: "Hire a VA or delegate — my time is worth more than what it costs.",
+        B: "Keep doing the same thing. I don't want to spend money on hiring.",
+        C: "Think about hiring a VA but keep putting it off — it feels like a big expense."
+      },
+      signal: "B & C are scarcity in action — refusing to invest in growth keeps you at the same ceiling."
+    }
+  ];
+
+  let currentQuestionIndex = 0;
+  let scarcityScore = 0;
+
+  // DOM Elements Selector References
+  const introScreen = document.getElementById('quiz-intro');
+  const gameplayScreen = document.getElementById('quiz-gameplay');
+  const resultsScreen = document.getElementById('quiz-results');
+  const startBtn = document.getElementById('start-quiz-btn');
+  const nextBtn = document.getElementById('next-question-btn');
+  const counterText = document.getElementById('question-counter');
+  const progressDotsContainer = document.getElementById('progress-dots');
+  const questionTextBox = document.getElementById('question-text-box');
+  const feedbackBox = document.getElementById('scarcity-feedback-box');
+  const feedbackText = document.getElementById('feedback-text');
+  const optionButtons = document.querySelectorAll('.option-row');
+
+  // Start Assessment Handler
+  startBtn?.addEventListener('click', () => {
+    introScreen?.classList.remove('active');
+    gameplayScreen?.classList.add('active');
+    buildProgressDots();
+    loadQuestion(currentQuestionIndex);
+  });
+
+  function buildProgressDots() {
+    if (!progressDotsContainer) return;
+    progressDotsContainer.innerHTML = '';
+    quizData.forEach((_, index) => {
+      const dot = document.createElement('span');
+      dot.className = `progress-dot ${index === 0 ? 'active' : ''}`;
+      progressDotsContainer.appendChild(dot);
+    });
+  }
+
+  function loadQuestion(index) {
+    if (index >= quizData.length) {
+      showResults();
+      return;
+    }
+
+  
+    feedbackBox?.classList.remove('visible');
+    nextBtn?.classList.add('hidden');
+
+ 
+    const currentData = quizData[index];
+    if (counterText) counterText.textContent = `QUESTION ${index + 1} OF ${quizData.length}`;
+    if (questionTextBox) questionTextBox.textContent = currentData.question;
+
+   
+    optionButtons.forEach(btn => {
+      btn.classList.remove('selected', 'disabled');
+      const choiceAttr = btn.getAttribute('data-choice');
+      const textNode = btn.querySelector('.option-text');
+      if (textNode && choiceAttr) {
+        textNode.textContent = currentData.choices[choiceAttr];
+      }
+    });
+
+  
+    const dots = document.querySelectorAll('.progress-dot');
+    dots.forEach((dot, dIdx) => {
+      if (dIdx <= index) dot.classList.add('active');
+      else dot.classList.remove('active');
+    });
+  }
+
+  optionButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+     
+      if (button.classList.contains('disabled')) return;
+
+      const selectedChoice = button.getAttribute('data-choice');
+      button.classList.add('selected');
+
+      
+      optionButtons.forEach(btn => btn.classList.add('disabled'));
+
+     
+      if (selectedChoice === 'B' || selectedChoice === 'C') {
+        scarcityScore++;
+      }
+
+    
+      if (feedbackText && feedbackBox) {
+        feedbackText.textContent = quizData[currentQuestionIndex].signal;
+        feedbackBox.classList.add('visible');
+      }
+
+      nextBtn?.classList.remove('hidden');
+    });
+  });
+
+
+  nextBtn?.addEventListener('click', () => {
+    currentQuestionIndex++;
+    loadQuestion(currentQuestionIndex);
+  });
+
+ 
+  function showResults() {
+    gameplayScreen?.classList.remove('active');
+    resultsScreen?.classList.add('active');
+
+ 
+    let targetedTier = 'abundance';
+    if (scarcityScore >= 3 && scarcityScore <= 5) targetedTier = 'selective';
+    else if (scarcityScore >= 6 && scarcityScore <= 8) targetedTier = 'dominant';
+    else if (scarcityScore >= 9) targetedTier = 'survival';
+
+    const cards = document.querySelectorAll('.tier-card');
+    cards.forEach(card => {
+      if (card.getAttribute('data-tier') === targetedTier) {
+        card.classList.add('highlighted');
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        card.classList.add('dimmed');
+      }
+    });
+  }
+</script>
+
+<style>
+  .quiz-page-container {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: #FEF4EF; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: calc(5rem + 80px) 2rem 6rem 2rem;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .quiz-screen {
+    display: none;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .quiz-screen.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- INTRO DISPLAY CARD PANELS --- */
+  #quiz-intro {
+    text-align: center;
+    padding: 6rem 4rem;
+    position: relative;
+  }
+
+  .intro-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .intro-title {
+    font-family: var(--font-logo);
+    font-size: 5.5rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--burgundy);
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .intro-subtitle {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    font-size: 2.2rem;
+    color: var(--coral);
+    margin-bottom: 3rem;
+  }
+
+  .intro-description {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--burgundy);
+    opacity: 0.85;
+    margin-bottom: 3.5rem;
+  }
+
+  .intro-meta-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    background-color: var(--burgundy);
+    padding: 1rem 2rem;
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 4rem;
+    border-radius: 0; 
+  }
+
+  .dot-separator {
+    color: var(--coral);
+    font-weight: 600;
+  }
+
+  /* Shared Action Button Patterns */
+  .quiz-action-btn {
+    background-color: var(--coral);
+    border: 1px solid var(--coral);
+    color: var(--white);
+    padding: 1.25rem 3.5rem;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .quiz-action-btn:hover {
+    background-color: var(--burgundy);
+    border-color: var(--burgundy);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(89, 54, 58, 0.15);
+  }
+
+  
+  .intro-bg-lines {
+    position: absolute;
+    top: 0;
+    right: -10%;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  .intro-bg-lines span {
+    display: block;
+    height: 1px;
+    background-color: var(--coral);
+    width: 100%;
+  }
+  .intro-bg-lines span:nth-child(even) { width: 85%; margin-left: auto; }
+
+ 
+  .quiz-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(89, 54, 58, 0.1);
+    padding-bottom: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .counter-text {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--burgundy);
+    font-weight: 600;
+  }
+
+  .dots-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .progress-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(89, 54, 58, 0.15);
+    transition: background-color 0.3s ease;
+  }
+
+  .progress-dot.active {
+    background-color: var(--coral);
+  }
+
+  .question-prompt-box {
+    background-color: #EAC9C1; 
+    border-left: 4px solid var(--coral);
+    padding: 3rem;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--burgundy);
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  .options-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .option-row {
+    background-color: var(--white);
+    border: 1px solid rgba(89, 54, 58, 0.08);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+
+  .option-row:not(.disabled):hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 20px rgba(89, 54, 58, 0.05);
+  }
+
+  .option-badge {
+    width: 60px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--white);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+
+  .type-a .option-badge { background-color: #FEF08A; } 
+  .type-b .option-badge { background-color: #FEF08A; } 
+  .type-c .option-badge { background-color: #F3E8FF; } 
+
+  .option-text {
+    padding: 1rem 2rem;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: #2D2D2D;
+    line-height: 1.5;
+  }
+
+  .option-row.selected {
+    border: 2px solid var(--burgundy);
+  }
+  .option-row.disabled:not(.selected) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+
+  .scarcity-signal-panel {
+    display: none;
+    background-color: #F4DFDB;
+    padding: 1.5rem 2rem;
+    border: 1px solid rgba(89, 54, 58, 0.05);
+    margin-bottom: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--burgundy);
+  }
+
+  .scarcity-signal-panel.visible {
+    display: flex;
+    gap: 0.5rem;
+    animation: fadeIn 0.4s ease forwards;
+  }
+
+  .signal-highlight {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .signal-desc {
+    font-weight: 300;
+  }
+
+  .quiz-navigation {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .quiz-action-btn.hidden {
+    display: none;
+  }
+
+  /* --- RESULTS & CONVERSION STATE --- */
+  .results-inner-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .results-title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    text-align: center;
+    color: var(--burgundy);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+  }
+
+  .results-meta {
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-weight: 300;
+    text-align: center;
+    color: var(--burgundy);
+    opacity: 0.8;
+    margin-bottom: 4rem;
+  }
+
+  .score-tiers-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .tier-card {
+    background-color: var(--white);
+    border: 1px solid rgba(89, 54, 58, 0.08);
+    display: flex;
+    align-items: stretch;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tier-score-badge {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+
+  .tier-0-2 .tier-score-badge { background-color: #3B6643; }
+  .tier-3-5 .tier-score-badge { background-color: #A36A20; }
+  .tier-6-8 .tier-score-badge { background-color: #9E4331; }
+  .tier-9-10 .tier-score-badge { background-color: #8C2D2D; }
+
+  .tier-details {
+    padding: 2rem 2.5rem;
+  }
+
+  .tier-details h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+  .tier-card:not(.highlighted) .tier-details h3 {
+    color: var(--burgundy);
+  }
+
+  .tier-details p {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #4A4A4A;
+  }
+
+  /* Active Result Selection Highlighters */
+  .tier-card.highlighted {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(89, 54, 58, 0.12);
+    border-color: var(--burgundy);
+  }
+  .tier-card.highlighted.tier-0-2 { background-color: rgba(59, 102, 67, 0.08); }
+  .tier-card.highlighted.tier-3-5 { background-color: rgba(163, 106, 32, 0.08); }
+  .tier-card.highlighted.tier-6-8 { background-color: rgba(158, 67, 49, 0.08); }
+  .tier-card.highlighted.tier-9-10 { background-color: rgba(140, 45, 45, 0.08); }
+
+  .tier-card.dimmed {
+    opacity: 0.4;
+  }
+
+  .verdict-footer {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    text-align: center;
+    color: var(--burgundy);
+    margin-top: 2.5rem;
+    margin-bottom: 5rem;
+  }
+
+  /* --- SHIFT MATRIX GRID TABLE --- */
+  .transformation-matrix {
+    background-color: var(--white);
+    border: 1px solid rgba(89, 54, 58, 0.08);
+    margin-bottom: 6rem;
+  }
+
+  .matrix-header {
+    background-color: var(--coral);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding: 1.25rem 2rem;
+    text-align: left;
+  }
+
+  .matrix-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .matrix-row {
+    display: grid;
+    grid-template-columns: 1fr 40px 1.2fr;
+    align-items: center;
+    border-bottom: 1px solid rgba(89, 54, 58, 0.05);
+    padding: 1.5rem 2rem;
+  }
+  .matrix-row:last-child { border-bottom: none; }
+
+  .shift-from {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--burgundy);
+    background-color: #F4DFDB;
+    padding: 1rem 1.5rem;
+  }
+
+  .shift-arrow {
+    text-align: center;
+    color: var(--coral);
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .shift-to {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: #2E5236; /* Clean deep execution green */
+    background-color: #EAF4EC;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+  }
+
+  /* --- CONVERSION CTAs FUNNEL ELEMENT --- */
+  .funnel-coaching-cta {
+    background-color: var(--burgundy);
+    padding: 5rem 4rem;
+    text-align: center;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    box-shadow: 0 30px 60px rgba(89, 54, 58, 0.15);
+  }
+
+  .funnel-accent-text {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    font-size: 2rem;
+    color: #DFCDC9;
+    max-width: 600px;
+    line-height: 1.4;
+  }
+
+  .quiz-coaching-link {
+    background-color: var(--coral);
+    border: 1px solid var(--coral);
+    color: var(--white);
+    padding: 1.5rem 3rem;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-block;
+  }
+
+  .quiz-coaching-link:hover {
+    background-color: transparent;
+    color: var(--coral);
+    border-color: var(--coral);
+    transform: translateY(-3px);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+  @media (max-width: 820px) {
+    .quiz-page-container {
+      padding: calc(4rem + 70px) 1rem 4rem 1rem;
+    }
+
+    #quiz-intro {
+      padding: 3rem 1rem;
+    }
+
+    .intro-title {
+      font-size: 3.5rem;
+    }
+
+    .intro-subtitle {
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .intro-meta-pill {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.25rem;
+      width: 100%;
+    }
+    .dot-separator { display: none; }
+
+    .question-prompt-box {
+      padding: 2rem 1.5rem;
+      font-size: 1.2rem;
+    }
+
+    .option-badge {
+      width: 50px;
+      height: 60px;
+    }
+    .option-text {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .matrix-row {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2rem 1rem;
+    }
+    .shift-arrow {
+      transform: rotate(90deg);
+      margin: 0.25rem 0;
+    }
+
+    .tier-card {
+      flex-direction: column;
+    }
+    .tier-score-badge {
+      width: 100%;
+      padding: 1rem 0;
+    }
+    .tier-details {
+      padding: 1.5rem;
+    }
+
+    .funnel-coaching-cta {
+      padding: 3rem 1.5rem;
+    }
+    .funnel-accent-text {
+      font-size: 1.5rem;
+    }
+    .quiz-coaching-link {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1.25rem 1rem;
+    }
+  }
+</style>
