@@ -57,6 +57,9 @@ const notes = [
 
       const mobileRotations = [-3, 4, -5, 2, -2, 5];
 
+ 
+      gsap.set(notesElements, { clearProps: "all" });
+
       const animationTargets = notes.map((card: HTMLElement) => {
         const leaveLeft = Math.random() > 0.5;
         
@@ -89,28 +92,28 @@ const notes = [
         }
       });
 
+  
+      animationTargets.forEach((target) => {
+        gsap.set(target.card, {
+          x: 0,
+          y: 0,
+          rotation: target.baseRotation,
+          scale: 1,
+          opacity: 1
+        });
+      });
+
+  
       animationTargets.forEach((target, index) => {
-      
-        tl.fromTo(target.card, 
-          {
-            x: 0,
-            y: 0,
-            rotation: target.baseRotation,
-            scale: 1,
-            opacity: 1
-          },
-          {
-            x: target.targetX,
-            y: target.targetY,
-            rotation: target.targetRotation,
-            scale: 1.4,
-            opacity: 0,
-            force3D: true,
-            immediateRender: false, 
-            ease: "power1.inOut"
-          }, 
-          index * 0.75
-        ); 
+        tl.to(target.card, {
+          x: target.targetX,
+          y: target.targetY,
+          rotation: target.targetRotation,
+          scale: 1.4,
+          opacity: 0,
+          force3D: true,
+          ease: "power1.inOut"
+        }, index * 0.75); 
       });
 
     }, section); 
@@ -135,9 +138,7 @@ const notes = [
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background-color: var(--white, #FEF4EF);
 
-    /* --- PAGE INTEGRATION ARCHITECTURE --- */
     display: block;
     clear: both;
     z-index: 3;                  
