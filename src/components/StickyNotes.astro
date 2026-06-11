@@ -43,37 +43,22 @@ const notes = [
   let stickyNotesContext: any;
 
   const initStickyAnimation = () => {
+    
     if (stickyNotesContext) stickyNotesContext.revert();
 
     const section = document.querySelector(".sticky-notes-section") as HTMLElement;
-    const notesElements = gsap.utils.toArray(".sticky-note") as HTMLElement[];
+    const notesElements = gsap.utils.toArray(".sticky-note");
 
     if (!section || notesElements.length === 0) return;
 
     stickyNotesContext = gsap.context(() => {
-      const isMobile = window.innerWidth <= 768;
       const notes = [...notesElements].reverse();
       const scrollDuration = notes.length * window.innerHeight * 0.8;
 
-      const mobileRotations = [-3, 4, -5, 2, -2, 5];
-
- 
-      gsap.set(notesElements, { clearProps: "all" });
-
-      const animationTargets = notes.map((card: HTMLElement) => {
+      const animationTargets = notes.map((card: any) => {
         const leaveLeft = Math.random() > 0.5;
-        
-        let baseRotation = 0;
-        if (isMobile) {
-          const trueIndex = notesElements.indexOf(card);
-          baseRotation = mobileRotations[trueIndex % mobileRotations.length];
-        } else {
-          baseRotation = parseFloat(card.style.getPropertyValue('--desktop-rotate')) || 0;
-        }
-
         return {
           card: card,
-          baseRotation: baseRotation,
           targetX: leaveLeft ? window.innerWidth * 1.5 : -window.innerWidth * 1.5,
           targetY: -window.innerHeight * (1.2 + Math.random()),
           targetRotation: Math.random() * 140 - 70
@@ -92,18 +77,6 @@ const notes = [
         }
       });
 
-  
-      animationTargets.forEach((target) => {
-        gsap.set(target.card, {
-          x: 0,
-          y: 0,
-          rotation: target.baseRotation,
-          scale: 1,
-          opacity: 1
-        });
-      });
-
-  
       animationTargets.forEach((target, index) => {
         tl.to(target.card, {
           x: target.targetX,
@@ -112,7 +85,7 @@ const notes = [
           scale: 1.4,
           opacity: 0,
           force3D: true,
-          ease: "power1.inOut"
+          ease: "power1.inOut",
         }, index * 0.75); 
       });
 
@@ -138,7 +111,9 @@ const notes = [
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    background-color: var(--white, #FEF4EF);
 
+    /* --- PAGE INTEGRATION ARCHITECTURE --- */
     display: block;
     clear: both;
     z-index: 3;                  
@@ -219,11 +194,13 @@ const notes = [
   }
 
   @media (max-width: 768px) {
+   
     .sticky-notes-section {
       height: 100vh !important;
       overflow: hidden !important;
     }
     
+   
     .notes-container {
       display: flex;
       align-items: center;
@@ -238,6 +215,7 @@ const notes = [
       left: auto;
     }
 
+   
     .sticky-note:nth-child(6n+1) { transform: rotate(-3deg); }
     .sticky-note:nth-child(6n+2) { transform: rotate(4deg); }
     .sticky-note:nth-child(6n+3) { transform: rotate(-5deg); }
