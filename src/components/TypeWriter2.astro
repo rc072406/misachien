@@ -259,7 +259,7 @@
 	gsap.registerPlugin(ScrollTrigger);
 
 	function buildHorizontalLayout() {
-		const section = document.querySelector('.readymag-dashboard-section');
+		const section = document.querySelector('.dashboard-section');
 		const track = document.querySelector('.horizontal-scroll-track');
 		if (!section || !track) return;
 
@@ -299,9 +299,9 @@
 	.dashboard-section {
 		position: relative;
 		width: 100%;
-		background-color: #FF79F2;
+		background-color: #FEF4EF;
 		overflow: hidden;
-		font-family: var(--display);
+		font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 	}
 
 	.pin-container {
@@ -327,47 +327,54 @@
 		flex-direction: column;
 		justify-content: space-between;
 		padding-right: 6rem;
-		color: #270F43;
+		color: #59363A;
 		box-sizing: border-box;
 	}
 
 	.panel-index {
-		font-size: 1rem;
+		font-size: 0.75rem;
 		font-weight: 700;
 		text-transform: uppercase;
-		letter-spacing: 1px;
+		letter-spacing: 2px;
+		color: #D67A6B;
 	}
 
 	.main-editorial-title {
+		font-family: 'Tenor Sans', sans-serif;
 		font-size: 5.5rem;
-		font-weight: 900;
+		font-weight: 400;
 		line-height: 0.95;
 		letter-spacing: -3px;
 		margin: 0;
+		color: #59363A;
 	}
 
 	.editorial-descriptor {
-		font-size: 1.15rem;
-		line-height: 1.5;
-		font-weight: 500;
+		font-size: 1.1rem;
+		line-height: 1.6;
+		font-weight: 300;
 		max-width: 440px;
 		margin: 2rem 0 auto 0;
+		color: #59363A;
+		opacity: 0.85;
 	}
 
 	.scroll-indicator-arrow {
 		display: flex;
 		align-items: center;
 		gap: 1rem;
-		font-size: 0.85rem;
-		font-weight: 700;
+		font-size: 0.75rem;
+		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: 1px;
+		letter-spacing: 2px;
+		color: #59363A;
+		opacity: 0.6;
 	}
 
 	.arrow-line {
 		width: 80px;
-		height: 2px;
-		background-color: #270F43;
+		height: 1px;
+		background-color: #59363A;
 	}
 
 	.divider-panel {
@@ -377,75 +384,91 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		padding: 0 4rem;
-		color: #270F43;
+		color: #59363A;
 		box-sizing: border-box;
 	}
 
 	.misa-breakthrough-panel {
 		width: 540px;
 		height: 72vh;
-		background-color: #D6FF38;
+		background-color: #E77860;
 		margin-right: 2.5rem;
-		border-radius: 4px;
+		border-radius: 6px;
 		padding: 4rem;
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		color: #270F43;
+		color: #FEF4EF;
+		box-shadow: 0 30px 60px rgba(89, 54, 58, 0.05);
+	}
+
+	.misa-breakthrough-panel .panel-index {
+		color: #FEF4EF;
+		opacity: 0.8;
 	}
 
 	.breakthrough-title {
+		font-family: 'Tenor Sans', sans-serif;
 		font-size: 4rem;
-		font-weight: 900;
+		font-weight: 400;
 		line-height: 0.95;
 		letter-spacing: -2px;
 		margin: 2rem 0 0 0;
+		color: #FEF4EF;
 	}
 
 	.breakthrough-body {
 		font-size: 1.2rem;
-		line-height: 1.5;
-		font-weight: 600;
+		line-height: 1.6;
+		font-weight: 300;
 		margin: 1.5rem 0 auto 0;
+		color: #FEF4EF;
+		opacity: 0.95;
 	}
 
 	.breakthrough-callout {
-		font-size: 0.9rem;
-		font-weight: 800;
+		font-size: 0.8rem;
+		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: 1px;
-		border-top: 2px solid #270F43;
+		letter-spacing: 2px;
+		border-top: 1px solid rgba(254, 244, 239, 0.3);
 		padding-top: 1.5rem;
+		color: #FEF4EF;
 	}
 
 	.section-context-title {
+		font-family: 'Tenor Sans', sans-serif;
 		font-size: 3.5rem;
-		font-weight: 800;
+		font-weight: 400;
 		line-height: 1.0;
 		letter-spacing: -1.5px;
 		margin: 4rem 0 0 0;
+		color: #59363A;
 	}
 
 	.data-card {
 		width: 440px;
 		height: 72vh;
-		background-color: #270F43;
+		background-color: #59363A;
 		margin-right: 2.5rem;
-		border-radius: 4px;
+		border-radius: 6px;
 		padding: 3.5rem;
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		color: #FFFFFF;
+		color: #FEF4EF;
+		box-shadow: 0 30px 60px rgba(89, 54, 58, 0.05);
 	}
 
 	.card-tier {
-		font-size: 1.1rem;
-		font-weight: 700;
-		letter-spacing: -0.5px;
-		opacity: 0.9;
+		font-size: 1rem;
+		font-weight: 500;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		opacity: 0.7;
+		color: #FEF4EF;
 	}
 
 	.metric-block {
@@ -461,71 +484,72 @@
 	}
 
 	.huge-stat {
+		font-family: 'Tenor Sans', sans-serif;
 		font-size: 6rem;
-		font-weight: 900;
+		font-weight: 400;
 		line-height: 0.9;
 		letter-spacing: -4px;
 	}
 
 	.stat-label {
-		font-size: 0.9rem;
-		font-weight: 700;
+		font-size: 0.75rem;
+		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		opacity: 0.6;
-		margin-top: 0.25rem;
+		letter-spacing: 2px;
+		opacity: 0.5;
+		margin-top: 0.5rem;
 	}
 
 	.highlight-accent .huge-stat {
-		color: #FF79F2;
+		color: #E77860;
 	}
 
 	.highlight-accent .stat-label {
-		color: #FF79F2;
+		color: #E77860;
 		opacity: 0.9;
 	}
 
 	.comparison-bar-visual {
 		width: 100%;
-		height: 8px;
-		background-color: rgba(255, 255, 255, 0.1);
-		border-radius: 4px;
+		height: 4px;
+		background-color: rgba(254, 244, 239, 0.1);
+		border-radius: 2px;
 		overflow: hidden;
 	}
 
 	.visual-fill {
 		height: 100%;
-		border-radius: 4px;
+		border-radius: 2px;
 	}
 
 	.dynamic-fill-accent {
-		background-color: #FF79F2;
+		background-color: #E77860;
 	}
 
 	.target-parity-card {
-		background-color: #270F43;
-		border: 4px solid #D6FF38;
+		background-color: #59363A;
+		border: 1px solid rgba(231, 120, 96, 0.4);
 	}
 
 	.neon-accent .huge-stat {
-		color: #D6FF38;
+		color: #E77860;
 	}
 
 	.neon-accent .stat-label {
-		color: #D6FF38;
+		color: #E77860;
 		opacity: 0.9;
 	}
 
 	.parity-badge {
-		background-color: #D6FF38;
-		color: #270F43;
+		border: 1px solid rgba(254, 244, 239, 0.3);
+		color: #FEF4EF;
 		padding: 0.75rem 1rem;
-		font-size: 0.85rem;
-		font-weight: 800;
+		font-size: 0.75rem;
+		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		letter-spacing: 2px;
 		text-align: center;
-		border-radius: 2px;
+		border-radius: 4px;
 	}
 
 	.multi-density-card {
@@ -545,44 +569,46 @@
 	}
 
 	.mid-stat {
+		font-family: 'Tenor Sans', sans-serif;
 		font-size: 3.5rem;
-		font-weight: 900;
+		font-weight: 400;
 		line-height: 0.9;
 		letter-spacing: -1.5px;
 	}
 
 	.dense-label {
-		font-size: 0.85rem;
-		font-weight: 700;
+		font-size: 0.75rem;
+		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		opacity: 0.6;
-		margin-top: 0.25rem;
+		letter-spacing: 1px;
+		opacity: 0.5;
+		margin-top: 0.5rem;
 	}
 
-	.text-high { color: #D6FF38; }
-	.text-mid { color: #FF79F2; }
-	.text-low { color: #FFFFFF; opacity: 0.9; }
-	.text-alert { color: rgba(255, 255, 255, 0.35); }
+	.text-high { color: #E77860; }
+	.text-mid { color: rgba(254, 244, 239, 0.9); }
+	.text-low { color: rgba(254, 244, 239, 0.6); }
+	.text-alert { color: rgba(254, 244, 239, 0.25); }
 
 	.inversion-card {
-		background-color: #D6FF38;
-		color: #270F43;
+		background-color: #FEF4EF;
+		color: #59363A;
+		border: 1px solid rgba(89, 54, 58, 0.1);
 	}
 
 	.inversion-card .card-tier {
-		color: #270F43;
+		color: #59363A;
 	}
 
 	.inversion-card .dense-label {
-		color: #270F43;
-		opacity: 0.7;
+		color: #59363A;
+		opacity: 0.6;
 	}
 
-	.inversion-card .text-high { color: #270F43; }
-	.inversion-card .text-mid { color: #270F43; }
-	.inversion-card .text-accent { color: #270F43; }
-	.inversion-card .text-alert { color: #270F43; opacity: 0.4; }
+	.inversion-card .text-high { color: #E77860; }
+	.inversion-card .text-mid { color: #59363A; }
+	.inversion-card .text-accent { color: #59363A; font-weight: 600; }
+	.inversion-card .text-alert { color: #59363A; opacity: 0.3; }
 
 	.conclusion-panel {
 		width: 500px;
@@ -592,37 +618,43 @@
 		justify-content: flex-start;
 		padding-left: 5rem;
 		padding-right: 8rem;
-		color: #270F43;
+		color: #59363A;
 		box-sizing: border-box;
 	}
 
 	.citation-header {
+		font-family: 'Tenor Sans', sans-serif;
 		font-size: 2rem;
-		font-weight: 800;
+		font-weight: 400;
 		letter-spacing: -0.5px;
 		margin: 4rem 0 1.5rem 0;
 	}
 
 	.citation-body {
-		font-size: 1rem;
+		font-size: 0.95rem;
 		line-height: 1.6;
-		font-weight: 500;
-		opacity: 0.95;
-		margin-bottom: 2rem;
+		font-weight: 300;
+		opacity: 0.85;
+		margin-bottom: 2.5rem;
 	}
 
 	.jpm-link {
 		align-self: flex-start;
-		background-color: #270F43;
-		color: #FFFFFF;
+		border: 1px solid #59363A;
+		color: #59363A;
 		text-decoration: none;
-		padding: 1rem 1.5rem;
-		font-size: 0.9rem;
-		font-weight: 700;
+		padding: 0.85rem 1.5rem;
+		font-size: 0.75rem;
+		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		letter-spacing: 2px;
 		border-radius: 4px;
-		transition: background-color 0.2s ease;
+		transition: all 0.3s ease;
+	}
+
+	.jpm-link:hover {
+		background-color: #59363A;
+		color: #FEF4EF;
 	}
 
 	@media (max-width: 768px) {
