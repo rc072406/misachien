@@ -241,7 +241,7 @@
 				<span class="panel-index">04. Source Data</span>
 				<h4 class="citation-header">Methodology & Attribution</h4>
 				<p class="citation-body">
-					Data synthesized from the comprehensive study tracking firm revenues across initial cycles conducted via the JPMorgan Chase Institute. Matrix models isolate operations with verified banking profiles completing structural milestones.
+					Data synthesized from the comprehensive study tracking firm revenues across initial cycles conducted via the JPMorgan Chase Institute. Matrix models isolate operations with verified banking relationships and consistent operational frameworks.
 				</p>
 				<a href="https://www.jpmorganchase.com/institute/all-topics/business-growth-and-entrepreneurship/1-million-annual-revenues-as-a-small-business-milestone" target="_blank" rel="noopener noreferrer" class="jpm-link">
 					View Original Study
@@ -252,7 +252,7 @@
 	</div>
 </section>
 
-<script>
+<script type="module" define:vars={{}}>
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -261,7 +261,6 @@
 	let scrollCtx;
 
 	function buildHorizontalLayout() {
-		
 		if (scrollCtx) scrollCtx.revert();
 
 		scrollCtx = gsap.context(() => {
@@ -269,7 +268,6 @@
 			const track = document.querySelector('.horizontal-scroll-track');
 			if (!section || !track) return;
 
-			
 			if (window.innerWidth > 768) {
 				let scrollWidth = track.scrollWidth;
 				let totalMove = scrollWidth - window.innerWidth;
@@ -296,10 +294,17 @@
 		ScrollTrigger.refresh();
 	}
 
-	// Safely hook into DOM layout cycles
-	document.addEventListener('DOMContentLoaded', init);
+	// Initialize when DOM is ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init);
+	} else {
+		init();
+	}
+
+	// Handle Astro page navigation
 	document.addEventListener('astro:page-load', init);
 	
+	// Handle window resize
 	let resizeTimeout;
 	window.addEventListener('resize', () => {
 		clearTimeout(resizeTimeout);
