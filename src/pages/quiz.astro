@@ -7,10 +7,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   <main class="quiz-page-container" data-theme="start">
     
     <div id="quiz-intro" class="quiz-screen active">
-      <div class="intro-bg-lines">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
+   
       <div class="intro-content">
         <h1 class="intro-title">QUIZ TIME</h1>
         <p class="intro-subtitle">Do you have a scarcity mindset?</p>
@@ -490,27 +487,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     box-shadow: 0 10px 30px rgba(89, 54, 58, 0.15);
   }
 
-  .intro-bg-lines {
-    position: absolute;
-    top: 0;
-    right: -10%;
-    width: 60%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    pointer-events: none;
-    opacity: 0.3;
-    z-index: 1;
-  }
 
-  .intro-bg-lines span {
-    display: block;
-    height: 1px;
-    background-color: var(--coral);
-    width: 100%;
-  }
-  .intro-bg-lines span:nth-child(even) { width: 85%; margin-left: auto; }
 
   .quiz-top-bar {
     display: flex;
