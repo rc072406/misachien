@@ -197,6 +197,7 @@ a {
 		background: transparent;
 		z-index: 1;
 		transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+	align-self: flex-start;
 	}
 
 	.btn-filled span {
@@ -226,3 +227,10 @@ a {
 	.btn-filled:hover::before {
 		transform: scaleX(1);
 	}
+@media (max-width: 820px) {
+  
+  .web3form .btn-filled {
+    align-self: stretch;
+    text-align: center;
+  }
+}
