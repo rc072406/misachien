@@ -19,8 +19,8 @@
             </p>
             <button class="quiz-action-btn">WORK WITH ME</button>
           </div>
-          <div class="image-placeholder main-photo" data-swiper-parallax="-100">
-            <span>[PHOTO: MISA HERO]</span>
+          <div class="image-wrapper main-photo" data-swiper-parallax="-100">
+            <img src="https://placehold.co/600x700/f0eae5/4a0e0e?text=Misa+Hero" alt="Misa Chien Hero" class="slide-img" />
           </div>
         </div>
       </div>
@@ -33,8 +33,8 @@
               As a seasoned entrepreneur who has scaled multiple businesses, Misa understands the highs and lows of the founder journey. Her content bridges the gap between raw corporate reality and inspiring personal growth, making her a trusted voice for modern professionals.
             </p>
           </div>
-          <div class="image-placeholder profile-photo" data-swiper-parallax="-200">
-            <span>[PHOTO: ABOUT MISA]</span>
+          <div class="image-wrapper profile-photo" data-swiper-parallax="-200">
+            <img src="https://placehold.co/600x700/f0eae5/4a0e0e?text=About+Misa" alt="About Misa" class="slide-img" />
           </div>
         </div>
       </div>
@@ -110,15 +110,17 @@
           <div class="video-placeholder">
             <div class="play-button"></div>
             <p class="video-title">WATCH MISA IN ACTION</p>
-            <span>[VIDEO ELEMENT PLACEHOLDER]</span>
+            <div class="video-mock-frame">
+              <img src="https://placehold.co/1000x560/222222/ffffff?text=Video+Asset+Placeholder" alt="Video Player" class="slide-img" />
+            </div>
           </div>
         </div>
       </div>
 
       <div class="swiper-slide bg-white">
         <div class="content-grid standard-layout">
-          <div class="image-placeholder case-study-photo" data-swiper-parallax="-300">
-            <span>[IMAGE: CASE STUDY HIGHLIGHT]</span>
+          <div class="image-wrapper case-study-photo" data-swiper-parallax="-300">
+            <img src="https://placehold.co/600x700/f0eae5/4a0e0e?text=Case+Study+Highlight" alt="Case Study Success" class="slide-img" />
           </div>
           <div class="text-content burgundy-text">
             <h2 class="section-heading" data-swiper-parallax="-500">RECENT SUCCESS</h2>
@@ -141,8 +143,8 @@
               <li data-swiper-parallax="-500">MODELING / PHOTOSHOOTS</li>
             </ul>
           </div>
-          <div class="image-placeholder montage-photo" data-swiper-parallax="-800">
-             <span>[MONTAGE IMAGE]</span>
+          <div class="image-wrapper montage-photo" data-swiper-parallax="-800">
+             <img src="https://placehold.co/600x700/f0eae5/4a0e0e?text=Montage+Image" alt="Collaboration Setup" class="slide-img" />
           </div>
         </div>
       </div>
@@ -186,29 +188,20 @@
 </section>
 
 <style>
-  :root {
-    --coral: #e77860;
-    --burgundy: #4a0e0e; 
-    --white: #ffffff;
-    --cream: #f9f4f0;
-    --font-logo: 'Tenor Sans', sans-serif;
-    --font-sans: 'Poppins', sans-serif;
-    --font-serif: 'GF Didot', serif;
-  }
-
   .media-kit-container {
     width: 100%;
     height: 100vh;
-    background-color: var(--white);
+    background-color: #ffffff;
     overflow: hidden;
+    position: relative;
   }
 
-  .swiper {
+  .media-kit-container .swiper {
     width: 100%;
     height: 100%;
   }
 
-  .swiper-slide {
+  .media-kit-container .swiper-slide {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -216,8 +209,8 @@
     box-sizing: border-box;
   }
 
-  .intro-title {
-    font-family: var(--font-logo);
+  .media-kit-container .intro-title {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
     font-size: 5.5rem;
     font-weight: 400;
     letter-spacing: 4px;
@@ -227,8 +220,8 @@
     text-transform: uppercase;
   }
 
-  .intro-subtitle {
-    font-family: var(--font-serif);
+  .media-kit-container .intro-subtitle {
+    font-family: 'GF Didot', serif;
     font-style: italic;
     font-size: 3rem;
     color: var(--burgundy);
@@ -245,8 +238,8 @@
     box-decoration-break: clone;
   }
 
-  .intro-subtitle.white-text {
-    color: var(--white);
+  .media-kit-container .intro-subtitle.white-text {
+    color: #ffffff;
     background: linear-gradient(
       to bottom, 
       transparent 55%, 
@@ -254,8 +247,8 @@
     );
   }
 
-  .intro-description {
-    font-family: var(--font-sans);
+  .media-kit-container .intro-description {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
     font-weight: 300;
     font-size: 1.25rem;
     line-height: 1.8;
@@ -265,25 +258,25 @@
     max-width: 600px;
   }
 
-  .white-text .intro-description {
-    color: var(--white);
+  .media-kit-container .white-text .intro-description {
+    color: #ffffff;
   }
 
-  .section-heading {
-    font-family: var(--font-logo);
+  .media-kit-container .section-heading {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
     font-size: 3rem;
     margin-bottom: 2rem;
     line-height: 1.1;
   }
 
-  .intro-meta-pill {
+  .media-kit-container .intro-meta-pill {
     display: inline-flex;
     align-items: center;
     gap: 1.25rem;
     background-color: var(--burgundy);
     padding: 1rem 2rem;
-    color: var(--white);
-    font-family: var(--font-sans);
+    color: #ffffff;
+    font-family: var(--font-sans, 'Poppins', sans-serif);
     font-size: 0.85rem;
     font-weight: 400;
     letter-spacing: 1px;
@@ -291,15 +284,15 @@
     border-radius: 0; 
   }
 
-  .dot-separator {
+  .media-kit-container .dot-separator {
     color: var(--coral);
     font-weight: 600;
   }
 
-  .quiz-action-btn {
+  .media-kit-container .quiz-action-btn {
     background-color: var(--coral);
     border: 1px solid var(--coral);
-    color: var(--white);
+    color: #ffffff;
     padding: 1.25rem 3.5rem;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.15em;
@@ -307,18 +300,18 @@
     transition: all 0.3s ease;
   }
 
-  .quiz-action-btn:hover {
+  .media-kit-container .quiz-action-btn:hover {
     background-color: transparent;
     color: var(--coral);
   }
 
-  .burgundy-bg .quiz-action-btn:hover {
-    background-color: var(--white);
+  .media-kit-container .burgundy-bg .quiz-action-btn:hover {
+    background-color: #ffffff;
     color: var(--burgundy);
-    border-color: var(--white);
+    border-color: #ffffff;
   }
 
-  .content-grid {
+  .media-kit-container .content-grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
     gap: 4rem;
@@ -327,11 +320,11 @@
     align-items: center;
   }
 
-  .content-grid.standard-layout {
+  .media-kit-container .content-grid.standard-layout {
     grid-template-columns: 1fr 1fr;
   }
 
-  .content-grid.split {
+  .media-kit-container .content-grid.split {
     grid-template-columns: 1fr 1fr;
     height: 100%;
     width: 100vw;
@@ -339,7 +332,8 @@
     margin: -5rem;
   }
 
-  .col-left, .col-right {
+  .media-kit-container .col-left, 
+  .media-kit-container .col-right {
     padding: 10%;
     height: 100%;
     display: flex;
@@ -347,137 +341,163 @@
     justify-content: center;
   }
 
-  .image-placeholder {
-    background: #f0eae5;
+  .media-kit-container .image-wrapper {
     height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-sans);
-    color: var(--burgundy);
-    opacity: 0.5;
-    border-radius: 0px;
+    overflow: hidden;
   }
 
-  .coral-bg { background-color: var(--coral); }
-  .burgundy-bg { background-color: var(--burgundy); }
-  .burgundy-text { color: var(--burgundy); }
-  .white-text { color: var(--white); }
-  .bg-cream { background-color: var(--cream); }
-  .bg-white { background-color: var(--white); }
+  .media-kit-container .slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-  .partner-list {
+  .media-kit-container .coral-bg { background-color: var(--coral); }
+  .media-kit-container .burgundy-bg { background-color: var(--burgundy); }
+  .media-kit-container .burgundy-text { color: var(--burgundy); }
+  .media-kit-container .white-text { color: #ffffff; }
+  .media-kit-container .bg-cream { background-color: #f9f4f0; }
+  .media-kit-container .bg-white { background-color: #ffffff; }
+
+  .media-kit-container .partner-list {
     list-style: none;
     padding: 0;
   }
 
-  .partner-list li {
-    font-family: var(--font-logo);
+  .media-kit-container .partner-list li {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
     font-size: 2rem;
-    color: var(--white);
+    color: #ffffff;
     margin-bottom: 1rem;
   }
 
-  .stagger-list .list-item h3 {
-    font-family: var(--font-sans);
+  .media-kit-container .stagger-list .list-item h3 {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
     font-weight: 400;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
-  .metrics-layout, .stats-layout, .pricing-layout, .contact-layout {
+  .media-kit-container .metrics-layout, 
+  .media-kit-container .stats-layout, 
+  .media-kit-container .pricing-layout, 
+  .media-kit-container .contact-layout {
     width: 100%;
     max-width: 1100px;
     text-align: center;
   }
 
-  .metrics-grid, .stats-grid, .pricing-grid {
+  .media-kit-container .metrics-grid, 
+  .media-kit-container .stats-grid, 
+  .media-kit-container .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
     margin: 4rem 0;
   }
 
-  .metric-card {
-    background: var(--white);
+  .media-kit-container .metric-card {
+    background: #ffffff;
     padding: 3rem 2rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.03);
   }
 
-  .metric-number {
+  .media-kit-container .metric-number {
     display: block;
-    font-family: var(--font-logo);
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
     font-size: 4rem;
     color: var(--coral);
     margin-bottom: 0.5rem;
   }
 
-  .metric-label {
-    font-family: var(--font-sans);
+  .media-kit-container .metric-label {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
     font-size: 1rem;
     color: var(--burgundy);
   }
 
-  .stat-box {
+  .media-kit-container .stat-box {
     border: 1px solid rgba(255,255,255,0.3);
     padding: 3rem 2rem;
   }
 
-  .stat-box h3 {
-    font-family: var(--font-logo);
+  .media-kit-container .stat-box h3 {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
     font-size: 1.75rem;
     margin-bottom: 1rem;
   }
 
-  .stat-count {
-    font-family: var(--font-sans);
+  .media-kit-container .stat-count {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
   }
 
-  .stat-desc {
-    font-family: var(--font-sans);
+  .media-kit-container .stat-desc {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
     font-size: 0.9rem;
     opacity: 0.8;
   }
 
-  .video-slide {
-    background: #111;
+  .media-kit-container .video-slide {
+    background: #111111;
   }
 
-  .video-container {
+  .media-kit-container .video-container {
     width: 100%;
     max-width: 1000px;
     aspect-ratio: 16/9;
-    background: #222;
+    background: #222222;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
   }
 
-  .video-placeholder {
+  .media-kit-container .video-placeholder {
     text-align: center;
-    color: white;
-    font-family: var(--font-logo);
+    color: #ffffff;
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
+    width: 100%;
+    height: 100%;
+    position: relative;
   }
 
-  .video-title {
+  .media-kit-container .video-mock-frame {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  .media-kit-container .video-title {
     font-size: 2rem;
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+    margin-top: 15%;
   }
 
-  .play-button {
+  .media-kit-container .play-button {
     width: 80px;
     height: 80px;
     background: var(--coral);
     border-radius: 50%;
     margin: 0 auto 2rem;
     position: relative;
+    z-index: 2;
   }
 
-  .play-button::after {
+  .media-kit-container .play-button::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -485,72 +505,72 @@
     transform: translate(-50%, -50%);
     border-style: solid;
     border-width: 15px 0 15px 25px;
-    border-color: transparent transparent transparent white;
+    border-color: transparent transparent transparent #ffffff;
   }
 
-  .price-box {
+  .media-kit-container .price-box {
     border: 1px solid var(--coral);
     padding: 3rem 2rem;
-    background: var(--white);
+    background: #ffffff;
   }
 
-  .price-box h4 {
-    font-family: var(--font-logo);
+  .media-kit-container .price-box h4 {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
     color: var(--burgundy);
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
 
-  .price-box p {
-    font-family: var(--font-sans);
+  .media-kit-container .price-box p {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
     font-weight: 600;
     color: var(--coral);
     font-size: 1.25rem;
   }
 
-  .footer-note {
+  .media-kit-container .footer-note {
     margin: 0 auto;
   }
 
-  .contact-details {
+  .media-kit-container .contact-details {
     margin: 3rem 0;
   }
 
-  .contact-email {
-    font-family: var(--font-logo);
+  .media-kit-container .contact-email {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
     font-size: 3.5rem;
     color: var(--coral);
     margin-bottom: 1rem;
   }
 
-  .contact-sub {
-    font-family: var(--font-sans);
+  .media-kit-container .contact-sub {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
     font-size: 1.1rem;
     max-width: 500px;
     margin: 0 auto;
     opacity: 0.8;
   }
 
-  .options-list {
+  .media-kit-container .options-list {
     list-style: none;
     padding: 0;
     text-align: left;
   }
 
-  .options-list li {
-    font-family: var(--font-logo);
+  .media-kit-container .options-list li {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.2);
     padding-bottom: 0.5rem;
   }
 
-  .swiper-slide-active .intro-title,
-  .swiper-slide-active .intro-subtitle,
-  .swiper-slide-active .list-item,
-  .swiper-slide-active .metric-card,
-  .swiper-slide-active .stat-box,
-  .swiper-slide-active .price-box {
+  .media-kit-container .swiper-slide-active .intro-title,
+  .media-kit-container .swiper-slide-active .intro-subtitle,
+  .media-kit-container .swiper-slide-active .list-item,
+  .media-kit-container .swiper-slide-active .metric-card,
+  .media-kit-container .swiper-slide-active .stat-box,
+  .media-kit-container .swiper-slide-active .price-box {
     animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
@@ -562,18 +582,22 @@
 
 <script>
   import Swiper from 'swiper';
-  import { Navigation, Pagination, Parallax, EffectCreative } from 'swiper/modules';
+  import { Navigation, Pagination, Parallax, EffectCreative, Autoplay } from 'swiper/modules';
   import 'swiper/css';
   import 'swiper/css/pagination';
   import 'swiper/css/effect-creative';
 
   new Swiper('.mySwiper', {
-    modules: [Navigation, Pagination, Parallax, EffectCreative],
+    modules: [Navigation, Pagination, Parallax, EffectCreative, Autoplay],
     speed: 1000,
     parallax: true,
     mousewheel: true,
     grabCursor: true,
     effect: 'creative',
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
     creativeEffect: {
       prev: {
         shadow: true,
