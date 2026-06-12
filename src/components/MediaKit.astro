@@ -358,16 +358,26 @@ const { className = '' } = Astro.props;
   import 'swiper/css/pagination';
   
   import Swiper from 'swiper';
-  import { Navigation, Pagination, Keyboard, Mousewheel } from 'swiper/modules';
+
+  import { Navigation, Pagination, Keyboard, Mousewheel, Autoplay } from 'swiper/modules';
 
   const initSwiper = () => {
     const swiperEl = document.querySelector('.mediaKitSwiper');
     if (swiperEl && !swiperEl.swiper) {
       new Swiper('.mediaKitSwiper', {
-        modules: [Navigation, Pagination, Keyboard, Mousewheel],
+       
+        modules: [Navigation, Pagination, Keyboard, Mousewheel, Autoplay],
         direction: 'horizontal',
         loop: false,
         speed: 700,
+        
+       
+        autoplay: {
+          delay: 4000, 
+          disableOnInteraction: false, 
+      
+        },
+        
         mousewheel: {
           forceToAxis: true,
         },
