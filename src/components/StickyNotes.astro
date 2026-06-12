@@ -39,7 +39,12 @@ const notes = [
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.config({ ignoreMobileResize: true });
+  
+
+  ScrollTrigger.config({ 
+    ignoreMobileResize: true,
+    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" 
+  });
 
   let stickyNotesContext: any;
   let lastWidth = typeof window !== "undefined" ? window.innerWidth : 0;
@@ -57,6 +62,10 @@ const notes = [
       const scrollDuration = notesElements.length * window.innerHeight;
 
       if (isMobile) {
+
+        const viewWidth = window.innerWidth;
+        const viewHeight = window.innerHeight;
+
         const seedRandom = (str: string) => {
           let hash = 0;
           for (let i = 0; i < str.length; i++) {
@@ -73,7 +82,9 @@ const notes = [
             scrub: 1,
             pin: true,
             anticipatePin: 1,
-            invalidateOnRefresh: true
+            invalidateOnRefresh: true,
+            preventOverlaps: "mobileNotesTimeline", 
+            fastScrollEnd: true                     
           }
         });
 
@@ -84,22 +95,24 @@ const notes = [
           const randValue = seedRandom(text);
           const initialRotation = randValue * 30 - 15;
 
-          mobileTl.fromTo(item, 
+         
+          gsap.set(item, {
+            x: 0,
+            y: 0,
+            rotation: initialRotation,
+            scale: 1,
+            opacity: 1
+          });
+
+          mobileTl.to(item, 
             {
-              x: 0,
-              y: 0,
-              rotation: initialRotation,
-              scale: 1,
-              opacity: 1
-            },
-            {
-              x: window.innerWidth,
-              y: window.innerHeight * -1,
+              x: viewWidth * 1.2,
+              y: viewHeight * -1.2,
               rotation: 45,
               scale: 2,
               opacity: 0,
               force3D: true,
-              immediateRender: false,
+              lazy: false,   
               ease: "none"
             },
             index * 0.5
@@ -240,6 +253,8 @@ const notes = [
     justify-content: center;
     text-align: center;
     box-sizing: border-box;
+
+    will-change: transform, opacity;
   }
 
   .tape-accent {
