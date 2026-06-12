@@ -271,7 +271,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     introScreen?.classList.remove('active');
     gameplayScreen?.classList.add('active');
     
-   
     window.dispatchEvent(new Event('scroll'));
     
     buildProgressDots();
@@ -359,7 +358,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     cards.forEach(card => {
       if (card.getAttribute('data-tier') === targetedTier) {
         card.classList.add('highlighted');
-        card.scrollIntoView({ behavior: 'smooth', block: 'center');
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
         card.classList.add('dimmed');
       }
