@@ -74,7 +74,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
                 <textarea id="message" name="message" rows="6" required placeholder="How can Misa support your journey?"></textarea>
               </div>
 
-              <button type="submit" class="submit-button">
+              <button type="submit" class="btn-filled">
                 <span>Send Message</span>
               </button>
 
@@ -306,27 +306,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     font-size: 0.9rem;
   }
 
-  .submit-button {
-    align-self: flex-start;
-    background-color: var(--burgundy);
-    border: 1px solid var(--burgundy);
-    color: var(--white);
-    padding: 1.2rem 2.5rem;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.15em;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .submit-button:hover {
-    background-color: transparent;
-    color: var(--burgundy);
-    box-shadow: 0 10px 30px rgba(89, 54, 58, 0.1);
-  }
-
+  
   .desktop-only {
     display: block;
   }
@@ -394,9 +374,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       text-align: left;
     }
 
-    .submit-button {
-      width: 100%;
-      align-self: center;
-    }
+ 
   }
 </style>
