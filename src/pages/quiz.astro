@@ -929,10 +929,16 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       padding: 2rem 1.5rem;
       font-size: 1.2rem;
     }
-    #quiz-intro .btn-filled,
+#quiz-intro .btn-filled,
     .funnel-coaching-cta .btn-filled {
-      align-self: stretch;
-      width: 100%;
+      display: inline-flex;      
+      justify-content: center;
+      align-items: center;
+      
+      width: 100%;               
+      max-width: 340px;           
+      margin: 0 auto;             
+      
       box-sizing: border-box;
       text-align: center;
     }
