@@ -9,8 +9,8 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
       <div id="quiz-intro" class="quiz-screen active">
         <div class="intro-content reveal-on-scroll">
-          <h1 class="intro-title">Do you have a scarcity mindset?</h1>
-         
+          <h1 class="intro-title">THE QUIZ</h1>
+          <p class="intro-subtitle">Do you have a scarcity mindset?</p>
           <p class="intro-description">
             Answer honestly. No one's grading you — <br />
             except your own nervous system.
@@ -469,16 +469,24 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     position: relative;
     z-index: 2;
   }
-.intro-title {
-font-family: 'Tenor Sans', sans-serif;
-    font-size: 4.5rem;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    color: var(--coral);
-}
 
+  .intro-title {
+    font-family: var(--font-logo);
+    font-size: 5.5rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--coral);
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+
+  .intro-subtitle {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    font-size: 3rem;
+    color: var(--coral);
+    margin-bottom: 3rem;
+  }
 
   .intro-description {
     font-family: var(--font-sans);
