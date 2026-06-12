@@ -4,9 +4,9 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 ---
 
 <BaseLayout title="Scarcity Mindset Quiz | Misa Chien">
-  <main id="dynamic-quiz-wrapper" class="quiz-page-container" data-theme="start">
+  <main class="quiz-page-container">
     
-    <div id="quiz-intro" class="quiz-screen active">
+    <div id="quiz-intro" class="quiz-screen active" data-theme="start">
       <section class="coaching-hero reveal-on-scroll">
         <span class="subtitle">Interactive Assessment</span>
         <h1 class="main-title">
@@ -33,7 +33,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       </section>
     </div>
 
-    <div id="quiz-gameplay" class="quiz-screen">
+    <section id="quiz-gameplay" class="quiz-screen structural-theme-section" data-theme="light">
       <div class="gameplay-inner-card reveal-on-scroll">
         <div class="quiz-top-bar">
           <span id="question-counter" class="counter-text">QUESTION 1 OF 10</span>
@@ -70,9 +70,9 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
           </button>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div id="quiz-results" class="quiz-screen">
+    <section id="quiz-results" class="quiz-screen structural-theme-section" data-theme="dark">
       <div class="results-inner-container reveal-on-scroll">
         <span class="subtitle" style="text-align: center; display: block;">Assessment Complete</span>
         <h2 class="results-title">HOW DID YOU SCORE?</h2>
@@ -152,7 +152,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
           </a>
         </div>
       </div>
-    </div>
+    </section>
 
   </main>
   <TypeWriter3 />
@@ -255,8 +255,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   let currentQuestionIndex = 0;
   let scarcityScore = 0;
 
-
-  const globalWrapper = document.getElementById('dynamic-quiz-wrapper');
   const introScreen = document.getElementById('quiz-intro');
   const gameplayScreen = document.getElementById('quiz-gameplay');
   const resultsScreen = document.getElementById('quiz-results');
@@ -273,8 +271,8 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     introScreen?.classList.remove('active');
     gameplayScreen?.classList.add('active');
     
- 
-    globalWrapper?.setAttribute('data-theme', 'light');
+   
+    window.dispatchEvent(new Event('scroll'));
     
     buildProgressDots();
     loadQuestion(currentQuestionIndex);
@@ -346,13 +344,11 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     loadQuestion(currentQuestionIndex);
   });
 
-  // Trigger Dark State Completion View Transition
   function showResults() {
     gameplayScreen?.classList.remove('active');
     resultsScreen?.classList.add('active');
 
-    // Recondition state theme property hook dynamically to target Dark layout settings
-    globalWrapper?.setAttribute('data-theme', 'dark');
+    window.dispatchEvent(new Event('scroll'));
 
     let targetedTier = 'abundance';
     if (scarcityScore >= 3 && scarcityScore <= 5) targetedTier = 'selective';
@@ -363,7 +359,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     cards.forEach(card => {
       if (card.getAttribute('data-tier') === targetedTier) {
         card.classList.add('highlighted');
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.scrollIntoView({ behavior: 'smooth', block: 'center');
       } else {
         card.classList.add('dimmed');
       }
@@ -372,22 +368,16 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 </script>
 
 <style>
-  
   .quiz-page-container {
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
     position: relative;
     overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: calc(7rem + 80px) 4rem 8rem 4rem;
-    transition: background 0.6s ease-in-out, padding 0.3s ease;
   }
 
-
-  .quiz-page-container[data-theme="start"] {
+ 
+  #quiz-intro[data-theme="start"] {
     background: linear-gradient(
       to right, 
       #59363A 0%, 
@@ -399,15 +389,34 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       #FEF4EF 100%
     );
   }
-  .quiz-page-container[data-theme="light"] {
+
+  #quiz-gameplay[data-theme="light"] {
     background-color: #FEF4EF;
   }
-  .quiz-page-container[data-theme="dark"] {
+
+  #quiz-results[data-theme="dark"] {
     background-color: var(--burgundy);
   }
 
 
-  .quiz-page-container::before {
+  .quiz-screen {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: calc(7rem + 80px) 4rem 8rem 4rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .quiz-screen.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .quiz-screen::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -418,23 +427,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='silk'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23silk)'/%3E%3C/svg%3E");
   }
 
-
-  .quiz-screen {
-    display: none;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .quiz-screen.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-
+  /* --- HERO COMPONENTS --- */
   .coaching-hero {
     max-width: 1200px;
     margin: 0 auto;
@@ -451,7 +444,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     display: block;
     margin-bottom: 1rem;
   }
-  .quiz-page-container[data-theme="light"] .subtitle {
+  #quiz-gameplay .subtitle {
     color: var(--coral);
   }
 
@@ -472,7 +465,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     text-transform: none; 
     color: #DFCDC9; 
   }
-  .quiz-page-container[data-theme="light"] .serif-italic {
+  #quiz-gameplay .serif-italic {
     color: var(--burgundy);
   }
 
@@ -486,7 +479,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     opacity: 0.9;
     margin-bottom: 2.5rem;
   }
-  .quiz-page-container[data-theme="start"] .hero-intro {
+  #quiz-intro .hero-intro {
     color: var(--burgundy);
   }
 
@@ -522,7 +515,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     width: auto;      
   }
 
- 
+  /* --- GAMEPLAY COMPONENTS --- */
   .gameplay-inner-card {
     max-width: 900px;
     margin: 0 auto;
@@ -680,7 +673,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     display: none;
   }
 
-  
+  /* --- RESULTS MODULES --- */
   .results-inner-container {
     max-width: 800px;
     margin: 0 auto;
@@ -860,10 +853,10 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   }
 
   @media (max-width: 820px) {
-    .quiz-page-container {
+    .quiz-screen {
       padding: calc(5rem + 70px) 1.5rem 6rem 1.5rem;
     }
-    .quiz-page-container[data-theme="start"] {
+    #quiz-intro[data-theme="start"] {
       background: linear-gradient(
         to bottom, 
         #59363A 0%, 
@@ -911,7 +904,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       font-size: 1.2rem;
     }
 
-    /* 100% Strict Full-Width Constraint Scalers */
     #quiz-intro .btn-filled,
     .funnel-coaching-cta .btn-filled {
       align-self: stretch;
