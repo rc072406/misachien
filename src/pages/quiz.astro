@@ -252,7 +252,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   let currentQuestionIndex = 0;
   let scarcityScore = 0;
 
-  // DOM Elements Selector References
   const introSection = document.getElementById('quiz-intro-section');
   const gameplaySection = document.getElementById('quiz-gameplay-section');
   const resultsSection = document.getElementById('quiz-results-section');
@@ -277,14 +276,12 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     navbar.classList.add(`navbar--${targetTheme}`);
   }
 
- 
   startBtn?.addEventListener('click', () => {
     introSection?.classList.remove('active');
     introScreen?.classList.remove('active');
     
     gameplaySection?.classList.add('active');
     gameplayScreen?.classList.add('active');
-    
     
     syncNavbarTheme('light');
     window.scrollTo({ top: 0 });
@@ -366,7 +363,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     resultsSection?.classList.add('active');
     resultsScreen?.classList.add('active');
 
-   
     syncNavbarTheme('dark');
     window.scrollTo({ top: 0 });
 
@@ -396,7 +392,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     overflow-x: hidden;
   }
 
-  /* Structural wrappers for sections */
   .quiz-view-section {
     display: none;
     width: 100%;
@@ -412,7 +407,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     display: flex;
   }
 
-  /* Themes bound to wrapper sections */
   .quiz-view-section[data-theme="start"] {
     background: linear-gradient(
       to right, 
@@ -459,7 +453,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     transform: translateY(0);
   }
 
- 
   #quiz-intro {
     text-align: center;
     padding: 6rem 4rem;
@@ -555,7 +548,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     margin-bottom: 3rem;
   }
 
-  /* Applied section hierarchy overrides for light mode */
   .quiz-view-section[data-theme="light"] .counter-text {
     color: var(--burgundy);
   }
@@ -691,7 +683,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     display: none;
   }
 
- 
   .results-inner-container {
     max-width: 800px;
     margin: 0 auto;
@@ -724,8 +715,8 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   }
 
   .tier-card {
-    background-color: var(--white);
-    border: 1px solid rgba(89, 54, 58, 0.08);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: stretch;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -752,33 +743,41 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     padding: 2rem 2.5rem;
   }
 
-  .tier-details h3 {
+  .tier-card .tier-details h3 {
     font-family: var(--font-display);
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
-    color: var(--white);
-  }
-  .tier-card:not(.highlighted) .tier-details h3 {
-    color: var(--burgundy);
+    color: #DFCDC9;
   }
 
-  .tier-details p {
+  .tier-card .tier-details p {
     font-family: var(--font-sans);
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.6;
-    color: #4A4A4A;
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .tier-card.highlighted {
-    transform: scale(1.02);
-    box-shadow: 0 20px 40px rgba(89, 54, 58, 0.12);
-    border-color: var(--burgundy);
+    transform: scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    background-color: var(--white) !important;
+    border-color: var(--coral);
   }
-  .tier-card.highlighted.tier-0-2 { background-color: rgba(59, 102, 67, 0.08); }
-  .tier-card.highlighted.tier-3-5 { background-color: rgba(163, 106, 32, 0.08); }
-  .tier-card.highlighted.tier-6-8 { background-color: rgba(158, 67, 49, 0.08); }
-  .tier-card.highlighted.tier-9-10 { background-color: rgba(140, 45, 45, 0.08); }
+
+  .tier-card.highlighted .tier-details h3 {
+    color: var(--burgundy) !important;
+  }
+
+  .tier-card.highlighted .tier-details p {
+    color: #2D2D2D !important;
+    font-weight: 400;
+  }
+
+  .tier-card.highlighted .tier-score-badge {
+    font-size: 1.7rem;
+    box-shadow: inset -5px 0 15px rgba(0,0,0,0.1);
+  }
 
   .tier-card.dimmed {
     opacity: 0.4;
@@ -797,7 +796,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     margin-top: 2.5rem;
     margin-bottom: 5rem;
   }
-
 
   .transformation-matrix {
     background-color: var(--white);
@@ -855,7 +853,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     font-weight: 500;
   }
 
- 
   .funnel-coaching-cta {
     background-color: var(--burgundy);
     padding: 5rem 4rem;
@@ -888,7 +885,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* --- RESPONSIVE MEDIA BREAKPOINTS --- */
   @media (max-width: 820px) {
     .quiz-view-section[data-theme="start"] {
       background: linear-gradient(
