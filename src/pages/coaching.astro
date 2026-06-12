@@ -88,7 +88,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 
         <div class="coaching-cta reveal-on-scroll">
           <p class="cta-text">Ready to recondition your unconscious framework?</p>
-          <a href={`${import.meta.env.BASE_URL}/contact`} class="cta-button">
+          <a href={`${import.meta.env.BASE_URL}/contact`} class="btn-filled">
             <span>Apply For Coaching</span>
           </a>
         </div>
@@ -361,24 +361,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     color: #DFCDC9;
   }
 
-  .cta-button {
-    background-color: var(--coral);
-    border: 1px solid var(--coral);
-    color: var(--white);
-    padding: 1.2rem 3rem;
-    font-family: 'Tenor Sans', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .cta-button:hover {
-    background-color: transparent;
-    color: var(--coral);
-    box-shadow: 0 10px 30px rgba(231, 120, 96, 0.15);
-  }
+  
 
   /* --- RESPONSIVE WORKFLOWS --- */
   .desktop-only {
@@ -460,9 +443,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       font-size: 1.35rem;
     }
 
-    .cta-button {
-      width: 100%;
-      box-sizing: border-box;
-    }
+ 
   }
 </style>
