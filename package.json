@@ -12,6 +12,7 @@
   "dependencies": {
     "gsap": "^3.12.5",
     "@astrojs/cloudflare": "^12.0.0",
+    "swiper": "^11.1.4",
     "astro": "^5.18.1"
   },
   "devDependencies": {
