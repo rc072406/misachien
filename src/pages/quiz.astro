@@ -976,7 +976,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
 }
 
-/* Abstract Background Glow Pattern */
+
 .funnel-visual-accent {
   position: absolute;
   top: -50%;
@@ -1030,25 +1030,30 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 }
 
 
-.funnel-cta-button {
-  background-color: var(--coral) !important;
-  color: var(--white) !important;
-  padding: 1.25rem 2.5rem;
-  text-align: center;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  width: max-content;
+.funnel-coaching-cta .btn-filled {
+  align-self: flex-start;
+  width: auto;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-.funnel-cta-button:hover {
-  background-color: var(--white) !important;
-  color: var(--burgundy) !important;
+
+.funnel-coaching-cta .btn-filled span {
+  color: var(--coral);
+  transition: color 0.4s ease;
+}
+
+
+.funnel-coaching-cta .btn-filled:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
+.funnel-coaching-cta .btn-filled:hover span {
+  color: var(--white);
+}
 
+/* --- RESPONSIVE ADJUSTMENTS --- */
 @media (max-width: 820px) {
   .funnel-coaching-cta {
     grid-template-columns: 1fr;
@@ -1067,10 +1072,14 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     gap: 1.5rem;
   }
 
-  .funnel-cta-button {
+  
+  #quiz-intro .btn-filled,
+  .funnel-coaching-cta .btn-filled {
+    display: block;
+    align-self: stretch;
     width: 100%;
     box-sizing: border-box;
-    justify-content: center;
+    text-align: center;
   }
 }
 </style>
