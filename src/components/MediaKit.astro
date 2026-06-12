@@ -1,6 +1,3 @@
----
----
-
 <section class="media-kit-container">
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
@@ -39,7 +36,7 @@
         </div>
       </div>
 
-     <div class="swiper-slide bg-white">
+     <div class="swiper-slide bg-white" style="padding: 0;">
         <div class="content-grid split">
           <div class="col-left burgundy-text">
             <h2 class="section-heading" data-swiper-parallax="-200" style="font-family: var(--font-sans, 'Poppins', sans-serif); font-weight: 700; letter-spacing: 1px;">WHY PARTNERS WORK WITH MISA</h2>
@@ -194,7 +191,7 @@
         </div>
       </div>
 
- <div class="swiper-slide bg-white">
+      <div class="swiper-slide bg-white">
         <div class="content-grid standard-layout">
           <div class="text-content burgundy-text" style="text-align: left;">
             <h2 class="section-heading" data-swiper-parallax="-300" style="color: var(--coral); font-style: italic; font-family: 'GF Didot', serif;">
@@ -371,18 +368,19 @@
   .media-kit-container .content-grid.split {
     grid-template-columns: 1fr 1fr;
     height: 100%;
-    width: 100vw;
+    width: 100%;
     max-width: none;
-    margin: -5rem;
+    margin: 0;
   }
 
   .media-kit-container .col-left, 
   .media-kit-container .col-right {
-    padding: 10%;
+    padding: 5rem;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-sizing: border-box;
   }
 
   .media-kit-container .image-wrapper {
@@ -409,20 +407,6 @@
   .media-kit-container .partner-list {
     list-style: none;
     padding: 0;
-  }
-
-  .media-kit-container .partner-list li {
-    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
-    font-size: 2rem;
-    color: #ffffff;
-    margin-bottom: 1rem;
-  }
-
-  .media-kit-container .stagger-list .list-item h3 {
-    font-family: var(--font-sans, 'Poppins', sans-serif);
-    font-weight: 400;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
   }
 
   .media-kit-container .metrics-layout, 
@@ -576,25 +560,6 @@
     margin: 0 auto;
   }
 
-  .media-kit-container .contact-details {
-    margin: 3rem 0;
-  }
-
-  .media-kit-container .contact-email {
-    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
-    font-size: 3.5rem;
-    color: var(--coral);
-    margin-bottom: 1rem;
-  }
-
-  .media-kit-container .contact-sub {
-    font-family: var(--font-sans, 'Poppins', sans-serif);
-    font-size: 1.1rem;
-    max-width: 500px;
-    margin: 0 auto;
-    opacity: 0.8;
-  }
-
   .media-kit-container .options-list {
     list-style: none;
     padding: 0;
@@ -611,7 +576,6 @@
 
   .media-kit-container .swiper-slide-active .intro-title,
   .media-kit-container .swiper-slide-active .intro-subtitle,
-  .media-kit-container .swiper-slide-active .list-item,
   .media-kit-container .swiper-slide-active .metric-card,
   .media-kit-container .swiper-slide-active .stat-box,
   .media-kit-container .swiper-slide-active .price-box {
