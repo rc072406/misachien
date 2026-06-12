@@ -471,14 +471,16 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   }
 
   .intro-title {
-    font-family: var(--font-logo);
-    font-size: 5.5rem;
-    font-weight: 600;
-    letter-spacing: 4px;
-    color: var(--coral);
-    margin-bottom: 1rem;
-    line-height: 1;
-  }
+  font-family: var(--font-logo);
+  
+  font-size: clamp(1.8rem, 4.8vw, 5.5rem); 
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--coral);
+  margin-bottom: 1rem;
+  line-height: 1.2;      
+  white-space: nowrap;   
+}
 
 
 
@@ -487,7 +489,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     font-weight: 300;
     font-size: 1.25rem;
     line-height: 1.8;
-    color: #DFCDC9;
+    color: var(--burgundy);
     opacity: 0.85;
     margin-bottom: 3.5rem;
   }
