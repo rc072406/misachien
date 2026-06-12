@@ -35,12 +35,12 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       <div class="quiz-top-bar">
         <span id="question-counter" class="counter-text">QUESTION 1 OF 10</span>
         <div id="progress-dots" class="dots-container">
-          </div>
+        </div>
       </div>
 
       <div class="question-card-container">
         <div id="question-text-box" class="question-prompt-box">
-          </div>
+        </div>
 
         <div class="options-wrapper">
           <button class="option-row type-a" data-choice="A">
@@ -151,13 +151,11 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       </div>
     </div>
 
-
   </main>
-<TypeWriter3  </>
+  <TypeWriter3 />
 </BaseLayout>
 
 <script>
-  
   const quizData = [
     {
       question: "You need to park downtown for an important meeting. There's a $9 lot right next to the building. What do you do?",
@@ -291,16 +289,13 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       return;
     }
 
-  
     feedbackBox?.classList.remove('visible');
     nextBtn?.classList.add('hidden');
 
- 
     const currentData = quizData[index];
     if (counterText) counterText.textContent = `QUESTION ${index + 1} OF ${quizData.length}`;
     if (questionTextBox) questionTextBox.textContent = currentData.question;
 
-   
     optionButtons.forEach(btn => {
       btn.classList.remove('selected', 'disabled');
       const choiceAttr = btn.getAttribute('data-choice');
@@ -310,7 +305,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       }
     });
 
-  
     const dots = document.querySelectorAll('.progress-dot');
     dots.forEach((dot, dIdx) => {
       if (dIdx <= index) dot.classList.add('active');
@@ -320,21 +314,17 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 
   optionButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-     
       if (button.classList.contains('disabled')) return;
 
       const selectedChoice = button.getAttribute('data-choice');
       button.classList.add('selected');
-
       
       optionButtons.forEach(btn => btn.classList.add('disabled'));
 
-     
       if (selectedChoice === 'B' || selectedChoice === 'C') {
         scarcityScore++;
       }
 
-    
       if (feedbackText && feedbackBox) {
         feedbackText.textContent = quizData[currentQuestionIndex].signal;
         feedbackBox.classList.add('visible');
@@ -344,18 +334,15 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     });
   });
 
-
   nextBtn?.addEventListener('click', () => {
     currentQuestionIndex++;
     loadQuestion(currentQuestionIndex);
   });
 
- 
   function showResults() {
     gameplayScreen?.classList.remove('active');
     resultsScreen?.classList.add('active');
 
- 
     let targetedTier = 'abundance';
     if (scarcityScore >= 3 && scarcityScore <= 5) targetedTier = 'selective';
     else if (scarcityScore >= 6 && scarcityScore <= 8) targetedTier = 'dominant';
@@ -378,13 +365,23 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
-    background-color: #FEF4EF; 
+    background: linear-gradient(180deg, #FEF4EF 0%, #F8DFD4 50%, #EDC5BB 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: calc(5rem + 80px) 2rem 6rem 2rem;
     position: relative;
     overflow-x: hidden;
+  }
+.quiz-page-container::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    opacity: 0.025; 
+    pointer-events: none;
+    z-index: 5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='silk'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23silk)'/%3E%3C/svg%3E");
   }
 
   .quiz-screen {
@@ -464,7 +461,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     font-weight: 600;
   }
 
- 
   .quiz-action-btn {
     background-color: var(--coral);
     border: 1px solid var(--coral);
@@ -485,7 +481,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     box-shadow: 0 10px 30px rgba(89, 54, 58, 0.15);
   }
 
-  
   .intro-bg-lines {
     position: absolute;
     top: 0;
@@ -508,7 +503,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   }
   .intro-bg-lines span:nth-child(even) { width: 85%; margin-left: auto; }
 
- 
   .quiz-top-bar {
     display: flex;
     justify-content: space-between;
@@ -592,7 +586,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     flex-shrink: 0;
   }
 
-
   .type-a .option-badge { background-color: #FEF08A; } 
   .type-b .option-badge { background-color: #FFCFDF; } 
   .type-c .option-badge { background-color: #F3E8FF; } 
@@ -613,7 +606,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     opacity: 0.5;
     cursor: not-allowed;
   }
-
 
   .scarcity-signal-panel {
     display: none;
@@ -730,7 +722,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     color: #4A4A4A;
   }
 
-  /* Active Result Selection Highlighters */
   .tier-card.highlighted {
     transform: scale(1.02);
     box-shadow: 0 20px 40px rgba(89, 54, 58, 0.12);
@@ -806,7 +797,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   .shift-to {
     font-family: var(--font-sans);
     font-size: 1rem;
-    color: #2E5236; /* Clean deep execution green */
+    color: #2E5236; 
     background-color: #EAF4EC;
     padding: 1rem 1.5rem;
     font-weight: 500;
