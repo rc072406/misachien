@@ -4,148 +4,174 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 ---
 
 <BaseLayout title="Scarcity Mindset Quiz | Misa Chien">
-  <main class="quiz-page-container" data-theme="start" >
+  <main class="quiz-page-container">
     
-    <div id="quiz-intro" class="quiz-screen active">
-   
-      <div class="intro-content reveal-on-scroll">
-        <h1 class="intro-title">QUIZ TIME</h1>
-        <p class="intro-subtitle">Do you have a scarcity mindset?</p>
-        <p class="intro-description">
-          Answer honestly. No one's grading you — <br />
-          except your own nervous system.
-        </p>
-        <div class="intro-meta-pill">
-          <span>10 questions</span>
-          <span class="dot-separator">•</span>
-          <span>No need to count</span>
-          <span class="dot-separator">•</span>
-          <span>Score at the end</span>
-        </div>
-        <button id="start-quiz-btn" class="btn-filled">
-          <span>Start The Assessment</span>
-        </button>
+    <div id="quiz-intro" class="quiz-screen active" data-theme="start">
+      <div class="coaching-hero-gradient">
+        <section class="coaching-hero">
+          <span class="subtitle">Do you have a scarcity mindset?</span>
+          <h1 class="main-title">
+            QUIZ <span class="serif-italic">TIME</span>
+          </h1>
+          <p class="hero-intro">
+            Answer honestly. No one's grading you — <br class="desktop-only" />
+            except your own nervous system.
+          </p>
+          
+          <div class="intro-meta-pill">
+            <span>10 questions</span>
+            <span class="dot-separator">•</span>
+            <span>No need to count</span>
+            <span class="dot-separator">•</span>
+            <span>Score at the end</span>
+          </div>
+
+          <div class="cta-wrapper">
+            <button id="start-quiz-btn" class="btn-filled">
+              <span>Start The Assessment</span>
+            </button>
+          </div>
+        </section>
       </div>
     </div>
 
-    <div id="quiz-gameplay" class="quiz-screen">
-      <div class="quiz-top-bar">
-        <span id="question-counter" class="counter-text">QUESTION 1 OF 10</span>
-        <div id="progress-dots" class="dots-container">
-        </div>
-      </div>
-
-      <div class="question-card-container">
-        <div id="question-text-box" class="question-prompt-box">
+    <div id="quiz-gameplay" class="quiz-screen" data-theme="light">
+      <section class="methodology-section">
+        <div class="quiz-header-bar">
+          <span id="question-counter" class="counter-text">QUESTION 1 OF 10</span>
+          <div class="progress-bar-track">
+            <div id="progress-bar-fill" class="progress-bar-fill"></div>
+          </div>
         </div>
 
-        <div class="options-wrapper">
-          <button class="option-row type-a" data-choice="A">
-            <span class="option-badge">A</span>
-            <p class="option-text"></p>
+        <div class="question-card-container">
+          <h2 id="question-text-box" class="section-heading"></h2>
+          
+          <div class="options-wrapper" id="options-container"></div>
+
+          <div id="scarcity-feedback-box" class="scarcity-signal-panel">
+            <span class="signal-highlight">💡 Scarcity signal:</span>
+            <p id="feedback-text" class="signal-desc"></p>
+          </div>
+        </div>
+
+        <div class="quiz-navigation">
+          <button id="next-question-btn" class="btn-filled hidden">
+            <span>Next Question</span>
           </button>
-          <button class="option-row type-b" data-choice="B">
-            <span class="option-badge">B</span>
-            <p class="option-text"></p>
-          </button>
-          <button class="option-row type-c" data-choice="C">
-            <span class="option-badge">C</span>
-            <p class="option-text"></p>
-          </button>
         </div>
-
-        <div id="scarcity-feedback-box" class="scarcity-signal-panel">
-          <span class="signal-highlight">💡 Scarcity signal:</span>
-          <p id="feedback-text" class="signal-desc"></p>
-        </div>
-      </div>
-
-      <div class="quiz-navigation">
-        <button id="next-question-btn" class="quiz-action-btn hidden">
-          <span>Next Question</span>
-        </button>
-      </div>
+      </section>
     </div>
 
-    <div id="quiz-results" class="quiz-screen">
-      <div class="results-inner-container">
-        <h2 class="results-title">HOW DID YOU SCORE?</h2>
-        <p class="results-meta">Reflect on how many B or C answers you chose.</p>
+    <div id="quiz-results" class="quiz-screen" data-theme="dark">
+      <section class="tracks-section">
+        <div class="tracks-container">
+          
+          <div class="tracks-header">
+            <h2 class="tracks-main-heading">HOW DID YOU <span class="serif-italic">SCORE?</span></h2>
+            <p class="results-meta">Reflect on how many B or C answers you chose.</p>
+          </div>
 
-        <div class="score-tiers-stack">
-          <div class="tier-card tier-0-2" data-tier="abundance">
-            <div class="tier-score-badge">0–2</div>
-            <div class="tier-details">
-              <h3>Abundance Oriented</h3>
-              <p>You've largely broken free. Stay conscious — it can creep back under stress.</p>
+          <div class="tracks-grid visual-tiers-grid">
+            
+            <div class="track-card tier-card" id="tier-abundance" data-tier="abundance">
+              <div class="track-meta">
+                <span class="track-num">SCORE RANGE 0–2</span>
+                <h3 class="track-title">Abundance Oriented</h3>
+              </div>
+              <div class="track-body">
+                <div class="track-line"></div>
+                <p class="track-desc">
+                  You've largely broken free. Stay conscious — it can creep back under stress.
+                </p>
+              </div>
+            </div>
+
+            <div class="track-card tier-card" id="tier-selective" data-tier="selective">
+              <div class="track-meta">
+                <span class="track-num">SCORE RANGE 3–5</span>
+                <h3 class="track-title">Selective Scarcity</h3>
+              </div>
+              <div class="track-body">
+                <div class="track-line"></div>
+                <p class="track-desc">
+                  You have pockets of scarcity thinking. Great self-awareness potential here.
+                </p>
+              </div>
+            </div>
+
+            <div class="track-card tier-card" id="tier-dominant" data-tier="dominant">
+              <div class="track-meta">
+                <span class="track-num">SCORE RANGE 6–8</span>
+                <h3 class="track-title">Scarcity Dominant</h3>
+              </div>
+              <div class="track-body">
+                <div class="track-line"></div>
+                <p class="track-desc">
+                  It's running much of your decision-making. This is the work to do.
+                </p>
+              </div>
+            </div>
+
+            <div class="track-card tier-card" id="tier-survival" data-tier="survival">
+              <div class="track-meta">
+                <span class="track-num">SCORE RANGE 9–10</span>
+                <h3 class="track-title">Deep Survival Mode</h3>
+              </div>
+              <div class="track-body">
+                <div class="track-line"></div>
+                <p class="track-desc">
+                  You're still protecting a version of yourself that no longer needs protecting. Healing is possible.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <p class="verdict-footer">Every point is a doorway, not a verdict.</p>
+
+          <div class="matrix-anchor-wrapper">
+            <div class="transformation-matrix">
+              <div class="matrix-header">BREAKING FREE: FROM SCARCITY TO ABUNDANCE</div>
+              <div class="matrix-body">
+                <div class="matrix-row trigger-row">
+                  <div class="shift-from">"My work speaks for itself"</div>
+                  <div class="shift-arrow">→</div>
+                  <div class="shift-to">Make your work visible. Advocate for yourself.</div>
+                </div>
+                <div class="matrix-row trigger-row">
+                  <div class="shift-from">"That coach is too expensive"</div>
+                  <div class="shift-arrow">→</div>
+                  <div class="shift-to">Ask: what is NOT investing actually costing me?</div>
+                </div>
+                <div class="matrix-row trigger-row">
+                  <div class="shift-from">"I can't take that risk"</div>
+                  <div class="shift-arrow">→</div>
+                  <div class="shift-to">Reframe: what is the cost of NOT taking it?</div>
+                </div>
+                <div class="matrix-row trigger-row">
+                  <div class="shift-from">"There's only one seat for us"</div>
+                  <div class="shift-arrow">→</div>
+                  <div class="shift-to">Lift as you climb. Build tables, not queues.</div>
+                </div>
+                <div class="matrix-row trigger-row">
+                  <div class="shift-from">"I must be practical"</div>
+                  <div class="shift-arrow">→</div>
+                  <div class="shift-to">Passion and mission are also valid currencies.</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="tier-card tier-3-5" data-tier="selective">
-            <div class="tier-score-badge">3–5</div>
-            <div class="tier-details">
-              <h3>Selective Scarcity</h3>
-              <p>You have pockets of scarcity thinking. Great self-awareness potential here.</p>
-            </div>
+          <div class="funnel-coaching-cta">
+            <p class="funnel-accent-text">Ready to reprogram your unconscious frameworks?</p>
+            <a href={`${import.meta.env.BASE_URL}/coaching`} class="btn-filled">
+              <span>Yes I am</span>
+            </a>
           </div>
 
-          <div class="tier-card tier-6-8" data-tier="dominant">
-            <div class="tier-score-badge">6–8</div>
-            <div class="tier-details">
-              <h3>Scarcity Dominant</h3>
-              <p>It's running much of your decision-making. This is the work to do.</p>
-            </div>
-          </div>
-
-          <div class="tier-card tier-9-10" data-tier="survival">
-            <div class="tier-score-badge">9–10</div>
-            <div class="tier-details">
-              <h3>Deep Survival Mode</h3>
-              <p>You're still protecting a version of yourself that no longer needs protecting. Healing is possible.</p>
-            </div>
-          </div>
         </div>
-
-        <p class="verdict-footer">Every point is a doorway, not a verdict.</p>
-
-        <div class="transformation-matrix">
-          <div class="matrix-header">BREAKING FREE: FROM SCARCITY TO ABUNDANCE</div>
-          <div class="matrix-body">
-            <div class="matrix-row">
-              <div class="shift-from">"My work speaks for itself"</div>
-              <div class="shift-arrow">→</div>
-              <div class="shift-to">Make your work visible. Advocate for yourself.</div>
-            </div>
-            <div class="matrix-row">
-              <div class="shift-from">"That coach is too expensive"</div>
-              <div class="shift-arrow">→</div>
-              <div class="shift-to">Ask: what is NOT investing actually costing me?</div>
-            </div>
-            <div class="matrix-row">
-              <div class="shift-from">"I can't take that risk"</div>
-              <div class="shift-arrow">→</div>
-              <div class="shift-to">Reframe: what is the cost of NOT taking it?</div>
-            </div>
-            <div class="matrix-row">
-              <div class="shift-from">"There's only one seat for us"</div>
-              <div class="shift-arrow">→</div>
-              <div class="shift-to">Lift as you climb. Build tables, not queues.</div>
-            </div>
-            <div class="matrix-row">
-              <div class="shift-from">"I must be practical"</div>
-              <div class="shift-arrow">→</div>
-              <div class="shift-to">Passion and mission are also valid currencies.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="funnel-coaching-cta">
-          <p class="funnel-accent-text">Ready to reprogram your unconscious frameworks?</p>
-          <a href={`${import.meta.env.BASE_URL}/coaching`} class="btn-filled">
-            <span>Yes I am</span>
-          </a>
-        </div>
-      </div>
+      </section>
     </div>
 
   </main>
@@ -153,6 +179,11 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 </BaseLayout>
 
 <script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
   const quizData = [
     {
       question: "You need to park downtown for an important meeting. There's a $9 lot right next to the building. What do you do?",
@@ -249,36 +280,32 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   let currentQuestionIndex = 0;
   let scarcityScore = 0;
 
-  // DOM Elements Selector References
   const introScreen = document.getElementById('quiz-intro');
   const gameplayScreen = document.getElementById('quiz-gameplay');
   const resultsScreen = document.getElementById('quiz-results');
   const startBtn = document.getElementById('start-quiz-btn');
   const nextBtn = document.getElementById('next-question-btn');
   const counterText = document.getElementById('question-counter');
-  const progressDotsContainer = document.getElementById('progress-dots');
+  const progressBarFill = document.getElementById('progress-bar-fill');
   const questionTextBox = document.getElementById('question-text-box');
+  const optionsContainer = document.getElementById('options-container');
   const feedbackBox = document.getElementById('scarcity-feedback-box');
   const feedbackText = document.getElementById('feedback-text');
-  const optionButtons = document.querySelectorAll('.option-row');
 
-  // Start Assessment Handler
   startBtn?.addEventListener('click', () => {
-    introScreen?.classList.remove('active');
-    gameplayScreen?.classList.add('active');
-    buildProgressDots();
-    loadQuestion(currentQuestionIndex);
-  });
-
-  function buildProgressDots() {
-    if (!progressDotsContainer) return;
-    progressDotsContainer.innerHTML = '';
-    quizData.forEach((_, index) => {
-      const dot = document.createElement('span');
-      dot.className = `progress-dot ${index === 0 ? 'active' : ''}`;
-      progressDotsContainer.appendChild(dot);
+    gsap.to('#quiz-intro', {
+      opacity: 0,
+      y: -30,
+      duration: 0.6,
+      ease: 'power3.inOut',
+      onComplete: () => {
+        introScreen?.classList.remove('active');
+        gameplayScreen?.classList.add('active');
+        gsap.fromTo('#quiz-gameplay', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+        loadQuestion(currentQuestionIndex);
+      }
     });
-  }
+  });
 
   function loadQuestion(index) {
     if (index >= quizData.length) {
@@ -286,72 +313,124 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       return;
     }
 
-    feedbackBox?.classList.remove('visible');
+    if (feedbackBox) feedbackBox.style.display = 'none';
     nextBtn?.classList.add('hidden');
 
     const currentData = quizData[index];
     if (counterText) counterText.textContent = `QUESTION ${index + 1} OF ${quizData.length}`;
     if (questionTextBox) questionTextBox.textContent = currentData.question;
+    
+    if (progressBarFill) {
+      const percentage = ((index) / quizData.length) * 100;
+      gsap.to(progressBarFill, { width: `${percentage}%`, duration: 0.4, ease: 'power2.out' });
+    }
 
-    optionButtons.forEach(btn => {
-      btn.classList.remove('selected', 'disabled');
-      const choiceAttr = btn.getAttribute('data-choice');
-      const textNode = btn.querySelector('.option-text');
-      if (textNode && choiceAttr) {
-        textNode.textContent = currentData.choices[choiceAttr];
-      }
-    });
+    if (optionsContainer) {
+      optionsContainer.innerHTML = '';
+      Object.entries(currentData.choices).forEach(([choiceKey, choiceValue]) => {
+        const row = document.createElement('button');
+        row.className = `option-row variant-${choiceKey.toLowerCase()}`;
+        row.setAttribute('data-choice', choiceKey);
+        row.innerHTML = `
+          <span class="option-badge">${choiceKey}</span>
+          <p class="option-text">${choiceValue}</p>
+        `;
+        row.addEventListener('click', () => selectChoice(row, choiceKey));
+        optionsContainer.appendChild(row);
+      });
 
-    const dots = document.querySelectorAll('.progress-dot');
-    dots.forEach((dot, dIdx) => {
-      if (dIdx <= index) dot.classList.add('active');
-      else dot.classList.remove('active');
-    });
+      gsap.fromTo('.option-row', 
+        { opacity: 0, x: -15 }, 
+        { opacity: 1, x: 0, stagger: 0.08, duration: 0.4, ease: 'power3.out' }
+      );
+    }
   }
 
-  optionButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      if (button.classList.contains('disabled')) return;
+  function selectChoice(selectedRow, choiceKey) {
+    const allRows = document.querySelectorAll('.option-row');
+    if (allRows[0].classList.contains('disabled')) return;
 
-      const selectedChoice = button.getAttribute('data-choice');
-      button.classList.add('selected');
-      
-      optionButtons.forEach(btn => btn.classList.add('disabled'));
+    selectedRow.classList.add('selected');
+    allRows.forEach(row => row.classList.add('disabled'));
 
-      if (selectedChoice === 'B' || selectedChoice === 'C') {
-        scarcityScore++;
-      }
+    if (choiceKey === 'B' || choiceKey === 'C') {
+      scarcityScore++;
+    }
 
-      if (feedbackText && feedbackBox) {
-        feedbackText.textContent = quizData[currentQuestionIndex].signal;
-        feedbackBox.classList.add('visible');
-      }
+    if (feedbackText && feedbackBox) {
+      feedbackText.textContent = quizData[currentQuestionIndex].signal;
+      feedbackBox.style.display = 'flex';
+      gsap.fromTo(feedbackBox, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 });
+    }
 
-      nextBtn?.classList.remove('hidden');
-    });
-  });
+    nextBtn?.classList.remove('hidden');
+    gsap.fromTo(nextBtn, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.3 });
+  }
 
   nextBtn?.addEventListener('click', () => {
-    currentQuestionIndex++;
-    loadQuestion(currentQuestionIndex);
+    gsap.to('.question-card-container', {
+      opacity: 0,
+      x: 20,
+      duration: 0.3,
+      ease: 'power3.in',
+      onComplete: () => {
+        currentQuestionIndex++;
+        loadQuestion(currentQuestionIndex);
+        gsap.fromTo('.question-card-container', { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.4, ease: 'power3.out' });
+      }
+    });
   });
 
   function showResults() {
-    gameplayScreen?.classList.remove('active');
-    resultsScreen?.classList.add('active');
+    if (progressBarFill) {
+      gsap.to(progressBarFill, { width: '100%', duration: 0.3 });
+    }
 
-    let targetedTier = 'abundance';
-    if (scarcityScore >= 3 && scarcityScore <= 5) targetedTier = 'selective';
-    else if (scarcityScore >= 6 && scarcityScore <= 8) targetedTier = 'dominant';
-    else if (scarcityScore >= 9) targetedTier = 'survival';
+    gsap.to('#quiz-gameplay', {
+      opacity: 0,
+      y: -30,
+      duration: 0.6,
+      ease: 'power3.inOut',
+      onComplete: () => {
+        gameplayScreen?.classList.remove('active');
+        resultsScreen?.classList.add('active');
+        
+        gsap.fromTo('#quiz-results', { opacity: 0 }, { opacity: 1, duration: 0.6 });
 
-    const cards = document.querySelectorAll('.tier-card');
-    cards.forEach(card => {
-      if (card.getAttribute('data-tier') === targetedTier) {
-        card.classList.add('highlighted');
-        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        card.classList.add('dimmed');
+        let targetedTier = 'abundance';
+        if (scarcityScore >= 3 && scarcityScore <= 5) targetedTier = 'selective';
+        else if (scarcityScore >= 6 && scarcityScore <= 8) targetedTier = 'dominant';
+        else if (scarcityScore >= 9) targetedTier = 'survival';
+
+        const cards = document.querySelectorAll('.tier-card');
+        cards.forEach(card => {
+          if (card.getAttribute('data-tier') === targetedTier) {
+            card.classList.add('highlighted');
+          } else {
+            card.classList.add('dimmed');
+          }
+        });
+
+        gsap.fromTo('.tier-card', 
+          { opacity: 0, y: 40 }, 
+          { opacity: 1, y: 0, stagger: 0.15, duration: 0.8, ease: 'power4.out' }
+        );
+
+        gsap.utils.toArray('.trigger-row').forEach((row: any) => {
+          gsap.fromTo(row, 
+            { opacity: 0, y: 25 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              scrollTrigger: {
+                trigger: row,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
       }
     });
   }
@@ -362,6 +441,13 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
+    background-color: var(--white);
+  }
+
+  .coaching-hero-gradient {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
     background: linear-gradient(
       to right, 
       #59363A 0%, 
@@ -372,14 +458,14 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       #FEF4EF 58%, 
       #FEF4EF 100%
     );
+    padding: calc(7rem + 80px) 4rem 8rem 4rem; 
+    box-sizing: border-box;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: calc(5rem + 80px) 2rem 6rem 2rem;
-    position: relative;
-    overflow-x: hidden;
   }
-.quiz-page-container::before {
+
+  .coaching-hero-gradient::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -390,65 +476,49 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='silk'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23silk)'/%3E%3C/svg%3E");
   }
 
-  .quiz-screen {
-    display: none;
-    width: 100%;
-    max-width: 900px;
+  .coaching-hero {
+    max-width: 1200px;
     margin: 0 auto;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--white);
+    width: 100%;
   }
 
-  .quiz-screen.active {
+  .subtitle {
+    font-family: 'Tenor Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8); 
     display: block;
-    opacity: 1;
-    transform: translateY(0);
+    margin-bottom: 1.5rem;
   }
 
-  /* --- INTRO DISPLAY CARD PANELS --- */
-  #quiz-intro {
-    text-align: center;
-    padding: 6rem 4rem;
-    position: relative;
-  }
-#quiz-intro .btn-filled {
-  display: inline-block;
-  align-self: center;
-  width: auto;
-  text-align: center;
-}
-
-  .intro-content {
-    position: relative;
-    z-index: 2;
-  }
-
-  .intro-title {
-    font-family: var(--font-logo);
-    font-size: 5.5rem;
-    font-weight: 600;
-    letter-spacing: 4px;
+  .main-title {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin: 0 0 2rem 0;
     color: var(--coral);
-    margin-bottom: 1rem;
-    line-height: 1;
   }
 
-  .intro-subtitle {
+  .serif-italic {
     font-family: 'GF Didot', serif;
     font-style: italic;
-    font-size: 2.2rem;
-    color: var(--white);
-    margin-bottom: 3rem;
+    text-transform: none; 
+    color: #DFCDC9; 
   }
 
-  .intro-description {
-    font-family: var(--font-sans);
+  .hero-intro {
+    font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 1.25rem;
     line-height: 1.8;
-    color: var(--burgundy);
-    opacity: 0.85;
+    max-width: 600px;
+    color: var(--white);
+    opacity: 0.9;
     margin-bottom: 3.5rem;
   }
 
@@ -457,15 +527,15 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     align-items: center;
     justify-content: center;
     gap: 1.25rem;
-    background-color: var(--burgundy);
+    background-color: rgba(89, 54, 58, 0.9);
     padding: 1rem 2rem;
     color: var(--white);
-    font-family: var(--font-sans);
+    font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
     font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 4rem;
-    border-radius: 0; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .dot-separator {
@@ -473,79 +543,92 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     font-weight: 600;
   }
 
-  .quiz-action-btn {
+  .btn-filled {
+    display: inline-block;
     background-color: var(--coral);
-    border: 1px solid var(--coral);
     color: var(--white);
     padding: 1.25rem 3.5rem;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.15em;
+    text-decoration: none;
+    font-family: 'Tenor Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     font-size: 0.9rem;
+    border: 1px solid var(--coral);
     cursor: pointer;
-    display: inline-block;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease;
   }
 
-  .quiz-action-btn:hover {
+  .btn-filled:hover {
     background-color: var(--burgundy);
     border-color: var(--burgundy);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(89, 54, 58, 0.15);
+    transform: translateY(-4px);
   }
 
+  .quiz-screen {
+    display: none;
+  }
 
+  .quiz-screen.active {
+    display: block;
+  }
 
-  .quiz-top-bar {
+  .methodology-section {
+    width: 100%;
+    background-color: #FEF4EF; 
+    padding: 8rem 4rem;
+    box-sizing: border-box;
+    min-height: 100vh;
+  }
+
+  .quiz-header-bar {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(89, 54, 58, 0.1);
-    padding-bottom: 1.5rem;
-    margin-bottom: 3rem;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .counter-text {
-    font-family: var(--font-display);
+    font-family: 'Tenor Sans', sans-serif;
     font-size: 0.85rem;
     letter-spacing: 2px;
-    color: #FEF4EF;
-    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--coral);
+    display: block;
   }
 
-  .dots-container {
-    display: flex;
-    gap: 0.5rem;
+  .progress-bar-track {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(89, 54, 58, 0.1);
   }
 
-  .progress-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(89, 54, 58, 0.15);
-    transition: background-color 0.3s ease;
-  }
-
-  .progress-dot.active {
+  .progress-bar-fill {
+    width: 0%;
+    height: 100%;
     background-color: var(--coral);
   }
 
-  .question-prompt-box {
-    background-color: #EAC9C1; 
-    border-left: 4px solid var(--coral);
-    padding: 3rem;
-    font-family: var(--font-sans);
-    font-size: 1.5rem;
-    line-height: 1.5;
+  .question-card-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .methodology-section .section-heading {
     color: var(--burgundy);
-    font-weight: 500;
-    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    line-height: 1.4;
+    text-transform: none;
+    font-family: 'Tenor Sans', sans-serif;
+    font-weight: 400;
+    margin-bottom: 3.5rem;
   }
 
   .options-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
   }
 
   .option-row {
@@ -557,203 +640,223 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     cursor: pointer;
     text-align: left;
     width: 100%;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.4s ease;
   }
 
   .option-row:not(.disabled):hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 20px rgba(89, 54, 58, 0.05);
+    transform: translateX(8px);
+    border-color: rgba(231, 120, 96, 0.4);
+    box-shadow: 0 10px 30px rgba(89, 54, 58, 0.04);
   }
 
   .option-badge {
-    width: 60px;
-    height: 70px;
+    width: 65px;
+    height: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: var(--font-display);
-    font-weight: 600;
-    color: var(--white);
+    font-family: 'Tenor Sans', sans-serif;
+    font-weight: 400;
+    color: var(--burgundy);
     font-size: 1.1rem;
     flex-shrink: 0;
+    border-right: 1px solid rgba(89, 54, 58, 0.05);
+    background-color: rgba(89, 54, 58, 0.02);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 
-  .type-a .option-badge { background-color: #FEF08A; } 
-  .type-b .option-badge { background-color: #FFCFDF; } 
-  .type-c .option-badge { background-color: #F3E8FF; } 
-
   .option-text {
-    padding: 1rem 2rem;
-    font-family: var(--font-sans);
+    padding: 1rem 2.5rem;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.05rem;
     font-weight: 300;
-    color: #2D2D2D;
-    line-height: 1.5;
+    color: var(--burgundy);
+    line-height: 1.6;
   }
 
   .option-row.selected {
-    border: 2px solid var(--burgundy);
+    border-color: var(--burgundy);
+    background-color: #F4DFDB;
   }
+
+  .option-row.selected .option-badge {
+    background-color: var(--burgundy);
+    color: var(--white);
+    border-color: var(--burgundy);
+  }
+
   .option-row.disabled:not(.selected) {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
   }
 
   .scarcity-signal-panel {
     display: none;
-    background-color: #F4DFDB;
-    padding: 1.5rem 2rem;
-    border: 1px solid rgba(89, 54, 58, 0.05);
-    margin-bottom: 2.5rem;
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.6;
+    background-color: var(--white);
+    border-left: 3px solid var(--coral);
+    padding: 2rem 2.5rem;
+    margin-bottom: 3.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
     color: var(--burgundy);
-  }
-
-  .scarcity-signal-panel.visible {
-    display: flex;
-    gap: 0.5rem;
-    animation: fadeIn 0.4s ease forwards;
+    flex-direction: column;
+    gap: 0.25rem;
+    box-shadow: 0 15px 40px rgba(89, 54, 58, 0.03);
   }
 
   .signal-highlight {
-    font-weight: 600;
-    white-space: nowrap;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--coral);
   }
 
   .signal-desc {
     font-weight: 300;
+    opacity: 0.9;
   }
 
   .quiz-navigation {
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
     justify-content: flex-end;
   }
 
-  .quiz-action-btn.hidden {
+  .btn-filled.hidden {
     display: none;
   }
 
-  /* --- RESULTS & CONVERSION STATE --- */
-  .results-inner-container {
-    max-width: 800px;
+  .tracks-section {
+    width: 100%;
+    background-color: var(--burgundy);
+    padding: 10rem 4rem;
+    box-sizing: border-box;
+    color: var(--white);
+  }
+
+  .tracks-container {
+    max-width: 1200px;
     margin: 0 auto;
   }
 
-  .results-title {
-    font-family: var(--font-display);
-    font-size: 3rem;
+  .tracks-header {
     text-align: center;
-    color: var(--coral);
-    margin-bottom: 0.5rem;
-    letter-spacing: 2px;
+    margin-bottom: 6rem;
+  }
+
+  .tracks-main-heading {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 3rem;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
   }
 
   .results-meta {
-    font-family: var(--font-sans);
-    font-style: italic;
+    font-family: 'Poppins', sans-serif;
     font-weight: 300;
-    text-align: center;
-    color: var(--white);
-    opacity: 0.8;
-    margin-bottom: 4rem;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 1rem;
   }
 
-  .score-tiers-stack {
+  .tracks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .track-card {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 4rem 3.5rem;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 2.5rem;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background-color 0.4s ease, opacity 0.6s ease;
+  }
+
+  .track-card.highlighted {
+    border-color: var(--coral);
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  .track-card.highlighted .track-title {
+    color: var(--coral);
+  }
+
+  .track-card.dimmed {
+    opacity: 0.3;
+  }
+
+  .track-num {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--coral);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .track-title {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .track-line {
+    width: 40px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
     margin-bottom: 2rem;
   }
 
-  .tier-card {
-    background-color: var(--white);
-    border: 1px solid rgba(89, 54, 58, 0.08);
-    display: flex;
-    align-items: stretch;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .tier-score-badge {
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--white);
-    flex-shrink: 0;
-  }
-
-  .tier-0-2 .tier-score-badge { background-color: #3B6643; }
-  .tier-3-5 .tier-score-badge { background-color: #A36A20; }
-  .tier-6-8 .tier-score-badge { background-color: #9E4331; }
-  .tier-9-10 .tier-score-badge { background-color: #8C2D2D; }
-
-  .tier-details {
-    padding: 2rem 2.5rem;
-  }
-
-  .tier-details h3 {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-    color: var(--white);
-  }
-  .tier-card:not(.highlighted) .tier-details h3 {
-    color: var(--burgundy);
-  }
-
-  .tier-details p {
-    font-family: var(--font-sans);
+  .track-desc {
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
+    line-height: 1.7;
     font-weight: 300;
-    line-height: 1.6;
-    color: #4A4A4A;
-  }
-
-  .tier-card.highlighted {
-    transform: scale(1.02);
-    box-shadow: 0 20px 40px rgba(89, 54, 58, 0.12);
-    border-color: var(--burgundy);
-  }
-  .tier-card.highlighted.tier-0-2 { background-color: rgba(59, 102, 67, 0.08); }
-  .tier-card.highlighted.tier-3-5 { background-color: rgba(163, 106, 32, 0.08); }
-  .tier-card.highlighted.tier-6-8 { background-color: rgba(158, 67, 49, 0.08); }
-  .tier-card.highlighted.tier-9-10 { background-color: rgba(140, 45, 45, 0.08); }
-
-  .tier-card.dimmed {
-    opacity: 0.4;
+    opacity: 0.85;
   }
 
   .verdict-footer {
     font-family: 'GF Didot', serif;
     font-style: italic;
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     text-align: center;
-    color: var(--burgundy);
-    margin-top: 2.5rem;
+    color: #DFCDC9;
+    margin-top: 5rem;
     margin-bottom: 5rem;
   }
 
-  /* --- SHIFT MATRIX GRID TABLE --- */
+  .matrix-anchor-wrapper {
+    margin-top: 8rem;
+  }
+
   .transformation-matrix {
-    background-color: var(--white);
-    border: 1px solid rgba(89, 54, 58, 0.08);
-    margin-bottom: 6rem;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .matrix-header {
     background-color: var(--coral);
     color: var(--white);
-    font-family: var(--font-display);
+    font-family: 'Tenor Sans', sans-serif;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 2px;
-    padding: 1.25rem 2rem;
+    padding: 1.5rem 3rem;
     text-align: left;
+    text-transform: uppercase;
   }
 
   .matrix-body {
@@ -765,54 +868,55 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     display: grid;
     grid-template-columns: 1fr 40px 1.2fr;
     align-items: center;
-    border-bottom: 1px solid rgba(89, 54, 58, 0.05);
-    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 2.5rem 3rem;
+    gap: 2rem;
   }
-  .matrix-row:last-child { border-bottom: none; }
+
+  .matrix-row:last-child {
+    border-bottom: none;
+  }
 
   .shift-from {
     font-family: 'GF Didot', serif;
     font-style: italic;
     font-size: 1.15rem;
-    color: var(--burgundy);
-    background-color: #F4DFDB;
-    padding: 1rem 1.5rem;
+    color: #DFCDC9;
+    line-height: 1.6;
+    opacity: 0.8;
   }
 
   .shift-arrow {
     text-align: center;
     color: var(--coral);
-    font-weight: 600;
-    font-size: 1.2rem;
+    font-weight: 400;
+    font-size: 1.4rem;
+    font-family: 'Tenor Sans', sans-serif;
   }
 
   .shift-to {
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    color: #2E5236; 
-    background-color: #EAF4EC;
-    padding: 1rem 1.5rem;
-    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    color: var(--white);
+    line-height: 1.6;
+    font-weight: 300;
   }
 
-  /* --- CONVERSION CTAs FUNNEL ELEMENT --- */
   .funnel-coaching-cta {
-    background-color: var(--burgundy);
-    padding: 5rem 4rem;
+    margin-top: 8rem;
     text-align: center;
-    color: var(--white);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2.5rem;
-    box-shadow: 0 30px 60px rgba(89, 54, 58, 0.15);
   }
-.funnel-coaching-cta .btn-filled {
-  display: inline-block;
-  align-self: center;
-  width: auto;
-  text-align: center;
-}
+
+  .funnel-coaching-cta .btn-filled {
+    display: inline-block;
+    align-self: center;
+    text-align: center;
+    width: auto; 
+  }
 
   .funnel-accent-text {
     font-family: 'GF Didot', serif;
@@ -823,17 +927,13 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     line-height: 1.4;
   }
 
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  .desktop-only {
+    display: block;
   }
 
-  /* --- RESPONSIVE MEDIA BREAKPOINTS --- */
   @media (max-width: 820px) {
-    .quiz-page-container {
-      padding: calc(4rem + 70px) 1rem 4rem 1rem;
- background: linear-gradient(
+    .coaching-hero-gradient {
+      background: linear-gradient(
         to bottom, 
         #59363A 0%, 
         #59363A 22%, 
@@ -843,19 +943,24 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
         #FEF4EF 85%, 
         #FEF4EF 100%
       );
+      padding: calc(5rem + 70px) 1.5rem 6rem 1.5rem;
     }
 
-    #quiz-intro {
-      padding: 3rem 1rem;
+    .desktop-only {
+      display: none;
     }
 
-    .intro-title {
-      font-size: 3.5rem;
+    .coaching-hero {
+      text-align: center;
     }
 
-    .intro-subtitle {
-      font-size: 1.6rem;
-      margin-bottom: 2rem;
+    .main-title {
+      font-size: 3.25rem;
+    }
+
+    .hero-intro {
+      margin: 0 auto 2.5rem auto;
+      font-size: 1.05rem;
     }
 
     .intro-meta-pill {
@@ -863,61 +968,93 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       gap: 0.5rem;
       padding: 1.25rem;
       width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 3rem;
     }
-    .dot-separator { display: none; }
 
-    .question-prompt-box {
-      padding: 2rem 1.5rem;
-      font-size: 1.2rem;
+    .dot-separator {
+      display: none;
     }
-#quiz-intro .btn-filled,
-  .funnel-coaching-cta .btn-filled {
-    align-self: stretch;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-  }
+
+    .methodology-section {
+      padding: 5rem 1.5rem;
+    }
+
+    .quiz-header-bar {
+      margin-bottom: 3rem;
+    }
+
+    .methodology-section .section-heading {
+      font-size: 1.6rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
 
     .option-badge {
       width: 50px;
-      height: 60px;
+      height: 65px;
     }
+
     .option-text {
-      padding: 0.75rem 1.25rem;
+      padding: 1rem 1.5rem;
       font-size: 0.95rem;
+    }
+
+    .tracks-section {
+      padding: 6rem 1.5rem;
+    }
+
+    .tracks-header {
+      margin-bottom: 4rem;
+    }
+
+    .tracks-main-heading {
+      font-size: 2.25rem;
+    }
+
+    .tracks-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .track-card {
+      padding: 3rem 2rem;
+    }
+
+    .matrix-anchor-wrapper {
+      margin-top: 6rem;
+    }
+
+    .matrix-header {
+      padding: 1.25rem 1.5rem;
     }
 
     .matrix-row {
       grid-template-columns: 1fr;
       gap: 1rem;
-      padding: 2rem 1rem;
-    }
-    .shift-arrow {
-      transform: rotate(90deg);
-      margin: 0.25rem 0;
+      padding: 2rem 1.5rem;
+      text-align: center;
     }
 
-    .tier-card {
-      flex-direction: column;
-    }
-    .tier-score-badge {
-      width: 100%;
-      padding: 1rem 0;
-    }
-    .tier-details {
-      padding: 1.5rem;
+    .shift-arrow {
+      transform: rotate(90deg);
+      margin: 0.5rem 0;
     }
 
     .funnel-coaching-cta {
-      padding: 3rem 1.5rem;
+      margin-top: 6rem;
     }
+
     .funnel-accent-text {
       font-size: 1.5rem;
     }
-    .quiz-coaching-link {
+
+    .coaching-hero-gradient .cta-wrapper #start-quiz-btn,
+    .quiz-navigation #next-question-btn,
+    .funnel-coaching-cta .btn-filled {
+      display: block;
       width: 100%;
       box-sizing: border-box;
-      padding: 1.25rem 1rem;
     }
   }
 </style>
