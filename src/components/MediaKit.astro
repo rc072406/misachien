@@ -56,7 +56,7 @@ const { className = '' } = Astro.props;
           <div class="slide-content alt-column-panel">
             <div class="content-block-chunk">
               <h3 class="block-title-heading">BEST-FIT PARTNERSHIPS:</h3>
-              <p class="block-body-text">We partner with brands, teams, and organizers whose goals align with Misa’s values, audience, and voice.</p>
+              <p class="block-body-text">We partner with brands, teams, and organizers whose goals align with Misa's values, audience, and voice.</p>
             </div>
             <div class="content-block-chunk">
               <h3 class="block-title-heading">PREVIOUS PARTNERS:</h3>
@@ -165,7 +165,7 @@ const { className = '' } = Astro.props;
 
       <div class="swiper-slide" data-theme="light">
         <div class="disclaimer-header-strip-meta">
-          <p>* Brands may request specific platforms; final deliverables will be confirmed based on campaign fit and channel relevance. • Performance varies by content, timing, and platform behavior. • Reach is never guaranteed.</p>
+          <p>* Brands may request specific platforms; final deliverables will be confirmed based on campaign fit and channel relevance. • Performance varies by content, timing, and platform behavior.</p>
         </div>
         <div class="slide-inner grid-two-col legacy-content-top-spacing">
           <div class="slide-content scrollable-package-column">
@@ -196,7 +196,7 @@ const { className = '' } = Astro.props;
                 <h4>PLATFORM 3: NEWSLETTER</h4>
                 <span class="platform-box-subtitle-followers">(3,000+ Subscribers)</span>
               </div>
-              <p class="platform-analytics-data-metrics">Featured placement: $800 • Affiliate compensation is 20% of each attributed purchase if tracking link is included. May combine fixed placement fees with revenue share depending on scope.</p>
+              <p class="platform-analytics-data-metrics">Featured placement: $800 • Affiliate compensation is 20% of each attributed purchase if tracking link is included. May combine fixed placement with affiliate structure.</p>
             </div>
           </div>
 
@@ -353,32 +353,47 @@ const { className = '' } = Astro.props;
 </div>
 
 <script>
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+  
   import Swiper from 'swiper';
   import { Navigation, Pagination, Keyboard, Mousewheel } from 'swiper/modules';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    new Swiper('.mediaKitSwiper', {
-      modules: [Navigation, Pagination, Keyboard, Mousewheel],
-      direction: 'horizontal',
-      loop: false,
-      speed: 700,
-      mousewheel: {
-        forceToAxis: true,
-      },
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  });
+  const initSwiper = () => {
+    const swiperEl = document.querySelector('.mediaKitSwiper');
+    if (swiperEl && !swiperEl.swiper) {
+      new Swiper('.mediaKitSwiper', {
+        modules: [Navigation, Pagination, Keyboard, Mousewheel],
+        direction: 'horizontal',
+        loop: false,
+        speed: 700,
+        mousewheel: {
+          forceToAxis: true,
+        },
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    }
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSwiper);
+  } else {
+    initSwiper();
+  }
+
+  setTimeout(initSwiper, 100);
 </script>
 
 <style>
@@ -940,7 +955,7 @@ const { className = '' } = Astro.props;
 
   /* BUNDLED OFFERS DESIGN MODULE MATRIX */
   .bundle-sticky-column {
-    position: style;
+    position: sticky;
     top: 4rem;
   }
 
@@ -1002,45 +1017,43 @@ const { className = '' } = Astro.props;
 
   .gifting-subtitle-subtext {
     font-family: var(--font-sans);
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 1rem;
+    font-style: italic;
     color: var(--coral);
-    margin-top: -1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .gifting-notes-box-layout {
+    margin-top: 2.5rem;
   }
 
   .max-width-optimized-center {
+    max-width: 680px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .gifting-notes-box-layout {
-    background-color: var(--cream-background);
-    padding: 2.5rem;
-    margin-top: 3rem;
-    border: 1px solid var(--light-grey-border);
-  }
-
   .inline-centered-list-bullets {
-    max-width: 540px;
-    margin: 0 auto;
+    text-align: center;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  
   .main-term-callout-banner {
     background-color: var(--burgundy);
-    padding: 1.25rem 1.5rem;
+    color: var(--soft-white);
+    padding: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     margin-bottom: 2rem;
+    line-height: 1.5;
   }
 
   .main-term-callout-banner p {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: var(--soft-white);
     margin: 0;
-    line-height: 1.4;
   }
 
   .standard-margins-bottom {
@@ -1048,35 +1061,32 @@ const { className = '' } = Astro.props;
   }
 
   .mini-group-header {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
+    font-size: 1rem;
     font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--coral);
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    color: var(--burgundy);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
   }
 
-  
   .budget-guiding-note-callout {
-    background-color: rgba(231, 120, 96, 0.1);
-    border-left: 3px solid var(--coral);
-    padding: 1rem 1.5rem;
-    margin: 2rem 0;
+    background-color: var(--cream-background);
+    padding: 1.5rem;
+    margin-top: 2rem;
+    font-family: var(--font-sans);
   }
 
   .budget-guiding-note-callout p {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    color: var(--burgundy);
     margin: 0;
+    font-size: 0.95rem;
     line-height: 1.5;
+    color: var(--dark-grey-text);
   }
 
   .contact-card-anchor-block {
-    border-top: 1px solid var(--light-grey-border);
-    padding-top: 2rem;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
   }
 
   .contact-pre-header-label {
@@ -1084,77 +1094,36 @@ const { className = '' } = Astro.props;
     font-family: var(--font-display);
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--coral);
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    color: var(--burgundy);
     margin-bottom: 0.5rem;
   }
 
   .agent-contact-name-text {
     font-family: var(--font-display);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 400;
-    color: var(--burgundy);
-    margin-bottom: 0.25rem;
-    letter-spacing: 0.5px;
+    color: var(--coral);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
   }
 
   .agent-contact-email-anchor-link {
     font-family: var(--font-sans);
-    font-size: 1.05rem;
-    color: var(--coral);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--burgundy);
     text-decoration: none;
-    font-weight: 600;
     transition: color 0.3s ease;
   }
 
   .agent-contact-email-anchor-link:hover {
-    color: var(--burgundy);
+    color: var(--coral);
+    text-decoration: underline;
   }
 
- 
-  :global(.swiper-button-next), :global(.swiper-button-prev) {
-    color: var(--burgundy) !important;
-    transform: scale(0.6);
-    transition: opacity 0.3s ease;
+  .content-block-chunk {
+    margin-bottom: 1.5rem;
   }
 
-  :global(.swiper-button-next:hover), :global(.swiper-button-prev:hover) {
-    opacity: 0.7;
-  }
-
-  :global(.swiper-slide[data-theme="dark"] ~ .swiper-button-next),
-  :global(.swiper-slide[data-theme="dark"] ~ .swiper-button-prev) {
-    color: var(--soft-white) !important;
-  }
-
-  :global(.swiper-pagination-bullet-active) {
-    background-color: var(--burgundy) !important;
-  }
-
-
-  @media (max-width: 1024px) {
-    .swiper-slide {
-      padding: 4rem 3rem;
-    }
-    .split-layout, .grid-two-col {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-    .split-layout.inversion-layout {
-      grid-template-columns: 1fr;
-    }
-    .slide-visual-panel {
-      display: none;
-    }
-    .hero-title {
-      font-size: 3.5rem;
-    }
-    .section-heading {
-      font-size: 2.2rem;
-    }
-    .scrollable-package-column {
-      max-height: none;
-      overflow-y: visible;
-    }
-  }
 </style>
