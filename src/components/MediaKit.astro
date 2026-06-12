@@ -1,352 +1,56 @@
-
-
-  <style>
-    :root {
-      --cream: #FDFBF7;
-      --peach: #F4EAE1;
-      --font-header: 'Tenor Sans', sans-serif;
-      --font-body: 'Poppins', sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background-color: var(--cream);
-      color: var(--burgundy);
-      overflow-x: hidden;
-    }
-
-    .media-kit-container {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-    }
-
-    .swiper {
-      width: 100%;
-      height: 100%;
-    }
-
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
-      padding: 4rem 2rem;
-    }
-
-    /* Background Utility Classes */
-    .bg-white { background-color: var(--white); }
-    .bg-cream { background-color: var(--cream); }
-    .bg-peach { background-color: var(--peach); }
-    .coral-bg { background-color: var(--coral); }
-    
-    /* Text Color Utilities */
-    .burgundy-text { color: var(--burgundy); }
-    .coral-text { color: var(--coral); }
-    .white-text { color: var(--white); }
-
-    /* Content Layout Structure */
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 4rem;
-      max-width: 1200px;
-      width: 100%;
-      margin: auto;
-      align-items: center;
-    }
-
-    .content-grid.split {
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      max-width: 100%;
-      height: 100%;
-      padding: 0;
-    }
-
-    .col-left, .col-right {
-      padding: 4rem;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .content-grid.standard-layout {
-      grid-template-columns: 1.1fr 0.9fr;
-    }
-
-    /* Typography Details */
-    h1, h2, h3, h4, .slide-header {
-      font-family: var(--font-header);
-      font-weight: 400;
-      text-transform: uppercase;
-    }
-
-    p {
-      font-family: var(--font-body);
-    }
-
-    .intro-meta-pill {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      margin-bottom: 1.5rem;
-      opacity: 0.8;
-    }
-
-    .dot-separator {
-      margin: 0 0.5rem;
-      color: var(--coral);
-    }
-
-    .marker-highlight {
-      font-family: var(--font-header);
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: 1.5rem;
-    }
-
-    /* Styled Lists */
-    .styled-list {
-      list-style: none;
-    }
-
-    .styled-list.bulleted li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.75rem;
-      line-height: 1.6;
-    }
-
-    .styled-list.bulleted li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--coral);
-      font-size: 1.2rem;
-    }
-
-    .col-right .styled-list.bulleted li::before {
-      color: var(--white);
-    }
-
-    .styled-list:not(.bulleted) li {
-      margin-bottom: 0.6rem;
-      line-height: 1.5;
-    }
-
-    /* Action Elements */
-    .quiz-action-btn {
-      background-color: var(--coral);
-      color: var(--white);
-      border: none;
-      padding: 1rem 2.5rem;
-      font-family: var(--font-body);
-      font-weight: 600;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-    }
-
-    .quiz-action-btn:hover {
-      background-color: var(--burgundy);
-      transform: translateY(-2px);
-    }
-
-    /* Media Layout Images */
-    .image-wrapper {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      max-height: 650px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .slide-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 2px;
-    }
-
-    /* Montage Visual Grid */
-    .image-montage-container div {
-      overflow: hidden;
-    }
-
-    /* Video Player Mockup */
-    .video-slide {
-      background-color: #1A1A1A;
-    }
-
-    .video-container {
-      width: 100%;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .video-placeholder {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background-color: rgba(224, 122, 95, 0.9);
-      border-radius: 50%;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-    }
-
-    .play-button::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 12px 0 12px 20px;
-      border-color: transparent transparent transparent var(--white);
-      margin-left: 6px;
-    }
-
-    .video-placeholder:hover .play-button {
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    .video-title {
-      position: absolute;
-      bottom: 2rem;
-      left: 2rem;
-      color: var(--white);
-      font-family: var(--font-header);
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      z-index: 4;
-    }
-
-    /* Package Bundle Block */
-    .bundle-box {
-      border-radius: 4px;
-      box-shadow: 0 10px 30px rgba(74, 14, 14, 0.05);
-    }
-
-    .mobile-static-note {
-      padding: 1rem;
-      background-color: rgba(244, 234, 225, 0.7);
-      border-radius: 4px;
-    }
-
-    /* Navigation Custom Styling */
-    .swiper-pagination-bullet-active {
-      background: var(--coral) !important;
-    }
-
-    /* Responsive Breakdown Design */
-    @media (max-width: 992px) {
-      .swiper-slide {
-        padding: 3rem 1rem;
-      }
-      .content-grid, .content-grid.standard-layout {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      .content-grid.split {
-        grid-template-columns: 1fr;
-      }
-      .col-left, .col-right {
-        padding: 3rem 1.5rem;
-      }
-      .image-wrapper {
-        max-height: 450px;
-      }
-      .mobile-static-note {
-        position: static !important;
-        margin-bottom: 2rem;
-        max-width: 100% !important;
-      }
-      h1.slide-header {
-        font-size: 3.5rem !important;
-      }
-    }
-  </style>
-</head>
-<body>
-
 <section class="media-kit-container">
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
       
-      <div class="swiper-slide bg-white">
-        <div class="content-grid">
-          <div class="text-content burgundy-text">
-            <div class="intro-meta-pill">
-              FOUNDER <span class="dot-separator">•</span> COMMUNITY BUILDER <span class="dot-separator">•</span> SPEAKER <span class="dot-separator">•</span> AUTHOR <span class="dot-separator">•</span> ENTREPRENEUR
-            </div>
-            
-            <h1 class="slide-header coral-text" style="font-size: 5.5rem; letter-spacing: 4px;" data-swiper-parallax="-300">MISA CHIEN</h1>
-            <p class="marker-highlight" style="font-size: 3rem;" data-swiper-parallax="-200">Authentic Storytelling</p>
-            
-            <p style="font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 1rem; opacity: 0.8; text-transform: uppercase;">
-              FOR SELECT BRAND, MEDIA, AND SPEAKING PARTNERSHIPS
-            </p>
-            
-            <p style="font-weight: 300; font-size: 1.25rem; line-height: 1.8; opacity: 0.85; margin-bottom: 2rem; max-width: 600px;" data-swiper-parallax="-100">
-              Misa brings founder-to-founder credibility, trusted community access, and authentic storytelling across leadership, identity, ambition, and belonging.
-            </p>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; border-top: 1px solid rgba(74, 14, 14, 0.15); padding-top: 1.5rem;">
-              <div>
-                <p style="font-weight: 600; opacity: 0.6; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Platforms</p>
-                <p style="font-size: 1rem; line-height: 1.5; font-weight: 300;">LinkedIn<br>Instagram<br>Newsletter</p>
-              </div>
-              <div>
-                <p style="font-weight: 600; opacity: 0.6; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Audience</p>
-                <p style="font-size: 1rem; line-height: 1.5; font-weight: 300;">
-                  LinkedIn: <strong class="coral-text" style="font-weight: 600;">48,300+</strong><br>
-                  Instagram: <strong class="coral-text" style="font-weight: 600;">13,000+</strong><br>
-                  Newsletter: <strong class="coral-text" style="font-weight: 600;">3,000+</strong>
-                </p>
-              </div>
-            </div>
-            
-            <button class="quiz-action-btn">WORK WITH ME</button>
-          </div>
-          
-          <div class="image-wrapper main-photo" data-swiper-parallax="200" data-swiper-parallax-scale="1.1">
-            <img src="https://placehold.co/600x700/f0eae5/4a0e0e?text=Misa+Hero" alt="Misa Chien Hero" class="slide-img" />
-          </div>
+<div class="swiper-slide intro-slide" data-swiper-parallax="-200">
+  <div class="content-grid">
+    <div class="text-content">
+      <div class="intro-meta-pill" data-swiper-parallax="-300">
+        FOUNDER <span class="dot-separator">•</span> COMMUNITY BUILDER <span class="dot-separator">•</span> SPEAKER <span class="dot-separator">•</span> AUTHOR <span class="dot-separator">•</span> ENTREPRENEUR
+      </div>
+      <h1 class="intro-title" data-swiper-parallax="-500">MISA CHIEN</h1>
+      <p class="intro-subtitle" data-swiper-parallax="-700">Authentic Storytelling</p>
+      
+      <p style="font-family: var(--font-sans, 'Poppins', sans-serif); font-size: 0.9rem; font-weight: 600; color: var(--burgundy); letter-spacing: 1px; margin-bottom: 1rem; opacity: 0.8; text-transform: uppercase;">
+        FOR SELECT BRAND, MEDIA, AND SPEAKING PARTNERSHIPS
+      </p>
+      <p class="intro-description" data-swiper-parallax="-900" style="margin-bottom: 2rem;">
+        Misa brings founder-to-founder credibility, trusted community access, and authentic storytelling across leadership, identity, ambition, and belonging.
+      </p>
+      
+      <div class="intro-metrics-summary" data-swiper-parallax="-800" style="font-family: var(--font-sans, 'Poppins', sans-serif); color: var(--burgundy); display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; text-align: left; border-top: 1px solid rgba(74, 14, 14, 0.15); padding-top: 1.5rem;">
+        <div>
+          <p style="font-weight: 600; opacity: 0.6; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Platforms</p>
+          <p style="font-size: 1rem; line-height: 1.5; font-weight: 300;">LinkedIn<br>Instagram<br>Newsletter</p>
+        </div>
+        <div>
+          <p style="font-weight: 600; opacity: 0.6; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Audience</p>
+          <p style="font-size: 1rem; line-height: 1.5; font-weight: 300;">
+            LinkedIn: <strong style="font-weight: 600; color: var(--coral);">48,300+</strong><br>
+            Instagram: <strong style="font-weight: 600; color: var(--coral);">13,000+</strong><br>
+            Newsletter: <strong style="font-weight: 600; color: var(--coral);">3,000+</strong>
+          </p>
         </div>
       </div>
+      
+      <button class="quiz-action-btn">WORK WITH ME</button>
+    </div>
+    
+    <div class="image-wrapper main-photo" data-swiper-parallax="-100">
+      <img src="https://placehold.co/600x700/f0eae5/4a0e0e?text=Misa+Hero" alt="Misa Chien Hero" class="slide-img" />
+    </div>
+  </div>
+</div>
 
-      <div class="swiper-slide bg-cream" style="padding: 0;">
+
+     <div class="swiper-slide bg-cream" style="padding: 0;">
         <div class="content-grid split">
           <div class="col-left burgundy-text">
-            <h2 class="slide-header marker-highlight" style="font-size: 2.5rem;" data-swiper-parallax="-200">
-              WHY PARTNERS WORK WITH MISA
-            </h2>
+            <h2 class="section-heading" data-swiper-parallax="-200" style="font-family: var(--font-sans, 'Poppins', sans-serif); font-weight: 700; letter-spacing: 1px;">WHY PARTNERS WORK WITH MISA</h2>
             
-            <h3 class="coral-text" style="font-size: 1.5rem; margin: 1.5rem 0; font-weight: 400;">WHAT OUR PARTNERS GET:</h3>
+            <h3 class="sub-heading" data-swiper-parallax="-300" style="color: var(--coral); font-style: italic; font-family: 'GF Didot', serif; font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 1.5rem; font-weight: 400;">WHAT OUR PARTNERS GET:</h3>
             
-            <ul class="styled-list bulleted" style="font-size: 1.1rem;">
+            <ul class="stagger-list" data-swiper-parallax="-400" style="list-style-type: disc; padding-left: 1.5rem; font-family: var(--font-sans, 'Poppins', sans-serif); font-size: 1.1rem; line-height: 1.8;">
               <li>Founder-to-founder credibility</li>
               <li>Trusted audience and community resonance</li>
               <li>Authentic storytelling</li>
@@ -355,19 +59,17 @@
             </ul>
           </div>
           
-          <div class="col-right coral-bg white-text">
-            <h2 class="slide-header marker-highlight" style="font-size: 2.5rem; color: var(--white);" data-swiper-parallax="-100">
-              BEST-FIT PARTNERSHIPS:
-            </h2>
-            <p style="font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem; opacity: 0.9;">
+          <div class="col-right coral-bg white-text" style="padding: 3rem 2rem;">
+            <h2 class="section-heading white-text" data-swiper-parallax="-200" style="font-family: var(--font-sans, 'Poppins', sans-serif); font-weight: 700; letter-spacing: 1px;">BEST-FIT PARTNERSHIPS:</h2>
+            <p data-swiper-parallax="-300" style="font-family: var(--font-sans, 'Poppins', sans-serif); font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem; opacity: 0.9;">
               We partner with brands, teams, and organizers whose goals align with Misa’s values, audience, and voice.
             </p>
 
-            <h2 style="font-size: 2rem; margin-top: 1rem; font-family: var(--font-header);">PREVIOUS PARTNERS:</h2>
+            <h2 class="section-heading white-text" data-swiper-parallax="-400" style="font-family: 'GF Didot', serif; font-style: italic; font-weight: 400; letter-spacing: 1px; margin-top: 2rem;">PREVIOUS PARTNERS:</h2>
             
-            <div style="font-size: 1.1rem; line-height: 1.6; margin-top: 1rem;">
+            <div class="partners-container" data-swiper-parallax="-500" style="font-family: var(--font-sans, 'Poppins', sans-serif); font-size: 1.1rem; line-height: 1.6;">
               <p style="font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.5px;">Brands</p>
-              <ul class="styled-list bulleted" style="padding-left: 0; margin-bottom: 1.5rem;">
+              <ul class="partner-list" style="list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1.5rem;">
                 <li>1587 Sneakers</li>
                 <li>Democracy Clothing</li>
                 <li>Sensei Mei</li>
@@ -380,64 +82,64 @@
               </ul>
               
               <p style="font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.5px;">TV</p>
-              <ul class="styled-list bulleted" style="padding-left: 0;">
+              <ul class="partner-list" style="list-style-type: disc; padding-left: 1.5rem;">
                 <li>The Great Food Truck Race Season 1</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="swiper-slide coral-bg">
-        <div class="content-grid">
-          <div class="text-content white-text">
-            <h2 class="slide-header" style="font-size: 4rem; margin-bottom: 2.5rem;" data-swiper-parallax="-300">
-              COLLABORATION<br>OPTIONS
-            </h2>
-            
-            <div style="display: flex; flex-direction: column; gap: 1.75rem;">
-              <div>
-                <h4 style="font-weight: normal; font-size: 1.75rem; margin: 0 0 0.25rem 0; letter-spacing: 0.5px;">SPONSORED CONTENT</h4>
-                <p style="font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0;">Instagram, LinkedIn, and newsletter placements</p>
-              </div>
-              <div>
-                <h4 style="font-weight: normal; font-size: 1.75rem; margin: 0 0 0.25rem 0; letter-spacing: 0.5px;">SPEAKING / KEYNOTE</h4>
-                <p style="font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0;">Talks, workshops, fireside chats, and brand events</p>
-              </div>
-              <div>
-                <h4 style="font-weight: normal; font-size: 1.75rem; margin: 0 0 0.25rem 0; letter-spacing: 0.5px;">PANELS & MODERATION</h4>
-                <p style="font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0;">Virtual or in-person appearances</p>
-              </div>
-              <div>
-                <h4 style="font-weight: normal; font-size: 1.75rem; margin: 0 0 0.25rem 0; letter-spacing: 0.5px;">PODCAST / MEDIA APPEARANCES</h4>
-                <p style="font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0;">Editorial or sponsored opportunities</p>
-              </div>
-              <div>
-                <h4 style="font-weight: normal; font-size: 1.75rem; margin: 0 0 0.25rem 0; letter-spacing: 0.5px;">MODELING / PHOTOSHOOTS</h4>
-                <p style="font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0;">On-site talent or creator-style content</p>
-              </div>
-              <div>
-                <h4 style="font-weight: normal; font-size: 1.75rem; margin: 0 0 0.25rem 0; letter-spacing: 0.5px;">ON-SITE BRANDED CAMPAIGNS</h4>
-                <p style="font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0;">Video and multi-platform brand content</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="image-montage-container" style="display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(12, 1fr); height: 560px; position: relative; width: 100%;" data-swiper-parallax="200">
-            <div style="grid-column: 1 / 8; grid-row: 2 / 9; z-index: 2;">
-              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Vivid Cover Portrait" class="slide-img" />
-            </div>
-            <div style="grid-column: 7 / 13; grid-row: 1 / 7; z-index: 1; padding-left: 10px; padding-bottom: 10px;">
-              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Investment Staples" class="slide-img" />
-            </div>
-            <div style="grid-column: 5 / 13; grid-row: 7 / 13; z-index: 3; padding-top: 5px;">
-              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Poolside Campaign Layout" class="slide-img" />
-            </div>
-          </div>
+<div class="swiper-slide coral-bg" style="padding: 4rem 5rem; background-color: #e77860; min-height: 650px; display: flex; align-items: center; justify-content: center;">
+  <div class="content-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; max-width: 1250px; text-align: left; width: 100%; align-items: center;">
+    
+    <div class="text-content white-text">
+      <h2 style="font-family: 'Tenor Sans', sans-serif; font-size: 5rem; font-weight: bold; line-height: 0.95; margin-top: 0; margin-bottom: 2.5rem; color: #ffffff; letter-spacing: -1px; text-transform: uppercase;">
+        COLLABORATION<br>OPTIONS
+      </h2>
+      
+      <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+        <div>
+          <h4 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 1.75rem; color: #ffffff; margin: 0 0 0.15rem 0; letter-spacing: 0.5px;">SPONSORED CONTENT</h4>
+          <p style="font-family: 'Poppins', sans-serif; font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0; color: #ffffff;">Instagram, LinkedIn, and newsletter placements</p>
+        </div>
+        <div>
+          <h4 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 1.75rem; color: #ffffff; margin: 0 0 0.15rem 0; letter-spacing: 0.5px;">SPEAKING / KEYNOTE</h4>
+          <p style="font-family: 'Poppins', sans-serif; font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0; color: #ffffff;">Talks, workshops, fireside chats, and brand events</p>
+        </div>
+        <div>
+          <h4 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 1.75rem; color: #ffffff; margin: 0 0 0.15rem 0; letter-spacing: 0.5px;">PANELS & MODERATION</h4>
+          <p style="font-family: 'Poppins', sans-serif; font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0; color: #ffffff;">Virtual or in-person appearances</p>
+        </div>
+        <div>
+          <h4 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 1.75rem; color: #ffffff; margin: 0 0 0.15rem 0; letter-spacing: 0.5px;">PODCAST / MEDIA APPEARANCES</h4>
+          <p style="font-family: 'Poppins', sans-serif; font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0; color: #ffffff;">Editorial or sponsored opportunities</p>
+        </div>
+        <div>
+          <h4 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 1.75rem; color: #ffffff; margin: 0 0 0.15rem 0; letter-spacing: 0.5px;">MODELING / PHOTOSHOOTS</h4>
+          <p style="font-family: 'Poppins', sans-serif; font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0; color: #ffffff;">On-site talent or creator-style content</p>
+        </div>
+        <div>
+          <h4 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 1.75rem; color: #ffffff; margin: 0 0 0.15rem 0; letter-spacing: 0.5px;">ON-SITE BRANDED CAMPAIGNS</h4>
+          <p style="font-family: 'Poppins', sans-serif; font-size: 1rem; opacity: 0.9; font-weight: 300; margin: 0; color: #ffffff;">Video and multi-platform brand content</p>
         </div>
       </div>
+    </div>
+    
+    <div class="image-montage-container" style="display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(12, 1fr); height: 560px; position: relative; width: 100%;">
+      <div style="grid-column: 1 / 8; grid-row: 2 / 9; z-index: 2;">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Vivid Cover Portrait" style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+      <div style="grid-column: 7 / 13; grid-row: 1 / 7; z-index: 1; padding-left: 10px; padding-bottom: 10px;">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Investment Staples" style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+      <div style="grid-column: 5 / 13; grid-row: 7 / 13; z-index: 3; padding-top: 5px;">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Poolside Campaign Layout" style="width: 100%; height: 100%; object-fit: cover;" />
+      </div>
+    </div>
 
-      <div class="swiper-slide video-slide">
+  </div>
+</div>
+<div class="swiper-slide video-slide">
         <div class="video-container" data-swiper-parallax-scale="0.8">
           <div class="video-placeholder">
             <div class="play-button"></div>
@@ -449,244 +151,259 @@
         </div>
       </div>
 
-      <div class="swiper-slide bg-peach">
-        <div class="content-grid standard-layout">
-          <div class="burgundy-text">
-            <h2 class="slide-header marker-highlight" style="font-size: 3rem;" data-swiper-parallax="-200">
-              PRICING ANCHORS
-            </h2>
-            
-            <p style="font-size: 1.15rem; line-height: 1.6; font-weight: 300; margin-bottom: 2rem; max-width: 580px;">
-              Final pricing depends on deliverables, platform, production needs, usage rights, and logistics.
-            </p>
-            
-            <h4 style="font-weight: 600; font-size: 1.15rem; margin: 0 0 1rem 0; letter-spacing: 0.5px;">Starting Rates</h4>
-            
-            <ul class="styled-list bulleted" style="font-size: 1.1rem; margin-bottom: 2rem;">
-              <li>Minimum paid collaboration: $1,800</li>
-              <li>Photoshoots (local, brand-provided team): from $1,800</li>
-              <li>Photoshoots (half-day, Misa team executes): from $2,500</li>
-              <li>Speaking engagements: from $5,000</li>
-              <li>On-site branded content campaigns: from $5,000</li>
-            </ul>
-            
-            <p style="font-size: 1.1rem; line-height: 1.5; font-weight: 300; margin-bottom: 2.5rem; max-width: 580px;">
-              Bundle pricing is available for multi-platform campaigns under one creative brief.
-            </p>
+    <div class="swiper-slide" style="padding: 4rem 5rem; background-color: #fbd6c6; min-height: 650px; display: flex; align-items: center; justify-content: center;">
+  <div class="content-grid standard-layout" style="display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 4rem; max-width: 1250px; text-align: left; width: 100%; align-items: start;">
+    
+    <div class="burgundy-text" style="color: #4a0e0e;">
+      <h2 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 3.5rem; color: #e77860; margin-top: 0; margin-bottom: 1.25rem; letter-spacing: 0.5px; text-transform: uppercase;">
+        PRICING ANCHORS
+      </h2>
+      
+      <p style="font-family: 'Poppins', sans-serif; font-size: 1.15rem; line-height: 1.6; color: #4a0e0e; font-weight: 300; margin-top: 0; margin-bottom: 2rem; max-width: 580px;">
+        Final pricing depends on deliverables, platform, production needs, usage rights, and logistics.
+      </p>
+      
+      <h4 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.15rem; color: #4a0e0e; margin-top: 0; margin-bottom: 1rem; letter-spacing: 0.5px;">Starting Rates</h4>
+      
+      <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.9; color: #4a0e0e; font-weight: 300;">
+        <li style="margin-bottom: 0.25rem;">• Minimum paid collaboration: $1,800</li>
+        <li style="margin-bottom: 0.25rem;">• Photoshoots (local, brand-provided team): from $1,800</li>
+        <li style="margin-bottom: 0.25rem;">• Photoshoots (half-day, Misa team executes): from $2,500</li>
+        <li style="margin-bottom: 0.25rem;">• Speaking engagements: from $5,000</li>
+        <li style="margin-bottom: 0.25rem;">• On-site branded content campaigns: from $5,000</li>
+      </ul>
+      
+      <p style="font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.5; color: #4a0e0e; font-weight: 300; margin-top: 0; margin-bottom: 2.5rem; max-width: 580px;">
+        Bundle pricing is available for multi-platform campaigns under one creative brief.
+      </p>
 
-            <h4 style="font-weight: 600; font-size: 1.15rem; margin: 0 0 1rem 0; letter-spacing: 0.5px;">Additional Notes</h4>
-            
-            <ul class="styled-list bulleted" style="font-size: 1.1rem;">
-              <li>Final pricing depends on scope, usage, and production requirements</li>
-              <li>Newsletter placements may be quoted separately</li>
-              <li>If hair and makeup are required and not provided, additional fees may apply</li>
-            </ul>
-          </div>
-          
-          <div class="image-wrapper" data-swiper-parallax="200" data-swiper-parallax-scale="1.05">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Misa Chien Pricing Portrait" class="slide-img" />
-          </div>
+      <h4 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.15rem; color: #4a0e0e; margin-top: 0; margin-bottom: 1rem; letter-spacing: 0.5px;">Additional Notes</h4>
+      
+      <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.7; color: #4a0e0e; font-weight: 300;">
+        <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; text-indent: -1.2rem;">• Final pricing depends on scope, usage, and production requirements</li>
+        <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; text-indent: -1.2rem;">• Newsletter placements may be quoted separately</li>
+        <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; text-indent: -1.2rem;">• If hair and makeup are required and not provided, additional fees may apply</li>
+      </ul>
+    </div>
+    
+    <div class="image-wrapper" style="width: 100%; height: 570px; overflow: hidden; display: block; margin-top: 0.5rem;">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Misa Chien Pricing Portrait" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+    </div>
+
+  </div>
+</div>
+
+    <div class="swiper-slide" style="padding: 4rem 5rem; background-color: #fcfbf7; min-height: 650px; display: flex; align-items: center; justify-content: center;">
+  <div class="content-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1250px; text-align: left; width: 100%; align-items: start; position: relative;">
+    
+    <div style="position: absolute; top: 0; right: 0; max-width: 520px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #4a0e0e; font-weight: 300;">
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; text-indent: -1.2rem;">• Brands may request specific platforms; final deliverables will be confirmed based on campaign fit and channel relevance.</li>
+        <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; text-indent: -1.2rem;">• Performance varies by content, timing, and platform behavior.</li>
+        <li style="margin-bottom: 0px; padding-left: 1.2rem; text-indent: -1.2rem;">• Reach is never guaranteed.</li>
+      </ul>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+      <h2 style="font-family: 'Tenor Sans', sans-serif; font-size: 4.5rem; font-weight: bold; line-height: 0.95; margin-top: 0; margin-bottom: 3rem; color: #dbccbe; letter-spacing: -1px; text-transform: uppercase;">
+        BRAND<br>PACKAGES
+      </h2>
+
+      <div style="margin-bottom: 2.5rem;">
+        <h3 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 2.2rem; color: #e77860; margin: 0 0 0.25rem 0; letter-spacing: 0.5px; text-transform: uppercase;">INSTAGRAM</h3>
+        <p style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.05rem; color: #4a0e0e; margin: 0 0 1rem 0;">13,000+ followers</p>
+        
+        <div style="font-family: 'Poppins', sans-serif; font-size: 1rem; line-height: 1.5; color: #4a0e0e; font-weight: 300; margin-bottom: 1rem;">
+          <p style="margin: 0 0 0.25rem 0;"><strong>Typical organic reach:</strong> 3k–4k</p>
+          <p style="margin: 0 0 0.25rem 0;"><strong>High-performing content can exceed 50k+</strong></p>
+          <p style="margin: 0;">All Instagram collaborations include Story support</p>
         </div>
+
+        <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Poppins', sans-serif; font-size: 1rem; color: #4a0e0e; font-weight: 300; line-height: 1.6;">
+          <li>• Carousel Post: $2,200</li>
+          <li>• Reel: $2,800</li>
+        </ul>
       </div>
 
-      <div class="swiper-slide bg-cream">
-        <div class="content-grid standard-layout" style="position: relative;">
-          
-          <div class="mobile-static-note" style="position: absolute; top: 0; right: 0; max-width: 520px; font-size: 0.95rem; line-height: 1.5; color: var(--burgundy); font-weight: 300;" data-swiper-parallax="-100">
-            <ul class="styled-list bulleted">
-              <li>Brands may request specific platforms; final deliverables will be confirmed based on campaign fit and channel relevance.</li>
-              <li>Performance varies by content, timing, and platform behavior.</li>
-              <li>Reach is never guaranteed.</li>
-            </ul>
-          </div>
-
-          <div class="burgundy-text">
-            <h2 class="slide-header" style="font-size: 4rem; color: #dbccbe; margin-top: 3rem; margin-bottom: 3rem;" data-swiper-parallax="-300">
-              BRAND<br>PACKAGES
-            </h2>
-
-            <div style="margin-bottom: 2.5rem;">
-              <h3 style="font-weight: normal; font-size: 2.2rem; color: var(--coral); margin: 0 0 0.25rem 0; letter-spacing: 0.5px;">INSTAGRAM</h3>
-              <p style="font-weight: 600; font-size: 1.05rem; margin: 0 0 1rem 0;">13,000+ followers</p>
-              
-              <div style="font-size: 1rem; line-height: 1.5; font-weight: 300; margin-bottom: 1rem;">
-                <p style="margin: 0 0 0.25rem 0;"><strong>Typical organic reach:</strong> 3k–4k</p>
-                <p style="margin: 0 0 0.25rem 0;"><strong>High-performing content can exceed 50k+</strong></p>
-                <p style="margin: 0;">All Instagram collaborations include Story support</p>
-              </div>
-
-              <ul class="styled-list bulleted" style="font-size: 1rem;">
-                <li>Carousel Post: $2,200</li>
-                <li>Reel: $2,800</li>
-              </ul>
-            </div>
-
-            <div style="margin-bottom: 2rem;">
-              <h3 style="font-weight: normal; font-size: 2.2rem; color: var(--coral); margin: 0 0 0.25rem 0; letter-spacing: 0.5px;">LINKEDIN</h3>
-              <p style="font-weight: 600; font-size: 1.05rem; margin: 0 0 1rem 0;">48,300+ followers/connections</p>
-              
-              <div style="font-size: 1rem; line-height: 1.5; font-weight: 300; margin-bottom: 1rem;">
-                <p style="margin: 0 0 0.25rem 0;"><strong>Typical organic reach:</strong> ~2k</p>
-                <p style="margin: 0;"><strong>High-performing posts can reach 30k+</strong></p>
-              </div>
-
-              <ul class="styled-list bulleted" style="font-size: 1rem;">
-                <li>Sponsored post: $1,800</li>
-                <li>Video post: $2,500</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="burgundy-text" style="display: flex; flex-direction: column; justify-content: center;">
-            <div style="margin-bottom: 3.5rem;">
-              <h3 style="font-weight: normal; font-size: 2.2rem; color: var(--coral); margin: 0 0 0.25rem 0; letter-spacing: 0.5px;">NEWSLETTER</h3>
-              <p style="font-weight: 600; font-size: 1.05rem; margin: 0 0 1.25rem 0;">3,000+ Subscribers</p>
-
-              <ul class="styled-list bulleted" style="font-size: 1rem; display: flex; flex-direction: column; gap: 0.6rem;">
-                <li>Featured placement: $800</li>
-                <li>If an affiliate link is included, affiliate compensation is 20% of each attributed purchase</li>
-                <li>Newsletter placements with affiliate tracking may include both a fixed placement fee and affiliate revenue share, depending on scope</li>
-              </ul>
-            </div>
-
-            <div class="bundle-box coral-bg white-text" style="padding: 2rem 2.5rem; width: 100%;">
-              <h3 style="font-size: 2.2rem; font-weight: normal; margin-top: 0; margin-bottom: 1.25rem; letter-spacing: 1px;">BUNDLE</h3>
-              
-              <ul class="styled-list bulleted" style="font-size: 1.05rem; display: flex; flex-direction: column; gap: 0.4rem;">
-                <li>LinkedIn + Newsletter: $2,400</li>
-                <li>Instagram Carousel + Newsletter: $2,800</li>
-                <li>Instagram Reel + Newsletter: $3,200</li>
-                <li>LinkedIn + Instagram Carousel + Newsletter: $4,200</li>
-                <li>LinkedIn + Instagram Reel + Newsletter: $4,600</li>
-              </ul>
-            </div>
-          </div>
+      <div>
+        <h3 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 2.2rem; color: #e77860; margin: 0 0 0.25rem 0; letter-spacing: 0.5px; text-transform: uppercase;">LINKEDIN</h3>
+        <p style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.05rem; color: #4a0e0e; margin: 0 0 1rem 0;">48,300+ followers/connections</p>
+        
+        <div style="font-family: 'Poppins', sans-serif; font-size: 1rem; line-height: 1.5; color: #4a0e0e; font-weight: 300; margin-bottom: 1rem;">
+          <p style="margin: 0 0 0.25rem 0;"><strong>Typical organic reach:</strong> ~2k</p>
+          <p style="margin: 0;"><strong>High-performing posts can reach 30k+</strong></p>
         </div>
+
+        <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Poppins', sans-serif; font-size: 1rem; color: #4a0e0e; font-weight: 300; line-height: 1.6;">
+          <li>• Sponsored post: $1,800</li>
+          <li>• Video post: $2,500</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; margin-top: 7.3rem;">
+      <div style="margin-bottom: 3.5rem;">
+        <h3 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 2.2rem; color: #e77860; margin: 0 0 0.25rem 0; letter-spacing: 0.5px; text-transform: uppercase;">NEWSLETTER</h3>
+        <p style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.05rem; color: #4a0e0e; margin: 0 0 1.25rem 0;">3,000+ Subscribers</p>
+
+        <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Poppins', sans-serif; font-size: 1rem; color: #4a0e0e; font-weight: 300; line-height: 1.6; display: flex; flex-direction: column; gap: 0.6rem;">
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• Featured placement: $800</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• If an affiliate link is included, affiliate compensation is 20% of each attributed purchase</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• Newsletter placements with affiliate tracking may include both a fixed placement fee and affiliate revenue share, depending on scope</li>
+        </ul>
       </div>
 
-      <div class="swiper-slide bg-white">
-        <div class="content-grid standard-layout">
+      <div class="bundle-box" style="background-color: #e77860; padding: 2rem 2.5rem; color: #ffffff; width: 100%; box-sizing: border-box;">
+        <h3 style="font-family: 'Tenor Sans', sans-serif; font-size: 2.2rem; font-weight: normal; margin-top: 0; margin-bottom: 1.25rem; color: #ffffff; letter-spacing: 1px; text-transform: uppercase;">BUNDLE</h3>
+        
+        <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Poppins', sans-serif; font-size: 1.05rem; line-height: 1.7; font-weight: 300; color: #ffffff; display: flex; flex-direction: column; gap: 0.4rem;">
+          <li>• LinkedIn + Newsletter: $2,400</li>
+          <li>• Instagram Carousel + Newsletter: $2,800</li>
+          <li>• Instagram Reel + Newsletter: $3,200</li>
+          <li>• LinkedIn + Instagram Carousel + Newsletter: $4,200</li>
+          <li>• LinkedIn + Instagram Reel + Newsletter: $4,600</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+   
+<div class="swiper-slide bg-white" style="padding: 4rem 5rem; min-height: 650px; display: flex; align-items: center; justify-content: center;">
+  <div class="content-grid standard-layout" style="display: grid; grid-template-columns: 0.88fr 1.12fr; gap: 4rem; max-width: 1250px; text-align: left; width: 100%; align-items: start;">
+    
+    <div class="image-wrapper" style="width: 100%; height: 570px; overflow: hidden; display: block; margin-top: 0.5rem;">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Misa Chien Media Terms Portrait" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+    </div>
+
+    <div class="burgundy-text" style="color: #4a0e0e;">
+      <h2 style="font-family: 'Tenor Sans', sans-serif; font-size: 3.2rem; font-weight: bold; color: #e77860; line-height: 1.1; margin-top: 0; margin-bottom: 2rem; letter-spacing: 0.5px; text-transform: uppercase;">
+        ON-SITE / MEDIA<br>APPEARANCE TERMS
+      </h2>
+      
+      <p style="font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.6; color: #4a0e0e; font-weight: 300; margin-top: 0; margin-bottom: 2.5rem; max-width: 620px; text-transform: uppercase;">
+        Remote podcast and media invitations are considered on a case-by-case basis depending on format, promotional expectations, and overall fit.
+      </p>
+      
+      <h4 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.15rem; color: #4a0e0e; margin-top: 0; margin-bottom: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase;">Starting Point</h4>
+      
+      <ul style="list-style: none; padding: 0; margin: 0 0 2.5rem 0; font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.8; color: #4a0e0e; font-weight: 300; text-transform: uppercase;">
+        <li style="margin-bottom: 0.25rem;">• On-site podcast or media appearances: from $1,800</li>
+        <li style="margin-bottom: 0.25rem;">• Travel and parking reimbursed as applicable</li>
+      </ul>
+
+      <h4 style="font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 1.15rem; color: #4a0e0e; margin-top: 0; margin-bottom: 0.75rem; letter-spacing: 0.5px; text-transform: uppercase;">Please Note</h4>
+      
+      <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Poppins', sans-serif; font-size: 1.1rem; line-height: 1.8; color: #4a0e0e; font-weight: 300; text-transform: uppercase;">
+        <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; text-indent: -1.2rem;">• Sponsored appearances are treated as paid collaborations</li>
+        <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; text-indent: -1.2rem;">• TV and broadcast appearances are quoted separately</li>
+        <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; text-indent: -1.2rem;">• Campaign-style asks such as paid usage, whitelisting, pinning, or extra content are scoped separately</li>
+        <li style="margin-bottom: 0.4rem; padding-left: 1.2rem; text-indent: -1.2rem;">• Travel fees may apply depending on location and scope</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<div class="swiper-slide coral-bg" style="padding: 4rem 5rem; background-color: #e77860; min-height: 650px; display: flex; align-items: center; justify-content: center;">
+  <div class="content-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; max-width: 1250px; text-align: left; width: 100%; align-items: center;">
+    
+    <div class="text-content white-text">
+      <h2 style="font-family: 'Tenor Sans', sans-serif; font-size: 5rem; font-weight: bold; line-height: 0.95; margin: 0; color: #ffffff; letter-spacing: -1px; text-transform: uppercase;">
+        PRODUCT<br>GIFTING
+      </h2>
+      <p style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 1.75rem; color: #ffffff; margin-top: 1rem; opacity: 0.9;">
+        (No Guaranteed Deliverables)
+      </p>
+    </div>
+    
+    <div class="details-content white-text" style="font-family: 'Poppins', sans-serif; color: #ffffff;">
+      <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem; font-weight: 400;">
+        We may accept gifted products based on fit and relevance.
+      </p>
+      
+      <p style="font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px;">
+        Please note:
+      </p>
+      
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 1.1rem; line-height: 1.8; font-weight: 300;">
+        <li style="margin-bottom: 1rem; padding-left: 1.5rem; text-indent: -1.5rem;">
+          • Gifting does not guarantee content or posting
+        </li>
+        <li style="margin-bottom: 1rem; padding-left: 1.5rem; text-indent: -1.5rem;">
+          • If guaranteed deliverables are requested, we're happy to quote a paid partnership
+        </li>
+        <li style="margin-bottom: 1rem; padding-left: 1.5rem; text-indent: -1.5rem;">
+          • Posting timelines, if any, are confirmed only after receipt and fit review
+        </li>
+        <li style="margin-bottom: 0; padding-left: 1.5rem; text-indent: -1.5rem;">
+          • TikTok is not an active platform at this time
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+      
+   
+<div class="swiper-slide" style="padding: 4rem 5rem; background-color: #fcfbf7; min-height: 650px; display: flex; align-items: center; justify-content: center;">
+  <div class="content-grid standard-layout" style="display: grid; grid-template-columns: 0.88fr 1.12fr; gap: 4rem; max-width: 1250px; text-align: left; width: 100%; align-items: start;">
+    
+    <div class="image-wrapper" style="width: 100%; height: 570px; overflow: hidden; display: block; margin-top: 0.5rem; border-radius: 4px;">
+      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=600&auto=format&fit=crop" alt="Misa Chien Usage Rights Portrait" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+    </div>
+
+    <div class="burgundy-text" style="color: #4a0e0e; font-family: 'Poppins', sans-serif;">
+      
+      <div style="margin-bottom: 2.5rem;">
+        <h2 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 2.8rem; color: #e77860; margin: 0 0 1rem 0; letter-spacing: 0.5px; text-transform: uppercase;">
+          USAGE RIGHTS
+        </h2>
+        
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 1rem; line-height: 1.6; font-weight: 300; text-transform: uppercase;">
+          <li style="margin-bottom: 0.8rem; padding-left: 1.2rem; text-indent: -1.2rem;">• USAGE IS QUOTED SEPARATELY BASED ON SCOPE, CHANNEL, DURATION, AND TERRITORY.</li>
           
-          <div class="image-wrapper" data-swiper-parallax="200" data-swiper-parallax-scale="1.05">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop" alt="Misa Chien Media Terms Portrait" class="slide-img" />
-          </div>
-
-          <div class="burgundy-text">
-            <h2 class="slide-header marker-highlight" style="font-size: 3rem;" data-swiper-parallax="-200">
-              ON-SITE / MEDIA<br>APPEARANCE TERMS
-            </h2>
-            
-            <p style="font-size: 1.1rem; line-height: 1.6; font-weight: 300; margin-bottom: 2.5rem; max-width: 620px;">
-              REMOTE PODCAST AND MEDIA INVITATIONS ARE CONSIDERED ON A CASE-BY-CASE BASIS DEPENDING ON FORMAT, PROMOTIONAL EXPECTATIONS, AND OVERALL FIT.
-            </p>
-            
-            <h4 style="font-weight: 600; font-size: 1.15rem; margin: 0 0 0.75rem 0; letter-spacing: 0.5px;">STARTING POINT</h4>
-            
-            <ul class="styled-list bulleted" style="font-size: 1.1rem; margin-bottom: 2.5rem;">
-              <li>ON-SITE PODCAST OR MEDIA APPEARANCES: FROM $1,800</li>
-              <li>TRAVEL AND PARKING REIMBURSED AS APPLICABLE</li>
-            </ul>
-
-            <h4 style="font-weight: 600; font-size: 1.15rem; margin: 0 0 0.75rem 0; letter-spacing: 0.5px;">PLEASE NOTE</h4>
-            
-            <ul class="styled-list bulleted" style="font-size: 1.1rem;">
-              <li>SPONSORED APPEARANCES ARE TREATED AS PAID COLLABORATIONS</li>
-              <li>TV AND BROADCAST APPEARANCES ARE QUOTED SEPARATELY</li>
-              <li>CAMPAIGN-STYLE ASKS SUCH AS PAID USAGE, WHITELISTING, PINNING, OR EXTRA CONTENT ARE SCOPED SEPARATELY</li>
-              <li>TRAVEL FEES MAY APPLY DEPENDING ON LOCATION AND SCOPE</li>
-            </ul>
-          </div>
-        </div>
+          <li style="margin-top: 1.2rem; font-weight: 600;">STANDARD MAY INCLUDE:</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">◦ ORGANIC REPOSTING ON BRAND-OWNED CHANNELS</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">◦ WEBSITE OR EMAIL USAGE</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">◦ PAID ADS/WHITELISTING</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">◦ CUT-DOWNS FOR PROMOTIONAL USE</li>
+        </ul>
       </div>
 
-      <div class="swiper-slide coral-bg white-text">
-        <div class="content-grid">
-          <div class="text-content">
-            <h2 class="slide-header" style="font-size: 4rem; margin-bottom: 1rem;" data-swiper-parallax="-300">
-              PRODUCT<br>GIFTING
-            </h2>
-            <p style="font-style: italic; font-size: 1.75rem; opacity: 0.9;">
-              (No Guaranteed Deliverables)
-            </p>
-          </div>
-          
-          <div style="margin-top: 1rem;">
-            <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem; font-weight: 400;">
-              We may accept gifted products based on fit and relevance.
-            </p>
-            
-            <p style="font-size: 1.15rem; font-weight: 600; margin-bottom: 1rem; letter-spacing: 0.5px;">
-              PLEASE NOTE:
-            </p>
-            
-            <ul class="styled-list bulleted" style="font-size: 1.1rem;">
-              <li style="margin-bottom: 1rem;">Gifting does not guarantee content or posting</li>
-              <li style="margin-bottom: 1rem;">If guaranteed deliverables are requested, we're happy to quote a paid partnership</li>
-              <li style="margin-bottom: 1rem;">Posting timelines, if any, are confirmed only after receipt and fit review</li>
-              <li>TikTok is not an active platform at this time</li>
-            </ul>
-          </div>
-        </div>
+      <div>
+        <h2 style="font-family: 'Times New Roman', serif; font-style: italic; font-weight: normal; font-size: 2.8rem; color: #e77860; margin: 0 0 1rem 0; letter-spacing: 0.5px; text-transform: uppercase;">
+          ADDITIONAL FEES / LIMITATIONS
+        </h2>
+        
+        <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem; text-transform: uppercase;">ADDITIONAL FEES MAY APPLY FOR:</p>
+        
+        <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.5; font-weight: 300; text-transform: uppercase; display: grid; grid-template-columns: 1fr; gap: 0.4rem;">
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• EXCLUSIVITY</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• RUSH TIMELINES</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• EXTRA DELIVERABLES OR EDIT ROUNDS</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• EXTRA FORMATS</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• HOSTING OR MODERATION</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• HMU IF NOT PROVIDED</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• NO UNPAID GUARANTEED DELIVERABLES</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• NO SCRIPTED CLAIMS THAT CONFLICT WITH AUTHENTICITY</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• AFFILIATE PARTNERSHIPS, IF INCLUDED, ARE STRUCTURED SEPARATELY FROM FIXED-RATE PLACEMENTS</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• STANDARD AFFILIATE COMPENSATION: 20% OF EACH ATTRIBUTED PURCHASE</li>
+          <li style="padding-left: 1.2rem; text-indent: -1.2rem;">• CONTENT TERMS MAY APPLY DEPENDING ON CAMPAIGN STRUCTURE</li>
+        </ul>
       </div>
 
-      <div class="swiper-slide bg-cream">
-        <div class="content-grid standard-layout">
-          
-          <div class="image-wrapper" data-swiper-parallax="200">
-            <img src="https://placehold.co/600x700/f0eae5/4a0e0e?text=Usage+Rights" alt="Misa Chien Usage Rights Portrait" class="slide-img" />
-          </div>
-
-          <div class="burgundy-text">
-            
-            <div style="margin-bottom: 2.5rem;">
-              <h2 class="slide-header" style="font-size: 2.5rem; color: var(--coral);">
-                USAGE RIGHTS
-              </h2>
-              
-              <ul class="styled-list bulleted" style="font-size: 1rem;">
-                <li style="margin-bottom: 0.8rem;">USAGE IS QUOTED SEPARATELY BASED ON SCOPE, CHANNEL, DURATION, AND TERRITORY.</li>
-                
-                <li style="list-style: none; margin-top: 1.2rem; font-weight: 600; padding-left: 0;">STANDARD MAY INCLUDE:</li>
-                <li style="list-style: none; padding-left: 1.2rem;">◦ ORGANIC REPOSTING ON BRAND-OWNED CHANNELS</li>
-                <li style="list-style: none; padding-left: 1.2rem;">◦ WEBSITE OR EMAIL USAGE</li>
-                <li style="list-style: none; padding-left: 1.2rem;">◦ PAID ADS/WHITELISTING</li>
-                <li style="list-style: none; padding-left: 1.2rem;">◦ CUT-DOWNS FOR PROMOTIONAL USE</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 class="slide-header" style="font-size: 2.5rem; color: var(--coral);">
-                ADDITIONAL FEES / LIMITATIONS
-              </h2>
-              
-              <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.75rem;">ADDITIONAL FEES MAY APPLY FOR:</p>
-              
-              <ul class="styled-list bulleted" style="font-size: 0.85rem; display: grid; grid-template-columns: 1fr; gap: 0.4rem;">
-                <li>EXCLUSIVITY</li>
-                <li>RUSH TIMELINES</li>
-                <li>EXTRA DELIVERABLES OR EDIT ROUNDS</li>
-                <li>EXTRA FORMATS</li>
-                <li>HOSTING OR MODERATION</li>
-                <li>HMU IF NOT PROVIDED</li>
-                <li>NO UNPAID GUARANTEED DELIVERABLES</li>
-                <li>NO SCRIPTED CLAIMS THAT CONFLICT WITH AUTHENTICITY</li>
-                <li>AFFILIATE PARTNERSHIPS, IF INCLUDED, ARE STRUCTURED SEPARATELY FROM FIXED-RATE PLACEMENTS</li>
-                <li>STANDARD AFFILIATE COMPENSATION: 20% OF EACH ATTRIBUTED PURCHASE</li>
-                <li>CONTENT TERMS MAY APPLY DEPENDING ON CAMPAIGN STRUCTURE</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+  </div>
+</div>
 
       <div class="swiper-slide bg-white">
         <div class="content-grid standard-layout">
           <div class="text-content burgundy-text" style="text-align: left;">
-            <h2 class="marker-highlight" style="font-size: 2rem;" data-swiper-parallax="-300">
+            <h2 class="section-heading" data-swiper-parallax="-300" style="color: var(--coral); font-style: italic; font-family: 'GF Didot', serif;">
               TO REQUEST A QUOTE, PLEASE SHARE:
             </h2>
             
-            <ul class="styled-list bulleted" style="font-size: 1.1rem; margin-bottom: 2rem;" data-swiper-parallax="-100">
+            <ul class="quote-requirements-list" data-swiper-parallax="-500" style="list-style-type: disc; padding-left: 1.5rem; font-family: var(--font-sans, 'Poppins', sans-serif); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
               <li>COLLABORATION TYPE</li>
               <li>REQUESTED DELIVERABLES AND PLATFORMS</li>
               <li>REMOTE OR ON-SITE</li>
@@ -696,62 +413,425 @@
               <li>BUDGET RANGE, IF AVAILABLE</li>
             </ul>
 
-            <p style="font-size: 1.05rem; line-height: 1.5; margin-bottom: 2.5rem; font-weight: 500;">
+            <p class="intro-description" data-swiper-parallax="-600" style="font-size: 1.05rem; line-height: 1.5; margin-bottom: 2.5rem; font-weight: 500;">
               IF YOU HAVE A BUDGET RANGE, PLEASE INCLUDE IT SO WE CAN RECOMMEND THE BEST-FIT PACKAGE.
             </p>
 
-            <div style="margin-top: 2rem;">
+            <div class="contact-details-block" data-swiper-parallax="-700" style="font-family: var(--font-sans, 'Poppins', sans-serif);">
               <h3 style="font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem;">CONTACT:</h3>
               <p style="font-size: 1.2rem; font-weight: 600; margin: 0;">BERNADINE COTE</p>
               <p style="font-size: 1.2rem; font-weight: 400; color: var(--coral); margin: 0;">BERNADINE@THEAUTHENTICASIAN.COM</p>
             </div>
           </div>
           
-          <div class="image-wrapper" data-swiper-parallax="200">
+          <div class="image-wrapper contact-photo" data-swiper-parallax="-200">
             <img src="https://placehold.co/600x700/f0eae5/4a0e0e?text=Contact+Misa" alt="Misa Chien Contact" class="slide-img" />
           </div>
         </div>
       </div>
-
-    </div>
-    
     <div class="swiper-pagination"></div>
   </div>
 </section>
 
+<style>
+  .media-kit-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .media-kit-container .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .media-kit-container .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem;
+    box-sizing: border-box;
+  }
+
+  .media-kit-container .intro-title {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
+    font-size: 5.5rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--coral);
+    margin-bottom: 1rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .media-kit-container .intro-subtitle {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    font-size: 3rem;
+    color: var(--burgundy);
+    margin-bottom: 3rem;
+    display: inline-block;
+    line-height: 1.4;
+    background: linear-gradient(
+      to bottom, 
+      transparent 55%, 
+      rgba(231, 120, 96, 0.25) 55%
+    );
+    padding: 4px 8px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .media-kit-container .intro-subtitle.white-text {
+    color: #ffffff;
+    background: linear-gradient(
+      to bottom, 
+      transparent 55%, 
+      rgba(255, 255, 255, 0.15) 55%
+    );
+  }
+
+  .media-kit-container .intro-description {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--burgundy);
+    opacity: 0.85;
+    margin-bottom: 3.5rem;
+    max-width: 600px;
+  }
+
+  .media-kit-container .white-text .intro-description {
+    color: #ffffff;
+  }
+
+  .media-kit-container .section-heading {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+  }
+
+  .media-kit-container .intro-meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.25rem;
+    background-color: var(--burgundy);
+    padding: 1rem 2rem;
+    color: #ffffff;
+    font-family: var(--font-sans, 'Poppins', sans-serif);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 4rem;
+    border-radius: 0; 
+  }
+
+  .media-kit-container .dot-separator {
+    color: var(--coral);
+    font-weight: 600;
+  }
+
+  .media-kit-container .quiz-action-btn {
+    background-color: var(--coral);
+    border: 1px solid var(--coral);
+    color: #ffffff;
+    padding: 1.25rem 3.5rem;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .media-kit-container .quiz-action-btn:hover {
+    background-color: transparent;
+    color: var(--coral);
+  }
+
+  .media-kit-container .burgundy-bg .quiz-action-btn:hover {
+    background-color: #ffffff;
+    color: var(--burgundy);
+    border-color: #ffffff;
+  }
+
+  .media-kit-container .content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+    align-items: center;
+  }
+
+  .media-kit-container .content-grid.standard-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .media-kit-container .content-grid.split {
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .media-kit-container .col-left, 
+  .media-kit-container .col-right {
+    padding: 5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .media-kit-container .image-wrapper {
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .media-kit-container .slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .media-kit-container .coral-bg { background-color: var(--coral); }
+  .media-kit-container .burgundy-bg { background-color: var(--burgundy); }
+  .media-kit-container .burgundy-text { color: var(--burgundy); }
+  .media-kit-container .white-text { color: #ffffff; }
+  .media-kit-container .bg-cream { background-color: #f9f4f0; }
+  .media-kit-container .bg-white { background-color: #ffffff; }
+
+  .media-kit-container .partner-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .media-kit-container .metrics-layout, 
+  .media-kit-container .stats-layout, 
+  .media-kit-container .pricing-layout, 
+  .media-kit-container .contact-layout {
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+  }
+
+  .media-kit-container .metrics-grid, 
+  .media-kit-container .stats-grid, 
+  .media-kit-container .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin: 4rem 0;
+  }
+
+  .media-kit-container .metric-card {
+    background: #ffffff;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  }
+
+  .media-kit-container .metric-number {
+    display: block;
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
+    font-size: 4rem;
+    color: var(--coral);
+    margin-bottom: 0.5rem;
+  }
+
+  .media-kit-container .metric-label {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
+    font-size: 1rem;
+    color: var(--burgundy);
+  }
+
+  .media-kit-container .stat-box {
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 3rem 2rem;
+  }
+
+  .media-kit-container .stat-box h3 {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .media-kit-container .stat-count {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .media-kit-container .stat-desc {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .media-kit-container .video-slide {
+    background: #111111;
+  }
+
+  .media-kit-container .video-container {
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 16/9;
+    background: #222222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .media-kit-container .video-placeholder {
+    text-align: center;
+    color: #ffffff;
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .media-kit-container .video-mock-frame {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  .media-kit-container .video-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+    margin-top: 15%;
+  }
+
+  .media-kit-container .play-button {
+    width: 80px;
+    height: 80px;
+    background: var(--coral);
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .media-kit-container .play-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 15px 0 15px 25px;
+    border-color: transparent transparent transparent #ffffff;
+  }
+
+  .media-kit-container .price-box {
+    border: 1px solid var(--coral);
+    padding: 3rem 2rem;
+    background: #ffffff;
+  }
+
+  .media-kit-container .price-box h4 {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
+    color: var(--burgundy);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .media-kit-container .price-box p {
+    font-family: var(--font-sans, 'Poppins', sans-serif);
+    font-weight: 600;
+    color: var(--coral);
+    font-size: 1.25rem;
+  }
+
+  .media-kit-container .footer-note {
+    margin: 0 auto;
+  }
+
+  .media-kit-container .options-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+  }
+
+  .media-kit-container .options-list li {
+    font-family: var(--font-logo, 'Tenor Sans', sans-serif);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  .media-kit-container .swiper-slide-active .intro-title,
+  .media-kit-container .swiper-slide-active .intro-subtitle,
+  .media-kit-container .swiper-slide-active .metric-card,
+  .media-kit-container .swiper-slide-active .stat-box,
+  .media-kit-container .swiper-slide-active .price-box {
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
 
 <script>
-import Swiper from 'swiper';
-import { Parallax, Keyboard, Pagination, EffectCreative } from 'swiper/modules';
+  import Swiper from 'swiper';
 
+  import { Navigation, Pagination, Parallax, EffectCreative, Autoplay, Keyboard } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import 'swiper/css/effect-creative';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-creative';
+  import 'swiper/css/keyboard'; 
 
-
-const swiper = new Swiper('.mySwiper', {
-  modules: [Parallax, Keyboard, Pagination, EffectCreative],
-  direction: 'horizontal',
-  loop: false,
-  speed: 800,
-  parallax: true,
-  keyboard: {
-    enabled: true,
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  effect: 'creative',
-  creativeEffect: {
-    prev: {
-      shadow: true,
-      translate: ['-20%', 0, -1],
+  new Swiper('.mySwiper', {
+  
+    modules: [Navigation, Pagination, Parallax, EffectCreative, Autoplay, Keyboard],
+    speed: 1000,
+    parallax: true,
+    mousewheel: true,
+    grabCursor: true,
+    effect: 'creative',
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
     },
-    next: {
-      translate: ['100%', 0, 0],
+ 
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true, 
     },
-  },
-});
+    creativeEffect: {
+      prev: {
+        shadow: true,
+        translate: ['-20%', 0, -1],
+      },
+      next: {
+        translate: ['100%', 0, 0],
+      },
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
 </script>
