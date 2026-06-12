@@ -488,22 +488,28 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     margin-bottom: 1rem;
     line-height: 1;
   }
-
 .intro-subtitle {
   font-family: 'GF Didot', serif;
   font-style: italic;
   font-size: 3rem;
-  color: var(--burgundy); 
+  color: var(--burgundy);
   margin-bottom: 3rem;
-  display: inline-block; 
   
+
+  display: inline; 
+  line-height: 1.4;
   
+
   background: linear-gradient(
     to bottom, 
     transparent 55%, 
-    rgba(231, 120, 96, 0.25) 55% 
+    rgba(231, 120, 96, 0.25) 55%
   );
-  padding: 0 8px; 
+  padding: 4px 8px;
+  
+
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
   .intro-description {
@@ -899,15 +905,17 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     #quiz-intro {
       padding: 3rem 1rem;
     }
+.intro-subtitle {
+    font-size: 1.85rem; 
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
 
     .intro-title {
       font-size: 3.5rem;
     }
 
-    .intro-subtitle {
-      font-size: 1.6rem;
-      margin-bottom: 2rem;
-    }
+   
 
     .intro-meta-pill {
       flex-direction: column;
