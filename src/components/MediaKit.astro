@@ -610,13 +610,17 @@
 
 <script>
   import Swiper from 'swiper';
-  import { Navigation, Pagination, Parallax, EffectCreative, Autoplay } from 'swiper/modules';
+
+  import { Navigation, Pagination, Parallax, EffectCreative, Autoplay, Keyboard } from 'swiper/modules';
   import 'swiper/css';
   import 'swiper/css/pagination';
   import 'swiper/css/effect-creative';
 
+  import 'swiper/css/keyboard'; 
+
   new Swiper('.mySwiper', {
-    modules: [Navigation, Pagination, Parallax, EffectCreative, Autoplay],
+  
+    modules: [Navigation, Pagination, Parallax, EffectCreative, Autoplay, Keyboard],
     speed: 1000,
     parallax: true,
     mousewheel: true,
@@ -625,6 +629,11 @@
     autoplay: {
       delay: 5000,
       disableOnInteraction: false,
+    },
+ 
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true, 
     },
     creativeEffect: {
       prev: {
