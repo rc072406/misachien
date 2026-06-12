@@ -489,13 +489,22 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     line-height: 1;
   }
 
-  .intro-subtitle {
-    font-family: 'GF Didot', serif;
-    font-style: italic;
-    font-size: 3rem;
-    color: #C3A6A7;
-    margin-bottom: 3rem;
-  }
+.intro-subtitle {
+  font-family: 'GF Didot', serif;
+  font-style: italic;
+  font-size: 3rem;
+  color: var(--burgundy); 
+  margin-bottom: 3rem;
+  display: inline-block; 
+  
+  
+  background: linear-gradient(
+    to bottom, 
+    transparent 55%, 
+    rgba(231, 120, 96, 0.25) 55% 
+  );
+  padding: 0 8px; 
+}
 
   .intro-description {
     font-family: var(--font-sans);
