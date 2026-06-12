@@ -170,17 +170,16 @@ a {
   .footer-container {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    text-align: center; 
+    text-align: left;   
   }
 
   .footer-brand p {
-    margin: 0 auto; 
+    margin: 0;           
   }
 
- 
   .footer-bottom {
     margin: 2.5rem auto 0 auto;
-    text-align: center;
+    text-align: left;    
   }
 }
 .btn-filled {
@@ -229,7 +228,7 @@ a {
 	}
 @media (max-width: 820px) {
   
-  .web3form .btn-filled {
+.btn-filled {
     align-self: stretch;
     text-align: center;
   }
