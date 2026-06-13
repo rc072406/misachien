@@ -32,9 +32,7 @@ const { className = '' } = Astro.props;
           </div>
           <div class="slide-visual-panel frame-visual">
             <div class="image-mask design-shadow">
-              <div class="placeholder-graphic">
-                <span>[ LARGE PHOTO OF MISA CHIEN ]</span>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -155,9 +153,7 @@ const { className = '' } = Astro.props;
     </div>
           <div class="slide-visual-panel frame-visual">
             <div class="image-mask design-shadow">
-              <div class="placeholder-graphic">
-                <span>[ LARGE PHOTO OF MISA CHIEN ]</span>
-              </div>
+            
             </div>
           </div>
         </div>
@@ -221,9 +217,7 @@ const { className = '' } = Astro.props;
         <div class="slide-inner split-layout inversion-layout">
           <div class="slide-visual-panel frame-visual">
             <div class="image-mask design-shadow">
-              <div class="placeholder-graphic">
-                <span>[ LARGE PHOTO OF MISA CHIEN ]</span>
-              </div>
+             
             </div>
           </div>
           <div class="slide-content">
@@ -782,29 +776,21 @@ const { className = '' } = Astro.props;
     align-items: center;
   }
 
-  .image-mask {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    max-height: 520px;
-    background-color: var(--soft-white);
-    padding: 12px;
-    box-sizing: border-box;
-  }
+ .image-mask {
+  width: 100%;
+  aspect-ratio: 2 / 3; 
+  max-height: 520px;   
+  background-color: var(--soft-white);
+  padding: 12px;
+  box-sizing: border-box;
+}
 
-  .placeholder-graphic {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(89, 54, 58, 0.05);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--font-display);
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    color: rgba(89, 54, 58, 0.4);
-    text-align: center;
-    border: 1px dashed rgba(89, 54, 58, 0.15);
-  }
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
 
   .swiper-slide[data-theme="dark"] .placeholder-graphic {
     background-color: rgba(255, 255, 255, 0.05);
