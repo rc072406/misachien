@@ -369,10 +369,8 @@ const { className = '' } = Astro.props;
         direction: 'horizontal',
         loop: false,
         speed: 700,
-        parallax: true,
-        mousewheel: {
-          forceToAxis: true,
-        },
+        parallax: false,
+        mousewheel: false,
         keyboard: {
           enabled: true,
           onlyInViewport: true,
@@ -384,6 +382,14 @@ const { className = '' } = Astro.props;
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          769: {
+            parallax: true,
+            mousewheel: {
+              forceToAxis: true,
+            }
+          }
         },
         on: {
           init: function (swiper) {
@@ -1086,7 +1092,7 @@ const { className = '' } = Astro.props;
   }
 
   .inline-centered-list-bullets {
-    text-align: center;
+    text-align: left;
     max-width: 620px;
     margin-left: auto;
     margin-right: auto;
