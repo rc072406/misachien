@@ -17,12 +17,12 @@ import slide9Image from '../../public/images/width_640 (1).webp';
     <div class="swiper-wrapper">
       
       <div class="swiper-slide" data-theme="cream">
-        <div class="luxury-watermark" data-swiper-parallax="-400">01</div>
+        <div class="luxury-watermark" data-swiper-parallax="-500">01</div>
         <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content">
-            <div class="meta-category-pill">FOUNDER • COMMUNITY BUILDER • SPEAKER • AUTHOR • ENTREPRENEUR</div>
-            <h1 class="hero-title">MISA CHIEN</h1>
-            <h2 class="hero-subtitle">Authentic Storytelling</h2>
+            <div class="meta-category-pill" data-swiper-parallax="-50">FOUNDER • COMMUNITY BUILDER • SPEAKER • AUTHOR • ENTREPRENEUR</div>
+            <h1 class="hero-title" data-swiper-parallax="-100">MISA CHIEN</h1>
+            <h2 class="hero-subtitle" data-swiper-parallax="-150">Authentic Storytelling</h2>
             <p class="header-note">FOR SELECT BRAND, MEDIA, AND SPEAKING PARTNERSHIPS</p>
             <p class="slide-description">Misa brings founder-to-founder credibility, trusted community access, and authentic storytelling across leadership, identity, ambition, and belonging.</p>
             
@@ -39,14 +39,14 @@ import slide9Image from '../../public/images/width_640 (1).webp';
           </div>
           <div class="slide-visual-panel image-constrained-wrapper">
             <div class="image-mask editorial-clip">
-               <img src={slide1Image.src} class="slide-image" alt="Misa Chien">
+               <img src={slide1Image.src} class="slide-image" alt="Misa Chien Hero">
             </div>
           </div>
         </div>
       </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-400">02</div>
+        <div class="luxury-watermark" data-swiper-parallax="-500">02</div>
         <div class="slide-inner grid-two-col screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content editorial-border-right">
             <h2 class="section-heading">WHY PARTNERS WORK WITH MISA</h2>
@@ -74,7 +74,7 @@ import slide9Image from '../../public/images/width_640 (1).webp';
       </div>
 
       <div class="swiper-slide" data-theme="dark">
-        <div class="luxury-watermark light-watermark" data-swiper-parallax="-400">03</div>
+        <div class="luxury-watermark light-watermark" data-swiper-parallax="-500">03</div>
         <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content">
             <h2 class="section-heading inverse-text">COLLABORATION OPTIONS</h2>
@@ -107,20 +107,37 @@ import slide9Image from '../../public/images/width_640 (1).webp';
           </div>
           <div class="slide-visual-panel gallery-trio-visual">
             <div class="styled-photo-wrapper photo-one editorial-clip">
-              <div class="placeholder-graphic"><span>[ FASHION ]</span></div>
+              <div class="placeholder-graphic"><span>[ PHOTO 1 ]</span></div>
             </div>
-            <div class="styled-photo-wrapper photo-two editorial-clip" data-swiper-parallax="-50">
-              <div class="placeholder-graphic"><span>[ PORTRAIT ]</span></div>
+            <div class="styled-photo-wrapper photo-two editorial-clip" data-swiper-parallax="-80">
+              <div class="placeholder-graphic"><span>[ PHOTO 2 ]</span></div>
             </div>
-            <div class="styled-photo-wrapper photo-three editorial-clip" data-swiper-parallax="50">
-              <div class="placeholder-graphic"><span>[ LIFESTYLE ]</span></div>
+            <div class="styled-photo-wrapper photo-three editorial-clip" data-swiper-parallax="80">
+              <div class="placeholder-graphic"><span>[ PHOTO 3 ]</span></div>
             </div>
           </div>
         </div>
       </div>
 
+      <div class="swiper-slide" data-theme="dark">
+        <div class="luxury-watermark light-watermark" data-swiper-parallax="-500">04</div>
+        <div class="slide-inner cinematic-full-layout screen-constrained" data-swiper-parallax="-200">
+          <div class="cinematic-header-block">
+            <h2 class="section-heading inverse-text text-center">WATCH MISA IN ACTION</h2>
+          </div>
+          <div class="slide-visual-panel image-constrained-wrapper full-width-visual">
+             <div class="image-mask editorial-clip action-frame">
+                <img src={slide9Image.src} class="slide-image" alt="Misa Chien in Action">
+                <div class="play-overlay-static">
+                   <svg viewBox="0 0 24 24" width="48" height="48" fill="white"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
       <div class="swiper-slide" data-theme="cream">
-        <div class="luxury-watermark" data-swiper-parallax="-400">04</div>
+        <div class="luxury-watermark" data-swiper-parallax="-500">05</div>
         <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
          <div class="slide-content">
           <h2 class="section-heading">PRICING ANCHORS</h2>
@@ -134,12 +151,12 @@ import slide9Image from '../../public/images/width_640 (1).webp';
             <li><span>Speaking engagements</span> <strong class="price-anchor-tag">from $5,000</strong></li>
             <li><span>On-site branded campaigns</span> <strong class="price-anchor-tag">from $5,000</strong></li>
           </ul>
-          <p class="bundle-pricing-callout-note">Bundle pricing is available for multi-platform campaigns under one brief.</p>
+          <p class="bundle-pricing-callout-note">Bundle pricing is available for multi-platform campaigns.</p>
           
           <h3 class="subsection-subheading small-margin-top">Additional Notes</h3>
-          <ul class="additional-notes-bullet-points compact-inline-notes">
-            <li>Scope & usage alters final terms</li>
-            <li>Newsletters quoted separately</li>
+          <ul class="additional-notes-bullet-points">
+            <li>Final pricing depends on scope and usage</li>
+            <li>Newsletter placements quoted separately</li>
             <li>HMU fees apply if not provided</li>
           </ul>
         </div>
@@ -152,9 +169,9 @@ import slide9Image from '../../public/images/width_640 (1).webp';
       </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-400">05</div>
+        <div class="luxury-watermark" data-swiper-parallax="-500">06</div>
         <div class="disclaimer-header-strip-meta">
-          <p>* Formats confirmed based on fit. Performance varies. Reach never guaranteed.</p>
+          <p>* Formats confirmed based on campaign fit. Performance varies. Reach never guaranteed.</p>
         </div>
         <div class="slide-inner grid-two-col screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content architecture-scroll-prevention">
@@ -164,16 +181,16 @@ import slide9Image from '../../public/images/width_640 (1).webp';
               <div class="platform-box-header">
                 <h4>INSTAGRAM <span class="platform-box-subtitle-followers">(13K+ followers)</span></h4>
               </div>
-              <div class="rate-listing-row-item"><span>Carousel Post <small>(Includes Story support)</small></span><strong>$2,200</strong></div>
-              <div class="rate-listing-row-item"><span>Reel <small>(Includes Story support)</small></span><strong>$2,800</strong></div>
+              <div class="rate-listing-row-item"><span>Carousel Post <small>(Inc. Story)</small></span><strong>$2,200</strong></div>
+              <div class="rate-listing-row-item"><span>Reel <small>(Inc. Story)</small></span><strong>$2,800</strong></div>
             </div>
 
             <div class="platform-package-tier-box">
               <div class="platform-box-header">
                 <h4>LINKEDIN <span class="platform-box-subtitle-followers">(48.3K+ connections)</span></h4>
               </div>
-              <div class="rate-listing-row-item"><span>Sponsored Post</span><strong>$1,800</strong></div>
-              <div class="rate-listing-row-item"><span>Video Post</span><strong>$2,500</strong></div>
+              <div class="rate-listing-row-item"><span>Sponsored post</span><strong>$1,800</strong></div>
+              <div class="rate-listing-row-item"><span>Video post</span><strong>$2,500</strong></div>
             </div>
 
             <div class="platform-package-tier-box">
@@ -181,21 +198,21 @@ import slide9Image from '../../public/images/width_640 (1).webp';
                 <h4>NEWSLETTER <span class="platform-box-subtitle-followers">(3K+ Subscribers)</span></h4>
               </div>
               <div class="rate-listing-row-item"><span>Featured Placement</span><strong>$800</strong></div>
-              <p class="compact-card-fineprint">Affiliate tracking: 20% commission per purchase. Fixed base placement rules apply.</p>
+              <p class="compact-card-fineprint">Affiliate: 20% commission. Fixed base placements apply.</p>
             </div>
           </div>
 
           <div class="slide-content bundle-layout-panel">
             <div class="bundle-package-matrix-card">
               <div class="bundle-matrix-card-header">
-                <h3>CAMPAIGN BUNDLES</h3>
+                <h3>BUNDLE</h3>
               </div>
               <div class="bundle-matrix-rows-stack">
                 <div class="bundle-matrix-row"><span>LinkedIn + Newsletter</span><strong>$2,400</strong></div>
                 <div class="bundle-matrix-row"><span>IG Carousel + Newsletter</span><strong>$2,800</strong></div>
                 <div class="bundle-matrix-row"><span>IG Reel + Newsletter</span><strong>$3,200</strong></div>
-                <div class="bundle-matrix-row"><span>LinkedIn + IG Carousel + Newsletter</span><strong>$4,200</strong></div>
-                <div class="bundle-matrix-row"><span>LinkedIn + IG Reel + Newsletter</span><strong>$4,600</strong></div>
+                <div class="bundle-matrix-row"><span>LinkedIn + IG Carousel + NL</span><strong>$4,200</strong></div>
+                <div class="bundle-matrix-row"><span>LinkedIn + IG Reel + NL</span><strong>$4,600</strong></div>
               </div>
             </div>
           </div>
@@ -203,7 +220,7 @@ import slide9Image from '../../public/images/width_640 (1).webp';
       </div>
 
       <div class="swiper-slide" data-theme="cream">
-        <div class="luxury-watermark" data-swiper-parallax="-400">06</div>
+        <div class="luxury-watermark" data-swiper-parallax="-500">07</div>
         <div class="slide-inner split-layout inversion-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-visual-panel image-constrained-wrapper">
             <div class="image-mask editorial-clip">
@@ -216,33 +233,34 @@ import slide9Image from '../../public/images/width_640 (1).webp';
             
             <h3 class="subsection-subheading">Starting Point</h3>
             <ul class="pricing-anchors-rates-list fine-line-list">
-              <li><span>On-site podcast or media appearances</span> <strong class="price-anchor-tag">from $1,800</strong></li>
-              <li><span>Travel and parking logistics</span> <strong class="price-anchor-tag">Reimbursed</strong></li>
+              <li><span>On-site appearances</span> <strong class="price-anchor-tag">from $1,800</strong></li>
+              <li><span>Travel and parking</span> <strong class="price-anchor-tag">Reimbursed</strong></li>
             </ul>
 
             <h3 class="subsection-subheading small-margin-top">Please Note</h3>
-            <ul class="additional-notes-bullet-points long-list-optimized">
-              <li>Sponsored appearances are treated as paid partnerships</li>
-              <li>TV, broadcast, and travel requirements are scoped dynamically</li>
-              <li>Paid usage, whitelisting, and pinning entail distinct production briefs</li>
+            <ul class="additional-notes-bullet-points">
+              <li>Sponsored appearances are paid collaborations</li>
+              <li>TV and broadcast appearances quoted separately</li>
+              <li>Travel fees apply based on location and scope</li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-400">07</div>
+        <div class="luxury-watermark" data-swiper-parallax="-500">08</div>
         <div class="slide-inner basic-centered-layout screen-constrained" data-swiper-parallax="-200">
           <div class="centered-content-container-block editorial-box">
             <h2 class="section-heading text-center">PRODUCT GIFTING</h2>
             <p class="gifting-subtitle-subtext text-center">(No Guaranteed Deliverables)</p>
-            <p class="intro-context-text text-center max-width-optimized-center">We welcome gifted products based strictly on organic brand fit and community relevance.</p>
+            <p class="intro-context-text text-center max-width-optimized-center">We may accept gifted products based strictly on fit and relevance.</p>
             
             <div class="gifting-notes-box-layout">
+              <h3 class="subsection-subheading text-center">Please note:</h3>
               <ul class="additional-notes-bullet-points inline-centered-list-bullets">
-                <li>Gifting does not guarantee social features or content execution</li>
-                <li>Guaranteed coverage mandates standard integration/campaign structures</li>
-                <li>Timelines are evaluated post-receipt. TikTok is not an active distribution channel</li>
+                <li>Gifting does not guarantee content or posting</li>
+                <li>Paid partnerships required for guaranteed coverage</li>
+                <li>TikTok is not an active platform at this time</li>
               </ul>
             </div>
           </div>
@@ -250,24 +268,25 @@ import slide9Image from '../../public/images/width_640 (1).webp';
       </div>
 
       <div class="swiper-slide" data-theme="cream">
-        <div class="luxury-watermark" data-swiper-parallax="-400">08</div>
+        <div class="luxury-watermark" data-swiper-parallax="-500">09</div>
         <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content">
             <h2 class="section-heading">USAGE RIGHTS</h2>
             <div class="main-term-callout-banner">
-              <p>USAGE IS QUOTED SEPARATELY BASED ON SCOPE, CHANNEL, DURATION, AND TERRITORY.</p>
+              <p>USAGE IS QUOTED SEPARATELY BASED ON SCOPE, DURATION, AND TERRITORY.</p>
             </div>
             
             <h3 class="subsection-subheading">Standard Usage Terms:</h3>
-            <ul class="additional-notes-bullet-points fine-line-list compressed-line-height">
+            <ul class="additional-notes-bullet-points fine-line-list">
               <li>ORGANIC REPOSTING ON BRAND CHANNELS</li>
-              <li>WEBSITE AND EMAIL MARKETING INTEGERS</li>
-              <li>PAID ADS & AUTHORIZED WHITELISTING</li>
-              <li>PROMOTIONAL CUT-DOWNS & EDITS</li>
+              <li>WEBSITE OR EMAIL USAGE</li>
+              <li>PAID ADS / WHITELISTING</li>
+              <li>PROMOTIONAL CUT-DOWNS</li>
             </ul>
 
             <h3 class="subsection-subheading small-margin-top">ADDITIONAL FEES & LIMITATIONS:</h3>
-            <p class="block-body-text micro-caps-paragraph">EXCLUSIVITY • RUSH TIMELINES • ADDED CONTENT ROUNDS • MODERATION ASSIGNMENTS • HMU EXPENSES • AUTHENTICITY MATTERS (NO RIGID/SCRIPTED DICTATIONS)</p>
+            <p class="micro-caps-paragraph">EXCLUSIVITY • RUSH TIMELINES • EXTRA EDIT ROUNDS • HOSTING • HMU • NO UNPAID GUARANTEED DELIVERABLES • NO AUTHENTICITY CONFLICTS</p>
+            <p class="micro-caps-paragraph" style="margin-top: 1vh;">AFFILIATE COMPENSATION: 20% OF ATTRIBUTED PURCHASE</p>
           </div>
           <div class="slide-visual-panel image-constrained-wrapper">
             <div class="image-mask editorial-clip">
@@ -278,7 +297,7 @@ import slide9Image from '../../public/images/width_640 (1).webp';
       </div>
 
       <div class="swiper-slide" data-theme="cream">
-        <div class="luxury-watermark" data-swiper-parallax="-400">09</div>
+        <div class="luxury-watermark" data-swiper-parallax="-500">10</div>
         <div class="slide-inner split-layout inversion-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-visual-panel image-constrained-wrapper">
             <div class="image-mask editorial-clip">
@@ -287,10 +306,10 @@ import slide9Image from '../../public/images/width_640 (1).webp';
           </div>
           <div class="slide-content">
             <h2 class="section-heading">REQUEST A QUOTE</h2>
-            <p class="intro-context-text">Provide collaboration type, platforms, location data, usage timelines, and your target budget scale.</p>
+            <p class="intro-context-text">Please share collaboration type, deliverables, location, usage needs, and your budget range.</p>
             
             <div class="contact-card-anchor-block">
-              <span class="contact-pre-header-label">PARTNERSHIP MANAGEMENT:</span>
+              <span class="contact-pre-header-label">PARTNERSHIPS:</span>
               <p class="agent-contact-name-text">BERNADINE COTE</p>
               <a href="mailto:BERNADINE@THEAUTHENTICASIAN.COM" class="btn-filled-luxury">
                 <span>BERNADINE@THEAUTHENTICASIAN.COM</span>
@@ -314,7 +333,6 @@ import slide9Image from '../../public/images/width_640 (1).webp';
   import 'swiper/css/navigation';
   import 'swiper/css/pagination';
   import 'swiper/css/scrollbar';
-  
   import Swiper from 'swiper';
   import { Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, Parallax } from 'swiper/modules';
 
@@ -324,8 +342,7 @@ import slide9Image from '../../public/images/width_640 (1).webp';
       new Swiper('.mediaKitSwiper', {
         modules: [Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, Parallax],
         direction: 'horizontal',
-        loop: false,
-        speed: 1000,
+        speed: 1100,
         parallax: true,
         mousewheel: { forceToAxis: true, sensitivity: 0.8 },
         keyboard: { enabled: true, onlyInViewport: true },
@@ -354,7 +371,7 @@ import slide9Image from '../../public/images/width_640 (1).webp';
   };
 
   document.addEventListener('DOMContentLoaded', initSwiper);
-  setTimeout(initSwiper, 100);
+  setTimeout(initSwiper, 150);
 </script>
 
 <style>
@@ -367,7 +384,6 @@ import slide9Image from '../../public/images/width_640 (1).webp';
     --dark-grey-text: #333333;
     --font-display: 'Tenor Sans', sans-serif;
     --font-sans: 'Poppins', sans-serif;
-    
     width: 100%;
     position: relative;
     background-color: var(--soft-white);
@@ -379,15 +395,11 @@ import slide9Image from '../../public/images/width_640 (1).webp';
     top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none;
     z-index: 50;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  .swiper {
-    width: 100%;
-    height: 100vh;
-    max-height: 100vh;
-  }
+  .swiper { width: 100%; height: 100vh; }
 
   .swiper-slide {
     width: 100%;
@@ -396,7 +408,7 @@ import slide9Image from '../../public/images/width_640 (1).webp';
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 4vh 6vw;
+    padding: 5vh 6vw;
     position: relative;
     overflow: hidden;
   }
@@ -405,26 +417,25 @@ import slide9Image from '../../public/images/width_640 (1).webp';
   .swiper-slide[data-theme="light"] { background-color: var(--soft-white); }
   .swiper-slide[data-theme="dark"] { background-color: var(--burgundy); }
 
-
   .screen-constrained {
-    height: 82vh;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1350px;
     margin: 0 auto;
-    box-sizing: border-box;
   }
 
   .image-constrained-wrapper {
     height: 100%;
     max-height: 70vh;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
+  .full-width-visual { width: 100%; max-height: 55vh; }
 
   .image-mask {
     height: 100%;
@@ -432,33 +443,30 @@ import slide9Image from '../../public/images/width_640 (1).webp';
     aspect-ratio: 3 / 4;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.04);
   }
 
-  .slide-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  .action-frame { aspect-ratio: 21 / 9; width: 100%; }
+
+  .slide-image { width: 100%; height: 100%; object-fit: cover; }
 
   .luxury-watermark {
     position: absolute;
     font-family: var(--font-display);
-    font-size: 28vh;
+    font-size: 32vh;
     color: var(--coral);
     opacity: 0.04;
     line-height: 1;
     z-index: 0;
     pointer-events: none;
-    bottom: 8vh;
-    right: 4vw;
+    bottom: 5vh;
+    right: 5vw;
   }
-  .luxury-watermark.light-watermark { color: var(--soft-white); opacity: 0.025; }
+  .luxury-watermark.light-watermark { color: var(--soft-white); opacity: 0.03; }
 
   .meta-category-pill {
     display: inline-block;
     color: var(--burgundy);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--coral);
     font-family: var(--font-sans);
     font-size: 0.65rem;
@@ -468,28 +476,27 @@ import slide9Image from '../../public/images/width_640 (1).webp';
 
   .hero-title {
     font-family: var(--font-display);
-    font-size: calc(2.8rem + 2vw);
+    font-size: calc(3rem + 2.5vw);
     font-weight: 400;
     color: var(--burgundy);
-    line-height: 0.95;
+    line-height: 0.9;
     margin-bottom: 1vh;
   }
 
   .hero-subtitle {
     font-family: var(--font-display);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-style: italic;
     color: var(--coral);
-    margin-bottom: 3vh;
+    margin-bottom: 4vh;
   }
 
   .section-heading {
     font-family: var(--font-display);
-    font-size: calc(1.5rem + 0.8vw);
+    font-size: calc(1.8rem + 0.5vw);
     font-weight: 400;
     color: var(--burgundy);
     line-height: 1.1;
-    letter-spacing: 1px;
     margin-bottom: 3vh;
     text-transform: uppercase;
   }
@@ -504,7 +511,6 @@ import slide9Image from '../../public/images/width_640 (1).webp';
     margin-bottom: 2vh;
     text-transform: uppercase;
   }
-  .small-margin-top { margin-top: 2.5vh; }
 
   .header-note {
     font-family: var(--font-sans);
@@ -513,248 +519,94 @@ import slide9Image from '../../public/images/width_640 (1).webp';
     color: var(--burgundy);
     margin-bottom: 3vh;
     border-left: 1px solid var(--coral);
-    padding-left: 0.75rem;
+    padding-left: 1rem;
   }
 
   .slide-description, .intro-context-text {
     font-family: var(--font-sans);
-    font-size: 0.9rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.8;
     color: var(--dark-grey-text);
-    margin-bottom: 3vh;
-    max-width: 440px;
+    margin-bottom: 4vh;
+    max-width: 480px;
   }
 
- 
-  .split-layout {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 5vw;
-  }
+  .split-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 5vw; }
+  .grid-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; }
+  .editorial-border-right { border-right: 1px solid var(--light-grey-border); padding-right: 4vw; }
 
-  .grid-two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4vw;
-    align-items: center;
-  }
+  .metrics-display-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .metric-group h3 { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 2px; color: var(--coral); margin-bottom: 0.5rem; }
+  .metric-group p { font-family: var(--font-sans); font-size: 0.9rem; line-height: 1.6; }
 
-  .editorial-border-right {
-    border-right: 1px solid var(--light-grey-border);
-    padding-right: 3vw;
-  }
-
-  .metrics-display-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  .metric-group h3 {
-    font-family: var(--font-sans);
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-    color: var(--coral);
-    margin-bottom: 0.5rem;
-  }
-  .metric-group p {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    line-height: 1.5;
-    font-weight: 300;
-  }
-
-  
   .value-prop-list li, .additional-notes-bullet-points li {
     font-family: var(--font-sans);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1.6;
-    margin-bottom: 1.2vh;
-    padding-left: 1.2rem;
+    margin-bottom: 1.5vh;
+    padding-left: 1.5rem;
     position: relative;
   }
-  .value-prop-list li::before, .additional-notes-bullet-points li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: var(--coral);
-  }
-
-  .compact-inline-notes {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .compact-inline-notes li { padding-left: 0.8rem; margin-bottom: 0; font-size: 0.8rem;}
+  .value-prop-list li::before, .additional-notes-bullet-points li::before { content: "—"; position: absolute; left: 0; color: var(--coral); }
 
   .fine-line-list li {
     display: flex;
     justify-content: space-between;
-    padding: 0.85vh 0;
-    border-bottom: 1px solid var(--light-grey-border);
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-  }
-  .fine-line-list li::before { display: none; }
-
-  .options-interactive-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5vh 2vw;
-  }
-
-  .luxury-border-bottom {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 1.5vh;
-  }
-  .option-card-item h4 {
-    font-family: var(--font-sans);
-    font-size: 0.65rem;
-    letter-spacing: 1.5px;
-    color: var(--coral);
-    margin-bottom: 0.4vh;
-  }
-  .option-card-item p {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0;
-  }
-
- 
-  .gallery-trio-visual {
-    height: 62vh;
-    position: relative;
-    width: 100%;
-  }
-  .styled-photo-wrapper {
-    position: absolute;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .placeholder-graphic span {
-    font-family: var(--font-sans);
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.3);
-  }
-  .photo-one { width: 42%; aspect-ratio: 3 / 4; left: 0; top: 12%; z-index: 3; }
-  .photo-two { width: 36%; aspect-ratio: 4 / 5; right: 4%; top: 2%; z-index: 1; }
-  .photo-three { width: 38%; aspect-ratio: 1 / 1; right: 18%; bottom: 4%; z-index: 4; }
-
- 
-  .platform-package-tier-box { margin-bottom: 2vh; }
-  .platform-package-tier-box h4 {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    letter-spacing: 1px;
-    color: var(--burgundy);
-    margin: 0 0 0.5vh 0;
-  }
-  .platform-box-subtitle-followers {
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
-    color: var(--coral);
-    font-weight: 300;
-  }
-  .rate-listing-row-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.6vh 0;
-    border-bottom: 1px solid var(--light-grey-border);
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-  }
-  .rate-listing-row-item small { opacity: 0.5; margin-left: 0.25rem; font-size: 0.7rem; }
-  .rate-listing-row-item strong, .bundle-matrix-row strong { font-family: var(--font-display); font-weight: 400; color: var(--burgundy); }
-  .compact-card-fineprint { font-family: var(--font-sans); font-size: 0.7rem; opacity: 0.6; line-height: 1.4; margin: 0.5vh 0 0 0; }
-
-  .bundle-package-matrix-card {
-    background: var(--cream-background);
-    padding: 2.5rem;
-    border: 1px solid var(--light-grey-border);
-  }
-  .bundle-matrix-card-header h3 {
-    font-family: var(--font-sans);
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    color: var(--coral);
-    margin-bottom: 2vh;
-  }
-  .bundle-matrix-row {
-    display: flex;
-    justify-content: space-between;
     padding: 1vh 0;
-    border-bottom: 1px solid rgba(89, 54, 58, 0.08);
+    border-bottom: 1px solid var(--light-grey-border);
     font-family: var(--font-sans);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
-  .bundle-matrix-row:last-child { border-bottom: none; }
 
-  
-  .editorial-box {
-    border: 1px solid var(--light-grey-border);
-    padding: 3.5rem;
-    width: 100%;
-    max-width: 700px;
-    background: var(--soft-white);
-  }
-  .gifting-subtitle-subtext { font-family: var(--font-display); font-style: italic; color: var(--coral); margin-bottom: 2vh; }
-  .inline-centered-list-bullets li { text-align: left; max-width: 550px; margin: 0 auto 1.5vh auto; }
+  .options-interactive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2vh 3vw; }
+  .luxury-border-bottom { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5vh; }
+  .option-card-item h4 { font-family: var(--font-sans); font-size: 0.65rem; color: var(--coral); letter-spacing: 2px; margin-bottom: 0.5vh; }
+  .option-card-item p { font-family: var(--font-display); font-size: 1rem; color: #eee; margin: 0; }
 
-  .main-term-callout-banner {
-    border-top: 1px solid var(--coral); border-bottom: 1px solid var(--coral);
-    padding: 1rem 0; margin-bottom: 2.5vh;
-  }
-  .main-term-callout-banner p { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 1.5px; color: var(--burgundy); margin:0; }
-  .micro-caps-paragraph { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 1px; line-height: 1.6; }
+  .gallery-trio-visual { height: 65vh; position: relative; width: 100%; }
+  .styled-photo-wrapper { position: absolute; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; }
+  .photo-one { width: 45%; aspect-ratio: 3 / 4; left: 0; top: 10%; z-index: 3; }
+  .photo-two { width: 38%; aspect-ratio: 4 / 5; right: 5%; top: 0; z-index: 1; }
+  .photo-three { width: 40%; aspect-ratio: 1 / 1; right: 15%; bottom: 5%; z-index: 4; }
 
-  
-  .contact-card-anchor-block { margin-top: 3.5vh; }
-  .contact-pre-header-label { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 3px; color: var(--coral); display: block; }
-  .agent-contact-name-text { font-family: var(--font-display); font-size: 2rem; color: var(--burgundy); margin: 0.5vh 0 2vh 0; }
-  
-  .btn-filled-luxury {
-    display: inline-flex;
-    background: var(--burgundy);
-    color: var(--soft-white);
-    text-decoration: none;
-    padding: 0.8rem 1.8rem;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    transition: background 0.3s ease;
-  }
-  .btn-filled-luxury:hover { background: var(--coral); }
+  .platform-package-tier-box { margin-bottom: 2vh; }
+  .platform-package-tier-box h4 { font-family: var(--font-display); font-size: 1.1rem; color: var(--burgundy); margin: 0; }
+  .rate-listing-row-item { display: flex; justify-content: space-between; padding: 0.7vh 0; border-bottom: 1px solid var(--light-grey-border); font-family: var(--font-sans); font-size: 0.85rem; }
+  .rate-listing-row-item small { opacity: 0.5; font-size: 0.7rem; margin-left: 0.3rem; }
 
-  .disclaimer-header-strip-meta { position: absolute; top: 3vh; right: 6vw; max-width: 400px; text-align: right; }
-  .disclaimer-header-strip-meta p { font-family: var(--font-sans); font-size: 0.6rem; opacity: 0.4; letter-spacing: 1px; margin: 0; text-transform: uppercase; }
+  .bundle-package-matrix-card { background: var(--cream-background); padding: 3rem; border: 1px solid var(--light-grey-border); }
+  .bundle-matrix-row { display: flex; justify-content: space-between; padding: 1.2vh 0; border-bottom: 1px solid rgba(89,54,58,0.1); font-family: var(--font-sans); font-size: 0.85rem; }
 
+  .editorial-box { border: 1px solid var(--light-grey-border); padding: 4rem; width: 100%; max-width: 750px; background: var(--soft-white); }
+  .main-term-callout-banner { border-top: 1px solid var(--coral); border-bottom: 1px solid var(--coral); padding: 1.2rem 0; margin-bottom: 3vh; }
+  .micro-caps-paragraph { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 1px; line-height: 1.7; opacity: 0.8; }
+
+  .agent-contact-name-text { font-family: var(--font-display); font-size: 2.2rem; color: var(--burgundy); margin: 1vh 0 3vh 0; }
+  .btn-filled-luxury { display: inline-flex; background: var(--burgundy); color: white; padding: 1rem 2rem; font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 2px; }
+
+  .disclaimer-header-strip-meta { position: absolute; top: 4vh; right: 6vw; max-width: 450px; text-align: right; }
+  .disclaimer-header-strip-meta p { font-family: var(--font-sans); font-size: 0.6rem; opacity: 0.4; letter-spacing: 1px; }
 
   :global(.swiper-scrollbar) { background: transparent !important; height: 1px !important; bottom: 3vh !important; left: 6vw !important; width: calc(100% - 12vw) !important; }
   :global(.swiper-scrollbar-drag) { background: var(--coral) !important; border-radius: 0 !important; }
-  :global(.media-kit-swiper-wrapper .swiper-pagination-fraction) { font-family: var(--font-display) !important; color: var(--burgundy) !important; font-size: 1rem !important; bottom: 2.2vh !important; left: 6vw !important; width: auto !important; }
+  :global(.media-kit-swiper-wrapper .swiper-pagination-fraction) { font-family: var(--font-display) !important; color: var(--burgundy) !important; font-size: 1.1rem !important; bottom: 2.2vh !important; left: 6vw !important; width: auto !important; }
   :global(.swiper-button-next), :global(.swiper-button-prev) { bottom: 2.2vh !important; top: auto !important; }
-  :global(.swiper-button-next::after), :global(.swiper-button-prev::after) { font-size: 0.8rem !important; color: var(--burgundy); font-family: var(--font-sans) !important; letter-spacing: 1px; }
+  :global(.swiper-button-next::after), :global(.swiper-button-prev::after) { font-size: 0.9rem !important; color: var(--burgundy); font-family: var(--font-sans) !important; }
   :global(.swiper-button-prev) { right: 10vw !important; left: auto !important; }
   :global(.swiper-button-next) { right: 6vw !important; }
 
- 
-  .editorial-clip { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.76, 0, 0.24, 1); }
+  .editorial-clip { clip-path: inset(100% 0 0 0); transition: clip-path 1.4s cubic-bezier(0.75, 0, 0.25, 1); }
   .swiper-slide-active .editorial-clip { clip-path: inset(0 0 0 0); }
 
-  
-  @media(max-width: 900px) {
-    .screen-constrained { height: auto; flex-direction: column; justify-content: flex-start; gap: 2.5rem; }
-    .split-layout, .grid-two-col { grid-template-columns: 1fr !important; gap: 2rem; }
-    .image-constrained-wrapper { height: 35vh; }
-    .swiper-slide { padding: 6vh 2rem; overflow-y: auto; align-items: flex-start; }
+  .play-overlay-static { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); }
+
+  @media(max-width: 960px) {
+    .screen-constrained { height: auto; flex-direction: column; }
+    .split-layout, .grid-two-col { grid-template-columns: 1fr !important; }
+    .image-constrained-wrapper { height: 40vh; }
+    .swiper-slide { padding: 8vh 1.5rem; overflow-y: auto; align-items: flex-start; }
     .editorial-border-right { border-right: none; padding-right: 0; }
-    .gallery-trio-visual { display: none; }
-    .luxury-watermark { display: none; }
+    .gallery-trio-visual, .luxury-watermark { display: none; }
     :global(.swiper-button-next), :global(.swiper-button-prev) { display: none !important; }
   }
 </style>
