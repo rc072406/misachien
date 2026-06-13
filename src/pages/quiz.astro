@@ -495,21 +495,32 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   color: var(--burgundy);
   margin-bottom: 3rem;
   
-
   display: inline; 
   line-height: 1.4;
   
-
+ 
   background: linear-gradient(
     to bottom, 
     transparent 55%, 
     rgba(231, 120, 96, 0.25) 55%
   );
+  background-repeat: no-repeat;
+  background-size: 0% 100%; 
   padding: 4px 8px;
   
-
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+
+
+  animation: draw-highlight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.6s; 
+}
+
+
+@keyframes draw-highlight {
+  to {
+    background-size: 100% 100%;
+  }
 }
 
   .intro-description {
