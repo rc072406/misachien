@@ -393,6 +393,20 @@ const { className = '' } = Astro.props;
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
+on: {
+          init: function (swiper) {
+           
+            const initialSlide = swiper.slides[swiper.activeIndex];
+            const theme = initialSlide.getAttribute('data-theme') || 'light';
+            swiper.el.setAttribute('data-current-theme', theme);
+          },
+          slideChange: function (swiper) {
+           
+            const activeSlide = swiper.slides[swiper.activeIndex];
+            const theme = activeSlide.getAttribute('data-theme') || 'light';
+            swiper.el.setAttribute('data-current-theme', theme);
+          }
+        }
       });
     }
   };
