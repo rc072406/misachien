@@ -1139,6 +1139,43 @@ const { className = '' } = Astro.props;
 .pricing-heading-top-spacing {
   margin-top: 1.5rem;
 }
+/* --- Dynamic Navigation Arrows & Pagination Bubbles --- */
 
+
+.swiper-button-next,
+.swiper-button-prev {
+  transition: color 0.3s ease;
+}
+
+
+.mediaKitSwiper .swiper-slide[data-theme="light"] ~ .swiper-button-next,
+.mediaKitSwiper .swiper-slide[data-theme="light"] ~ .swiper-button-prev,
+.mediaKitSwiper .swiper-slide[data-theme="cream"] ~ .swiper-button-next,
+.mediaKitSwiper .swiper-slide[data-theme="cream"] ~ .swiper-button-prev {
+  color: var(--burgundy);
+}
+
+
+.mediaKitSwiper .swiper-slide[data-theme="dark"] ~ .swiper-button-next,
+.mediaKitSwiper .swiper-slide[data-theme="dark"] ~ .swiper-button-prev {
+  color: var(--cream-background);
+}
+
+
+.media-kit-swiper-wrapper .swiper-pagination-bullet-active {
+  background-color: var(--coral) !important;
+  opacity: 1;
+}
+
+
+.media-kit-swiper-wrapper .swiper-pagination-bullet {
+  background-color: var(--burgundy);
+  opacity: 0.25;
+  transition: all 0.3s ease;
+}
+
+.media-kit-swiper-wrapper .swiper-pagination-bullet:hover {
+  opacity: 0.6;
+}
 
 </style>
