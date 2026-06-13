@@ -1267,6 +1267,11 @@ const { className = '' } = Astro.props;
   }
 
   @media (max-width: 768px) {
+    :global(.media-kit-swiper-wrapper .swiper-button-next),
+    :global(.media-kit-swiper-wrapper .swiper-button-prev) {
+      display: none !important;
+    }
+
     .split-layout,
     .split-layout.inversion-layout,
     .grid-two-col,
