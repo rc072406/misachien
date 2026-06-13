@@ -417,9 +417,20 @@ import slide9Image from '../../public/images/width_640 (1).webp';
     overflow: hidden;
   }
 
-  .swiper-slide[data-theme="cream"] { background-color: var(--cream-background); }
-  .swiper-slide[data-theme="light"] { background-color: var(--soft-white); }
-  .swiper-slide[data-theme="dark"] { background-color: var(--burgundy); }
+
+
+.swiper-slide[data-theme="cream"] { 
+  background-color: var(--cream-background); 
+  color: var(--dark-grey-text); 
+}
+.swiper-slide[data-theme="light"] { 
+  background-color: var(--soft-white); 
+  color: var(--dark-grey-text); 
+}
+.swiper-slide[data-theme="dark"] { 
+  background-color: var(--burgundy); 
+  color: var(--soft-white); 
+}
 
   .screen-constrained {
     height: 80vh;
@@ -589,8 +600,12 @@ import slide9Image from '../../public/images/width_640 (1).webp';
   .btn-filled-luxury { display: inline-flex; background: var(--burgundy); color: white; padding: 1rem 2rem; font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 2px; }
 
   .disclaimer-header-strip-meta { position: absolute; top: 4vh; right: 6vw; max-width: 450px; text-align: right; }
-  .disclaimer-header-strip-meta p { font-family: var(--font-sans); font-size: 0.6rem; opacity: 0.4; letter-spacing: 1px; }
-
+ .disclaimer-header-strip-meta p { 
+  font-family: var(--font-sans); 
+  font-size: 0.6rem; 
+  opacity: 0.65; 
+  letter-spacing: 1px; 
+}
   :global(.swiper-scrollbar) { background: transparent !important; height: 1px !important; bottom: 3vh !important; left: 6vw !important; width: calc(100% - 12vw) !important; }
   :global(.swiper-scrollbar-drag) { background: var(--coral) !important; border-radius: 0 !important; }
   :global(.media-kit-swiper-wrapper .swiper-pagination-fraction) { font-family: var(--font-display) !important; color: var(--burgundy) !important; font-size: 1.1rem !important; bottom: 2.2vh !important; left: 6vw !important; width: auto !important; }
@@ -613,4 +628,10 @@ import slide9Image from '../../public/images/width_640 (1).webp';
     .gallery-trio-visual, .luxury-watermark { display: none; }
     :global(.swiper-button-next), :global(.swiper-button-prev) { display: none !important; }
   }
+.compact-card-fineprint { 
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  margin-top: 0.3rem;
+  opacity: 0.75; 
+}
 </style>
