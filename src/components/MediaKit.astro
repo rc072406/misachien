@@ -8,7 +8,6 @@ import slide1Image from '../../public/images/width_8001.webp';
 import slide5Image from '../../public/images/width_640.webp';
 import slide7Image from '../../public/images/width_533.webp';
 import slide9Image from '../../public/images/width_640 (1).webp';
-
 ---
 
 <div class={`media-kit-swiper-wrapper ${className}`}>
@@ -120,19 +119,23 @@ import slide9Image from '../../public/images/width_640 (1).webp';
         </div>
       </div>
 
-      <div class="swiper-slide" data-theme="dark">
-        <div class="luxury-watermark light-watermark" data-swiper-parallax="-500">04</div>
-        <div class="slide-inner cinematic-full-layout screen-constrained" data-swiper-parallax="-200">
-          <div class="cinematic-header-block">
-            <h2 class="section-heading inverse-text text-center">WATCH MISA IN ACTION</h2>
+      <div class="swiper-slide" data-theme="cream">
+        <div class="luxury-watermark" data-swiper-parallax="-500">04</div>
+        <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
+          <div class="slide-content">
+            <h2 class="section-heading">MISA'S WORK</h2>
+            <p class="slide-description">A visual showcase of recent brand campaigns, editorial features, and creative productions across multi-platform formats.</p>
           </div>
-          <div class="slide-visual-panel image-constrained-wrapper full-width-visual">
-             <div class="image-mask editorial-clip action-frame">
-                <img src={slide9Image.src} class="slide-image" alt="Misa Chien in Action">
-                <div class="play-overlay-static">
-                   <svg viewBox="0 0 24 24" width="48" height="48" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-             </div>
+          <div class="slide-visual-panel gallery-trio-visual">
+            <div class="styled-photo-wrapper photo-one editorial-clip">
+               <img src={slide1Image.src} class="slide-image" alt="Misa's Work 1">
+            </div>
+            <div class="styled-photo-wrapper photo-two editorial-clip" data-swiper-parallax="-80">
+               <img src={slide5Image.src} class="slide-image" alt="Misa's Work 2">
+            </div>
+            <div class="styled-photo-wrapper photo-three editorial-clip" data-swiper-parallax="80">
+               <img src={slide7Image.src} class="slide-image" alt="Misa's Work 3">
+            </div>
           </div>
         </div>
       </div>
