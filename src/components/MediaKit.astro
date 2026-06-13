@@ -641,7 +641,7 @@ on: {
     font-weight: 700;
   }
 
-  /* BULLET LIST TYPES & VALUE DESIGN ARRAYS */
+ 
   .value-prop-list, .pricing-anchors-rates-list, .additional-notes-bullet-points, .quote-requirements-checklist-ul {
     list-style: none;
     padding: 0;
@@ -1150,47 +1150,43 @@ on: {
   .content-block-chunk {
     margin-bottom: 1.5rem;
   }
-.pricing-heading-top-spacing {
-  margin-top: 1.5rem;
-}
+/* --- Dynamic Navigation Arrows & Pagination Bubbles --- */
 
-.mediaKitSwiper[data-current-theme="light"] .swiper-button-next,
-.mediaKitSwiper[data-current-theme="light"] .swiper-button-prev,
-.mediaKitSwiper[data-current-theme="cream"] .swiper-button-next,
-.mediaKitSwiper[data-current-theme="cream"] .swiper-button-prev,
-.mediaKitSwiper[data-current-theme="light"] .swiper-pagination-bullet,
-.mediaKitSwiper[data-current-theme="cream"] .swiper-pagination-bullet {
-  color: var(--burgundy);
-  --swiper-pagination-color: var(--coral); 
+
+.mediaKitSwiper[data-current-theme="light"],
+.mediaKitSwiper[data-current-theme="cream"] {
+  --swiper-theme-color: var(--burgundy) !important;
+  --swiper-navigation-color: var(--burgundy) !important;
 }
 
 
-.mediaKitSwiper[data-current-theme="dark"] .swiper-button-next,
-.mediaKitSwiper[data-current-theme="dark"] .swiper-button-prev,
-.mediaKitSwiper[data-current-theme="dark"] .swiper-pagination-bullet {
-  color: var(--cream-background);
-  --swiper-pagination-color: var(--coral); 
+.mediaKitSwiper[data-current-theme="dark"] {
+  --swiper-theme-color: var(--cream-background) !important;
+  --swiper-navigation-color: var(--cream-background) !important;
 }
 
 
-.media-kit-swiper-wrapper .swiper-pagination-bullet {
-  background-color: currentColor !important; 
-  opacity: 0.25;
+:global(.media-kit-swiper-wrapper .swiper-pagination-bullet) {
+  background-color: var(--swiper-theme-color) !important;
+  opacity: 0.25 !important;
   transition: all 0.3s ease;
 }
 
-.media-kit-swiper-wrapper .swiper-pagination-bullet-active {
+
+:global(.media-kit-swiper-wrapper .swiper-pagination-bullet-active) {
   background-color: var(--coral) !important;
-  opacity: 1;
+  opacity: 1 !important;
 }
 
-.media-kit-swiper-wrapper .swiper-pagination-bullet:hover {
-  opacity: 0.6;
+
+:global(.media-kit-swiper-wrapper .swiper-pagination-bullet:not(.swiper-pagination-bullet-active):hover) {
+  opacity: 0.6 !important;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  transition: color 0.3s ease;
+
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  transition: color 0.3s ease !important;
 }
 
 </style>
