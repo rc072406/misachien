@@ -1181,5 +1181,63 @@ const { className = '' } = Astro.props;
 :global(.swiper-button-prev) {
   transition: color 0.3s ease !important;
 }
+/* --- ENTRANCE ANIMATIONS (RE-TRIGGER ON SLIDE CHANGE) --- */
+
+
+.hero-title,
+.hero-subtitle,
+.section-heading,
+.slide-description,
+.intro-context-text,
+.image-mask,
+.styled-photo-wrapper,
+.options-interactive-grid {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.swiper-slide-active .hero-title,
+.swiper-slide-active .hero-subtitle,
+.swiper-slide-active .section-heading,
+.swiper-slide-active .slide-description,
+.swiper-slide-active .intro-context-text,
+.swiper-slide-active .image-mask,
+.swiper-slide-active .styled-photo-wrapper,
+.swiper-slide-active .options-interactive-grid {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+.swiper-slide-active .hero-subtitle,
+.swiper-slide-active .slide-description,
+.swiper-slide-active .intro-context-text {
+  transition-delay: 0.15s;
+}
+
+
+.swiper-slide-active .options-interactive-grid {
+  transition-delay: 0.25s;
+}
+
+.swiper-slide-active .image-mask,
+.swiper-slide-active .styled-photo-wrapper {
+  transition-delay: 0.3s;
+}
+
+
+.swiper-slide-active .photo-one { transition-delay: 0.2s; }
+.swiper-slide-active .photo-two { transition-delay: 0.35s; }
+.swiper-slide-active .photo-three { transition-delay: 0.5s; }
+.image-mask:hover, 
+.styled-photo-wrapper:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 40px 80px rgba(89, 54, 58, 0.15) !important;
+}
 
 </style>
