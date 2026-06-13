@@ -293,7 +293,7 @@ const { className = '' } = Astro.props;
             <h4 class="mini-group-header">Core Content Boundaries:</h4>
             <ul class="additional-notes-bullet-points">
               <li>NO UNPAID GUARANTEED DELIVERABLES</li>
-              <li>NO SCRIPTED CLAIMS THAT CONFLICT WITH AUTHENTICITY</li>
+              <li>NO ED CLAIMS THAT CONFLICT WITH AUTHENTICITY</li>
               <li>AFFILIATE PARTNERSHIPS, IF INCLUDED, ARE STRUCTURED SEPARATELY FROM FIXED-RATE PLACEMENTS</li>
               <li>STANDARD AFFILIATE COMPENSATION: 20% OF EACH ATTRIBUTED PURCHASE</li>
               <li>CONTENT TERMS MAY APPLY DEPENDING ON CAMPAIGN STRUCTURE</li>
@@ -358,25 +358,20 @@ const { className = '' } = Astro.props;
   import 'swiper/css/pagination';
   
   import Swiper from 'swiper';
-
-  import { Navigation, Pagination, Keyboard, Mousewheel, Autoplay } from 'swiper/modules';
+ 
+  import { Navigation, Pagination, Keyboard, Mousewheel } from 'swiper/modules';
 
   const initSwiper = () => {
     const swiperEl = document.querySelector('.mediaKitSwiper');
     if (swiperEl && !swiperEl.swiper) {
       new Swiper('.mediaKitSwiper', {
        
-        modules: [Navigation, Pagination, Keyboard, Mousewheel, Autoplay],
+        modules: [Navigation, Pagination, Keyboard, Mousewheel],
         direction: 'horizontal',
         loop: false,
         speed: 700,
         
-       
-        autoplay: {
-          delay: 4000, 
-          disableOnInteraction: false, 
-      
-        },
+     
         
         mousewheel: {
           forceToAxis: true,
@@ -393,15 +388,13 @@ const { className = '' } = Astro.props;
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
-on: {
+        on: {
           init: function (swiper) {
-           
             const initialSlide = swiper.slides[swiper.activeIndex];
             const theme = initialSlide.getAttribute('data-theme') || 'light';
             swiper.el.setAttribute('data-current-theme', theme);
           },
           slideChange: function (swiper) {
-           
             const activeSlide = swiper.slides[swiper.activeIndex];
             const theme = activeSlide.getAttribute('data-theme') || 'light';
             swiper.el.setAttribute('data-current-theme', theme);
