@@ -4,6 +4,10 @@ interface Props {
 }
 
 const { className = '' } = Astro.props;
+import slide5Image from '../../public/images/width_8001.webp';
+import slide7Image from '../../public/images/width_640.webp';
+import slide9Image from '../../public/images/width_533.webp';
+import slide10Image from '../../public/images/width_640 (1).webp';
 ---
 
 <div class={`media-kit-swiper-wrapper ${className}`}>
@@ -153,7 +157,7 @@ const { className = '' } = Astro.props;
     </div>
           <div class="slide-visual-panel frame-visual">
             <div class="image-mask design-shadow">
-               <img src="/images/width_8001.webp" alt= "Misa Chien for Capsule Wardrobe">
+               <img src={slide5Image.src} alt= "Misa Chien for Capsule Wardrobe">
             </div>
           </div>
         </div>
@@ -217,7 +221,7 @@ const { className = '' } = Astro.props;
         <div class="slide-inner split-layout inversion-layout">
           <div class="slide-visual-panel frame-visual">
             <div class="image-mask design-shadow">
-            <img src="/images/width_640.webp" alt= "Misa Chien for Capsule Wardrobe">
+            <img src={slide7Image.src} alt= "Misa Chien for Capsule Wardrobe">
             </div>
           </div>
           <div class="slide-content">
@@ -295,7 +299,7 @@ const { className = '' } = Astro.props;
           </div>
           <div class="slide-visual-panel frame-visual">
             <div class="image-mask design-shadow">
-            <img src="/images/width_533.webp" alt="Misa Chien for Capsule Wardrobe">
+            <img src={slide9Image.src} alt="Misa Chien for Capsule Wardrobe">
             </div>
           </div>
         </div>
@@ -305,7 +309,7 @@ const { className = '' } = Astro.props;
         <div class="slide-inner split-layout inversion-layout">
           <div class="slide-visual-panel frame-visual">
             <div class="image-mask design-shadow">
-            <img src="/images/width_640 (1).webp" alt="Misa Chien for Capsule Wardrobe">
+            <img src={slide10Image.src} alt="Misa Chien for Capsule Wardrobe">
             </div>
           </div>
           <div class="slide-content">
