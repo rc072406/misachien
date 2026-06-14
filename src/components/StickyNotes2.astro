@@ -2,22 +2,23 @@
 // components/StickyNotes2.astro
 
 const notes = [
-  { text: "Crush limiting beliefs today.", color: "#FEF08A", rotate: "-6deg", top: "12%", left: "5%" },
-  { text: "Stay authentic, always.", color: "#FFCFDF", rotate: "4deg", top: "5%", left: "52%" },
-  { text: "Heal at your own pace.", color: "#D1FAE5", rotate: "-3deg", top: "40%", left: "55%" },
-  { text: "Remember to breathe.", color: "#E0F2FE", rotate: "8deg", top: "42%", left: "8%" },
-  { text: "You are doing beautifully.", color: "#FEF08A", rotate: "-5deg", top: "72%", left: "48%" },
-  { text: "Progress over perfection.", color: "#F3E8FF", rotate: "5deg", top: "75%", left: "2%" }
+  { text: "Crush limiting beliefs today.", color: "#FEF08A", rotate: "-6", top: "12%", left: "5%" },
+  { text: "Stay authentic, always.", color: "#FFCFDF", rotate: "4", top: "5%", left: "52%" },
+  { text: "Heal at your own pace.", color: "#D1FAE5", rotate: "-3", top: "40%", left: "55%" },
+  { text: "Remember to breathe.", color: "#E0F2FE", rotate: "8", top: "42%", left: "8%" },
+  { text: "You are doing beautifully.", color: "#FEF08A", rotate: "-5", top: "72%", left: "48%" },
+  { text: "Progress over perfection.", color: "#F3E8FF", rotate: "5", top: "75%", left: "2%" }
 ];
 ---
 <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
 
 <div class="sticky-notes-canvas">
   {notes.map((note) => (
-  
+
     <div 
       class="sticky-note-wrapper" 
-      style={`top: ${note.top}; left: ${note.left}; transform: rotate(${note.rotate});`}
+      style={`top: ${note.top}; left: ${note.left};`}
+      data-rotate={note.rotate}
     >
       <div class="sticky-note" style={`background-color: ${note.color};`}>
         <p>{note.text}</p>
@@ -33,22 +34,48 @@ const notes = [
   
   wrappers.forEach(wrapper => {
     const note = wrapper.querySelector('.sticky-note');
+    const initialRotation = parseFloat(wrapper.getAttribute('data-rotate') || '0');
     
+  
+    gsap.set(wrapper, { rotationZ: initialRotation });
+
+
+    wrapper.addEventListener('mouseenter', () => {
+      gsap.to(note, { 
+        scale: 1.06, 
+        y: -6, 
+        boxShadow: "4px 16px 28px rgba(89, 54, 58, 0.16)", 
+        duration: 0.35, 
+        ease: "power2.out" 
+      });
+      gsap.set(wrapper, { zIndex: 50 });
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      gsap.to(note, { 
+        scale: 1, 
+        y: 0, 
+        boxShadow: "2px 8px 20px rgba(89, 54, 58, 0.12)", 
+        duration: 0.35, 
+        ease: "power2.out" 
+      });
+      gsap.set(wrapper, { zIndex: 10 });
+    });
+    
+  
     wrapper.addEventListener('click', () => {
-      
-      gsap.set(wrapper, { pointerEvents: 'none' });
+     
+      gsap.killTweensOf([wrapper, note]);
+      gsap.set(wrapper, { pointerEvents: 'none', zIndex: 100 });
 
  
       const rect = wrapper.getBoundingClientRect();
-      const targetX = window.innerWidth - rect.left + 200; 
+      const targetX = window.innerWidth - rect.left + 250; 
       const targetY = -rect.top - 400;                     
 
-      const flightDuration = gsap.utils.random(1.6, 2.2);  
-      const finalRotationZ = gsap.utils.random(240, 420);
-      const finalRotationX = gsap.utils.random(140, 320);
-      const finalRotationY = gsap.utils.random(140, 320);
+      const flightDuration = gsap.utils.random(1.8, 2.4);  
 
-
+      
       const flightTimeline = gsap.timeline({
         onComplete: () => wrapper.remove() 
       });
@@ -56,33 +83,34 @@ const notes = [
       flightTimeline
         
         .to(wrapper, {
-          y: "+=12",
-          x: "-=8",
-          duration: 0.15,
+          y: "+=15",
+          x: "-=10",
+          rotationZ: initialRotation - 3,
+          duration: 0.2,
           ease: "power2.out"
         })
     
         .to(wrapper, {
           x: targetX,
           y: targetY,
-          duration: flightDuration - 0.15,
+          duration: flightDuration - 0.2,
           ease: "power3.in"
         });
 
+     
       gsap.to(note, {
-        x: "+=50",
+        x: "+=60",
         yoyo: true,
         repeat: 5,
-        duration: flightDuration / 6,
+        duration: flightDuration / 5,
         ease: "sine.inOut"
       });
 
-
       gsap.to(note, {
-        rotation: finalRotationZ,
-        rotationX: finalRotationX,
-        rotationY: finalRotationY,
-        scale: 0.65,
+        rotationZ: gsap.utils.random(240, 400),
+        rotationX: gsap.utils.random(180, 360),
+        rotationY: gsap.utils.random(180, 360),
+        scale: 0.6,
         opacity: 0,
         duration: flightDuration,
         ease: "power2.out"
@@ -97,21 +125,16 @@ const notes = [
     width: 100%;
     height: 480px;
     margin-top: 1.5rem;
+  
     overflow: visible; 
   }
 
-
-
   .sticky-note-wrapper {
     position: absolute;
-    perspective: 1000px; 
+    perspective: 1200px; 
     z-index: 10;
     cursor: pointer;
-    transition: z-index 0.3s ease;
-  }
-
-  .sticky-note-wrapper:hover {
-    z-index: 50; 
+  
   }
 
   .sticky-note {
@@ -126,15 +149,7 @@ const notes = [
     box-shadow: 2px 8px 20px rgba(89, 54, 58, 0.12);
     user-select: none;
     transform-style: preserve-3d;
-
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-
-  
-  .sticky-note-wrapper:hover .sticky-note {
-    transform: scale(1.06) translateY(-4px);
-    box-shadow: 4px 16px 28px rgba(89, 54, 58, 0.16);
+ 
   }
 
   .sticky-note p {
