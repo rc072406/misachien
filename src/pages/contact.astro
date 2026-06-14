@@ -22,11 +22,7 @@ import contactImage from '../../public/images/GL5A6164.webp';
     <div class="accent-border-box"></div>
     <img src={contactImage.src}  alt="Misa Chien Contact" class="visual-canvas-image"  />
   </div>
-          
-        </div>
-
-        <div class="content-right reveal-on-scroll">
-<div class="editorial-info-card">
+          <div class="editorial-info-card">
             <h2 class="section-heading">Reach Out</h2>
             <p class="contact-desc">
               Whether you are looking to scale your business, release limiting beliefs, or invite Misa to speak at your next event, we would love to hear from you.
@@ -45,6 +41,9 @@ import contactImage from '../../public/images/GL5A6164.webp';
 
             <div class="card-line"></div>
           </div>
+        </div>
+
+        <div class="content-right reveal-on-scroll">
           <div class="form-container">
             <form action="https://api.web3forms.com/submit" method="POST" class="web3form">
               
@@ -170,7 +169,7 @@ import contactImage from '../../public/images/GL5A6164.webp';
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: 8rem;
+    gap: 6rem;
     align-items: start;
   }
 
@@ -181,16 +180,15 @@ import contactImage from '../../public/images/GL5A6164.webp';
   }
 
   .editorial-info-card {
-    background-color: rgba(89, 54, 58, 0.05); 
-    border: 1px solid rgba(89, 54, 58, 0.15);
-    color: var(--burgundy);
+    background-color: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 3.5rem;
     position: relative;
-    
+    color: var(--white);
   }
 
   .editorial-info-card .section-heading {
-    color: var(--coral);
+    color: var(--white);
     margin-bottom: 1.5rem;
   }
 
@@ -201,7 +199,6 @@ import contactImage from '../../public/images/GL5A6164.webp';
     line-height: 1.7;
     margin-bottom: 3rem;
     opacity: 0.9;
-   color: rgba(89, 54, 58, 0.85);
   }
 
   .contact-details {
@@ -225,15 +222,13 @@ import contactImage from '../../public/images/GL5A6164.webp';
     font-weight: 400;
     font-size: 1.2rem;
     letter-spacing: 0.5px;
-    color: var(--burgundy);
   }
 
   .card-line {
     width: 40px;
     height: 1px;
+    background-color: var(--white);
     margin-top: 3rem;
-background-color: var(--burgundy);
-    opacity: 0.5;
   }
 
   .content-right {
@@ -376,7 +371,7 @@ background-color: var(--burgundy);
 
     .contact-content-grid {
       grid-template-columns: 1fr;
-      gap: 8rem;
+      gap: 4rem;
     }
 
     .content-left {
