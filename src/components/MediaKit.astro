@@ -22,7 +22,7 @@ import slide12Image from '../../public/images/GL5A5503.webp';
       
       <div class="swiper-slide" data-theme="light">
         <div class="luxury-watermark" data-swiper-parallax="-500">01</div>
-        <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
+        <div class="slide-inner split-layout reverse-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content">
             <div class="meta-category-pill" data-swiper-parallax="-50">FOUNDER • COMMUNITY BUILDER • SPEAKER • AUTHOR • ENTREPRENEUR</div>
             <h1 class="hero-title" data-swiper-parallax="-100">MISA CHIEN</h1>
@@ -501,6 +501,15 @@ import slide12Image from '../../public/images/GL5A5503.webp';
     line-height: 0.9;
     margin-bottom: 1vh;
   }
+.split-layout.reverse-layout {
+
+  direction: rtl; 
+}
+
+.split-layout.reverse-layout > * {
+
+  direction: ltr; 
+}
 
   .hero-subtitle {
     font-family: var(--font-display);
