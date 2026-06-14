@@ -443,23 +443,27 @@ import slide12Image from '../../public/images/GL5A5503.webp';
     margin: 0 auto;
   }
 
-  .image-constrained-wrapper {
-    height: 100%;
-    max-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+
 
   .full-width-visual { width: 100%; max-height: 55vh; }
 
-  .image-mask {
-    height: 100%;
-    width: auto;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    position: relative;
-  }
+.image-constrained-wrapper {
+  height: 100%;
+  max-height: 80vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+}
+
+.image-mask {
+  height: 100%;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  position: relative;
+}
 
 
 
