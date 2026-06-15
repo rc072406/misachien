@@ -184,6 +184,7 @@ a {
 }
 .btn-filled {
 		position: relative;
+	    font-family: var(--font-sans);
 		border: 1px solid var(--coral); 
 		color: var(--coral); 
 		padding: 1.1rem 2.5rem;
