@@ -132,17 +132,23 @@ import slide14Image from '../../public/images/82.webp';
       <h2 class="section-heading">MISA'S WORK</h2>
       <p class="slide-description">A visual showcase of recent brand campaigns, editorial features, and creative productions across multi-platform formats.</p>
     </div>
+    
     <div class="slide-visual-panel gallery-press-visual">
-      <div class="styled-photo-wrapper press-frame frame-one editorial-clip">
+      <div class="styled-photo-wrapper actual-art-frame frame-one editorial-clip">
         <a href="https://democracyclothing.com/blogs/news/give-to-gain-how-women-uplifting-women-changes-everything" target="_blank"> 
           <img src={slide13Image.src} class="slide-image" alt="Misa for Democracy Clothing"> 
           <span class="frame-label">press me</span>
         </a>
       </div>
-      <div class="styled-photo-wrapper press-frame frame-two editorial-clip" data-swiper-parallax="-80">
-        <img src={slide5Image.src} class="slide-image" alt="Misa's Work 2">
+      
+      <div class="styled-photo-wrapper actual-art-frame frame-two editorial-clip" data-swiper-parallax="-80">
+        <div class="frame-unlinked-wrapper">
+          <img src={slide5Image.src} class="slide-image" alt="Misa's Work 2">
+          <span class="frame-label">look here</span>
+        </div>
       </div>
-      <div class="styled-photo-wrapper press-frame frame-three editorial-clip" data-swiper-parallax="80">
+      
+      <div class="styled-photo-wrapper actual-art-frame frame-three editorial-clip" data-swiper-parallax="80">
         <a href="https://www.instagram.com/p/DU6tSgxEu55/?img_index=1" target="_blank"> 
           <img src={slide14Image.src} class="slide-image" alt="Misa for Capsule Clothing">
           <span class="frame-label">press me</span>
@@ -151,7 +157,6 @@ import slide14Image from '../../public/images/82.webp';
     </div>
   </div>
 </div>
-
       
       <div class="swiper-slide" data-theme="light">
         <div class="luxury-watermark" data-swiper-parallax="-500">05</div>
@@ -701,26 +706,23 @@ import slide14Image from '../../public/images/82.webp';
   .editorial-clip { clip-path: inset(100% 0 0 0); transition: clip-path 1.4s cubic-bezier(0.75, 0, 0.25, 1); }
   .swiper-slide-active .editorial-clip { clip-path: inset(0 0 0 0); }
 .gallery-press-visual { 
-  height: 75vh; 
+  height: 80vh; 
   position: relative; 
-  width: 100%; 
+  width: 100%;
 }
 
 
-.press-frame {
+.actual-art-frame {
   position: absolute; 
   background: var(--soft-white); 
-  padding: 15px 15px 45px 15px; 
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-  display: flex; 
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  padding: 20px; 
+  border: 1px solid rgba(89, 54, 58, 0.15); 
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
   box-sizing: border-box;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.5s ease;
 }
 
-.press-frame a {
+.actual-art-frame a, .frame-unlinked-wrapper {
   display: block;
   width: 100%;
   height: 100%;
@@ -729,64 +731,64 @@ import slide14Image from '../../public/images/82.webp';
 }
 
 
-.press-frame .frame-label {
+.actual-art-frame .frame-label {
   position: absolute;
-  bottom: -35px;
+  bottom: -40px;
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Reenie Beanie', cursive;
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--burgundy);
-  letter-spacing: 0;
   white-space: nowrap;
   pointer-events: none;
+  letter-spacing: 0;
 }
 
 
 .frame-one { 
-  width: 52%; /* Scaled up */
+  width: 62%; 
   aspect-ratio: 3 / 4; 
-  left: -5%; 
+  left: -20%; 
   top: 5%; 
   z-index: 3; 
-  transform: rotate(-1deg);
+  transform: rotate(-1.5deg);
 }
 
 .frame-two { 
-  width: 44%; 
+  width: 54%; 
   aspect-ratio: 4 / 5; 
-  right: 0%; 
-  top: -2%; 
+  right: -5%; 
+  top: -10%; 
   z-index: 1; 
   transform: rotate(2deg);
 }
 
 .frame-three { 
-  width: 46%; 
+  width: 56%; 
   aspect-ratio: 1 / 1; 
-  right: 8%; 
-  bottom: 0%; 
+  right: 15%; 
+  bottom: -5%; 
   z-index: 4; 
-  transform: rotate(-2deg);
+  transform: rotate(-3deg);
 }
 
 
 .frame-one:hover {
-  transform: scale(1.02) rotate(2deg);
+  transform: scale(1.03) rotate(1.5deg);
   z-index: 10;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
 }
 
 .frame-two:hover {
-  transform: scale(1.02) rotate(-3deg);
+  transform: scale(1.03) rotate(-1.5deg);
   z-index: 10;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
 }
 
 .frame-three:hover {
-  transform: scale(1.02) rotate(3deg);
+  transform: scale(1.03) rotate(2deg);
   z-index: 10;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
 }
 
   /* ==========================================================================
@@ -933,13 +935,13 @@ import slide14Image from '../../public/images/82.webp';
     display: flex !important;
     flex-direction: column !important;
     height: auto !important;
-    gap: 6vh !important; 
+    gap: 7vh !important; 
     align-items: center !important;
     position: static !important;
     margin-top: 1vh;
   }
   
-  .press-frame {
+  .actual-art-frame {
     position: static !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -947,29 +949,29 @@ import slide14Image from '../../public/images/82.webp';
     transform: none !important;
     background: transparent !important; 
     padding: 0 !important;
+    border: none !important;
     box-shadow: none !important;
-   
     position: relative !important; 
     display: block !important; 
   } 
 
-  .press-frame a {
+  .actual-art-frame a, .frame-unlinked-wrapper {
     width: 100% !important;
     height: 100% !important;
     display: block !important;
   }
 
-  .press-frame:hover {
+  .actual-art-frame:hover {
     transform: none !important;
     box-shadow: none !important;
   }
 
- 
-  .press-frame .frame-label {
+  
+  .actual-art-frame .frame-label {
     display: block !important;
-    bottom: -3.5vh !important;
-    font-size: 1.6rem !important;
-    opacity: 0.9;
+    bottom: -4.5vh !important;
+    font-size: 1.8rem !important;
+    opacity: 0.95;
   }
   }
 </style>
