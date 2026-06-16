@@ -705,91 +705,6 @@ import slide14Image from '../../public/images/82.webp';
 
   .editorial-clip { clip-path: inset(100% 0 0 0); transition: clip-path 1.4s cubic-bezier(0.75, 0, 0.25, 1); }
   .swiper-slide-active .editorial-clip { clip-path: inset(0 0 0 0); }
-.gallery-press-visual { 
-  height: 80vh; 
-  position: relative; 
-  width: 100%;
-}
-
-
-.actual-art-frame {
-  position: absolute; 
-  background: var(--soft-white); 
-  padding: 20px; 
-  border: 1px solid rgba(89, 54, 58, 0.15); 
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
-  box-sizing: border-box;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.5s ease;
-}
-
-.actual-art-frame a, .frame-unlinked-wrapper {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  text-decoration: none;
-}
-
-
-.actual-art-frame .frame-label {
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Reenie Beanie', cursive;
-  font-size: 2rem;
-  color: var(--burgundy);
-  white-space: nowrap;
-  pointer-events: none;
-  letter-spacing: 0;
-}
-
-
-.frame-one { 
-  width: 62%; 
-  aspect-ratio: 3 / 4; 
-  left: -20%; 
-  top: 5%; 
-  z-index: 3; 
-  transform: rotate(-1.5deg);
-}
-
-.frame-two { 
-  width: 54%; 
-  aspect-ratio: 4 / 5; 
-  right: -5%; 
-  top: -10%; 
-  z-index: 1; 
-  transform: rotate(2deg);
-}
-
-.frame-three { 
-  width: 56%; 
-  aspect-ratio: 1 / 1; 
-  right: 15%; 
-  bottom: -5%; 
-  z-index: 4; 
-  transform: rotate(-3deg);
-}
-
-
-.frame-one:hover {
-  transform: scale(1.03) rotate(1.5deg);
-  z-index: 10;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-}
-
-.frame-two:hover {
-  transform: scale(1.03) rotate(-1.5deg);
-  z-index: 10;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-}
-
-.frame-three:hover {
-  transform: scale(1.03) rotate(2deg);
-  z-index: 10;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-}
 
   /* ==========================================================================
      MOBILE (NO SLIDER)
@@ -931,27 +846,127 @@ import slide14Image from '../../public/images/82.webp';
     :global(.swiper-button-prev) {
       display: none !important;
     }
-.gallery-press-visual {
+
+  }
+/* ==========================================================================
+   DESKTOP STYLES: Large Art Gallery Frames
+   ========================================================================== */
+.gallery-press-visual { 
+  height: 80vh; 
+  position: relative; 
+  width: 100%;
+}
+
+
+.swiper-slide-active .gallery-press-visual .editorial-clip {
+  clip-path: inset(-20% -20% -20% -20%); 
+}
+
+.actual-art-frame {
+  position: absolute; 
+  background: var(--soft-white); 
+  padding: 18px; 
+  border: 1px solid rgba(89, 54, 58, 0.15); 
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
+  box-sizing: border-box;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1), box-shadow 0.4s ease;
+  pointer-events: auto; 
+  cursor: pointer;
+}
+
+.actual-art-frame a, .frame-unlinked-wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+}
+
+
+.actual-art-frame .frame-label {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 2.2rem;
+  color: var(--burgundy);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0;
+}
+
+
+.frame-one { 
+  width: 50%; 
+  max-width: 380px; 
+  aspect-ratio: 3 / 4; 
+  left: -5%; 
+  top: 5%; 
+  z-index: 3; 
+  transform: rotate(-2deg);
+}
+
+.frame-two { 
+  width: 45%; 
+  max-width: 340px;
+  aspect-ratio: 4 / 5; 
+  right: 0%; 
+  top: -8%; 
+  z-index: 1; 
+  transform: rotate(2deg);
+}
+
+.frame-three { 
+  width: 48%; 
+  max-width: 360px;
+  aspect-ratio: 1 / 1; 
+  right: 15%; 
+  bottom: 0%; 
+  z-index: 4; 
+  transform: rotate(-3deg);
+}
+
+
+.actual-art-frame:hover {
+  transform: scale(1.05) rotate(0deg); 
+  z-index: 10;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   LAPTOP / TABLET SAFEGUARD (Prevents overlap on medium screens)
+   ========================================================================== */
+@media(max-width: 1200px) {
+  .frame-one { left: 0; }
+  .frame-two { right: 0; }
+  .frame-three { right: 5%; }
+}
+
+/* ==========================================================================
+   MOBILE COMPATIBILITY (Strict stacking rules)
+   ========================================================================== */
+@media(max-width: 960px) {
+  .gallery-press-visual {
     display: flex !important;
     flex-direction: column !important;
     height: auto !important;
-    gap: 7vh !important; 
+    gap: 8vh !important; 
     align-items: center !important;
     position: static !important;
-    margin-top: 1vh;
+    margin-top: 2vh;
   }
   
   .actual-art-frame {
-    position: static !important;
+    position: relative !important; /
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: 500px !important;
     aspect-ratio: 4 / 5 !important;
     transform: none !important;
     background: transparent !important; 
     padding: 0 !important;
     border: none !important;
     box-shadow: none !important;
-    position: relative !important; 
     display: block !important; 
   } 
 
@@ -961,17 +976,18 @@ import slide14Image from '../../public/images/82.webp';
     display: block !important;
   }
 
+
   .actual-art-frame:hover {
     transform: none !important;
     box-shadow: none !important;
   }
 
-  
+ 
   .actual-art-frame .frame-label {
     display: block !important;
-    bottom: -4.5vh !important;
-    font-size: 1.8rem !important;
+    bottom: -5vh !important;
+    font-size: 2rem !important;
     opacity: 0.95;
   }
-  }
+}
 </style>
