@@ -16,7 +16,6 @@ import slide14Image from '../../public/images/82.webp';
 
 ---
 
-
 <div class={`media-kit-swiper-wrapper ${className}`}>
   <div class="luxury-noise-overlay"></div>
   
@@ -125,40 +124,28 @@ import slide14Image from '../../public/images/82.webp';
           </div>
         </div>
       </div>
-<div class="swiper-slide" data-theme="light">
-  <div class="luxury-watermark" data-swiper-parallax="-500">04</div>
-  <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
-    <div class="slide-content">
-      <h2 class="section-heading">MISA'S WORK</h2>
-      <p class="slide-description">A visual showcase of recent brand campaigns, editorial features, and creative productions across multi-platform formats.</p>
-    </div>
-    
-    <div class="slide-visual-panel gallery-press-visual">
-      <div class="styled-photo-wrapper actual-art-frame frame-one editorial-clip">
-        <a href="https://democracyclothing.com/blogs/news/give-to-gain-how-women-uplifting-women-changes-everything" target="_blank"> 
-          <img src={slide13Image.src} class="slide-image" alt="Misa for Democracy Clothing"> 
-<div class="frame-caption">Title of Work — 2026</div>
-  
-        </a>
-      </div>
-      
-      <div class="styled-photo-wrapper actual-art-frame frame-two editorial-clip" data-swiper-parallax="-80">
-        <div class="frame-unlinked-wrapper">
-          <img src={slide5Image.src} class="slide-image" alt="Misa's Work 2">
-    <div class="frame-caption">Title of Work — 2026</div>
+
+      <div class="swiper-slide" data-theme="light">
+        <div class="luxury-watermark" data-swiper-parallax="-500">04</div>
+        <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
+          <div class="slide-content">
+            <h2 class="section-heading">MISA'S WORK</h2>
+            <p class="slide-description">A visual showcase of recent brand campaigns, editorial features, and creative productions across multi-platform formats.</p>
+          </div>
+          <div class="slide-visual-panel gallery-trio-visual">
+            <div class="styled-photo-wrapper photo-one editorial-clip">
+             <a href="https://democracyclothing.com/blogs/news/give-to-gain-how-women-uplifting-women-changes-everything" target="_blank"> <img src={slide13Image.src} class="slide-image" alt="Misa for Democracy Clothing"> </a>
+            </div>
+            <div class="styled-photo-wrapper photo-two editorial-clip" data-swiper-parallax="-80">
+               <img src={slide5Image.src} class="slide-image" alt="Misa's Work 2">
+            </div>
+            <div class="styled-photo-wrapper photo-three editorial-clip" data-swiper-parallax="80">
+              <a href="https://www.instagram.com/p/DU6tSgxEu55/?img_index=1" target="_blank"> <img src={slide14Image.src} class="slide-image" alt="Misa for Capsule Clothing"></a>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div class="styled-photo-wrapper actual-art-frame frame-three editorial-clip" data-swiper-parallax="80">
-        <a href="https://www.instagram.com/p/DU6tSgxEu55/?img_index=1" target="_blank"> 
-          <img src={slide14Image.src} class="slide-image" alt="Misa for Capsule Clothing">
-        <div class="frame-caption">Title of Work — 2026</div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-      
+
       <div class="swiper-slide" data-theme="light">
         <div class="luxury-watermark" data-swiper-parallax="-500">05</div>
         <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
@@ -782,7 +769,7 @@ import slide14Image from '../../public/images/82.webp';
     .price-anchor-tag,
     .rate-listing-row-item strong,
     .bundle-matrix-row strong {
-      white-space: nowrap !important; 
+      white-space: nowrap !important; /* Absolute prevention of price character fracturing */
       text-align: right;
       min-width: 80px;
     }
@@ -847,54 +834,5 @@ import slide14Image from '../../public/images/82.webp';
     :global(.swiper-button-prev) {
       display: none !important;
     }
-
   }
-/* ==========================================================================
-   PREMIUM GALLERY: Refined Frames
-   ========================================================================== */
-
-.actual-art-frame {
-  position: absolute;
-  background: var(--soft-white);
-  padding: 12px; 
-  border: 1px solid rgba(89, 54, 58, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-
-.actual-art-frame:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-}
-
-
-.frame-caption {
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  color: var(--burgundy);
-  margin-top: 2rem;
-  text-align: center;
-  opacity: 0.7;
-}
-
-/* ==========================================================================
-   MOBILE (Refined Stacking)
-   ========================================================================== */
-@media(max-width: 960px) {
-  .actual-art-frame {
-    position: relative !important;
-    width: 85% !important; 
-    margin: 0 auto 4rem auto !important;
-    transform: none !important;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
-  }
-}
-
-
 </style>
