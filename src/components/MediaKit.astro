@@ -755,26 +755,11 @@ import slide14Image from '../../public/images/82.webp';
      MOBILE (NO SLIDER)
      ========================================================================== */
   @media(max-width: 960px) {
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
- 
-  * {
-    max-width: 100vw !important;
-    box-sizing: border-box !important;
-  }
-media-kit-swiper-wrapper, 
-  .swiper {
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: hidden !important;
-    position: relative !important;
-  }
- 
+    .swiper {
+      height: auto !important;
+      overflow: visible !important;
+    }
+    
     .swiper-wrapper {
       display: flex !important;
       flex-direction: column !important;
