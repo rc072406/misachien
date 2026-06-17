@@ -376,14 +376,12 @@ import slide14Image from '../../public/images/82.webp';
             return `<span class="${currentClass}"></span><span class="separator">/</span><span class="${totalClass}"></span>`;
           }
         },
- breakpoints: {
-    960: {
-      enabled: false,
-    },
-1200: {
-      enabled: true,
-    },
-  },
+enabled: false,
+breakpoints: {
+   1200: {
+       enabled: true,
+   }
+}
 
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         on: {
