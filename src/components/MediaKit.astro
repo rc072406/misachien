@@ -134,13 +134,16 @@ import slide14Image from '../../public/images/82.webp';
           </div>
           <div class="slide-visual-panel gallery-trio-visual">
             <div class="styled-photo-wrapper photo-one editorial-clip">
-             <a href="https://democracyclothing.com/blogs/news/give-to-gain-how-women-uplifting-women-changes-everything" target="_blank"> <img src={slide13Image.src} class="slide-image" alt="Misa for Democracy Clothing"> </a>
-            </div>
+           <a href="https://democracyclothing.com/blogs/news/give-to-gain-how-women-uplifting-women-changes-everything" target="_blank"> <img src={slide13Image.src} class="slide-image" alt="Misa for Democracy Clothing"> </a>
+             <div class="frame-caption">Democracy Clothing — 2026</div>
+</div>
             <div class="styled-photo-wrapper photo-two editorial-clip" data-swiper-parallax="-80">
                <img src={slide5Image.src} class="slide-image" alt="Misa's Work 2">
+  <div class="frame-caption">Title of Work — 2026</div>
             </div>
             <div class="styled-photo-wrapper photo-three editorial-clip" data-swiper-parallax="80">
               <a href="https://www.instagram.com/p/DU6tSgxEu55/?img_index=1" target="_blank"> <img src={slide14Image.src} class="slide-image" alt="Misa for Capsule Clothing"></a>
+        <div class="frame-caption">Capsule Clothing — 2026</div>
             </div>
           </div>
         </div>
@@ -693,6 +696,15 @@ import slide14Image from '../../public/images/82.webp';
 
   .editorial-clip { clip-path: inset(100% 0 0 0); transition: clip-path 1.4s cubic-bezier(0.75, 0, 0.25, 1); }
   .swiper-slide-active .editorial-clip { clip-path: inset(0 0 0 0); }
+.frame-caption {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: var(--burgundy);
+  margin-top: 2rem;
+  text-align: center;
+}
 
   /* ==========================================================================
      MOBILE (NO SLIDER)
