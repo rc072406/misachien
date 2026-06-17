@@ -367,6 +367,12 @@ import slide14Image from '../../public/images/82.webp';
         direction: 'horizontal',
         speed: 1100,
         parallax: true,
+enabled: false, 
+        breakpoints: {
+          960: {
+            enabled: true,
+          }
+        },
         mousewheel: { forceToAxis: true, sensitivity: 0.8 },
         keyboard: { enabled: true, onlyInViewport: true },
         scrollbar: { el: '.swiper-scrollbar', draggable: true },
@@ -398,13 +404,6 @@ import slide14Image from '../../public/images/82.webp';
 
   document.addEventListener('DOMContentLoaded', initSwiper);
   setTimeout(initSwiper, 150);
-enabled: false,
-breakpoints: {
-   960: {
-       enabled: true,
-   
-}
-}
 
 
 
