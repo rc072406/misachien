@@ -23,7 +23,7 @@ import slide14Image from '../../public/images/82.webp';
     <div class="swiper-wrapper">
       
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-500">01</div>
+      
         <div class="slide-inner split-layout  screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content">
             <div class="meta-category-pill" data-swiper-parallax="-50">FOUNDER • COMMUNITY BUILDER • SPEAKER • AUTHOR • ENTREPRENEUR</div>
@@ -52,7 +52,7 @@ import slide14Image from '../../public/images/82.webp';
       </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-500">02</div>
+       
         <div class="slide-inner grid-two-col screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content editorial-border-right">
             <h2 class="section-heading">WHY PARTNERS WORK WITH MISA</h2>
@@ -80,7 +80,7 @@ import slide14Image from '../../public/images/82.webp';
       </div>
 
       <div class="swiper-slide" data-theme="dark">
-        <div class="luxury-watermark light-watermark" data-swiper-parallax="-500">03</div>
+      
         <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content">
             <h2 class="section-heading inverse-text">COLLABORATION OPTIONS</h2>
@@ -125,7 +125,7 @@ import slide14Image from '../../public/images/82.webp';
         </div>
       </div>
 <div class="swiper-slide" data-theme="light">
-  <div class="luxury-watermark light-watermark" data-swiper-parallax="-500">04</div>
+
   <div class="slide-inner screen-constrained">
     <div class="slide-content">
       <h2 class="section-heading">MISA'S WORK</h2>
@@ -158,7 +158,7 @@ import slide14Image from '../../public/images/82.webp';
 </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-500">05</div>
+     
         <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
          <div class="slide-content">
           <h2 class="section-heading">PRICING ANCHORS</h2>
@@ -190,7 +190,7 @@ import slide14Image from '../../public/images/82.webp';
       </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-500">06</div>
+      
         <div class="disclaimer-header-strip-meta">
           <p>* Formats confirmed based on campaign fit. Performance varies. Reach never guaranteed.</p>
         </div>
@@ -241,7 +241,7 @@ import slide14Image from '../../public/images/82.webp';
       </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-500">07</div>
+     
         <div class="slide-inner split-layout inversion-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-visual-panel image-constrained-wrapper">
             <div class="image-mask editorial-clip">
@@ -269,7 +269,7 @@ import slide14Image from '../../public/images/82.webp';
       </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-500">08</div>
+      
         <div class="slide-inner basic-centered-layout screen-constrained" data-swiper-parallax="-200">
           <div class="centered-content-container-block editorial-box">
             <h2 class="section-heading text-center">PRODUCT GIFTING</h2>
@@ -289,7 +289,7 @@ import slide14Image from '../../public/images/82.webp';
       </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-500">09</div>
+       
         <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content">
             <h2 class="section-heading">USAGE RIGHTS</h2>
@@ -318,7 +318,7 @@ import slide14Image from '../../public/images/82.webp';
       </div>
 
       <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-500">10</div>
+
         <div class="slide-inner split-layout inversion-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-visual-panel image-constrained-wrapper">
             <div class="image-mask editorial-clip">
@@ -422,18 +422,17 @@ import slide14Image from '../../public/images/82.webp';
 
   .swiper { width: 100%; height: 100vh; }
 
- .swiper-slide {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5vh 6vw;
-  position: relative; 
-  z-index: 10;        
-  overflow: hidden;
-}
+  .swiper-slide {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5vh 6vw;
+    position: relative;
+    overflow: hidden;
+  }
 
   .swiper-slide[data-theme="light"] { 
     background-color: var(--cream-background); 
@@ -445,17 +444,15 @@ import slide14Image from '../../public/images/82.webp';
     color: var(--soft-white); 
   }
 
-.screen-constrained {
-  position: relative; 
-  z-index: 3;       
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1350px;
-  margin: 0 auto;
-}
+  .screen-constrained {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+  }
 
   .slide-content, .slide-visual-panel {
     min-width: 0;
@@ -482,20 +479,7 @@ import slide14Image from '../../public/images/82.webp';
 
   .slide-image { width: 100%; height: 100%; object-fit: cover; }
 
-.luxury-watermark {
-  position: absolute;
-  font-family: var(--font-display);
-  font-size: 32vh;
-  color: var(--coral);
-  opacity: 0.04;
-  line-height: 1;
-  z-index: 2;         
-  pointer-events: none;
-  bottom: 5vh;
-  right: 5vw;
-  overflow: visible; 
-}
-  .luxury-watermark.light-watermark { color: var(--soft-white); opacity: 0.03; }
+
 
   .meta-category-pill {
     display: inline-block;
@@ -884,10 +868,7 @@ import slide14Image from '../../public/images/82.webp';
       width: 100% !important;
     }
     
-    .luxury-watermark,
-    .disclaimer-header-strip-meta {
-      display: none !important;
-    }
+
 
     :global(.swiper-scrollbar),
     :global(.swiper-pagination),
