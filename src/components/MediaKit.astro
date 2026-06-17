@@ -393,6 +393,15 @@ import slide14Image from '../../public/images/82.webp';
 
   document.addEventListener('DOMContentLoaded', initSwiper);
   setTimeout(initSwiper, 150);
+
+const swiper = new Swiper('.swiper', {
+  breakpoints: {
+    960: {
+      enabled: false,
+    },
+  },
+});
+
 </script>
 
 <style>
