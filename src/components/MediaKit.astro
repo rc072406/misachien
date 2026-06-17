@@ -124,30 +124,37 @@ import slide14Image from '../../public/images/82.webp';
           </div>
         </div>
       </div>
+<div class="swiper-slide" data-theme="light">
+  <div class="slide-inner screen-constrained">
+    <div class="slide-content">
+      <h2 class="section-heading">MISA'S WORK</h2>
+      <p class="slide-description">A visual showcase of recent brand campaigns and creative productions.</p>
+    </div>
 
-      <div class="swiper-slide" data-theme="light">
-        <div class="luxury-watermark" data-swiper-parallax="-500">04</div>
-        <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
-          <div class="slide-content">
-            <h2 class="section-heading">MISA'S WORK</h2>
-            <p class="slide-description">A visual showcase of recent brand campaigns, editorial features, and creative productions across multi-platform formats.</p>
-          </div>
-          <div class="slide-visual-panel gallery-trio-visual">
-            <div class="styled-photo-wrapper photo-one editorial-clip">
-           <a href="https://democracyclothing.com/blogs/news/give-to-gain-how-women-uplifting-women-changes-everything" target="_blank"> <img src={slide13Image.src} class="slide-image" alt="Misa for Democracy Clothing"> </a>
-             <div class="frame-caption">Democracy Clothing — 2026</div>
-</div>
-            <div class="styled-photo-wrapper photo-two editorial-clip" data-swiper-parallax="-80">
-               <img src={slide5Image.src} class="slide-image" alt="Misa's Work 2">
-  <div class="frame-caption">Title of Work — 2026</div>
-            </div>
-            <div class="styled-photo-wrapper photo-three editorial-clip" data-swiper-parallax="80">
-              <a href="https://www.instagram.com/p/DU6tSgxEu55/?img_index=1" target="_blank"> <img src={slide14Image.src} class="slide-image" alt="Misa for Capsule Clothing"></a>
-        <div class="frame-caption">Capsule Clothing — 2026</div>
-            </div>
-          </div>
-        </div>
+    <div class="gallery-showcase-grid">
+      <div class="gallery-card">
+        <a href="URL" target="_blank" class="image-frame">
+          <img src={slide13Image.src} alt="Description">
+        </a>
+        <div class="frame-caption">Democracy Clothing — 2026</div>
       </div>
+      
+      <div class="gallery-card">
+        <div class="image-frame">
+          <img src={slide5Image.src} alt="Description">
+        </div>
+        <div class="frame-caption">Title of Work — 2026</div>
+      </div>
+
+      <div class="gallery-card">
+        <a href="URL" target="_blank" class="image-frame">
+          <img src={slide14Image.src} alt="Description">
+        </a>
+        <div class="frame-caption">Capsule Clothing — 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
 
       <div class="swiper-slide" data-theme="light">
         <div class="luxury-watermark" data-swiper-parallax="-500">05</div>
@@ -696,15 +703,52 @@ import slide14Image from '../../public/images/82.webp';
 
   .editorial-clip { clip-path: inset(100% 0 0 0); transition: clip-path 1.4s cubic-bezier(0.75, 0, 0.25, 1); }
   .swiper-slide-active .editorial-clip { clip-path: inset(0 0 0 0); }
+.gallery-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+  align-items: start;
+}
+
+
+.gallery-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.image-frame {
+  display: block;
+  background: var(--soft-white); 
+  padding: 12px;               
+  box-shadow: 0 10px 30px rgba(89, 54, 58, 0.1);
+  aspect-ratio: 4 / 5;          
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.image-frame:hover {
+  transform: translateY(-5px);
+}
+
+
 .frame-caption {
   font-family: var(--font-display);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   color: var(--burgundy);
-  margin-top: 2rem;
   text-align: center;
 }
+
 
   /* ==========================================================================
      MOBILE (NO SLIDER)
@@ -846,5 +890,10 @@ import slide14Image from '../../public/images/82.webp';
     :global(.swiper-button-prev) {
       display: none !important;
     }
+.gallery-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
   }
 </style>
