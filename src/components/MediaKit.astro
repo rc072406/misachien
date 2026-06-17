@@ -488,14 +488,16 @@ import slide14Image from '../../public/images/82.webp';
   pointer-events: none;
   bottom: 5vh; 
   white-space: nowrap;
-  color: var(--soft-white); 
+  
 }
 .swiper-slide[data-theme="light"] .luxury-watermark {
   opacity: 0.3; 
+color: #f4e8e9;
 }
 
 .swiper-slide[data-theme="dark"] .luxury-watermark {
   opacity: 0.03; 
+color: var(--soft-white); 
 }
 
 
@@ -688,7 +690,8 @@ import slide14Image from '../../public/images/82.webp';
     text-align: center;
     justify-content: center;
     text-decoration: none;
-    z-index :2 ;
+    z-index : 10 ;
+    position: relative;
   }
 
   .disclaimer-header-strip-meta { position: absolute; top: 4vh; right: 6vw; max-width: 450px; text-align: right; }
