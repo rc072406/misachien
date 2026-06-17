@@ -357,6 +357,8 @@ import slide14Image from '../../public/images/82.webp';
   import Swiper from 'swiper';
   import { Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, Parallax } from 'swiper/modules';
 
+
+
   const initSwiper = () => {
     const swiperEl = document.querySelector('.mediaKitSwiper');
     if (swiperEl && !swiperEl.swiper) {
@@ -376,12 +378,6 @@ import slide14Image from '../../public/images/82.webp';
             return `<span class="${currentClass}"></span><span class="separator">/</span><span class="${totalClass}"></span>`;
           }
         },
-enabled: false,
-breakpoints: {
-   960: {
-       enabled: true,
-   }
-}}
 
 
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
@@ -395,6 +391,13 @@ breakpoints: {
             swiper.el.setAttribute('data-current-theme', activeSlide.getAttribute('data-theme') || 'light');
           }
         }
+enabled: false,
+breakpoints: {
+   960: {
+       enabled: true,
+   
+}
+}
 
       });
     }
