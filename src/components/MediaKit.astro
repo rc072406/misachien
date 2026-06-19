@@ -770,6 +770,7 @@ color: var(--soft-white);
   aspect-ratio: 4 / 5;          
   overflow: hidden;
   transition: transform 0.4s ease;
+box-sizing: border-box;
 }
 
 .image-frame img {
@@ -937,6 +938,16 @@ color: var(--soft-white);
 .gallery-showcase-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
+  }
+.gallery-card {
+    width: 100%;
+    max-width: 420px; 
+    margin: 0 auto;   
+  }
+
+  .image-frame {
+    width: 100%;
+    height: auto;    
   }
 
   }
