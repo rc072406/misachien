@@ -554,25 +554,33 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     font-weight: 600;
   }
 
-  .quiz-action-btn {
-    background-color: var(--coral);
-    border: 1px solid var(--coral);
-    color: var(--white);
-    padding: 1.25rem 3.5rem;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.15em;
-    font-size: 0.9rem;
-    cursor: pointer;
-    display: inline-block;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+.quiz-action-btn {
+  background-color: var(--coral);
+  border: 1px solid var(--coral);
+  color: var(--white);
+  padding: 1.25rem 2.5rem; 
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.15em;
+  font-size: 0.9rem;
+  cursor: pointer;
+  
 
-  .quiz-action-btn:hover {
-    background-color: var(--burgundy);
-    border-color: var(--burgundy);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(89, 54, 58, 0.15);
-  }
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 280px; 
+  box-sizing: border-box;
+  
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quiz-action-btn:hover {
+  background-color: var(--burgundy);
+  border-color: var(--burgundy);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(89, 54, 58, 0.15);
+}
 
   .quiz-top-bar {
     display: flex;
