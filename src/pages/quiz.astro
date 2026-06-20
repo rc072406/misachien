@@ -554,7 +554,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     font-weight: 600;
   }
 
-.quiz-action-btn {
+  .quiz-action-btn {
     background-color: var(--coral);
     border: 1px solid var(--coral);
     color: var(--white);
@@ -563,16 +563,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     letter-spacing: 0.15em;
     font-size: 0.9rem;
     cursor: pointer;
-    
-    
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;              
-    max-width: 280px;          
-    white-space: nowrap;       
-    box-sizing: border-box;
-
+    display: inline-block;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -718,10 +709,9 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     font-weight: 300;
   }
 
-.quiz-navigation {
+  .quiz-navigation {
     display: flex;
     justify-content: flex-end;
-    width: 100%; 
   }
 
   .quiz-action-btn.hidden {
@@ -1110,11 +1100,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     padding: 3.5rem 2rem;
     text-align: left;
   }
-.quiz-navigation {
-      display: flex;
-      justify-content: flex-end; 
-      width: 100%;
-    }
 
   .funnel-accent-text {
     font-size: 1.85rem;
@@ -1125,16 +1110,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     padding-left: 0;
     gap: 1.5rem;
   }
-.quiz-action-btn {
-      display: inline-flex;      
-      justify-content: center;
-      align-items: center;
-      
-      width: 100% !important;     
-      max-width: 280px !important; 
-      margin: 0 !important;        
-      box-sizing: border-box;
-    }
 
   
   #quiz-intro .btn-filled,
