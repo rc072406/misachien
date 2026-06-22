@@ -5,7 +5,7 @@ interface Props {
 
 
 const { className = '' } = Astro.props;
-const featuredReelVideo = `${import.meta.env.BASE_URL}/videos/Misa Chien Speaker Reel.mp4`;
+const featuredReelVideo = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/videos/Misa Chien Speaker Reel.mp4`;
 import slide1Image from '../../public/images/_I3A6767-LR.webp';
 import slide5Image from '../../public/images/80.webp';
 import slide7Image from '../../public/images/79.webp';
