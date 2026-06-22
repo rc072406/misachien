@@ -10,9 +10,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       <div id="quiz-intro" class="quiz-screen active">
         <div class="intro-content reveal-on-scroll">
           <h1 class="intro-title">THE QUIZ</h1>
-         <p class="intro-subtitle">
-  Do you have a <span class="highlight-target">scarcity mindset?</span>
-</p>
+          <p class="intro-subtitle">Do you have a scarcity mindset?</p>
           <p class="intro-description">
             Answer honestly. No one's grading you — <br />
             except your own nervous system.
@@ -501,10 +499,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   line-height: 1.4;
   
  
- 
-}
-.highlight-target {
- background: linear-gradient(
+  background: linear-gradient(
     104deg, 
     transparent 0%,
     transparent 45%, 
@@ -521,17 +516,9 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-
-  animation: draw-highlight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  animation-delay: 0.6s; 
 }
 
-@keyframes draw-highlight {
-  to {
-    
-    background-size: 100% 100%;
-  }
-}
+
 
   .intro-description {
     font-family: var(--font-sans);
