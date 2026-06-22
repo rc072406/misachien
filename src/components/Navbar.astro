@@ -91,6 +91,20 @@
   });
 
   sections.forEach(section => themeObserver.observe(section));
+// ---  ACTIVE LINK LOGIC ---
+  const currentPath = window.location.pathname;
+  const navItems = document.querySelectorAll('.nav-item');
+
+  navItems.forEach(item => {
+    const href = item.getAttribute('href');
+    
+
+    if (currentPath === href || (href !== '/' && currentPath.startsWith(href))) {
+      item.classList.add('is-active');
+    } else {
+      item.classList.remove('is-active');
+    }
+  });
 </script>
 
 <style>
@@ -344,5 +358,68 @@
     .navbar--open .nav-button--mobile { color: var(--coral) !important; border-color: var(--coral) !important; }
     .navbar--open .nav-button--mobile::before { background-color: var(--white) !important; }
     .navbar--open .nav-button--mobile:hover { color: var(--burgundy) !important; }
+  }
+/* --- REALISTIC GRADIENT MARKER (UNIFORM THEME) --- */
+  .nav-item {
+    position: relative;
+    padding: 0.2rem 0.5rem; 
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+
+  .nav-item::before {
+    content: '';
+    position: absolute;
+    bottom: 8%;
+    left: -4%;
+    width: 108%;
+    height: 75%;
+    
+ 
+    background: linear-gradient(
+      104deg, 
+      transparent 0%,
+      transparent 45%, 
+      rgba(231, 120, 96, 0.28) 48%,
+      rgba(231, 120, 96, 0.22) 85%,
+      transparent 95%
+    );
+    
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: -1;
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+    border-radius: 4px 8px 5px 7px;
+  }
+
+  
+  .nav-item.is-active::before {
+    opacity: 1; 
+    transform: scaleX(1);
+  }
+
+
+  .navbar--dark .nav-item.is-active {
+    color: var(--white) !important;
+  }
+
+  .navbar--light .nav-item.is-active {
+    color: var(--burgundy) !important;
+  }
+
+  .navbar--start .nav-item.is-active {
+    color: var(--white) !important;
+  }
+
+
+  @media (max-width: 1024px) {
+    .navbar--open .nav-item::before {
+      height: 85%; 
+    }
+    .navbar--open .nav-item.is-active {
+      color: var(--white) !important;
+    }
   }
 </style>
