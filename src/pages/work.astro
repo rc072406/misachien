@@ -19,7 +19,29 @@ import MediaKit from '../components/MediaKit.astro';
         </p>
       </section>
     </div>
+<section class="ticker-section">
+      <div class="ticker-wrapper">
+        <div class="ticker-track">
+          <div class="ticker-item"><img src="/logos/forbes.svg" alt="Forbes Logo" class="logo-img logo-forbes" /></div>
+          <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
+          <div class="ticker-item"><img src="/logos/inc.svg" alt="Inc. Magazine Logo" class="logo-img logo-inc" /></div>
+          <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
+          <div class="ticker-item"><img src="/logos/bloomberg.svg" alt="Bloomberg Logo" class="logo-img logo-bloomberg" /></div>
+          <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
+          <div class="ticker-item"><img src="/logos/nyt.svg" alt="The New York Times Logo" class="logo-img logo-nyt" /></div>
+          <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
 
+          <div class="ticker-item"><img src="/logos/forbes.svg" alt="Forbes Logo" class="logo-img logo-forbes" /></div>
+          <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
+          <div class="ticker-item"><img src="/logos/inc.svg" alt="Inc. Magazine Logo" class="logo-img logo-inc" /></div>
+          <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
+          <div class="ticker-item"><img src="/logos/bloomberg.svg" alt="Bloomberg Logo" class="logo-img logo-bloomberg" /></div>
+          <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
+          <div class="ticker-item"><img src="/logos/nyt.svg" alt="The New York Times Logo" class="logo-img logo-nyt" /></div>
+          <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
+        </div>
+      </div>
+    </section>
     
 
     <section class="venture-section authentic-asian-section" data-theme="dark">
@@ -271,6 +293,81 @@ import MediaKit from '../components/MediaKit.astro';
     color: var(--coral);
     border-color: var(--coral);
   }
+/* --- TICKER IMAGE STYLES --- */
+  .ticker-section {
+    background-color: #FEF4EF;
+    padding: 2.5rem 0;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(89, 54, 58, 0.05);
+  }
+
+  .ticker-wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 5rem; 
+    width: max-content;
+    animation: scrollTicker 30s linear infinite;
+  }
+
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .ticker-sparkle {
+    color: #DFCDC9;
+    font-size: 0.9rem;
+  }
+
+  /* Core image adjustments to prevent color bleeding and sizing distortions */
+  .logo-img {
+    height: auto;
+    display: block;
+    object-fit: contain;
+
+    opacity: 0.85; 
+    filter: grayscale(100%); 
+  }
+
+ 
+  .logo-forbes {
+    width: 130px;
+  }
+
+  .logo-inc {
+    width: 75px;
+  }
+
+  .logo-bloomberg {
+    width: 140px;
+  }
+
+  .logo-nyt {
+    width: 180px;
+  }
+
+  @keyframes scrollTicker {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+
 
 
   /* --- RESPONSIVE WORKFLOWS (Breakpoint Adaptive) --- */
@@ -330,6 +427,30 @@ import MediaKit from '../components/MediaKit.astro';
 
     .venture-link {
       align-self: flex-start; 
+    }
+.ticker-section {
+      padding: 1.75rem 0;
+    }
+
+    .ticker-track {
+      gap: 3rem;
+    }
+
+ 
+    .logo-forbes {
+      width: 95px;
+    }
+
+    .logo-inc {
+      width: 55px;
+    }
+
+    .logo-bloomberg {
+      width: 105px;
+    }
+
+    .logo-nyt {
+      width: 130px;
     }
   }
   
