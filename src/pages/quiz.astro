@@ -496,26 +496,28 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   font-size: 3rem;
   color: var(--burgundy);
   margin-bottom: 3rem;
+  
+  display: inline; 
   line-height: 1.4;
-}
-
-.highlight-target {
-  display: inline;
-  position: relative;
   
  
-  background: linear-gradient(
+ 
+}
+.highlight-target {
+ background: linear-gradient(
     104deg, 
     transparent 0%,
-    transparent 40%, 
-    rgba(231, 120, 96, 0.28) 45%,
+    transparent 45%, 
+    rgba(231, 120, 96, 0.28) 48%,
     rgba(231, 120, 96, 0.22) 85%,
     transparent 95%
   );
   background-repeat: no-repeat;
+ 
   background-size: 0% 100%; 
+
   background-position: 0% 85%;
-  padding: 2px 8px;
+  padding: 4px 12px;
   
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
@@ -526,9 +528,11 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 
 @keyframes draw-highlight {
   to {
+    
     background-size: 100% 100%;
   }
 }
+
   .intro-description {
     font-family: var(--font-sans);
     font-weight: 300;
