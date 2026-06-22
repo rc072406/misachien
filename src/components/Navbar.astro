@@ -91,20 +91,6 @@
   });
 
   sections.forEach(section => themeObserver.observe(section));
-// ---  ACTIVE LINK LOGIC ---
-  const currentPath = window.location.pathname;
-  const navItems = document.querySelectorAll('.nav-item');
-
-  navItems.forEach(item => {
-    const href = item.getAttribute('href');
-    
-
-    if (currentPath === href || (href !== '/' && currentPath.startsWith(href))) {
-      item.classList.add('is-active');
-    } else {
-      item.classList.remove('is-active');
-    }
-  });
 </script>
 
 <style>
@@ -358,59 +344,5 @@
     .navbar--open .nav-button--mobile { color: var(--coral) !important; border-color: var(--coral) !important; }
     .navbar--open .nav-button--mobile::before { background-color: var(--white) !important; }
     .navbar--open .nav-button--mobile:hover { color: var(--burgundy) !important; }
-  }
-/* --- CLEAN SOFT UNDERLINE HIGHLIGHT --- */
-  .nav-item {
-    position: relative;
-    padding: 0.2rem 0; 
-    z-index: 1;
-  }
-
-
-  .nav-item::before {
-    content: '';
-    position: absolute;
-    bottom: -2px; 
-    left: 0;
-    width: 100%;
-    height: 2px; 
-    
-   
-    background-color: rgba(231, 120, 96, 0.8); 
-    
-    opacity: 0;
-    transform: scaleX(0);
-    transform-origin: center; 
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
-  }
-  
- 
-  .nav-item.is-active::before {
-    opacity: 1; 
-    transform: scaleX(1);
-  }
-
- 
-  .navbar--dark .nav-item.is-active {
-    color: var(--white);
-  }
-
-  .navbar--light .nav-item.is-active {
-    color: var(--coral);
-  }
-
-  .navbar--start .nav-item.is-active {
-    color: var(--coral);
-  }
-
-
-  @media (max-width: 1024px) {
-    .navbar--open .nav-item::before {
-      bottom: -4px; 
-      height: 3px; 
-    }
-    .navbar--open .nav-item.is-active {
-      color: var(--white) !important;
-    }
   }
 </style>
