@@ -1209,5 +1209,43 @@ grid-column: 2 / 5;
     box-sizing: border-box;
     text-align: center;
   }
+.box-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 40px;
+    overflow: hidden; 
+  }
+
+  
+  .box-grid-item.panel-left-high,
+  .box-grid-item.panel-right-low {
+    grid-column: auto;
+    margin: 0;
+    padding: 65px 24px 35px 24px; 
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+
+  .box-grid-item .intro-subtitle {
+    white-space: normal; 
+    font-size: clamp(1.8rem, 8vw, 2.4rem); 
+    text-overflow: clip;
+    word-wrap: break-word;
+  }
+
+
+  .box-grid-item::before {
+    top: 25px;
+    left: 24px;
+  }
+
+
+  .box-meta-pill {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start;
+  }
 }
 </style>
