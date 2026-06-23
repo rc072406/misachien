@@ -416,9 +416,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 
 .box-grid-item {
 
-  border: 2px solid var(--burgundy); 
   padding: 100px 40px 60px 40px;
-  background: rgba(254, 244, 239, 0.85); 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: relative;
@@ -429,7 +427,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 .box-grid-item:hover { 
   z-index: 50 !important; 
   transform: scale(1.015); 
-  background: #FEF4EF; 
   box-shadow: 0 15px 40px rgba(89, 54, 58, 0.15);
 }
 
@@ -451,6 +448,8 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   margin: 40px 0 0 2%; 
   z-index: 1; 
   text-align: left;
+ background-color: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .box-grid-item.panel-right-low { 
@@ -458,7 +457,8 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   margin: -20px 2% 0 0; 
   z-index: 2; 
   text-align: left;
-  border-left: 4px solid var(--burgundy); 
+  background-color: rgba(89, 54, 58, 0.05); 
+   border: 1px solid rgba(89, 54, 58, 0.15);
 }
 
 
