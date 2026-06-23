@@ -4,41 +4,34 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 ---
 
 <BaseLayout title="Scarcity Mindset Quiz | Misa Chien">
-
- <main class="quiz-page-container">
+  <main class="quiz-page-container">
     
-  <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
-  <div id="quiz-intro" class="quiz-screen active">
-    <div class="box-grid-container reveal-on-scroll">
-      
-      <div class="box-grid-item panel-left-high" data-meta="THE ASSESSMENT">
-        <h1 class="intro-subtitle">Do you have a scarcity mindset?</h1>
-      </div>
-      
-      <div class="box-grid-item panel-right-low" data-meta="THE CRITERIA">
-        <p class="intro-description">
-          Answer honestly. No one's grading you — <br />
-          except your own nervous system.
-        </p>
-        
-        <div class="box-meta-pill">
-          <span>10 questions</span>
-          <span class="dot-separator">✦</span>
-          <span>No need to count</span>
-          <span class="dot-separator">✦</span>
-          <span>Score at the end</span>
-        </div>
-        
-        <div class="cta-wrapper">
-          <button id="start-quiz-btn" class="btn-filled">
+    <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
+      <div id="quiz-intro" class="quiz-screen active">
+        <div class="intro-content reveal-on-scroll">
+          
+          <div class="intro-overline">THE ASSESSMENT</div>
+          <h1 class="intro-subtitle">Do you have a scarcity mindset?</h1>
+          
+          <p class="intro-description">
+            Answer honestly. No one's grading you — <br />
+            except your own nervous system.
+          </p>
+          
+          <div class="intro-meta-pill">
+            <span>10 questions</span>
+            <span class="dot-separator">✦</span>
+            <span>No need to count</span>
+            <span class="dot-separator">✦</span>
+            <span>Score at the end</span>
+          </div>
+          
+          <button id="start-quiz-btn" class="btn-luxury">
             <span>Begin The Assessment</span>
           </button>
         </div>
       </div>
-
-    </div>
-  </div>
-</section>
+    </section>
 
     <section id="quiz-gameplay-section" class="quiz-view-section" data-theme="light">
       <div id="quiz-gameplay" class="quiz-screen">
@@ -404,88 +397,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 </script>
 
 <style>
-.box-grid-container {
-  display: grid;
- 
-  grid-template-columns: repeat(12, 1fr); 
-  width: 100%;
-  max-width: 1400px; 
-  margin: 0 auto;
-  position: relative;
-  padding: 40px 40px 140px 40px;
-  gap: 0; 
-}
-
-.box-grid-item {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  position: relative;
-  border-radius: 0 !important; 
-  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-sizing: border-box;
-}
-
-
-.box-grid-item.panel-left-high { 
-
-  grid-column: 1 / 8; 
-  margin-top: 0; 
-  z-index: 1; 
-  text-align: left;
-  background-color: #fdf8f5; 
-  border: 1px solid rgba(89, 54, 58, 0.15);
-  
- 
-  padding: 80px 60px 100px 60px; 
-}
-
-
-.box-grid-item.panel-right-low { 
-
-  grid-column: 5 / 13; 
-  
-
-  margin-top: 140px; 
-  z-index: 2; 
-  text-align: left;
-  background-color: #fcf1ec; 
-  border: 1px solid rgba(89, 54, 58, 0.2);
-  
- 
-  padding: 100px 80px 80px 80px; 
-}
-
-
-.box-grid-item .intro-description {
-  margin-top: 20px;
-  margin-bottom: 2.5rem;
-  max-width: 85%; 
-}
-
-.box-meta-pill {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5rem;
-  background-color: transparent;
-  border: 1px dashed rgba(89, 54, 58, 0.3);
-  padding: 1rem 2rem;
-  color: var(--burgundy);
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  margin-bottom: 3rem;
-  text-transform: uppercase;
-  width: max-content; 
-  max-width: 100%;
-}
-
-.cta-wrapper {
-  display: block;
-  width: 100%;
-}
-
-
   .quiz-page-container {
     width: 100%;
     min-height: 100vh;
@@ -555,47 +466,66 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     transform: translateY(0);
   }
 
+
   #quiz-intro {
     text-align: center;
-    padding: 6rem 4rem;
+    padding: 2rem;
     position: relative;
+    display: flex;
+    justify-content: center;
   }
-  #quiz-intro .btn-filled {
-    display: inline-block;
-    align-self: center;
-    width: auto;
-    text-align: center;
-  }
+
 
   .intro-content {
     position: relative;
     z-index: 2;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px); 
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    box-shadow: 0 40px 80px rgba(89, 54, 58, 0.08);
   }
 
-  .intro-title {
-    font-family: var(--font-logo);
-    font-size: 5.5rem;
-    font-weight: 400;
-    letter-spacing: 4px;
+  
+  .intro-overline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
     color: var(--coral);
-    margin-bottom: 1rem;
-    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
   }
-.intro-subtitle {
-  font-family: 'GF Didot', serif;
-  font-style: italic;
-  font-size: 3rem;
-  color: var(--burgundy);
-  margin-bottom: 3rem;
-  
-  display: inline; 
-  line-height: 1.4;
-  
- 
- 
 
-}
+  .intro-overline::before,
+  .intro-overline::after {
+    content: "";
+    height: 1px;
+    width: 40px;
+    background-color: var(--coral);
+    opacity: 0.5;
+  }
 
+ 
+  .intro-subtitle {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    font-size: 4.5rem;
+    color: var(--burgundy);
+    margin-bottom: 2.5rem;
+    line-height: 1.15;
+    font-weight: 400;
+    display: block;
+  }
 
   .intro-description {
     font-family: var(--font-sans);
@@ -604,28 +534,82 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     line-height: 1.8;
     color: var(--burgundy);
     opacity: 0.85;
-    margin-bottom: 3.5rem;
+    margin-bottom: 4rem;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
+ 
   .intro-meta-pill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 1.25rem;
-    background-color: var(--burgundy);
-    padding: 1rem 2rem;
-    color: var(--white);
+    gap: 1.5rem;
+    background-color: transparent;
+    border: 1px solid rgba(89, 54, 58, 0.15);
+    border-radius: 100px;
+    padding: 0.85rem 3rem;
+    color: var(--burgundy);
     font-family: var(--font-sans);
     font-size: 0.85rem;
     font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 4rem;
-    border-radius: 0; 
+    text-transform: uppercase;
   }
 
   .dot-separator {
     color: var(--coral);
-    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+
+  .btn-luxury {
+    background-color: transparent;
+    border: 1px solid var(--burgundy);
+    color: var(--burgundy);
+    padding: 1.2rem 3.5rem;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-block;
+  }
+
+  .btn-luxury span {
+    position: relative;
+    z-index: 2;
+    transition: color 0.5s ease;
+  }
+
+  .btn-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--burgundy);
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+  }
+
+  .btn-luxury:hover {
+    border-color: var(--burgundy);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(89, 54, 58, 0.15);
+  }
+
+  .btn-luxury:hover span {
+    color: var(--white);
+  }
+
+  .btn-luxury:hover::before {
+    transform: translateY(0);
   }
 
 .quiz-action-btn {
@@ -992,38 +976,62 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
         #FEF4EF 100%
       );
     }
+.quiz-navigation {
+    justify-content: center; 
+    width: 100%;
+  }
 
+  .quiz-action-btn {
+    display: inline-flex !important;      
+    justify-content: center;
+    align-items: center;
+    width: 100%;                
+    max-width: 340px;            
+    margin: 0 auto;             
+    box-sizing: border-box;
+    text-align: center;
+  }
     .quiz-view-section {
       padding: calc(4rem + 70px) 1rem 4rem 1rem;
     }
-  .intro-description {
-    font-size: 0.8rem;
-  }
-
-    #quiz-intro {
-      padding: 3rem 1rem;
+ .intro-content {
+      padding: 4rem 1.5rem;
+      border-radius: 16px;
     }
-.intro-subtitle {
-    font-size: 1.85rem; 
-    margin-bottom: 2rem;
-    line-height: 1.5;
-  }
-
-
-.intro-title {
-      font-size: 2.8rem;        
-      white-space: nowrap;      
-      letter-spacing: 2px;     
+    
+    .intro-overline {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
     }
-   
-
+    
+    .intro-overline::before, 
+    .intro-overline::after {
+      width: 20px;
+    }
+    
+    .intro-subtitle {
+      font-size: 2.8rem; 
+      line-height: 1.2;
+    }
+    
     .intro-meta-pill {
       flex-direction: column;
-      gap: 0.5rem;
-      padding: 1.25rem;
-      width: 100%;
+      gap: 0.75rem;
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid rgba(89, 54, 58, 0.1);
     }
-    .dot-separator { display: none; }
+    
+    .dot-separator { 
+      display: none; 
+    }
+
+    #start-quiz-btn.btn-luxury {
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+    }
 
     .question-prompt-box {
       padding: 2rem 1.5rem;
