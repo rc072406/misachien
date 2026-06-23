@@ -450,6 +450,31 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
 
       });
     }
+
+  
+    initMobileVideoObserver();
+  };
+
+ 
+  const initMobileVideoObserver = () => {
+    if (window.innerWidth >= 960) return;
+
+    const allVideos = document.querySelectorAll('.cinematic-native-video');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          video.play().catch(err => {
+            console.log("Playback prevented (likely Low Power Mode):", err);
+          });
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    allVideos.forEach(video => observer.observe(video));
   };
 
   document.addEventListener('DOMContentLoaded', initSwiper);
