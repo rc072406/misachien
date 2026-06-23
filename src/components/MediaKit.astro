@@ -3,7 +3,7 @@ interface Props {
   className?: string;
 }
 
-const basePath = import.meta.env.BASE_URL;
+
 const { className = '' } = Astro.props;
 import slide1Image from '../../public/images/_I3A6767-LR.webp';
 import slide5Image from '../../public/images/80.webp';
@@ -16,6 +16,7 @@ import slide13Image from '../../public/images/misademocracyjeans.webp';
 import slide14Image from '../../public/images/82.webp';
 import slide15Image from '../../public/images/346_194619-444-2-23-2026-1771858732680.webp';
 import slide16Image from '../../public/images/81.webp';
+import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
 
 ---
 
@@ -173,15 +174,16 @@ import slide16Image from '../../public/images/81.webp';
     <div class="slide-visual-panel cinematic-panel">
       <div class="luxury-video-frame swiper-no-swiping editorial-clip">
       <div class="luxury-video-frame swiper-no-swiping editorial-clip">
-  <video 
-    src={`${basePath}/videos/Misa Chien Speaker Reel.mp4`}
-    autoplay 
-    loop 
-    muted 
-    playsinline
-    class="cinematic-native-video">
-    Your browser does not support the video tag.
-  </video>
+<video 
+  autoplay 
+  loop 
+  muted 
+  playsinline
+  class="cinematic-native-video"
+>
+  <source src={misaVideo} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
 </div>
       </div>
     </div>
