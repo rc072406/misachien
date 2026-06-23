@@ -6,38 +6,29 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 <BaseLayout title="Scarcity Mindset Quiz | Misa Chien">
   <main class="quiz-page-container">
     
-   <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
-  <div id="quiz-intro" class="quiz-screen active">
-    <div class="box-grid-container reveal-on-scroll">
-      
-      <div class="box-grid-item panel-left-high" data-meta="THE ASSESSMENT">
-        <h1 class="intro-subtitle">Do you have a scarcity mindset?</h1>
-      </div>
-      
-      <div class="box-grid-item panel-right-low" data-meta="THE CRITERIA">
-        <p class="intro-description">
-          Answer honestly. No one's grading you — <br />
-          except your own nervous system.
-        </p>
-        
-        <div class="box-meta-pill">
-          <span>10 questions</span>
-          <span class="dot-separator">✦</span>
-          <span>No need to count</span>
-          <span class="dot-separator">✦</span>
-          <span>Score at the end</span>
-        </div>
-        
-        <div class="cta-wrapper">
-          <button id="start-quiz-btn" class="btn-luxury-sharp">
-            <span>Begin The Assessment</span>
+    <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
+      <div id="quiz-intro" class="quiz-screen active">
+        <div class="intro-content reveal-on-scroll">
+          <h1 class="intro-title">THE QUIZ</h1>
+          <p class="intro-subtitle">Do you have a scarcity mindset?</p>
+          <p class="intro-description">
+            Answer honestly. No one's grading you — <br />
+            except your own nervous system.
+          </p>
+          <div class="intro-meta-pill">
+            <span>10 questions</span>
+            <span class="dot-separator">•</span>
+            <span>No need to count</span>
+            <span class="dot-separator">•</span>
+            <span>Score at the end</span>
+          </div>
+          <button id="start-quiz-btn" class="btn-filled">
+            <span>Start The Assessment</span>
           </button>
         </div>
       </div>
+    </section>
 
-    </div>
-  </div>
-</section>
     <section id="quiz-gameplay-section" class="quiz-view-section" data-theme="light">
       <div id="quiz-gameplay" class="quiz-screen">
         <div class="quiz-top-bar">
@@ -402,138 +393,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 </script>
 
 <style>
-.box-grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 100%;
-  max-width: 1200px; 
-  margin: 0 auto;
-  position: relative;
-  padding-bottom: 60px;
-}
-
-.box-grid-item {
-
-  padding: 100px 40px 60px 40px;
-  background: rgba(254, 244, 239, 0.85); 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  position: relative;
-  border-radius: 0 !important; 
-  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.box-grid-item:hover { 
-  z-index: 50 !important; 
-  transform: scale(1.015); 
-  background: #FEF4EF; 
-  box-shadow: 0 15px 40px rgba(89, 54, 58, 0.15);
-}
-
-
-.box-grid-item::before {
-  content: attr(data-meta);
-  position: absolute;
-  top: 35px; left: 40px;
-  font-family: var(--font-sans);
-  font-size: 11px;
-  color: var(--coral);
-  letter-spacing: 4px;
-  font-weight: 600;
-}
-
-
-.box-grid-item.panel-left-high { 
-grid-column: 1 / 5;        
-  margin: 40px 0 0 -20%;    
-  padding: 120px 60px 80px 60px; 
-  z-index: 1; 
-  text-align: left;
-  background-color: rgba(255, 255, 255, 0.03); 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 15px 40px rgba(89, 54, 58, 0.15);
-}
-
-.box-grid-item.panel-right-low { 
-grid-column: 2 / 5;       
-  margin: -50px -8% 0 0;   
-  z-index: 2; 
-  text-align: left;
-  background-color: rgba(89, 54, 58, 0.05); 
-  border: 1px solid rgba(89, 54, 58, 0.15);
-  color: var(--burgundy);
-}
-
-
-.box-grid-item .intro-subtitle {
- white-space: nowrap;                     
-  font-size: clamp(2rem, 4.2vw, 4.5rem);  
-  text-overflow: ellipsis;                 
-
-  line-height: 1.1;
-  margin-bottom: 0;
-  margin-top: 10px;
-  font-family: 'GF Didot', serif;
-  font-style: italic;
-  text-transform: none; 
-  color: #DFCDC9;
-}
-
-.box-grid-item .intro-description {
-  margin-top: 10px;
-  margin-bottom: 2.5rem;
-  max-width: 100%;
-}
-
-
-.box-meta-pill {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem;
-  background-color: transparent;
-  border: 1px dashed rgba(89, 54, 58, 0.3);
-  border-radius: 0; 
-  padding: 1rem 1.5rem;
-  color: var(--burgundy);
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  margin-bottom: 3rem;
-  text-transform: uppercase;
-  width: fit-content;
-}
-
-.cta-wrapper {
-  display: block;
-  width: 100%;
-}
-
-
-.btn-luxury-sharp {
-  background-color: var(--burgundy);
-  border: 1px solid var(--burgundy);
-  color: #FEF4EF;
-  padding: 1.2rem 3.5rem;
-  font-family: var(--font-sans);
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-radius: 0; 
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-block;
-}
-
-.btn-luxury-sharp:hover {
-  background-color: transparent;
-  color: var(--burgundy);
-  box-shadow: 0 10px 25px rgba(89, 54, 58, 0.15);
-  transform: translateY(-2px);
-}
   .quiz-page-container {
     width: 100%;
     min-height: 100vh;
@@ -603,7 +462,78 @@ grid-column: 2 / 5;
     transform: translateY(0);
   }
 
+  #quiz-intro {
+    text-align: center;
+    padding: 6rem 4rem;
+    position: relative;
+  }
+  #quiz-intro .btn-filled {
+    display: inline-block;
+    align-self: center;
+    width: auto;
+    text-align: center;
+  }
 
+  .intro-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .intro-title {
+    font-family: var(--font-logo);
+    font-size: 5.5rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--coral);
+    margin-bottom: 1rem;
+    line-height: 1;
+  }
+.intro-subtitle {
+  font-family: 'GF Didot', serif;
+  font-style: italic;
+  font-size: 3rem;
+  color: var(--burgundy);
+  margin-bottom: 3rem;
+  
+  display: inline; 
+  line-height: 1.4;
+  
+ 
+ 
+
+}
+
+
+  .intro-description {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--burgundy);
+    opacity: 0.85;
+    margin-bottom: 3.5rem;
+  }
+
+  .intro-meta-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    background-color: var(--burgundy);
+    padding: 1rem 2rem;
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 4rem;
+    border-radius: 0; 
+  }
+
+  .dot-separator {
+    color: var(--coral);
+    font-weight: 600;
+  }
 
 .quiz-action-btn {
   background-color: var(--coral);
@@ -948,10 +878,6 @@ grid-column: 2 / 5;
     padding: 1rem 1.5rem;
     font-weight: 500;
   }
-.dot-separator {
-    color: var(--coral);
-    font-weight: 600;
-  }
 
  
 
@@ -973,77 +899,38 @@ grid-column: 2 / 5;
         #FEF4EF 100%
       );
     }
-.quiz-navigation {
-    justify-content: center; 
-    width: 100%;
-  }
 
-  .quiz-action-btn {
-    display: inline-flex !important;      
-    justify-content: center;
-    align-items: center;
-    width: 100%;                
-    max-width: 340px;            
-    margin: 0 auto;             
-    box-sizing: border-box;
-    text-align: center;
-  }
-
-.quiz-action-btn:not(.hidden) {
-    display: inline-flex;      
-    justify-content: center;
-    align-items: center;
-    width: max-content; 
-    padding: 1rem 2.5rem;  
-    margin: 0 auto;        
-    box-sizing: border-box;
-    text-align: center;
-  }
-
-  .quiz-action-btn.hidden {
-    display: none !important;
-  }
     .quiz-view-section {
       padding: calc(4rem + 70px) 1rem 4rem 1rem;
     }
- .intro-content {
-      padding: 4rem 1.5rem;
-      border-radius: 16px;
+  .intro-description {
+    font-size: 0.8rem;
+  }
+
+    #quiz-intro {
+      padding: 3rem 1rem;
     }
-    
-    .intro-overline {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
+.intro-subtitle {
+    font-size: 1.85rem; 
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+
+
+.intro-title {
+      font-size: 2.8rem;        
+      white-space: nowrap;      
+      letter-spacing: 2px;     
     }
-    
-    .intro-overline::before, 
-    .intro-overline::after {
-      width: 20px;
-    }
-    
-    .intro-subtitle {
-      font-size: 2.8rem; 
-      line-height: 1.2;
-    }
-    
+   
+
     .intro-meta-pill {
       flex-direction: column;
-      gap: 0.75rem;
-      border-radius: 16px;
-      padding: 1.5rem;
-      border: 1px solid rgba(89, 54, 58, 0.1);
-    }
-    
-    .dot-separator { 
-      display: none; 
-    }
-
-    #start-quiz-btn.btn-luxury {
-      display: block;
+      gap: 0.5rem;
+      padding: 1.25rem;
       width: 100%;
-      max-width: 340px;
-      margin: 0 auto;
     }
+    .dot-separator { display: none; }
 
     .question-prompt-box {
       padding: 2rem 1.5rem;
@@ -1223,44 +1110,6 @@ grid-column: 2 / 5;
     width: 100%;
     box-sizing: border-box;
     text-align: center;
-  }
-.box-grid-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding-bottom: 40px;
-    overflow: hidden; 
-  }
-
-  
-  .box-grid-item.panel-left-high,
-  .box-grid-item.panel-right-low {
-    grid-column: auto;
-    margin: 0;
-    padding: 65px 24px 35px 24px; 
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-
-  .box-grid-item .intro-subtitle {
-    white-space: normal; 
-    font-size: clamp(1.8rem, 8vw, 2.4rem); 
-    text-overflow: clip;
-    word-wrap: break-word;
-  }
-
-
-  .box-grid-item::before {
-    top: 25px;
-    left: 24px;
-  }
-
-
-  .box-meta-pill {
-    width: 100%;
-    box-sizing: border-box;
-    justify-content: flex-start;
   }
 }
 </style>
