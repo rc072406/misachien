@@ -445,7 +445,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 
 .box-grid-item.panel-left-high { 
 grid-column: 1 / 4;       
-  margin: 40px 0 0 -15%;    
+  margin: 40px 0 0 -20%;    
   z-index: 1; 
   text-align: left;
   background-color: rgba(255, 255, 255, 0.03); 
@@ -465,14 +465,17 @@ grid-column: 2 / 5;
 
 
 .box-grid-item .intro-subtitle {
-  font-size: 4.5rem;
+ white-space: nowrap;                     
+  font-size: clamp(2rem, 4.2vw, 4.5rem);  
+  text-overflow: ellipsis;                 
+
   line-height: 1.1;
   margin-bottom: 0;
   margin-top: 10px;
- font-family: 'GF Didot', serif;
-    font-style: italic;
-    text-transform: none; 
-    color: #DFCDC9; 
+  font-family: 'GF Didot', serif;
+  font-style: italic;
+  text-transform: none; 
+  color: #DFCDC9;
 }
 
 .box-grid-item .intro-description {
