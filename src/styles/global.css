@@ -79,11 +79,12 @@ a {
   background-color: var(--burgundy);
   z-index: 1;
   
- 
+  
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0 4rem; 
+  justify-content: space-between; 
+
+  padding: 6rem 4rem 4rem 4rem; 
 }
 
 .footer-container {
@@ -93,6 +94,21 @@ a {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 4rem;
+ 
+  flex-grow: 1; 
+
+  align-content: center; 
+}
+
+.footer-bottom {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto; 
+  text-align: left;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
 }
 
 .footer .logo {
@@ -139,12 +155,6 @@ a {
 }
 
 
-.footer-bottom {
-  width: 100%;
-  max-width: 1200px;
-  margin: 4rem auto 0 auto;
-  text-align: left;
-}
 
 .copyright {
   color: rgba(255, 255, 255, 0.4); 
