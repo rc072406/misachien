@@ -6,32 +6,39 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 <BaseLayout title="Scarcity Mindset Quiz | Misa Chien">
   <main class="quiz-page-container">
     
-    <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
-      <div id="quiz-intro" class="quiz-screen active">
-        <div class="intro-content reveal-on-scroll">
-          
-          <div class="intro-overline">THE ASSESSMENT</div>
-          <h1 class="intro-subtitle">Do you have a scarcity mindset?</h1>
-          
-          <p class="intro-description">
-            Answer honestly. No one's grading you — <br />
-            except your own nervous system.
-          </p>
-          
-          <div class="intro-meta-pill">
-            <span>10 questions</span>
-            <span class="dot-separator">✦</span>
-            <span>No need to count</span>
-            <span class="dot-separator">✦</span>
-            <span>Score at the end</span>
-          </div>
-          
+   <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
+  <div id="quiz-intro" class="quiz-screen active">
+    <div class="intro-grid-container reveal-on-scroll">
+      
+      <div class="intro-panel-card panel-left-high">
+        <div class="intro-overline">THE ASSESSMENT</div>
+        <h1 class="intro-subtitle">Do you have a scarcity mindset?</h1>
+      </div>
+      
+      <div class="intro-panel-card panel-right-low">
+        <p class="intro-description">
+          Answer honestly. No one's grading you — <br />
+          except your own nervous system.
+        </p>
+        
+        <div class="intro-meta-pill">
+          <span>10 questions</span>
+          <span class="dot-separator">✦</span>
+          <span>No need to count</span>
+          <span class="dot-separator">✦</span>
+          <span>Score at the end</span>
+        </div>
+        
+        <div>
           <button id="start-quiz-btn" class="btn-luxury">
             <span>Begin The Assessment</span>
           </button>
         </div>
       </div>
-    </section>
+
+    </div>
+  </div>
+</section>
 
     <section id="quiz-gameplay-section" class="quiz-view-section" data-theme="light">
       <div id="quiz-gameplay" class="quiz-screen">
@@ -963,6 +970,60 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     to { opacity: 1; transform: translateY(0); }
   }
 
+.intro-grid-container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; 
+  gap: 2.5rem;
+  align-items: start;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+
+.intro-panel-card {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  padding: 4.5rem 3.5rem;
+  box-shadow: 0 40px 80px rgba(89, 54, 58, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.panel-left-high {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-20px); 
+  text-align: left;
+}
+
+.panel-left-high .intro-overline {
+  justify-content: flex-start; 
+}
+.panel-left-high .intro-overline::before {
+  display: none; 
+}
+
+
+.panel-right-low {
+  background: rgba(89, 54, 58, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transform: translateY(20px); 
+  text-align: center;
+}
+
+
+.panel-left-high .intro-subtitle {
+  margin-bottom: 0;
+}
+.panel-right-low .intro-description {
+  margin-top: 0;
+  max-width: 100%;
+}
+
   @media (max-width: 820px) {
     .quiz-view-section[data-theme="start"] {
       background: linear-gradient(
@@ -1211,6 +1272,25 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     width: 100%;
     box-sizing: border-box;
     text-align: center;
+  }
+.intro-grid-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .intro-panel-card {
+    padding: 3rem 1.5rem !important;
+    transform: none !important; 
+    text-align: center !important;
+    border-radius: 16px;
+  }
+
+  .panel-left-high .intro-overline {
+    justify-content: center !important;
+  }
+  .panel-left-high .intro-overline::before {
+    display: block;
   }
 }
 </style>
