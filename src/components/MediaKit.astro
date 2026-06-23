@@ -175,6 +175,7 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
       <div class="luxury-video-frame swiper-no-swiping editorial-clip">
 <video 
   autoplay 
+  muted
   loop 
   playsinline
   class="cinematic-native-video"
@@ -182,6 +183,10 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
   <source src={misaVideo} type="video/mp4" />
   Your browser does not support the video tag.
 </video>
+<button class="audio-toggle-badge" aria-label="Toggle Audio">
+    <span class="pulse-ring"></span>
+    <span class="audio-status-text">TAP FOR AUDIO</span>
+  </button>
 </div>
       </div>
     </div>
@@ -379,7 +384,6 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     <div class="swiper-button-next"></div>
   </div>
 </div>
-
 <script>
   import 'swiper/css';
   import 'swiper/css/navigation';
@@ -388,7 +392,20 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
   import Swiper from 'swiper';
   import { Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, Parallax } from 'swiper/modules';
 
+  const manageVideos = (swiper) => {
+    const allVideos = swiper.el.querySelectorAll('.cinematic-native-video');
+    allVideos.forEach(video => video.pause());
 
+    const activeSlide = swiper.slides[swiper.activeIndex];
+    if (activeSlide) {
+      const activeVideo = activeSlide.querySelector('.cinematic-native-video');
+      if (activeVideo) {
+        activeVideo.play().catch(err => {
+          console.log("Autoplay waiting for user interaction:", err);
+        });
+      }
+    }
+  };
 
   const initSwiper = () => {
     const swiperEl = document.querySelector('.mediaKitSwiper');
@@ -398,7 +415,7 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
         direction: 'horizontal',
         speed: 1100,
         parallax: true,
-enabled: false, 
+        enabled: false, 
         breakpoints: {
           960: {
             enabled: true,
@@ -416,16 +433,19 @@ enabled: false,
           }
         },
 
-
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         on: {
           init: function (swiper) {
             const initialSlide = swiper.slides[swiper.activeIndex];
             swiper.el.setAttribute('data-current-theme', initialSlide.getAttribute('data-theme') || 'light');
+            
+            manageVideos(swiper);
           },
           slideChange: function (swiper) {
             const activeSlide = swiper.slides[swiper.activeIndex];
             swiper.el.setAttribute('data-current-theme', activeSlide.getAttribute('data-theme') || 'light');
+            
+            manageVideos(swiper);
           }
         }
 
@@ -437,7 +457,26 @@ enabled: false,
   setTimeout(initSwiper, 150);
 
 
+  document.addEventListener('click', (e) => {
+    const toggleBtn = e.target.closest('.audio-toggle-badge, .audio-crest-wrapper');
+    if (!toggleBtn) return;
 
+    const slide = toggleBtn.closest('.swiper-slide');
+    const video = slide ? slide.querySelector('.cinematic-native-video') : null;
+    const textLabel = toggleBtn.querySelector('.audio-status-text, .crest-text');
+
+    if (video) {
+      if (video.muted) {
+        video.muted = false;
+        toggleBtn.classList.add('sound-on');
+        if (textLabel) textLabel.textContent = textLabel.classList.contains('crest-text') ? "SOUND ON" : "MUTE AUDIO";
+      } else {
+        video.muted = true;
+        toggleBtn.classList.remove('sound-on');
+        if (textLabel) textLabel.textContent = textLabel.classList.contains('crest-text') ? "SOUND OFF" : "TAP FOR AUDIO";
+      }
+    }
+  });
 </script>
 
 <style>
@@ -890,6 +929,70 @@ color: var(--soft-white);
 
 .swiper-slide-active .luxury-video-frame.editorial-clip {
   clip-path: inset(0 0 0 0);
+}
+.audio-toggle-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  z-index: 60;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.audio-toggle-badge:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--soft-white);
+}
+
+.audio-toggle-badge:hover .audio-status-text {
+  color: var(--burgundy);
+}
+
+.audio-status-text {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--soft-white);
+  transition: color 0.3s ease;
+}
+
+
+.pulse-ring {
+  width: 6px;
+  height: 6px;
+  background-color: var(--coral);
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  top: -6px; left: -6px; right: -6px; bottom: -6px;
+  border: 1px solid var(--coral);
+  border-radius: 50%;
+  animation: luxuryPulse 2s infinite ease-out;
+  opacity: 0;
+}
+
+@keyframes luxuryPulse {
+  0% { transform: scale(0.6); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+
+.audio-toggle-badge.sound-on .pulse-ring {
+  background-color: var(--coral); 
 }
 
 
