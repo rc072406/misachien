@@ -5,29 +5,39 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 
 <BaseLayout title="Scarcity Mindset Quiz | Misa Chien">
   <main class="quiz-page-container">
-    
     <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
-      <div id="quiz-intro" class="quiz-screen active">
-        <div class="intro-content reveal-on-scroll">
-          <h1 class="intro-title">THE QUIZ</h1>
-          <p class="intro-subtitle">Do you have a scarcity mindset?</p>
-          <p class="intro-description">
-            Answer honestly. No one's grading you — <br />
-            except your own nervous system.
-          </p>
-          <div class="intro-meta-pill">
-            <span>10 questions</span>
-            <span class="dot-separator">•</span>
-            <span>No need to count</span>
-            <span class="dot-separator">•</span>
-            <span>Score at the end</span>
-          </div>
-          <button id="start-quiz-btn" class="btn-filled">
-            <span>Start The Assessment</span>
-          </button>
-        </div>
+  <div id="quiz-intro" class="quiz-screen active">
+    
+    <div class="intro-card-left">
+      <span class="card-meta">The Assessment</span>
+      <h1 class="intro-title-serif">Do you have a scarcity mindset?</h1>
+    </div>
+
+    <div class="intro-card-right">
+      <span class="card-meta">The Criteria</span>
+      
+      <p class="intro-description">
+        Answer honestly. No one's grading you — <br class="desktop-only" />
+        except your own nervous system.
+      </p>
+      
+      <div class="intro-meta-pill">
+        <span>10 QUESTIONS</span>
+        <span class="dot-separator">✦</span>
+        <span>NO NEED TO COUNT</span>
+        <span class="dot-separator">✦</span>
+        <span>SCORE AT THE END</span>
       </div>
-    </section>
+      
+      <div class="action-wrapper">
+        <button id="start-quiz-btn" class="quiz-action-btn">
+          <span>Begin The Assessment</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <section id="quiz-gameplay-section" class="quiz-view-section" data-theme="light">
       <div id="quiz-gameplay" class="quiz-screen">
@@ -885,6 +895,120 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
+#quiz-intro {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: start;
+  gap: 0;
+  padding: 4rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left; 
+}
+
+
+.card-meta {
+  display: block;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #cf6d53; 
+  margin-bottom: 2rem;
+}
+
+
+.intro-card-left {
+  grid-column: 1 / 6;
+  background-color: #fdf8f5; 
+  padding: 3.5rem 3rem 5rem 3rem;
+  border: 1px solid rgba(89, 54, 58, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+  z-index: 3;
+  margin-top: 0;
+}
+
+
+.intro-title-serif {
+  font-family: 'GF Didot',  serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  color: #382829; 
+  line-height: 1.15;
+  margin: 0;
+}
+
+
+.intro-card-right {
+  grid-column: 5 / 13;
+ background-color: rgba(89, 54, 58, 0.05);  
+  padding: 5rem 4rem 4rem 5rem;
+  border: 1px solid rgba(89, 54, 58, 0.2);
+  z-index: 2;
+  margin-top: 100px; 
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+
+.intro-description {
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.6;
+  color: #382829;
+  opacity: 0.9;
+  margin-bottom: 3rem;
+}
+
+
+.intro-meta-pill {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  background-color: transparent; 
+  border: 1px dashed rgba(89, 54, 58, 0.3);
+  padding: 0.8rem 1.5rem;
+  color: #382829;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  margin-bottom: 3.5rem;
+}
+
+.dot-separator {
+  color: #cf6d53;
+  font-size: 0.9rem;
+}
+
+
+.action-wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.quiz-action-btn {
+  background-color: #382829; 
+  border: 1px solid #382829;
+  color: #fdf8f5;
+  padding: 1.2rem 3rem;
+  font-family: var(--font-sans), sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.quiz-action-btn:hover {
+  background-color: #cf6d53;
+  border-color: #cf6d53;
+  transform: translateY(-2px);
+}
+
+
+.desktop-only { display: inline; }
 
   @media (max-width: 820px) {
     .quiz-view-section[data-theme="start"] {
@@ -1103,13 +1227,44 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   }
 
   
-  #quiz-intro .btn-filled,
+ .btn-filled,
   .funnel-coaching-cta .btn-filled {
     display: block;
     align-self: stretch;
     width: 100%;
     box-sizing: border-box;
     text-align: center;
+  }
+#quiz-intro {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .intro-card-left, 
+  .intro-card-right {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0 !important;
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .intro-card-left {
+    border-bottom: none;
+  }
+  
+  .intro-meta-pill {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .dot-separator { display: none; }
+  .desktop-only { display: none; }
+  
+  .quiz-action-btn {
+    width: 100%;
   }
 }
 </style>
