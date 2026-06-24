@@ -9,12 +9,16 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
       <div id="quiz-intro" class="quiz-screen active">
         <div class="intro-content reveal-on-scroll">
-          <h1 class="intro-title">THE QUIZ</h1>
-          <p class="intro-subtitle">Do you have a scarcity mindset?</p>
-          <p class="intro-description">
-            Answer honestly. No one's grading you — <br />
-            except your own nervous system.
-          </p>
+          
+          <div class="editorial-frame">
+            <h1 class="intro-title">THE QUIZ</h1>
+            <p class="intro-subtitle">Do you have a scarcity mindset?</p>
+            <p class="intro-description">
+              Answer honestly. No one's grading you — <br />
+              except your own nervous system.
+            </p>
+          </div>
+
           <div class="intro-meta-pill">
             <span>10 questions</span>
             <span class="dot-separator">•</span>
@@ -22,9 +26,13 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
             <span class="dot-separator">•</span>
             <span>Score at the end</span>
           </div>
-          <button id="start-quiz-btn" class="btn-filled">
-            <span>Start The Assessment</span>
-          </button>
+
+          <div class="intro-action-area">
+            <button id="start-quiz-btn" class="btn-filled">
+              <span>Start The Assessment</span>
+            </button>
+          </div>
+
         </div>
       </div>
     </section>
@@ -464,106 +472,142 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 
   #quiz-intro {
     text-align: center;
-    padding: 6rem 4rem;
+    padding: 4rem 2rem;
     position: relative;
-  }
-  #quiz-intro .btn-filled {
-    display: inline-block;
-    align-self: center;
-    width: auto;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .intro-content {
     position: relative;
     z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
   }
+
+  .editorial-frame {
+    padding: 4rem 2rem;
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .editorial-frame::before,
+  .editorial-frame::after {
+    content: "";
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: rgba(89, 54, 58, 0.2);
+  }
+
+  .editorial-frame::before { top: 0; }
+  .editorial-frame::after { bottom: 0; }
 
   .intro-title {
     font-family: var(--font-logo);
-    font-size: 5.5rem;
-    font-weight: 400;
-    letter-spacing: 4px;
-    color: var(--coral);
-    margin-bottom: 1rem;
+    font-size: 5rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--burgundy);
+    margin-bottom: 0.5rem;
     line-height: 1;
+    text-transform: uppercase;
   }
-.intro-subtitle {
-  font-family: 'GF Didot', serif;
-  font-style: italic;
-  font-size: 3rem;
-  color: var(--burgundy);
-  margin-bottom: 3rem;
-  
-  display: inline; 
-  line-height: 1.4;
-  
- 
- 
 
-}
-
+  .intro-subtitle {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    font-size: 2.75rem;
+    color: var(--coral);
+    margin-bottom: 2.5rem;
+    display: block; 
+    line-height: 1.3;
+  }
 
   .intro-description {
     font-family: var(--font-sans);
     font-weight: 300;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     line-height: 1.8;
     color: var(--burgundy);
     opacity: 0.85;
-    margin-bottom: 3.5rem;
+    margin: 0 auto;
+    max-width: 450px;
   }
 
   .intro-meta-pill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 1.25rem;
-    background-color: var(--burgundy);
-    padding: 1rem 2rem;
-    color: var(--white);
+    gap: 1rem;
+    background-color: transparent; 
+    border: 1px solid rgba(89, 54, 58, 0.15);
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    color: var(--burgundy);
     font-family: var(--font-sans);
     font-size: 0.85rem;
     font-weight: 400;
     letter-spacing: 1px;
-    margin-bottom: 4rem;
-    border-radius: 0; 
+    margin-bottom: 3rem;
+    text-transform: uppercase;
   }
 
   .dot-separator {
     color: var(--coral);
     font-weight: 600;
+    opacity: 0.6;
   }
 
-.quiz-action-btn {
-  background-color: var(--coral);
-  border: 1px solid var(--coral);
-  color: var(--white);
-  
- 
-  padding: 1rem 2rem; 
-  
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.15em;
-  font-size: 0.9rem;
-  cursor: pointer;
-  
-  
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content; 
-  box-sizing: border-box;
-  
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
+  .intro-action-area {
+    margin-top: 1rem;
+  }
 
-.quiz-action-btn:hover {
-  background-color: var(--burgundy);
-  border-color: var(--burgundy);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(89, 54, 58, 0.15);
-}
+  #quiz-intro .btn-filled {
+    background-color: var(--burgundy);
+    color: #FEF4EF;
+    border: 1px solid var(--burgundy);
+    padding: 1.25rem 3rem; 
+    font-family: var(--font-sans);
+    letter-spacing: 0.15em;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #quiz-intro .btn-filled:hover {
+    background-color: #FEF4EF;
+    color: var(--burgundy);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(89, 54, 58, 0.15);
+  }
+
+  .quiz-action-btn {
+    background-color: var(--coral);
+    border: 1px solid var(--coral);
+    color: var(--white);
+    padding: 1rem 2rem; 
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.15em;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content; 
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .quiz-action-btn:hover {
+    background-color: var(--burgundy);
+    border-color: var(--burgundy);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(89, 54, 58, 0.15);
+  }
 
   .quiz-top-bar {
     display: flex;
@@ -879,8 +923,6 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     font-weight: 500;
   }
 
- 
-
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -903,49 +945,60 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     .quiz-view-section {
       padding: calc(4rem + 70px) 1rem 4rem 1rem;
     }
-  .intro-description {
-    font-size: 0.8rem;
-  }
 
     #quiz-intro {
       padding: 3rem 1rem;
     }
-.intro-subtitle {
-    font-size: 1.85rem; 
-    margin-bottom: 2rem;
-    line-height: 1.5;
-  }
 
+    .editorial-frame {
+      padding: 3rem 1rem;
+    }
 
-.intro-title {
-      font-size: 2.8rem;        
+    .editorial-frame::before,
+    .editorial-frame::after {
+      left: 10%;
+      right: 10%;
+    }
+
+    .intro-title {
+      font-size: 3.5rem;
       white-space: nowrap;      
       letter-spacing: 2px;     
     }
-   
+
+    .intro-subtitle {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .intro-description {
+      font-size: 0.8rem;
+    }
 
     .intro-meta-pill {
       flex-direction: column;
-      gap: 0.5rem;
-      padding: 1.25rem;
+      border-radius: 10px;
+      padding: 1.5rem;
+      gap: 0.75rem;
       width: 100%;
     }
+
     .dot-separator { display: none; }
 
     .question-prompt-box {
       padding: 2rem 1.5rem;
       font-size: 1.2rem;
     }
-#quiz-intro .btn-filled,
+
+    #quiz-intro .btn-filled,
     .funnel-coaching-cta .btn-filled {
       display: inline-flex;      
       justify-content: center;
       align-items: center;
-      
-      width: 100%;               
-      max-width: 340px;           
-      margin: 0 auto;             
-      
+      width: 100%;                
+      max-width: 320px;            
+      margin: 0 auto;              
       box-sizing: border-box;
       text-align: center;
     }
@@ -954,6 +1007,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       width: 50px;
       height: 60px;
     }
+
     .option-text {
       padding: 0.75rem 1.25rem;
       font-size: 0.95rem;
@@ -964,6 +1018,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
       gap: 1rem;
       padding: 2rem 1rem;
     }
+
     .shift-arrow {
       transform: rotate(90deg);
       margin: 0.25rem 0;
@@ -972,10 +1027,12 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     .tier-card {
       flex-direction: column;
     }
+
     .tier-score-badge {
       width: 100%;
       padding: 1rem 0;
     }
+
     .tier-details {
       padding: 1.5rem;
     }
@@ -983,133 +1040,129 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
     .funnel-coaching-cta {
       padding: 3rem 1.5rem;
     }
+
     .funnel-accent-text {
       font-size: 1.5rem;
     }
+
     .quiz-coaching-link {
       width: 100%;
       box-sizing: border-box;
       padding: 1.25rem 1rem;
     }
   }
-/* --- UPGRADED FUNNEL CONTAINER --- */
-.funnel-coaching-cta {
-  background: linear-gradient(135deg, #3A2023 0%, var(--burgundy) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 4.5rem 4rem;
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
-}
 
-
-.funnel-visual-accent {
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(223, 205, 201, 0.08) 0%, rgba(0,0,0,0) 70%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.funnel-content-left, .funnel-actions-right {
-  position: relative;
-  z-index: 2;
-}
-
-.funnel-pre-title {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 3px;
-  color: var(--coral);
-  margin-bottom: 1rem;
-}
-
-.funnel-accent-text {
-  font-family: 'GF Didot', serif;
-  font-style: italic;
-  font-size: 2.35rem;
-  color: #FEF4EF;
-  line-height: 1.3;
-  margin: 0;
-}
-
-.funnel-actions-right {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  padding-left: 4rem;
-}
-
-.funnel-supporting-text {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0;
-}
-
-
-.funnel-coaching-cta .btn-filled {
-  align-self: flex-start;
-  width: auto;
-  display: inline-block;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-}
-
-
-.funnel-coaching-cta .btn-filled span {
-  color: var(--coral);
-  transition: color 0.4s ease;
-}
-
-
-.funnel-coaching-cta .btn-filled:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
-}
-
-.funnel-coaching-cta .btn-filled:hover span {
-  color: var(--white);
-}
-
-/* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 820px) {
   .funnel-coaching-cta {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 3.5rem 2rem;
-    text-align: left;
+    background: linear-gradient(135deg, #3A2023 0%, var(--burgundy) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 4.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+  }
+
+  .funnel-visual-accent {
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(223, 205, 201, 0.08) 0%, rgba(0,0,0,0) 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .funnel-content-left, .funnel-actions-right {
+    position: relative;
+    z-index: 2;
+  }
+
+  .funnel-pre-title {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--coral);
+    margin-bottom: 1rem;
   }
 
   .funnel-accent-text {
-    font-size: 1.85rem;
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    font-size: 2.35rem;
+    color: #FEF4EF;
+    line-height: 1.3;
+    margin: 0;
   }
 
   .funnel-actions-right {
-    border-left: none;
-    padding-left: 0;
-    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 4rem;
   }
 
-  
-  #quiz-intro .btn-filled,
-  .funnel-coaching-cta .btn-filled {
-    display: block;
-    align-self: stretch;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
+  .funnel-supporting-text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
   }
-}
+
+  .funnel-coaching-cta .btn-filled {
+    align-self: flex-start;
+    width: auto;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  }
+
+  .funnel-coaching-cta .btn-filled span {
+    color: var(--coral);
+    transition: color 0.4s ease;
+  }
+
+  .funnel-coaching-cta .btn-filled:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .funnel-coaching-cta .btn-filled:hover span {
+    color: var(--white);
+  }
+
+  @media (max-width: 820px) {
+    .funnel-coaching-cta {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 3.5rem 2rem;
+      text-align: left;
+    }
+
+    .funnel-accent-text {
+      font-size: 1.85rem;
+    }
+
+    .funnel-actions-right {
+      border-left: none;
+      padding-left: 0;
+      gap: 1.5rem;
+    }
+
+    #quiz-intro .btn-filled,
+    .funnel-coaching-cta .btn-filled {
+      display: block;
+      align-self: stretch;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+  }
 </style>
