@@ -47,6 +47,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
         <div class="tracks-grid">
           
           <div class="track-card reveal-on-scroll">
+            <span class="track-badge">Unconscious Mind Coaching</span>
             <div class="track-meta">
               <span class="track-num">TRACK 01</span>
               <h3 class="track-title">SCALING ENTREPRENEURS</h3>
@@ -60,15 +61,18 @@ Now your mind needs to catch up.</p>
               </p>
               <ul class="track-features">
                 <li>For entrepreneurs already at six figures, ready to grow without grinding harder.</li>
-              
               </ul>
+              <a href={`${import.meta.env.BASE_URL}/contact`} class="track-btn">
+                <span>Inquire About Track 01</span>
+              </a>
             </div>
           </div>
 
           <div class="track-card reveal-on-scroll">
+            <span class="track-badge">Unconscious Mind Coaching</span>
             <div class="track-meta">
               <span class="track-num">TRACK 02</span>
-              <h3 class="track-title"> C-SUITE & LATE-STAGE LEADERS</h3>
+              <h3 class="track-title">C-SUITE & LATE-STAGE LEADERS</h3>
             </div>
             <div class="track-body">
               <p class="track-target">You've achieved everything.
@@ -79,8 +83,10 @@ So why doesn't it feel that way?</p>
               </p>
               <ul class="track-features">
                 <li>For C-suite leaders and senior entrepreneurs ready to be as free inside as they appear outside.</li>
-              
               </ul>
+              <a href={`${import.meta.env.BASE_URL}/contact`} class="track-btn">
+                <span>Inquire About Track 02</span>
+              </a>
             </div>
           </div>
 
@@ -107,7 +113,6 @@ So why doesn't it feel that way?</p>
     box-sizing: border-box;
     background-color: var(--white);
   }
-
 
   .coaching-hero-gradient {
     position: relative;
@@ -182,7 +187,6 @@ So why doesn't it feel that way?</p>
     opacity: 0.9;
   }
 
-  /* --- METHODOLOGY OVERVIEW --- */
   .methodology-section {
     width: 100%;
     background-color: #FEF4EF; 
@@ -231,7 +235,6 @@ So why doesn't it feel that way?</p>
     opacity: 0.9;
   }
 
-  /* --- TRACKS LAYOUT BLOCK --- */
   .tracks-section {
     width: 100%;
     background-color: var(--burgundy);
@@ -270,13 +273,32 @@ So why doesn't it feel that way?</p>
     padding: 4rem 3.5rem;
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    height: 100%;
+    box-sizing: border-box;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
   }
 
   .track-card:hover {
     border-color: rgba(231, 120, 96, 0.4);
     transform: translateY(-4px);
+  }
+
+  .track-badge {
+    align-self: flex-start;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-color: rgba(231, 120, 96, 0.1);
+    color: var(--coral);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 1px solid rgba(231, 120, 96, 0.2);
+    margin-bottom: 2.5rem;
+  }
+
+  .track-meta {
+    margin-bottom: 2.5rem;
   }
 
   .track-num {
@@ -294,6 +316,12 @@ So why doesn't it feel that way?</p>
     color: var(--white);
     text-transform: uppercase;
     font-weight: 400;
+  }
+
+  .track-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 
   .track-target {
@@ -330,6 +358,7 @@ So why doesn't it feel that way?</p>
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-bottom: 3rem;
   }
 
   .track-features li {
@@ -344,7 +373,25 @@ So why doesn't it feel that way?</p>
     color: var(--coral);
   }
 
-  /* --- CALL TO ACTION --- */
+  .track-btn {
+    margin-top: auto;
+    align-self: flex-start;
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .track-btn:hover {
+    background-color: var(--white);
+    color: var(--burgundy);
+  }
+
   .coaching-cta {
     margin-top: 8rem;
     text-align: center;
@@ -354,12 +401,12 @@ So why doesn't it feel that way?</p>
     gap: 2rem;
   }
 
-.coaching-cta .btn-filled {
-  display: inline-block;
-  align-self: center;
-  text-align: center;
-  width: auto;        
-}
+  .coaching-cta .btn-filled {
+    display: inline-block;
+    align-self: center;
+    text-align: center;
+    width: auto;        
+  }
 
   .cta-text {
     font-family: 'GF Didot', serif;
@@ -368,9 +415,6 @@ So why doesn't it feel that way?</p>
     color: #DFCDC9;
   }
 
-  
-
-  /* --- RESPONSIVE WORKFLOWS --- */
   .desktop-only {
     display: block;
   }
@@ -449,7 +493,5 @@ So why doesn't it feel that way?</p>
     .cta-text {
       font-size: 1.35rem;
     }
-
- 
   }
 </style>
