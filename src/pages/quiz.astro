@@ -26,7 +26,7 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
         <div class="typewriter-box">
           <span class="typewriter-label">Current Assessment:</span>
           <span id="quiz-typewriter" class="typewriter-text"></span>
-          <span class="typewriter-cursor">|</span>
+         
         </div>
       </div>
 
@@ -544,20 +544,7 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     margin-bottom: 1rem;
     line-height: 1;
   }
-.intro-subtitle {
-  font-family: 'GF Didot', serif;
-  font-style: italic;
-  font-size: 3rem;
-  color: var(--burgundy);
-  margin-bottom: 3rem;
-  
-  display: inline; 
-  line-height: 1.4;
-  
- 
- 
 
-}
 
 
   .intro-description {
@@ -972,7 +959,7 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     font-family: 'GF Didot', serif;
     font-style: italic;
     font-size: 2.2rem;
-    color: #DFCDC9;
+    color: var(--white);
     margin-bottom: 2rem;
     font-weight: 400;
   }
@@ -1011,10 +998,7 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     min-width: 200px;
   }
 
-  .typewriter-cursor {
-    animation: blink 1s infinite;
-    color: var(--coral);
-  }
+
 
  
   .intro-content-right {
@@ -1027,8 +1011,8 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     width: 100%;
     max-width: 400px;
     padding: 3rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(89, 54, 58, 0.05); 
+    border: 1px solid rgba(89, 54, 58, 0.15);
   }
 
   .card-content {
@@ -1043,7 +1027,7 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     font-family: 'GF Didot', serif;
     font-size: 1.4rem;
     line-height: 1.4;
-    color: var(--white);
+    color: var(--burgundy);
     font-style: italic;
   }
 
