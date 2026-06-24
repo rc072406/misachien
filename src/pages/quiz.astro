@@ -505,16 +505,17 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
   .editorial-frame::before { top: 0; }
   .editorial-frame::after { bottom: 0; }
 
-  .intro-title {
-    font-family: var(--font-logo);
-    font-size: 5rem;
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    color: var(--burgundy);
-    margin-bottom: 0.5rem;
-    line-height: 1;
-    text-transform: uppercase;
-  }
+.intro-title {
+  font-family: var(--font-logo);
+  font-size: clamp(3rem, 4.5vw, 5rem); 
+  font-weight: 300;
+  letter-spacing: 0.1em;              
+  color: var(--burgundy);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;                   
+  text-transform: uppercase;
+  width: 100%;                      
+}
 
 
 
