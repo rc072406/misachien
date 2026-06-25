@@ -143,7 +143,6 @@
 	let scrollTriggerInstance;
 
 	function buildHorizontalLayout() {
-		
 		if (scrollTriggerInstance) {
 			scrollTriggerInstance.kill(true);
 		}
@@ -152,7 +151,7 @@
 		const track = document.querySelector('.horizontal-scroll-track');
 		if (!section || !track) return;
 
-		
+	
 		gsap.set(track, { clearProps: "transform" });
 
 		let scrollWidth = track.scrollWidth;
@@ -503,29 +502,43 @@
 	}
 
 	@media (max-width: 768px) {
-	
-		.intro-panel, .divider-panel, .data-card, .conclusion-panel, .misa-breakthrough-panel {
-			width: 85vw; 
+		
+		.horizontal-scroll-track {
+			padding: 0 1.5rem;
 		}
-		.misa-breakthrough-panel {
-			padding: 3rem 1.5rem;
+
+		
+		.intro-panel, .divider-panel, .conclusion-panel {
+			width: 85vw;
+			padding-left: 0;
+			padding-right: 1.5rem;
+			margin-right: 1rem;
 		}
+
+		.data-card, .misa-breakthrough-panel {
+			width: 85vw;
+			height: 70vh; 
+			margin-right: 1.5rem;
+			padding: 2.5rem 1.5rem; 
+		}
+
 		.main-editorial-title {
 			font-size: 3.5rem;
 		}
+
 		.breakthrough-title {
 			font-size: 3rem;
 		}
+
 		.section-context-title {
 			font-size: 2.5rem;
 			margin: 2rem 0 0 0;
 		}
+
 		.huge-stat {
 			font-size: 4.5rem;
 		}
-		.data-card {
-			padding: 2.5rem 1.5rem;
-		}
+
 		.arrow-line {
 			display: none;
 		}
