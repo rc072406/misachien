@@ -139,14 +139,14 @@
 
 	gsap.registerPlugin(ScrollTrigger);
 
-	let scrollTriggerInstance;
+
+	let horizontalScrollTrigger;
 
 	function buildHorizontalLayout() {
 	
-		if (scrollTriggerInstance) {
-			scrollTriggerInstance.kill(true);
+		if (horizontalScrollTrigger) {
+			horizontalScrollTrigger.kill(true);
 		}
-		ScrollTrigger.getAll().forEach(t => t.kill());
 
 		const section = document.querySelector('.dashboard-section');
 		const pinContainer = document.querySelector('.pin-container');
@@ -158,7 +158,7 @@
 		let scrollWidth = track.getBoundingClientRect().width;
 		let totalMove = scrollWidth - window.innerWidth;
 
-		scrollTriggerInstance = ScrollTrigger.create({
+		horizontalScrollTrigger = ScrollTrigger.create({
 			trigger: section,
 			pin: pinContainer, 
 			pinSpacing: true,  
@@ -176,6 +176,7 @@
 
 	function init() {
 		buildHorizontalLayout();
+	
 		ScrollTrigger.refresh();
 	}
 
@@ -184,10 +185,9 @@
 
 
 	document.addEventListener('astro:before-swap', () => {
-		if (scrollTriggerInstance) {
-			scrollTriggerInstance.kill(true);
+		if (horizontalScrollTrigger) {
+			horizontalScrollTrigger.kill(true);
 		}
-		ScrollTrigger.getAll().forEach(t => t.kill());
 	});
 	
 	let resizeTimeout;
@@ -199,7 +199,6 @@
 		}, 100);
 	});
 </script>
-
 <style>
 	.dashboard-section {
 		position: relative;
