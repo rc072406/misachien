@@ -142,30 +142,33 @@
 	let scrollTriggerInstance;
 
 	function buildHorizontalLayout() {
+	
 		if (scrollTriggerInstance) {
 			scrollTriggerInstance.kill(true);
 		}
+		ScrollTrigger.getAll().forEach(t => t.kill());
 
 		const section = document.querySelector('.dashboard-section');
+		const pinContainer = document.querySelector('.pin-container');
 		const track = document.querySelector('.horizontal-scroll-track');
-		if (!section || !track) return;
+		if (!section || !track || !pinContainer) return;
 
 		gsap.set(track, { clearProps: "transform" });
 
-		
 		let scrollWidth = track.getBoundingClientRect().width;
 		let totalMove = scrollWidth - window.innerWidth;
 
 		scrollTriggerInstance = ScrollTrigger.create({
 			trigger: section,
-			pin: true,
+			pin: pinContainer, 
+			pinSpacing: true,  
 			scrub: 0.1,
 			start: 'top top',
 			end: () => `+=${totalMove}`,
 			invalidateOnRefresh: true,
 			anticipatePin: 1, 
 			animation: gsap.to(track, {
-				x: () => -totalMove, 
+				x: () => -totalMove,
 				ease: 'none'
 			})
 		});
@@ -178,6 +181,14 @@
 
 	document.addEventListener('DOMContentLoaded', init);
 	document.addEventListener('astro:page-load', init);
+
+
+	document.addEventListener('astro:before-swap', () => {
+		if (scrollTriggerInstance) {
+			scrollTriggerInstance.kill(true);
+		}
+		ScrollTrigger.getAll().forEach(t => t.kill());
+	});
 	
 	let resizeTimeout;
 	window.addEventListener('resize', () => {
@@ -222,7 +233,6 @@
 		will-change: transform;
 	}
 
-	
 	.intro-panel {
 		width: 580px;
 		flex: 0 0 580px; 
@@ -512,7 +522,6 @@
 			padding: 0 2rem;
 		}
 
-		
 		.intro-panel, .divider-panel, .conclusion-panel {
 			width: 80vw;
 			flex: 0 0 80vw;
