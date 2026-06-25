@@ -152,30 +152,25 @@
 		const track = document.querySelector('.horizontal-scroll-track');
 		if (!section || !track) return;
 
-	
-		if (window.innerWidth > 768) {
-			
-			gsap.set(track, { clearProps: "transform" });
+		
+		gsap.set(track, { clearProps: "transform" });
 
-			let scrollWidth = track.scrollWidth;
-			let totalMove = scrollWidth - window.innerWidth;
+		let scrollWidth = track.scrollWidth;
+		let totalMove = scrollWidth - window.innerWidth;
 
-			scrollTriggerInstance = ScrollTrigger.create({
-				trigger: section,
-				pin: true,
-				scrub: 0.1,
-				start: 'top top',
-				end: () => `+=${totalMove}`,
-				invalidateOnRefresh: true,
-				anticipatePin: 1, 
-				animation: gsap.to(track, {
-					x: -totalMove,
-					ease: 'none'
-				})
-			});
-		} else {
-			gsap.set(track, { clearProps: "all" });
-		}
+		scrollTriggerInstance = ScrollTrigger.create({
+			trigger: section,
+			pin: true,
+			scrub: 0.1,
+			start: 'top top',
+			end: () => `+=${totalMove}`,
+			invalidateOnRefresh: true,
+			anticipatePin: 1, 
+			animation: gsap.to(track, {
+				x: -totalMove,
+				ease: 'none'
+			})
+		});
 	}
 
 	function init() {
@@ -204,10 +199,10 @@
 		overflow: hidden;
 		font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 		display: block;
-  clear: both;
-  z-index: 1;                
-  isolation: isolate;         
-  box-sizing: border-box;
+		clear: both;
+		z-index: 1;                
+		isolation: isolate;         
+		box-sizing: border-box;
 	}
 
 	.pin-container {
@@ -508,21 +503,9 @@
 	}
 
 	@media (max-width: 768px) {
-		.pin-container {
-			height: auto;
-		}
-		.horizontal-scroll-track {
-			flex-direction: column;
-			width: 100%;
-			height: auto;
-			padding: 4rem 1.5rem;
-			gap: 4rem;
-		}
+	
 		.intro-panel, .divider-panel, .data-card, .conclusion-panel, .misa-breakthrough-panel {
-			width: 100%;
-			height: auto;
-			padding: 0;
-			margin-right: 0;
+			width: 85vw; 
 		}
 		.misa-breakthrough-panel {
 			padding: 3rem 1.5rem;
