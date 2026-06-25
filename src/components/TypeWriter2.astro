@@ -139,64 +139,70 @@
 
 	gsap.registerPlugin(ScrollTrigger);
 
+	let dashboardContext;
 
-	let horizontalScrollTrigger;
+	function initDashboardAnimation() {
+		
+		if (dashboardContext) dashboardContext.revert();
 
-	function buildHorizontalLayout() {
-	
-		if (horizontalScrollTrigger) {
-			horizontalScrollTrigger.kill(true);
-		}
-
-		const section = document.querySelector('.dashboard-section');
-		const pinContainer = document.querySelector('.pin-container');
-		const track = document.querySelector('.horizontal-scroll-track');
+		const section = document.querySelector('.dashboard-section') as HTMLElement;
+		const pinContainer = document.querySelector('.pin-container') as HTMLElement;
+		const track = document.querySelector('.horizontal-scroll-track') as HTMLElement;
+		
 		if (!section || !track || !pinContainer) return;
 
-		gsap.set(track, { clearProps: "transform" });
+		
+		dashboardContext = gsap.context(() => {
+			
+			gsap.set(track, { clearProps: "transform" });
 
-		let scrollWidth = track.getBoundingClientRect().width;
-		let totalMove = scrollWidth - window.innerWidth;
+			const scrollWidth = track.getBoundingClientRect().width;
+			const totalMove = scrollWidth - window.innerWidth;
 
-		horizontalScrollTrigger = ScrollTrigger.create({
-			trigger: section,
-			pin: pinContainer, 
-			pinSpacing: true,  
-			scrub: 0.1,
-			start: 'top top',
-			end: () => `+=${totalMove}`,
-			invalidateOnRefresh: true,
-			anticipatePin: 1, 
-			animation: gsap.to(track, {
-				x: () => -totalMove,
-				ease: 'none'
-			})
-		});
+			ScrollTrigger.create({
+				trigger: section,
+				pin: pinContainer, 
+				pinSpacing: true,  
+				scrub: 0.1,
+				start: 'top top',
+				end: () => `+=${totalMove}`,
+				invalidateOnRefresh: true,
+				anticipatePin: 1, 
+				animation: gsap.to(track, {
+					x: () => -totalMove,
+					ease: 'none'
+				})
+			});
+		}, section); 
 	}
 
-	function init() {
-		buildHorizontalLayout();
-	
+
+	document.addEventListener('DOMContentLoaded', () => {
+		initDashboardAnimation();
 		ScrollTrigger.refresh();
-	}
-
-	document.addEventListener('DOMContentLoaded', init);
-	document.addEventListener('astro:page-load', init);
-
+	});
+	
+	document.addEventListener('astro:page-load', () => {
+		initDashboardAnimation();
+		ScrollTrigger.refresh();
+	});
 
 	document.addEventListener('astro:before-swap', () => {
-		if (horizontalScrollTrigger) {
-			horizontalScrollTrigger.kill(true);
-		}
+		if (dashboardContext) dashboardContext.revert();
 	});
 	
 	let resizeTimeout;
+	let lastWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+
 	window.addEventListener('resize', () => {
+		if (window.innerWidth === lastWidth) return;
+		lastWidth = window.innerWidth;
+
 		clearTimeout(resizeTimeout);
 		resizeTimeout = setTimeout(() => {
-			buildHorizontalLayout();
+			initDashboardAnimation();
 			ScrollTrigger.refresh();
-		}, 100);
+		}, 150);
 	});
 </script>
 <style>
