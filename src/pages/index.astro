@@ -37,36 +37,37 @@ import heroImage from '../../public/images/_51A5829.webp';
 
 		<Testimonials client:visible />
 
-		<section class="pillars-section" id="section-three" data-theme="light">
-			<div class="pillars-container"> <div class="section-lead">
-				<span class="kicker">Consectetur Adipiscing</span>
-				<h2>Dolor Sit Amet</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-			</div>
-
-			<div class="pillars-grid">
-				<div class="pillar-card reveal-on-scroll">
+		<div class="pillars-grid">
+                <div class="pillar-card reveal-on-scroll">
 					<span class="card-index">01</span>
-					<h3>Lorem Ipsum</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					<a href="#" class="card-action">Read More &rarr;</a>
+					<h3>Take the Scarcity Mindset Quiz</h3>
+					<p>Uncover the invisible scripts running your business and life. Take only 10 questions to identify the exact subconscious blocks keeping you stuck in a survival loop, even after achieving success.</p>
+					<a href={`${import.meta.env.BASE_URL}/quiz`} class="card-action">TAKE THE QUIZ &rarr;</a>
 				</div>
 
 				<div class="pillar-card reveal-on-scroll">
 					<span class="card-index">02</span>
-					<h3>Dolor Sit</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					<a href="#" class="card-action">Read More &rarr;</a>
+					<h3>Choose Your Path</h3>
+					<p>Whether you are a 6-figure founder scaling to the next level or a C-suite leader seeking internal freedom, select the tailored framework designed to rewire your specific unconscious boundaries.</p>
+					<a href={`${import.meta.env.BASE_URL}/coaching`} class="card-action">EXPLORE THE TRACKS &rarr;</a>
 				</div>
 
 				<div class="pillar-card reveal-on-scroll">
 					<span class="card-index">03</span>
-					<h3>Amet Consectetur</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					<a href="#" class="card-action">Read More &rarr;</a>
+					<h3>Attend the Free Workshop</h3>
+					<p>Watch our complimentary masterclass on decoding the scarcity mindset. Learn the precise mechanics of speaking to the unconscious mind and how to stop letting old wounds drive your executive decisions.</p>
+					<a href="https://drive.google.com/file/d/1u5hqOQ4hGR7O66nKiXkqHty9ch9ekE4b/view?usp=sharing" target="_blank" class="card-action">RECLAIM YOUR CLARITY &rarr;</a>
 				</div>
 			</div>
-		</section>
+
+            <div class="clarity-call-banner reveal-on-scroll">
+                <div class="clarity-content">
+                    <h2 class="serif-italic">Ready to recondition your unconscious framework?</h2>
+                    <p>If you are ready to stop grinding harder and start operating from pure clarity, let's talk. Secure a complimentary, high-level <strong>Clarity Call</strong> to map out your blind spots.</p>
+                    <a href="https://calendly.com/misachien/clarity-call?month=2026-07" class="btn-filled banner-btn"><span>Book Your Clarity Call</span></a>
+                </div>
+            </div>
+            </section>
 		<StickyNotes client:visible />
         <TypeWriter3 client:visible />
 	</main>
@@ -295,6 +296,70 @@ import heroImage from '../../public/images/_51A5829.webp';
 	.pillar-card:hover .card-action {
 		color: var(--coral);
 	}
+.clarity-call-banner {
+		margin-top: 6rem;
+		background-color: var(--burgundy, #59363A); 
+		padding: 5rem 3rem;
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+
+	.clarity-call-banner::after {
+		content: '';
+		position: absolute;
+		inset: 12px;
+		border: 1px solid rgba(223, 205, 201, 0.2); 
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.clarity-content {
+		position: relative;
+		z-index: 2;
+		max-width: 700px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.clarity-call-banner h2 {
+		color: #FEF4EF; 
+		font-size: 2.5rem;
+		margin-bottom: 0.5rem;
+		line-height: 1.2;
+	}
+
+	.clarity-call-banner p {
+		color: #DFCDC9; 
+		font-size: 1.1rem;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+		font-weight: 300;
+	}
+
+	.clarity-call-banner strong {
+		color: #FEF4EF;
+		font-weight: 500;
+	}
+
+	
+	.btn-filled.banner-btn {
+		border-color: #FEF4EF;
+		color: #FEF4EF;
+	}
+
+	.btn-filled.banner-btn::before {
+		background-color: #FEF4EF;
+	}
+
+	.btn-filled.banner-btn:hover {
+		color: var(--burgundy, #59363A);
+		border-color: #FEF4EF;
+	}
 
 	/* Fixed: Lowered the break target down from 960px to 820px to hold layout alignment longer */
 	@media (max-width: 820px) {
@@ -329,6 +394,14 @@ import heroImage from '../../public/images/_51A5829.webp';
 		
 		.statement-container h2 {
 			font-size: 1.75rem;
+		}
+.clarity-call-banner {
+			margin-top: 4rem;
+			padding: 4rem 2rem;
+		}
+		
+		.clarity-call-banner h2 {
+			font-size: 2rem;
 		}
 	}
 </style>
