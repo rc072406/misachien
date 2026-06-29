@@ -305,69 +305,99 @@ import heroImage from '../../public/images/_51A5829.webp';
 		color: var(--coral);
 	}
 .clarity-call-banner {
-		margin-top: 6rem;
-		background-color: var(--burgundy, #59363A); 
-		padding: 5rem 3rem;
-		text-align: center;
-		position: relative;
-		overflow: hidden;
-	}
-
-
-	.clarity-call-banner::after {
-		content: '';
-		position: absolute;
-		inset: 12px;
-		border: 1px solid rgba(223, 205, 201, 0.2); 
-		pointer-events: none;
-		z-index: 1;
-	}
-
-	.clarity-content {
-		position: relative;
-		z-index: 2;
-		max-width: 700px;
-		margin: 0 auto;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1.5rem;
-	}
-
-	.clarity-call-banner h2 {
-		color: #FEF4EF; 
-		font-size: 2.5rem;
-		margin-bottom: 0.5rem;
-		line-height: 1.2;
-	}
-
-	.clarity-call-banner p {
-		color: #DFCDC9; 
-		font-size: 1.1rem;
-		line-height: 1.6;
-		margin-bottom: 1.5rem;
-		font-weight: 300;
-	}
-
-	.clarity-call-banner strong {
-		color: #FEF4EF;
-		font-weight: 500;
-	}
-
+	margin-top: 8rem;
 	
-	.btn-filled.banner-btn {
-		border-color: #FEF4EF;
-		color: #FEF4EF;
-	}
+	background: radial-gradient(circle at 50% -20%, #764A4F 0%, var(--burgundy, #59363A) 100%);
+	padding: 6rem 4rem;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	border-radius: 24px; 
+	box-shadow: 0 30px 60px rgba(89, 54, 58, 0.12); 
+}
 
-	.btn-filled.banner-btn::before {
-		background-color: #FEF4EF;
-	}
+.clarity-call-banner::before {
+	content: '';
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(circle at 50% 50%, rgba(254, 244, 239, 0.025) 0%, transparent 60%);
+	pointer-events: none;
+}
 
-	.btn-filled.banner-btn:hover {
-		color: var(--burgundy, #59363A);
-		border-color: #FEF4EF;
-	}
+
+.clarity-call-banner::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 15%;
+	right: 15%;
+	height: 1px;
+	background: linear-gradient(to right, transparent, rgba(223, 205, 201, 0.25), transparent);
+	pointer-events: none;
+}
+
+.clarity-content {
+	position: relative;
+	z-index: 2;
+	max-width: 640px; 
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.75rem;
+}
+
+
+.clarity-content{
+	color: #DFCDC9;
+	opacity: 0.8;
+	margin-bottom: -0.5rem;
+}
+
+.clarity-call-banner h2 {
+	color: #FEF4EF;
+
+	font-size: clamp(2rem, 4vw, 2.75rem);
+	line-height: 1.25;
+	font-weight: 400;
+	letter-spacing: -0.01em;
+}
+
+.clarity-call-banner p {
+	color: #DFCDC9;
+	font-size: clamp(1rem, 1.5vw, 1.15rem);
+	line-height: 1.75;
+	margin-bottom: 0.75rem;
+	font-weight: 300;
+}
+
+.clarity-call-banner strong {
+	color: #FEF4EF;
+	font-weight: 500;
+}
+
+
+.btn-filled.banner-btn {
+	border-color: #FEF4EF;
+	color: #FEF4EF;
+	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+	            color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+	            border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-filled.banner-btn::before {
+	background-color: #FEF4EF;
+}
+
+.btn-filled.banner-btn:hover {
+	color: var(--burgundy, #59363A);
+	border-color: #FEF4EF;
+	transform: translateY(-3px); 
+}
+
 
 	/* Fixed: Lowered the break target down from 960px to 820px to hold layout alignment longer */
 	@media (max-width: 820px) {
@@ -404,12 +434,15 @@ import heroImage from '../../public/images/_51A5829.webp';
 			font-size: 1.75rem;
 		}
 .clarity-call-banner {
-			margin-top: 4rem;
-			padding: 4rem 2rem;
-		}
-		
-		.clarity-call-banner h2 {
-			font-size: 2rem;
-		}
+		margin-top: 5rem;
+		padding: 4.5rem 2rem;
+		border-radius: 16px;
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+	
+	.clarity-call-banner h2 {
+		font-size: 1.85rem;
+	}
 	}
 </style>
