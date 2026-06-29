@@ -111,6 +111,7 @@ interface Props {
 		--burgundy: #59363A;
 		--white: #FFFFFF;
 		--cream: #FEF4EF;
+        margin-top: 0;
 		border-top: 6rem solid var(--burgundy);
 		position: relative;
 		width: 100%;
@@ -258,7 +259,10 @@ interface Props {
 	}
 
 	@media (max-width: 820px) {
-		.clarity-call-banner-system { margin-top: 4rem; }
+		.clarity-call-banner-system { 
+         margin-top: 0; 
+		
+		padding: 4.5rem 2rem; }
 		.banner-layer { padding: 4.5rem 2rem; }
 		.banner-inner-frame { inset: 12px; }
 	}
