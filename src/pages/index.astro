@@ -68,28 +68,14 @@ import heroImage from '../../public/images/_51A5829.webp';
 					<a href="https://drive.google.com/file/d/1u5hqOQ4hGR7O66nKiXkqHty9ch9ekE4b/view?usp=sharing" target="_blank" class="card-action">RECLAIM YOUR CLARITY &rarr;</a>
 				</div>
 			</div>
-            
+            <ClarityCallBanner client:visible />
             </section>
-<ClarityCallBanner client:visible />
+
 		<StickyNotes client:visible />
         <TypeWriter3 client:visible />
 	</main>
 </BaseLayout>
-<script>
-	
-	const banner = document.getElementById('interactive-banner');
-	if (banner) {
-		banner.addEventListener('mousemove', (e) => {
-			const rect = banner.getBoundingClientRect();
-			const x = ((e.clientX - rect.left) / rect.width) * 100;
-			const y = ((e.clientY - rect.top) / rect.height) * 100;
-			
-			
-			banner.style.setProperty('--mouse-x', `${x}%`);
-			banner.style.setProperty('--mouse-y', `${y}%`);
-		});
-	}
-</script>
+
 <style>
 .hero-section {
   position: relative;
