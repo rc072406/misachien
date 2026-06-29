@@ -67,20 +67,35 @@ import heroImage from '../../public/images/_51A5829.webp';
 					<a href="https://drive.google.com/file/d/1u5hqOQ4hGR7O66nKiXkqHty9ch9ekE4b/view?usp=sharing" target="_blank" class="card-action">RECLAIM YOUR CLARITY &rarr;</a>
 				</div>
 			</div>
-
-            <div class="clarity-call-banner reveal-on-scroll">
-                <div class="clarity-content">
-                    <h2 class="serif-italic">Ready to recondition your unconscious framework?</h2>
-                    <p>If you are ready to stop grinding harder and start operating from pure clarity, let's talk. Secure a complimentary, invigorating <strong>Clarity Call</strong> to map out your blind spots.</p>
-                    <a href="https://calendly.com/misachien/clarity-call?month=2026-07" class="btn-filled banner-btn"><span>Book Your Clarity Call</span></a>
-                </div>
-            </div>
+<div class="clarity-call-banner reveal-on-scroll" id="interactive-banner">
+	<div class="clarity-content">
+		<span class="kicker">Exclusive Invitation</span>
+		<h2 class="serif-italic">Ready to recondition your unconscious framework?</h2>
+		<p>If you are ready to stop grinding harder and start operating from pure clarity, let's talk. Secure a complimentary, invigorating <strong>Clarity Call</strong> to map out your blind spots.</p>
+		<a href="https://calendly.com/misachien/clarity-call?month=2026-07" class="btn-filled banner-btn"><span>Book Your Clarity Call</span></a>
+	</div>
+</div>
+            
             </section>
 		<StickyNotes client:visible />
         <TypeWriter3 client:visible />
 	</main>
 </BaseLayout>
-
+<script>
+	
+	const banner = document.getElementById('interactive-banner');
+	if (banner) {
+		banner.addEventListener('mousemove', (e) => {
+			const rect = banner.getBoundingClientRect();
+			const x = ((e.clientX - rect.left) / rect.width) * 100;
+			const y = ((e.clientY - rect.top) / rect.height) * 100;
+			
+			
+			banner.style.setProperty('--mouse-x', `${x}%`);
+			banner.style.setProperty('--mouse-y', `${y}%`);
+		});
+	}
+</script>
 <style>
 .hero-section {
   position: relative;
@@ -305,99 +320,86 @@ import heroImage from '../../public/images/_51A5829.webp';
 		color: var(--coral);
 	}
 .clarity-call-banner {
-	margin-top: 8rem;
 	
-	background: radial-gradient(circle at 50% -20%, #764A4F 0%, var(--burgundy, #59363A) 100%);
-	padding: 6rem 4rem;
-	text-align: center;
-	position: relative;
-	overflow: hidden;
-	border-radius: 24px; 
-	box-shadow: 0 30px 60px rgba(89, 54, 58, 0.12); 
-}
-
-.clarity-call-banner::before {
-	content: '';
-	position: absolute;
-	top: -50%;
-	left: -50%;
-	width: 200%;
-	height: 200%;
-	background: radial-gradient(circle at 50% 50%, rgba(254, 244, 239, 0.025) 0%, transparent 60%);
-	pointer-events: none;
-}
+		--mouse-x: 50%;
+		--mouse-y: 50%;
+		
+		margin-top: 6rem;
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+		padding: 6rem 3rem;
+		border-radius: 0; 
+		
+		
+		background: 
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.05'/%3E%3C/svg%3E"),
+			radial-gradient(circle at var(--mouse-x) var(--mouse-y), #7A4D53 0%, #4D2D31 45%, var(--burgundy, #59363A) 100%);
+		
+		transition: background 0.1s ease-out;
+	}
 
 
-.clarity-call-banner::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 15%;
-	right: 15%;
-	height: 1px;
-	background: linear-gradient(to right, transparent, rgba(223, 205, 201, 0.25), transparent);
-	pointer-events: none;
-}
+	.clarity-call-banner::after {
+		content: '';
+		position: absolute;
+		inset: 16px;
+		border: 1px solid rgba(223, 205, 201, 0.25); 
+		pointer-events: none;
+		z-index: 1;
+	}
 
-.clarity-content {
-	position: relative;
-	z-index: 2;
-	max-width: 640px; 
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 1.75rem;
-}
+	.clarity-content {
+		position: relative;
+		z-index: 2;
+		max-width: 680px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+	}
 
+	.clarity-content .kicker {
+		color: #DFCDC9;
+		opacity: 0.7;
+		margin-bottom: -0.5rem;
+	}
 
-.clarity-content{
-	color: #DFCDC9;
-	opacity: 0.8;
-	margin-bottom: -0.5rem;
-}
+	.clarity-call-banner h2 {
+		color: #FEF4EF; 
+		font-size: clamp(2rem, 3.5vw, 2.6rem);
+		margin-bottom: 0.5rem;
+		line-height: 1.25;
+	}
 
-.clarity-call-banner h2 {
-	color: #FEF4EF;
+	.clarity-call-banner p {
+		color: #DFCDC9; 
+		font-size: clamp(1rem, 1.5vw, 1.1rem);
+		line-height: 1.7;
+		margin-bottom: 1.5rem;
+		font-weight: 300;
+	}
 
-	font-size: clamp(2rem, 4vw, 2.75rem);
-	line-height: 1.25;
-	font-weight: 400;
-	letter-spacing: -0.01em;
-}
+	.clarity-call-banner strong {
+		color: #FEF4EF;
+		font-weight: 500;
+	}
+	
+	.btn-filled.banner-btn {
+		border-color: #FEF4EF;
+		color: #FEF4EF;
+		border-radius: 0; 
+	}
 
-.clarity-call-banner p {
-	color: #DFCDC9;
-	font-size: clamp(1rem, 1.5vw, 1.15rem);
-	line-height: 1.75;
-	margin-bottom: 0.75rem;
-	font-weight: 300;
-}
+	.btn-filled.banner-btn::before {
+		background-color: #FEF4EF;
+	}
 
-.clarity-call-banner strong {
-	color: #FEF4EF;
-	font-weight: 500;
-}
-
-
-.btn-filled.banner-btn {
-	border-color: #FEF4EF;
-	color: #FEF4EF;
-	transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-	            color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-	            border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-filled.banner-btn::before {
-	background-color: #FEF4EF;
-}
-
-.btn-filled.banner-btn:hover {
-	color: var(--burgundy, #59363A);
-	border-color: #FEF4EF;
-	transform: translateY(-3px); 
-}
-
+	.btn-filled.banner-btn:hover {
+		color: var(--burgundy, #59363A);
+		border-color: #FEF4EF;
+	}
 
 	/* Fixed: Lowered the break target down from 960px to 820px to hold layout alignment longer */
 	@media (max-width: 820px) {
@@ -434,15 +436,12 @@ import heroImage from '../../public/images/_51A5829.webp';
 			font-size: 1.75rem;
 		}
 .clarity-call-banner {
-		margin-top: 5rem;
-		padding: 4.5rem 2rem;
-		border-radius: 16px;
-		margin-left: 1rem;
-		margin-right: 1rem;
-	}
-	
-	.clarity-call-banner h2 {
-		font-size: 1.85rem;
-	}
+			margin-top: 4rem;
+			padding: 4.5rem 2rem;
+		}
+		
+		.clarity-call-banner::after {
+			inset: 12px;
+		}
 	}
 </style>
