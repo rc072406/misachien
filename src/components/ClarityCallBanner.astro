@@ -206,20 +206,22 @@ max-width: 600px;
 	.light-highlight { color: var(--cream); font-weight: 500; }
 
 	/* --- Button Configurations --- */
-	.btn-filled.banner-btn {
-		position: relative;
-		padding: 1.1rem 2.5rem;
-		font-size: 0.75rem;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		font-weight: 600;
-		display: inline-block;
-		overflow: hidden;
-		z-index: 4;
-		pointer-events: auto; 
-		border-radius: 0;
-		transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-	}
+.btn-filled.banner-btn {
+	position: relative;
+	padding: 1.1rem 2.5rem;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 600;
+	display: inline-flex;  
+	justify-content: center; 
+	align-items: center;     
+	overflow: hidden;
+	z-index: 4;
+	pointer-events: auto; 
+	border-radius: 0;
+	transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
 	.btn-filled.banner-btn span {
 		position: relative;
