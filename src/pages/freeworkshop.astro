@@ -441,14 +441,10 @@ const workshopVideoUrl = import.meta.env.PUBLIC_YOUTUBE_URL || "fallback-url";
       form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const formData = new FormData(form as HTMLFormElement);
-        const fullName = formData.get('fullName');
-        const email = formData.get('email');
-        
-        console.log("Captured for Zapier:", { fullName, email });
 
         mainGrid.style.display = 'none';
         
+       
         videoSection.style.display = 'block';
         videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
