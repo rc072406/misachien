@@ -4,38 +4,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Free Workshop | Misa Chien">
   <main class="workshop-container" data-theme="start">
-    
     <div class="workshop-gradient-wrapper">
       
-      <section class="workshop-hero reveal-on-scroll">
-        <span class="subtitle">Exclusive Training</span>
-        <h1 class="main-title">
-          Master Your <br class="desktop-only" />
-          <span class="serif-italic">Unconscious Mind</span>
-        </h1>
-        <p class="hero-description">Enter your name and email below for instant access to the free workshop.</p>
-      </section>
+      <div class="workshop-grid" id="main-grid">
+        
+        <section class="workshop-hero reveal-on-scroll">
+          <span class="subtitle">Exclusive Training</span>
+          <h1 class="main-title">
+            Master Your <br class="desktop-only" />
+            <span class="serif-italic">Unconscious Mind</span>
+          </h1>
+          <p class="hero-description">
+            Enter your name and email to get instant access to the free workshop and discover how to dismantle deeply rooted limiting beliefs.
+          </p>
+        </section>
 
-      <section class="form-section reveal-on-scroll" id="opt-in-section">
-        <form id="workshop-form" class="optin-form">
-          <div class="input-group">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" required placeholder="Jane Doe" />
-          </div>
-          <div class="input-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required placeholder="jane@example.com" />
-          </div>
-          <button type="submit" class="btn-filled"><span>Watch Workshop Now</span></button>
-        </form>
-      </section>
+        <section class="form-section reveal-on-scroll" id="opt-in-section">
+          <h3 class="form-heading">Access The Workshop</h3>
+          <form id="workshop-form" class="optin-form">
+            <div class="input-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" required placeholder="Jane Doe" />
+            </div>
+            <div class="input-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="jane@example.com" />
+            </div>
+            <button type="submit" class="btn-filled form-submit-btn"><span>Watch Workshop Now</span></button>
+          </form>
+        </section>
+        
+      </div>
 
       <section class="hidden-content" id="video-section" style="display: none;">
         
         <div class="video-container reveal-on-scroll">
           <div class="video-placeholder">
             <p class="serif-italic video-text">Scarcity Mindset Workshop</p>
-            <span>[Embed  YouTube]</span>
+            <span>[Embed YouTube / Video Here]</span>
           </div>
         </div>
 
@@ -84,14 +90,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
-  /* --- Typography --- */
+  /* --- Two Column Grid Configuration --- */
+  .workshop-grid {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  /* --- Left Side Typography (Light Text) --- */
   .workshop-hero {
-    max-width: 800px;
-    text-align: center;
+    text-align: left;
     color: var(--white);
-    margin-bottom: 3rem;
   }
 
   .subtitle {
@@ -101,16 +116,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.7);
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .main-title {
     font-family: 'Tenor Sans', sans-serif;
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 400;
     line-height: 1.1;
     text-transform: uppercase;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 2rem 0;
     color: var(--coral);
   }
 
@@ -125,18 +140,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     font-size: 1.1rem;
+    line-height: 1.7;
     color: var(--white);
     opacity: 0.9;
+    max-width: 520px;
   }
 
-  /* --- Form Styling --- */
+  /* --- Right Side Burgundy Form Theme --- */
   .form-section {
     width: 100%;
-    max-width: 500px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 3rem;
-    backdrop-filter: blur(10px);
+    background: var(--white);
+    border: 1px solid rgba(89, 54, 58, 0.15);
+    padding: 3.5rem 3rem;
+    box-shadow: 0 30px 60px rgba(59, 36, 38, 0.1);
+  }
+
+  .form-heading {
+    font-family: 'Tenor Sans', sans-serif;
+    color: var(--burgundy);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
   }
 
   .optin-form {
@@ -153,18 +178,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .input-group label {
     font-family: 'Tenor Sans', sans-serif;
-    font-size: 0.85rem;
-    color: var(--white);
+    font-size: 0.8rem;
+    color: var(--burgundy);
     letter-spacing: 1px;
     text-transform: uppercase;
+    font-weight: 500;
   }
 
   .input-group input {
     font-family: 'Poppins', sans-serif;
-    padding: 1rem;
+    padding: 1.1rem;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: var(--white);
+    border: 1px solid rgba(89, 54, 58, 0.25);
+    color: var(--burgundy);
     font-size: 1rem;
     transition: border-color 0.3s ease;
   }
@@ -175,16 +201,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .input-group input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(89, 54, 58, 0.4);
   }
 
-  .optin-form .btn-filled {
+
+  .form-submit-btn {
     margin-top: 1rem;
     width: 100%;
     text-align: center;
+    border-color: var(--burgundy) !important;
+    color: var(--burgundy) !important;
+  }
+  .form-submit-btn::before {
+    background-color: var(--burgundy) !important;
+  }
+  .form-submit-btn:hover {
+    color: var(--white) !important;
+    border-color: var(--burgundy) !important;
   }
 
-  /* --- Video & Funnel Content --- */
+  /* --- Video & Funnel Content (Post-Submission) --- */
   .hidden-content {
     width: 100%;
     max-width: 900px;
@@ -205,7 +241,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .video-placeholder {
     text-align: center;
     color: var(--white);
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   .video-text {
@@ -224,7 +260,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .banner-inner-frame {
     position: absolute;
     inset: 10px;
-    border: 1px solid rgba(89, 54, 58, 0.2); 
+    border: 1px solid rgba(89, 54, 58, 0.2);
     pointer-events: none;
   }
 
@@ -265,6 +301,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   /* --- Responsive Styles --- */
+  @media (max-width: 992px) {
+    .workshop-grid {
+      gap: 3rem;
+    }
+    .main-title {
+      font-size: 3.2rem;
+    }
+  }
+
   @media (max-width: 820px) {
     .workshop-gradient-wrapper {
       background: linear-gradient(
@@ -280,12 +325,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       padding: calc(5rem + 70px) 1.5rem 5rem 1.5rem;
     }
 
+    .workshop-grid {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+
+    .desktop-only {
+      display: none;
+    }
+
+    .workshop-hero {
+      text-align: left;
+    }
+
     .main-title {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
 
     .form-section {
-      padding: 2rem;
+      padding: 2.5rem 2rem;
     }
 
     .clarity-call-banner-system {
@@ -299,32 +358,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </style>
 
 <script>
-
   document.addEventListener('astro:page-load', () => {
     const form = document.getElementById('workshop-form');
-    const optInSection = document.getElementById('opt-in-section');
+    const mainGrid = document.getElementById('main-grid');
     const videoSection = document.getElementById('video-section');
 
-    if (form) {
+    if (form && mainGrid && videoSection) {
       form.addEventListener('submit', (e) => {
-
         e.preventDefault();
 
-   
-        const formData = new FormData(form);
+        const formData = new FormData(form as HTMLFormElement);
         const fullName = formData.get('fullName');
         const email = formData.get('email');
         
         console.log("Captured for Zapier:", { fullName, email });
 
-  
-        optInSection.style.display = 'none';
+      
+        mainGrid.style.display = 'none';
+        
+     
         videoSection.style.display = 'block';
-
-   
         videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-   
+       
         setTimeout(() => {
           const reveals = videoSection.querySelectorAll('.reveal-on-scroll');
           reveals.forEach(el => {
