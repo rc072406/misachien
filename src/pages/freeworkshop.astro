@@ -1,0 +1,337 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Free Workshop | Misa Chien">
+  <main class="workshop-container" data-theme="start">
+    
+    <div class="workshop-gradient-wrapper">
+      
+      <section class="workshop-hero reveal-on-scroll">
+        <span class="subtitle">Exclusive Training</span>
+        <h1 class="main-title">
+          Master Your <br class="desktop-only" />
+          <span class="serif-italic">Unconscious Mind</span>
+        </h1>
+        <p class="hero-description">Enter your name and email below for instant access to the free workshop.</p>
+      </section>
+
+      <section class="form-section reveal-on-scroll" id="opt-in-section">
+        <form id="workshop-form" class="optin-form">
+          <div class="input-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="Jane Doe" />
+          </div>
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="jane@example.com" />
+          </div>
+          <button type="submit" class="btn-filled"><span>Watch Workshop Now</span></button>
+        </form>
+      </section>
+
+      <section class="hidden-content" id="video-section" style="display: none;">
+        
+        <div class="video-container reveal-on-scroll">
+          <div class="video-placeholder">
+            <p class="serif-italic video-text">Scarcity Mindset Workshop</p>
+            <span>[Embed  YouTube]</span>
+          </div>
+        </div>
+
+        <section class="clarity-call-banner-system reveal-on-scroll" id="interactive-banner">
+          <div class="banner-layer base-layer">
+            <div class="banner-inner-frame"></div>
+            <div class="clarity-content">
+              <span class="kicker dark-text">Exclusive Invitation</span>
+              <h2 class="serif-italic dark-text">Ready to recondition your unconscious framework?</h2>
+              <p class="dark-text">If you are ready to stop grinding harder and start operating from pure clarity, let's talk. Secure a complimentary, invigorating <strong class="dark-highlight">Clarity Call</strong> to map out your blind spots.</p>
+              <a href="https://calendly.com/misachien/clarity-call?month=2026-07" target="_blank" class="btn-filled banner-btn"><span>Book Your Clarity Call</span></a>
+            </div>
+          </div>
+        </section>
+
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* --- Layout & Background --- */
+  .workshop-container {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--white);
+  }
+
+  .workshop-gradient-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(
+      to right, 
+      #59363A 0%, 
+      #59363A 6%, 
+      #8A6266 25%,
+      #BA9699 38%,
+      #DFCDC9 48%,
+      #FEF4EF 58%, 
+      #FEF4EF 100%
+    );
+    padding: calc(6rem + 80px) 4rem 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* --- Typography --- */
+  .workshop-hero {
+    max-width: 800px;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 3rem;
+  }
+
+  .subtitle {
+    font-family: 'Tenor Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .main-title {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin: 0 0 1.5rem 0;
+    color: var(--coral);
+  }
+
+  .serif-italic {
+    font-family: 'GF Didot', serif;
+    font-style: italic;
+    text-transform: none; 
+    color: #DFCDC9; 
+  }
+
+  .hero-description {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: var(--white);
+    opacity: 0.9;
+  }
+
+  /* --- Form Styling --- */
+  .form-section {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 3rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .optin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .input-group label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .input-group input {
+    font-family: 'Poppins', sans-serif;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--white);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .input-group input:focus {
+    outline: none;
+    border-color: var(--coral);
+  }
+
+  .input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .optin-form .btn-filled {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* --- Video & Funnel Content --- */
+  .hidden-content {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 2rem;
+  }
+
+  .video-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-placeholder {
+    text-align: center;
+    color: var(--white);
+    opacity: 0.5;
+  }
+
+  .video-text {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* --- Clarity Call Banner System --- */
+  .clarity-call-banner-system {
+    position: relative;
+    background-color: var(--white);
+    padding: 4rem;
+    border: 1px solid var(--burgundy);
+  }
+
+  .banner-inner-frame {
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(89, 54, 58, 0.2); 
+    pointer-events: none;
+  }
+
+  .clarity-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--burgundy);
+  }
+
+  .kicker {
+    font-family: 'Tenor Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    color: var(--coral);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .clarity-content h2 {
+    font-size: 2.5rem;
+    color: var(--burgundy);
+    margin-bottom: 1.5rem;
+  }
+
+  .clarity-content p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+  }
+
+  .dark-highlight {
+    font-weight: 500;
+    color: var(--coral);
+  }
+
+  /* --- Responsive Styles --- */
+  @media (max-width: 820px) {
+    .workshop-gradient-wrapper {
+      background: linear-gradient(
+        to bottom, 
+        #59363A 0%, 
+        #59363A 22%, 
+        #8A6266 40%,
+        #BA9699 55%,
+        #DFCDC9 70%,
+        #FEF4EF 85%, 
+        #FEF4EF 100%
+      );
+      padding: calc(5rem + 70px) 1.5rem 5rem 1.5rem;
+    }
+
+    .main-title {
+      font-size: 2.2rem;
+    }
+
+    .form-section {
+      padding: 2rem;
+    }
+
+    .clarity-call-banner-system {
+      padding: 2.5rem 1.5rem;
+    }
+    
+    .clarity-content h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<script>
+
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById('workshop-form');
+    const optInSection = document.getElementById('opt-in-section');
+    const videoSection = document.getElementById('video-section');
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+
+        e.preventDefault();
+
+   
+        const formData = new FormData(form);
+        const fullName = formData.get('fullName');
+        const email = formData.get('email');
+        
+        console.log("Captured for Zapier:", { fullName, email });
+
+  
+        optInSection.style.display = 'none';
+        videoSection.style.display = 'block';
+
+   
+        videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+   
+        setTimeout(() => {
+          const reveals = videoSection.querySelectorAll('.reveal-on-scroll');
+          reveals.forEach(el => {
+            el.classList.add('is-visible');
+          });
+        }, 50);
+      });
+    }
+  });
+</script>
