@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeWriter3 from '../components/TypeWriter3.astro';
-const workshopVideoUrl = import.meta.env.PUBLIC_YOUTUBE_URL || "fallback-url";
+const baseVideoUrl = import.meta.env.PUBLIC_YOUTUBE_URL || "https://www.youtube.com/embed/GjAFwgknWXk";
+const workshopVideoUrl = `${baseVideoUrl}?modestbranding=1&disablekb=1&rel=0&vq=hd720`;
 ---
 
 <BaseLayout title="Free Workshop | Misa Chien">
