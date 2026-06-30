@@ -49,60 +49,77 @@ interface Props {
 			yRight: 0
 		};
 
-
 		function renderLiquidPath() {
-			const d = `M 0 ${liquidState.yLeft} C 0.25 ${liquidState.yCtrl1}, 0.75 ${liquidState.yCtrl2}, 1 ${liquidState.yRight} L 1 1 L 0 1 Z`;
+		
+			const d = `M 0 ${liquidState.yLeft} C 0.33 ${liquidState.yCtrl1}, 0.66 ${liquidState.yCtrl2}, 1 ${liquidState.yRight} L 1 1 L 0 1 Z`;
 			clipElement.setAttribute('d', d);
 		}
-
 
 		banner.addEventListener('mouseenter', () => {
 			gsap.killTweensOf(liquidState);
 
+			
+			gsap.to(liquidState, { 
+                yLeft: 1, 
+                duration: 0.9, 
+                ease: 'sine.inOut', 
+                onUpdate: renderLiquidPath 
+            });
+			gsap.to(liquidState, { 
+                yRight: 1, 
+                duration: 1.1, 
+                ease: 'sine.inOut' 
+            });
+
 		
-			gsap.to(liquidState, {
-				yLeft: 1,
-				yRight: 1,
-				duration: 0.8,
-				ease: 'power2.inOut',
-				onUpdate: renderLiquidPath
-			});
-
-
-			gsap.to(liquidState, {
-				yCtrl1: 1,
-				yCtrl2: 1,
-				duration: 0.65,
-				ease: 'power3.in',
-				onUpdate: renderLiquidPath
-			});
+			gsap.to(liquidState, { 
+                yCtrl1: 1, 
+                duration: 1.4, 
+                ease: 'elastic.out(1.4, 0.6)' 
+            });
+            
+			
+			gsap.to(liquidState, { 
+                yCtrl2: 1, 
+                duration: 1.6, 
+                delay: 0.1, 
+                ease: 'elastic.out(1.1, 0.4)' 
+            });
 		});
 
-	
 		banner.addEventListener('mouseleave', () => {
 			gsap.killTweensOf(liquidState);
 
 			
-			gsap.to(liquidState, {
-				yLeft: 0,
-				yRight: 0,
-				duration: 0.75,
-				ease: 'power2.out',
-				onUpdate: renderLiquidPath
-			});
+			gsap.to(liquidState, { 
+                yLeft: 0, 
+                duration: 0.9, 
+                ease: 'sine.inOut', 
+                onUpdate: renderLiquidPath 
+            });
+			gsap.to(liquidState, { 
+                yRight: 0, 
+                duration: 1.1, 
+                ease: 'sine.inOut' 
+            });
 
 			
-			gsap.to(liquidState, {
-				yCtrl1: 0,
-				yCtrl2: 0,
-				duration: 0.95,
-				ease: 'elastic.out(1, 0.6)',
-				onUpdate: renderLiquidPath
-			});
+			gsap.to(liquidState, { 
+                yCtrl1: 0, 
+                duration: 1.4, 
+                ease: 'elastic.out(1.4, 0.6)' 
+            });
+            
+			
+			gsap.to(liquidState, { 
+                yCtrl2: 0, 
+                duration: 1.6, 
+                delay: 0.1, 
+                ease: 'elastic.out(1.1, 0.4)' 
+            });
 		});
 	}
 </script>
-
 <style>
 	
 	.clarity-call-banner-system {
