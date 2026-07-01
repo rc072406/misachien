@@ -433,32 +433,40 @@ const workshopVideoUrl = `${baseVideoUrl}?autoplay=1&mute=1&modestbranding=1&dis
 </style>
 
 <script is:inline>
-  
-  document.addEventListener('astro:page-load', () => {
+  function setupWorkshopForm() {
     const form = document.getElementById('workshop-form');
     const mainGrid = document.getElementById('main-grid');
     const videoSection = document.getElementById('video-section');
 
-    if (form && mainGrid && videoSection) {
-      form.addEventListener('submit', (e) => {
-      
-        e.preventDefault();
+    if (!form || !mainGrid || !videoSection) return;
 
-       
-        mainGrid.style.display = 'none';
-        
+  
+    const newForm = form.cloneNode(true);
+    form.parentNode.replaceChild(newForm, form);
+
+    newForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
    
-        videoSection.style.display = 'block';
-        videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      mainGrid.style.display = 'none';
+      
+      
+      videoSection.style.display = 'block';
+      videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-       
-        setTimeout(() => {
-          const reveals = videoSection.querySelectorAll('.reveal-on-scroll');
-          reveals.forEach(el => {
-            el.classList.add('is-visible');
-          });
-        }, 50);
-      });
-    }
-  });
+  
+      setTimeout(() => {
+        const reveals = videoSection.querySelectorAll('.reveal-on-scroll');
+        reveals.forEach(el => {
+          el.classList.add('is-visible');
+        });
+      }, 50);
+    });
+  }
+
+
+  setupWorkshopForm();
+  
+
+  document.addEventListener('astro:page-load', setupWorkshopForm);
 </script>
