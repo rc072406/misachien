@@ -39,7 +39,6 @@ interface Props {
 
 		async function initWaterEffect() {
 			try {
-				// Dynamically formats the base path so GitHub Pages subfolders don't break asset paths
 				const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, ''); 
 
 				const [waterTexture, displacementTexture, rippleTexture] = await Promise.all([
@@ -109,35 +108,26 @@ interface Props {
 				});
 
 				let rippleIndex = -1;
-				let lastX = 0;
-				let lastY = 0;
-				const minMoveThreshold = 5;
 
-				banner.addEventListener('mousemove', function(ev) {
+			
+				banner.addEventListener('mouseover', function(ev) {
+					rippleIndex++;
+					if (rippleIndex > 9) {
+						rippleIndex = 0;
+					} 
+					
 					const rect = canvas.getBoundingClientRect();
 					const x = ev.clientX - rect.left;
 					const y = ev.clientY - rect.top;
-
-					const deltaX = Math.abs(x - lastX);
-					const deltaY = Math.abs(y - lastY);
-
-					if (deltaX > minMoveThreshold || deltaY > minMoveThreshold) {
-						rippleIndex++;
-						if (rippleIndex > 9) {
-							rippleIndex = 0;
-						} 
-						
-						ripples[rippleIndex].position.set(x, y);
-						
-						gsap.killTweensOf(ripples[rippleIndex].scale);
-						gsap.killTweensOf(filters[rippleIndex + 1].scale);
-						
-						gsap.fromTo(ripples[rippleIndex].scale, { x: 0.1, y: 0.1 }, { x: 2.5, y: 2.5, duration: 3.5, ease: "power1.out" });
-						gsap.fromTo(filters[rippleIndex + 1].scale, { x: 60, y: 60 }, { x: 0, y: 0, duration: 3.5, ease: "power1.out" });
-
-						lastX = x;
-						lastY = y;
-					}
+					
+					ripples[rippleIndex].position.set(x, y);
+					
+					gsap.killTweensOf(ripples[rippleIndex].scale);
+					gsap.killTweensOf(filters[rippleIndex + 1].scale);
+					
+					// Matched your original scale dimensions (1.5 max scale)
+					gsap.fromTo(ripples[rippleIndex].scale, { x: 0.1, y: 0.1 }, { x: 1.5, y: 1.5, duration: 4, ease: "power1.out" });
+					gsap.fromTo(filters[rippleIndex + 1].scale, { x: 50, y: 50 }, { x: 0, y: 0, duration: 4, ease: "power1.out" });
 				}, false);
 
 				window.addEventListener('resize', () => {
