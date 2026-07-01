@@ -5,11 +5,22 @@ interface Props {
 ---
 
 <section class="clarity-call-banner-system" id="interactive-banner">
-	<div class="water-background-container">
-		<div class="gradient-base"></div>
-		<div class="ripple-shimmer-overlay"></div>
-		<div id="ripple-pool" class="ripple-pool"></div>
+	<div class="mist-background-system">
+		<div class="gradient-sharp"></div>
+		<div class="mist-overlay"></div>
 	</div>
+
+	<svg class="mask-svg" aria-hidden="true">
+		<defs>
+			<filter id="mask-blur">
+				<feGaussianBlur stdDeviation="25" />
+			</filter>
+			<mask id="mist-mask">
+				<rect width="100%" height="100%" fill="white" />
+				<g id="trail-container" filter="url(#mask-blur)"></g>
+			</mask>
+		</defs>
+	</svg>
 
 	<div class="banner-inner-frame"></div>
 	
@@ -25,63 +36,51 @@ interface Props {
 	import { gsap } from 'gsap';
 
 	const banner = document.getElementById('interactive-banner');
-	const ripplePool = document.getElementById('ripple-pool');
+	const trailContainer = document.getElementById('trail-container');
 
-	if (banner && ripplePool) {
+	if (banner && trailContainer) {
 		let lastX = 0;
 		let lastY = 0;
-		const minDistance = 20; 
+		const minDistance = 15;
+
 		banner.addEventListener('mousemove', (e) => {
 			const rect = banner.getBoundingClientRect();
 			const x = e.clientX - rect.left;
 			const y = e.clientY - rect.top;
 
-			
 			const distance = Math.sqrt(Math.pow(x - lastX, 2) + Math.pow(y - lastY, 2));
 
 			if (distance > minDistance) {
-				createWaterRipple(x, y);
+				createEvaporationSpot(x, y);
 				lastX = x;
 				lastY = y;
 			}
 		});
 
-		function createWaterRipple(startX, startY) {
-	
-			const ringCount = 2;
+		function createEvaporationSpot(x, y) {
+			const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+			circle.setAttribute('cx', x.toString());
+			circle.setAttribute('cy', y.toString());
+			circle.setAttribute('r', '40');
+			circle.setAttribute('fill', 'black');
 			
-			for (let i = 0; i < ringCount; i++) {
-				const ripple = document.createElement('div');
-				ripple.className = 'water-ring';
-				
-				
-				ripple.style.left = `${startX}px`;
-				ripple.style.top = `${startY}px`;
-				
-				ripplePool.appendChild(ripple);
+			trailContainer.appendChild(circle);
 
-				
-				gsap.fromTo(ripple, 
-					{
-						width: 0,
-						height: 0,
-						opacity: 0.5,
-						borderWidth: '3px'
-					},
-					{
-						width: 180 + i * 60, 
-						height: 180 + i * 60,
-						opacity: 0,
-						borderWidth: '0px',
-						duration: 1.6 + i * 0.4, 
-						ease: 'sine.out', 
-						delay: i * 0.12,
-						onComplete: () => {
-							ripple.remove(); 
-						}
+			gsap.fromTo(circle, 
+				{
+					attr: { r: 40 },
+					opacity: 1
+				},
+				{
+					attr: { r: 100 },
+					opacity: 0,
+					duration: 2.2,
+					ease: 'power2.out',
+					onComplete: () => {
+						circle.remove();
 					}
-				);
-			}
+				}
+			);
 		}
 	}
 </script>
@@ -102,50 +101,43 @@ interface Props {
 		background-color: #4B2737;
 	}
 
-	/* --- Isolated Background System --- */
-	.water-background-container {
+	.mist-background-system {
 		position: absolute;
 		inset: 0;
 		z-index: 1;
 		pointer-events: none;
 	}
 
-	.gradient-base {
+	.gradient-sharp {
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(135deg, #4B2737 0%, #8D4150 50%, #DF7A62 100%);
+		background: 
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.02'/%3E%3C/svg%3E"),
+			linear-gradient(135deg, #4B2737 0%, #8D4150 50%, #DF7A62 100%);
 	}
 
-
-	.ripple-shimmer-overlay {
+	.mist-overlay {
 		position: absolute;
 		inset: 0;
-		opacity: 0.03;
-		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+		background: 
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.05'/%3E%3C/svg%3E"),
+			linear-gradient(135deg, #361c27 0%, #5c2b34 50%, #9c5544 100%);
+		filter: saturate(40%) brightness(1.1);
+		opacity: 0.98;
+		backdrop-filter: blur(30px);
+		mask: url(#mist-mask);
+		-webkit-mask: url(#mist-mask);
 	}
 
-	.ripple-pool {
+	.mask-svg {
 		position: absolute;
-		inset: 0;
-	}
-
-	/* --- Liquid Ring Styling --- */
-	:global(.water-ring) {
-		position: absolute;
-		border: 1px solid rgba(254, 244, 239, 0.35);
-		border-radius: 50%;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 		pointer-events: none;
-		transform: translate(-50%, -50%);
-	
-		mix-blend-mode: screen;
-	
-		box-shadow: 
-			inset 0 0 15px rgba(240, 147, 125, 0.15),
-			0 0 15px rgba(254, 244, 239, 0.1);
-		filter: blur(1px);
-		will-change: width, height, opacity, border-width;
+		z-index: 1;
 	}
-
 
 	.banner-inner-frame {
 		position: absolute;
@@ -164,7 +156,7 @@ interface Props {
 		text-align: center;
 		gap: 1.5rem;
 		position: relative;
-		z-index: 2; 
+		z-index: 2;
 	}
 
 	.kicker {
@@ -197,7 +189,6 @@ interface Props {
 
 	.light-highlight { color: var(--cream); font-weight: 500; }
 
-	/* --- Luxury Button Configurations --- */
 	.btn-filled.banner-btn {
 		position: relative;
 		padding: 1.1rem 2.5rem;
