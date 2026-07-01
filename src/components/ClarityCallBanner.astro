@@ -21,6 +21,11 @@ interface Props {
 	import { gsap } from 'gsap';
 	import * as PIXI from 'pixi.js';
 
+
+	import waterImg from '../images/water.webp';
+	import displacementImg from '../images/displacement.jpg';
+	import rippleImg from '../images/ripple.png';
+
 	const banner = document.getElementById('interactive-banner');
 	const canvas = document.querySelector("#canvas") as HTMLCanvasElement;
 
@@ -39,11 +44,11 @@ interface Props {
 
 		async function initWaterEffect() {
 			try {
-			
+				
 				const [waterTexture, displacementTexture, rippleTexture] = await Promise.all([
-					PIXI.Assets.load('/images/water.webp'),
-					PIXI.Assets.load('/images/displacement.jpg'),
-					PIXI.Assets.load('/images/ripple.png')
+					PIXI.Assets.load(waterImg),
+					PIXI.Assets.load(displacementImg),
+					PIXI.Assets.load(rippleImg)
 				]);
 				
 				const container = new PIXI.Container();
@@ -148,7 +153,7 @@ interface Props {
 				});
 
 			} catch (error) {
-				console.error("Failed to load local water assets. Verify your public/images/ directory.", error);
+				console.error("Failed to load local water assets via imports.", error);
 			}
 		}
 
