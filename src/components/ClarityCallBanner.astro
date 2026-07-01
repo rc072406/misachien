@@ -33,7 +33,8 @@ interface Props {
 			width: width,
 			height: height,
 			backgroundAlpha: 0,
-			resolution: window.devicePixelRatio || 1,
+			
+			resolution: Math.min(window.devicePixelRatio || 1, 2),
 			autoDensity: true
 		});
 
@@ -76,7 +77,12 @@ interface Props {
 				const filters: PIXI.Filter[] = [];
 
 				const displacementSprite = new PIXI.Sprite(displacementTexture);
-				displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+				
+		
+				if (displacementSprite.texture.baseTexture) {
+					displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+				}
+				
 				displacementSprite.scale.set(1);
 				displacementSprite.anchor.set(0);
 				app.stage.addChild(displacementSprite);
@@ -108,13 +114,15 @@ interface Props {
 				});
 
 				let rippleIndex = -1;
+				let lastTargetTime = 0;
 
-			
-				banner.addEventListener('mouseover', function(ev) {
-					rippleIndex++;
-					if (rippleIndex > 9) {
-						rippleIndex = 0;
-					} 
+				
+				banner.addEventListener('pointermove', function(ev) {
+					const now = performance.now();
+					if (now - lastTargetTime < 100) return; 
+					lastTargetTime = now;
+
+					rippleIndex = (rippleIndex + 1) % 10;
 					
 					const rect = canvas.getBoundingClientRect();
 					const x = ev.clientX - rect.left;
@@ -125,10 +133,9 @@ interface Props {
 					gsap.killTweensOf(ripples[rippleIndex].scale);
 					gsap.killTweensOf(filters[rippleIndex + 1].scale);
 					
-					// Matched your original scale dimensions (1.5 max scale)
 					gsap.fromTo(ripples[rippleIndex].scale, { x: 0.1, y: 0.1 }, { x: 1.5, y: 1.5, duration: 4, ease: "power1.out" });
 					gsap.fromTo(filters[rippleIndex + 1].scale, { x: 50, y: 50 }, { x: 0, y: 0, duration: 4, ease: "power1.out" });
-				}, false);
+				}, { passive: true });
 
 				window.addEventListener('resize', () => {
 					if (!banner || !canvas) return;
@@ -180,6 +187,7 @@ interface Props {
 		gap: 1.5rem;
 		position: relative;
 		z-index: 2;
+       pointer-events: none;
 	}
 
 	.kicker {
@@ -227,6 +235,7 @@ interface Props {
 		pointer-events: auto;
 		z-index: 4;
 		transition: color 0.3s ease;
+      pointer-events: auto;
 	}
 
 	.cta-link-text span {
