@@ -39,8 +39,12 @@ interface Props {
 
 		async function initWaterEffect() {
 			try {
-				
-				const waterTexture = await PIXI.Assets.load('/images/water.webp');
+			
+				const [waterTexture, displacementTexture, rippleTexture] = await Promise.all([
+					PIXI.Assets.load('/images/water.webp'),
+					PIXI.Assets.load('/images/displacement.jpg'),
+					PIXI.Assets.load('/images/ripple.png')
+				]);
 				
 				const container = new PIXI.Container();
 				app.stage.addChild(container);
@@ -70,9 +74,7 @@ interface Props {
 				const ripples: PIXI.Sprite[] = [];
 				const filters: PIXI.Filter[] = [];
 
-				const displacementSprite = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/waterTemp.jpg', {
-					resourceOptions: { crossorigin: 'anonymous' }
-				});
+				const displacementSprite = new PIXI.Sprite(displacementTexture);
 				displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
 				displacementSprite.scale.set(1);
 				displacementSprite.anchor.set(0);
@@ -84,9 +86,7 @@ interface Props {
 				filters.push(displacementFilter);
 
 				for (let i = 0; i < 10; i++) {
-					const ripple = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/ripple.png', {
-						resourceOptions: { crossorigin: 'anonymous' }
-					});
+					const ripple = new PIXI.Sprite(rippleTexture);
 					ripple.anchor.set(0.5);
 					ripple.scale.set(0);
 					app.stage.addChild(ripple);
@@ -148,7 +148,7 @@ interface Props {
 				});
 
 			} catch (error) {
-				console.error("PixiJS water background failed to load. Check if your file is inside public/images/water.webp", error);
+				console.error("Failed to load local water assets. Verify your public/images/ directory.", error);
 			}
 		}
 
