@@ -41,7 +41,6 @@ interface Props {
 	const clipElement = document.getElementById('liquid-clip-element');
 
 	if (banner && clipElement) {
-	
 		const liquidState = {
 			yLeft: 0,
 			yCtrl1: 0,
@@ -50,73 +49,33 @@ interface Props {
 		};
 
 		function renderLiquidPath() {
-		
 			const d = `M 0 ${liquidState.yLeft} C 0.33 ${liquidState.yCtrl1}, 0.66 ${liquidState.yCtrl2}, 1 ${liquidState.yRight} L 1 1 L 0 1 Z`;
 			clipElement.setAttribute('d', d);
 		}
 
-		banner.addEventListener('mouseenter', () => {
-			gsap.killTweensOf(liquidState);
-
-			
-			gsap.to(liquidState, { 
-                yLeft: 1, 
-                duration: 0.9, 
-                ease: 'sine.inOut', 
-                onUpdate: renderLiquidPath 
-            });
-			gsap.to(liquidState, { 
-                yRight: 1, 
-                duration: 1.1, 
-                ease: 'sine.inOut' 
-            });
+		
+		const tl = gsap.timeline({ 
+			paused: true, 
+			onUpdate: renderLiquidPath 
+		});
 
 		
-			gsap.to(liquidState, { 
-                yCtrl1: 1, 
-                duration: 1.4, 
-                ease: 'elastic.out(1.4, 0.6)' 
-            });
-            
-			
-			gsap.to(liquidState, { 
-                yCtrl2: 1, 
-                duration: 1.6, 
-                delay: 0.1, 
-                ease: 'elastic.out(1.1, 0.4)' 
-            });
+		const easeCurve = 'power3.inOut';
+		const duration = 1.1;
+		const stagger = 0.08; 
+
+		
+		tl.to(liquidState, { yLeft: 1, duration: duration, ease: easeCurve }, 0)
+		  .to(liquidState, { yCtrl1: 1, duration: duration, ease: easeCurve }, stagger)
+		  .to(liquidState, { yCtrl2: 1, duration: duration, ease: easeCurve }, stagger * 2)
+		  .to(liquidState, { yRight: 1, duration: duration, ease: easeCurve }, stagger * 3);
+
+		banner.addEventListener('mouseenter', () => {
+			tl.play();
 		});
 
 		banner.addEventListener('mouseleave', () => {
-			gsap.killTweensOf(liquidState);
-
-			
-			gsap.to(liquidState, { 
-                yLeft: 0, 
-                duration: 0.9, 
-                ease: 'sine.inOut', 
-                onUpdate: renderLiquidPath 
-            });
-			gsap.to(liquidState, { 
-                yRight: 0, 
-                duration: 1.1, 
-                ease: 'sine.inOut' 
-            });
-
-			
-			gsap.to(liquidState, { 
-                yCtrl1: 0, 
-                duration: 1.4, 
-                ease: 'elastic.out(1.4, 0.6)' 
-            });
-            
-			
-			gsap.to(liquidState, { 
-                yCtrl2: 0, 
-                duration: 1.6, 
-                delay: 0.1, 
-                ease: 'elastic.out(1.1, 0.4)' 
-            });
+			tl.reverse();
 		});
 	}
 </script>
