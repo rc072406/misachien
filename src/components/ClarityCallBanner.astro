@@ -70,12 +70,18 @@ interface Props {
 		const ripples: PIXI.Sprite[] = [];
 		const filters: PIXI.Filter[] = [];
 
-		const displacementSprite = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/waterTemp.jpg');
+		const displacementSprite = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/waterTemp.jpg', {
+			pixiId: 'displacement',
+			resourceOptions: { crossorigin: 'anonymous' }
+		});
 		displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
 		displacementSprite.scale.set(1);
 		displacementSprite.anchor.set(0);
 
-		const loadSprite = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/waterTemp.jpg');
+		const loadSprite = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/waterTemp.jpg', {
+			pixiId: 'load',
+			resourceOptions: { crossorigin: 'anonymous' }
+		});
 		loadSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
 		loadSprite.scale.set(0.99);
 		loadSprite.anchor.set(0.2);
@@ -91,7 +97,10 @@ interface Props {
 		filters.push(displacementFilter);
 
 		for (let i = 0; i < 10; i++) {
-			const ripple = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/ripple.png');
+			const ripple = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/ripple.png', {
+				pixiId: `ripple_${i}`,
+				resourceOptions: { crossorigin: 'anonymous' }
+			});
 			ripple.anchor.set(0.5);
 			ripple.scale.set(0);
 			app.stage.addChild(ripple);
@@ -112,55 +121,59 @@ interface Props {
 			paused: true
 		});
 
-		let i = -1;
+		let rippleIndex = -1;
+		let lastX = 0;
+		let lastY = 0;
+		const minMoveThreshold = 10; 
+
 		banner.addEventListener('mousemove', function(ev) {
 			const rect = canvas.getBoundingClientRect();
 			const x = ev.clientX - rect.left;
 			const y = ev.clientY - rect.top;
 
-			i++;
-			if (i > 9) {
-				i = 0;
-			} 
-			MakeWaves(x, y, i);
+			const deltaX = Math.abs(x - lastX);
+			const deltaY = Math.abs(y - lastY);
+
+			if (deltaX > minMoveThreshold || deltaY > minMoveThreshold) {
+				rippleIndex++;
+				if (rippleIndex > 9) {
+					rippleIndex = 0;
+				} 
+				
+				ripples[rippleIndex].position.set(x, y);
+				gsap.killTweensOf(ripples[rippleIndex].scale);
+				gsap.killTweensOf(filters[rippleIndex + 1].scale);
+				
+				gsap.fromTo(ripples[rippleIndex].scale, { x: 0.1, y: 0.1 }, { x: 2.0, y: 2.0, duration: 3.5, ease: "power1.out" });
+				gsap.fromTo(filters[rippleIndex + 1].scale, { x: 60, y: 60 }, { x: 0, y: 0, duration: 3.5, ease: "power1.out" });
+
+				lastX = x;
+				lastY = y;
+			}
 		}, false);
 
-		function MakeWaves(x: number, y: number, index: number) {
-			ripples[index].position.set(x, y);
-			runTweens(ripples[index], filters[index + 1]);
-		}
-
-		const runTweens = (ripple: PIXI.Sprite, filter: any) => {
-			gsap.fromTo(ripple.scale, { x: 0.1, y: 0.1 }, { x: 1.5, y: 1.5, duration: 4 });
-			gsap.fromTo(filter.scale, { x: 50, y: 50 }, { x: 0, y: 0, duration: 4 });
-		};
-
-		gsap.from(container, {
-			alpha: 0,
+		gsap.fromTo(container, { alpha: 0 }, {
+			alpha: 1,
 			duration: 1,
-			repeatDelay: 4, 
 			ease: "power3.out",
-			yoyo: true, 
-			delay: 2,
+			delay: 0.5,
 		});
 
-		gsap.from(loadSprite.anchor, {
-			y: 0.35,
-			x: 0.25,
-			duration: 1,
+		gsap.fromTo(loadSprite.anchor, { y: 0.35, x: 0.25 }, {
+			y: 0,
+			x: 0,
+			duration: 2,
 			ease: "power1.out",
-			repeatDelay: 4, 
-			yoyo: true, 
-			delay: 2,
+			delay: 0.5,
 			onComplete: () => { waves.play(); }
 		});
 
-		gsap.from(loadFilter.scale, {
-			x: 900, 
-			y: 9500, 
-			duration: 1,
+		gsap.fromTo(loadFilter.scale, { x: 900, y: 9500 }, {
+			x: 0, 
+			y: 0, 
+			duration: 2,
 			ease: "power1.out",
-			delay: 2,
+			delay: 0.5,
 		});
 
 		window.addEventListener('resize', () => {
