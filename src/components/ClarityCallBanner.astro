@@ -6,8 +6,6 @@ interface Props {
 
 <section class="clarity-call-banner-system" id="interactive-banner">
 	<canvas id="canvas" class="water-canvas"></canvas>
-
-	<div class="banner-inner-frame"></div>
 	
 	<div class="clarity-content">
 		<span class="kicker light-text">Exclusive Invitation</span>
@@ -34,7 +32,7 @@ interface Props {
 			view: canvas,
 			width: width,
 			height: height,
-			transparent: true,
+			backgroundAlpha: 0,
 			resolution: window.devicePixelRatio || 1,
 			autoDensity: true
 		});
@@ -45,8 +43,28 @@ interface Props {
 		const bg = PIXI.Sprite.from('/images/water.webp');
 		bg.anchor.set(0.5);
 		bg.position.set(width / 2, height / 2);
-		bg.width = width;
-		bg.height = height;
+		
+		const resizeBg = () => {
+			const w = banner.clientWidth;
+			const h = banner.clientHeight;
+			const bgRatio = bg.texture.width / bg.texture.height;
+			const bannerRatio = w / h;
+
+			if (bannerRatio > bgRatio) {
+				bg.width = w;
+				bg.height = w / bgRatio;
+			} else {
+				bg.height = h;
+				bg.width = h * bgRatio;
+			}
+		};
+
+		if (bg.texture.baseTexture.valid) {
+			resizeBg();
+		} else {
+			bg.texture.on('update', resizeBg);
+		}
+
 		container.addChild(bg);
 
 		const ripples: PIXI.Sprite[] = [];
@@ -151,8 +169,7 @@ interface Props {
 			const h = banner.clientHeight;
 			app.renderer.resize(w, h);
 			bg.position.set(w / 2, h / 2);
-			bg.width = w;
-			bg.height = h;
+			resizeBg();
 		});
 	}
 </script>
@@ -182,14 +199,6 @@ interface Props {
 		height: 100%;
 		z-index: 1;
 		pointer-events: none;
-	}
-
-	.banner-inner-frame {
-		position: absolute;
-		inset: 16px;
-		pointer-events: none;
-		border: 1px solid rgba(254, 244, 239, 0.15);
-		z-index: 3;
 	}
 
 	.clarity-content {
@@ -278,6 +287,5 @@ interface Props {
 
 	@media (max-width: 820px) {
 		.clarity-call-banner-system { padding: 4.5rem 2rem; }
-		.banner-inner-frame { inset: 12px; }
 	}
 </style>
