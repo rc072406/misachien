@@ -432,7 +432,8 @@ const workshopVideoUrl = `${baseVideoUrl}?autoplay=1&mute=1&modestbranding=1&dis
   }
 </style>
 
-<script>
+<script is:inline>
+  
   document.addEventListener('astro:page-load', () => {
     const form = document.getElementById('workshop-form');
     const mainGrid = document.getElementById('main-grid');
@@ -440,17 +441,17 @@ const workshopVideoUrl = `${baseVideoUrl}?autoplay=1&mute=1&modestbranding=1&dis
 
     if (form && mainGrid && videoSection) {
       form.addEventListener('submit', (e) => {
-
+      
         e.preventDefault();
 
-
+       
         mainGrid.style.display = 'none';
         
    
         videoSection.style.display = 'block';
         videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-     
+       
         setTimeout(() => {
           const reveals = videoSection.querySelectorAll('.reveal-on-scroll');
           reveals.forEach(el => {
