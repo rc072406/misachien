@@ -71,20 +71,20 @@ interface Props {
 		const filters: PIXI.Filter[] = [];
 
 		const displacementSprite = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/waterTemp.jpg', {
-			pixiId: 'displacement',
 			resourceOptions: { crossorigin: 'anonymous' }
 		});
 		displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
 		displacementSprite.scale.set(1);
 		displacementSprite.anchor.set(0);
+		app.stage.addChild(displacementSprite);
 
 		const loadSprite = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/waterTemp.jpg', {
-			pixiId: 'load',
 			resourceOptions: { crossorigin: 'anonymous' }
 		});
 		loadSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
 		loadSprite.scale.set(0.99);
 		loadSprite.anchor.set(0.2);
+		app.stage.addChild(loadSprite);
 
 		const loadFilter = new PIXI.filters.DisplacementFilter(loadSprite);
 		loadFilter.scale.x = 0;
@@ -98,7 +98,6 @@ interface Props {
 
 		for (let i = 0; i < 10; i++) {
 			const ripple = PIXI.Sprite.from('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1600187/ripple.png', {
-				pixiId: `ripple_${i}`,
 				resourceOptions: { crossorigin: 'anonymous' }
 			});
 			ripple.anchor.set(0.5);
@@ -124,7 +123,7 @@ interface Props {
 		let rippleIndex = -1;
 		let lastX = 0;
 		let lastY = 0;
-		const minMoveThreshold = 10; 
+		const minMoveThreshold = 5;
 
 		banner.addEventListener('mousemove', function(ev) {
 			const rect = canvas.getBoundingClientRect();
@@ -141,10 +140,11 @@ interface Props {
 				} 
 				
 				ripples[rippleIndex].position.set(x, y);
+				
 				gsap.killTweensOf(ripples[rippleIndex].scale);
 				gsap.killTweensOf(filters[rippleIndex + 1].scale);
 				
-				gsap.fromTo(ripples[rippleIndex].scale, { x: 0.1, y: 0.1 }, { x: 2.0, y: 2.0, duration: 3.5, ease: "power1.out" });
+				gsap.fromTo(ripples[rippleIndex].scale, { x: 0.1, y: 0.1 }, { x: 2.5, y: 2.5, duration: 3.5, ease: "power1.out" });
 				gsap.fromTo(filters[rippleIndex + 1].scale, { x: 60, y: 60 }, { x: 0, y: 0, duration: 3.5, ease: "power1.out" });
 
 				lastX = x;
@@ -189,9 +189,6 @@ interface Props {
 
 <style>
 	.clarity-call-banner-system {
-		--coral: #E77860;
-		--coral-light: #F0937D;
-		--burgundy: #59363A;
 		--white: #FFFFFF;
 		--cream: #FEF4EF;
 
@@ -200,9 +197,7 @@ interface Props {
 		overflow: hidden;
 		box-sizing: border-box;
 		padding: 6rem 3rem;
-		background-image: url('/images/water.webp');
-		background-size: cover;
-		background-position: center;
+		background-color: #0b1d28;
 	}
 
 	.water-canvas {
@@ -237,7 +232,7 @@ interface Props {
 	.light-text { 
 		color: var(--white); 
 		max-width: 600px;
-		text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+		text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 	}
 
 	h2 {
@@ -271,10 +266,6 @@ interface Props {
 		pointer-events: auto;
 		z-index: 4;
 		transition: color 0.3s ease;
-	}
-
-	.cta-link-text span {
-		position: relative;
 	}
 
 	.cta-link-text::after {
