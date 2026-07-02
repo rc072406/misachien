@@ -157,8 +157,6 @@ interface Props {
 
 <style>
 	.clarity-call-banner-system {
-		--white: #FFFFFF;
-		--cream: #FEF4EF;
 
 		position: relative;
 		width: 100%;
@@ -199,7 +197,7 @@ interface Props {
 	}
 
 	.light-text { 
-		color: var(--white); 
+		color: var(--burgundy); 
 		max-width: 600px;
 		text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 	}
@@ -209,7 +207,7 @@ interface Props {
 		line-height: 1.25;
 		font-weight: 400;
 	}
-	h2.light-text { color: var(--cream); }
+	h2.light-text { color: var(--burgundy); }
 
 	p {
 		font-size: clamp(1rem, 1.5vw, 1.1rem);
@@ -219,7 +217,7 @@ interface Props {
 	}
 	p.light-text { color: #FEF4EF; }
 
-	.light-highlight { color: var(--white); font-weight: 600; }
+	.light-highlight { color: var(--coral); font-weight: 600; }
 
 	.cta-link-text {
 		position: relative;
@@ -227,7 +225,7 @@ interface Props {
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		font-weight: 600;
-		color: var(--cream);
+		color: var(--coral);
 		text-decoration: none;
 		display: inline-flex;
 		align-items: center;
@@ -249,14 +247,14 @@ interface Props {
 		left: 0;
 		width: 100%;
 		height: 1px;
-		background-color: var(--cream);
+		background-color: var(--coral);
 		transform: scaleX(1);
 		transform-origin: right;
 		transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.cta-link-text:hover {
-		color: var(--white);
+		color: var(--coral);
 	}
 
 	.cta-link-text:hover::after {
