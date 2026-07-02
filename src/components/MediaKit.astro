@@ -157,6 +157,8 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
       new Swiper('.mediaKitSwiper', {
         modules: [Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, Parallax],
         autoHeight: true, 
+        observer: true,         
+        observeParents: true,  
         breakpoints: {
           961: {
             autoHeight: false 
@@ -440,7 +442,7 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     font-size: 0.8rem; 
     letter-spacing: 2px;
     width: auto;               
-    max-width: 320px;         
+    max-width: 320px;          
     white-space: nowrap;       
     box-sizing: border-box;
     text-align: center;
@@ -520,7 +522,7 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
   }
 
   /* ==========================================================================
-     UPDATED MOBILE RESPONSIVE ADAPTATIONS (NATURAL SCROLL)
+     UPDATED MOBILE RESPONSIVE ADAPTATIONS (NATURAL SCROLL + OBSERVER FIX)
      ========================================================================== */
   @media(max-width: 960px) {
     .swiper {
@@ -533,7 +535,6 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
       overflow-y: visible !important; 
       padding: 6vh 6vw 12vh 6vw; 
     }
-
 
     :global(.swiper-button-next), :global(.swiper-button-prev) {
       display: none !important;
@@ -564,23 +565,23 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     .slide-description, .intro-context-text { max-width: 100% !important; margin-bottom: 3vh; }
     .metrics-display-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
 
-   
     .image-constrained-wrapper {
       height: auto !important;
       width: 100% !important;
       margin-top: 2vh;
     }
 
+    /* Set aspect ratio format to provide height parameters to Swiper script */
     .image-mask {
       max-width: 100% !important;
       height: auto !important;
-      aspect-ratio: auto !important; 
+      aspect-ratio: 4 / 5 !important; 
     } 
     
     .slide-image {
-      object-fit: contain !important; 
+      object-fit: cover !important; 
       width: 100% !important;
-      height: auto !important;       
+      height: 100% !important;       
     } 
     
     .cinematic-panel { width: 100% !important; justify-content: center !important; }
