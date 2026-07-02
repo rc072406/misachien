@@ -1034,7 +1034,11 @@ color: var(--soft-white);
     display: inline-block;
     margin-top: 5vh;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: blink 1.5s infinite;
   }
+@keyframes blink {
+    50% { opacity: 0.8; }
+}
 
   .gradient-text-link:hover {
     opacity: 0.8;
