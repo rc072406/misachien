@@ -5,7 +5,7 @@ interface Props {
 
 const { className = '' } = Astro.props;
 import slide8Image from '../../public/images/90.webp';
-import slide12Image from '../../public/images/misachien.webp';
+import slide12Image from '../../public/images/79.webp';
 import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
 ---
 
@@ -156,6 +156,12 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     if (swiperEl && !swiperEl.swiper) {
       new Swiper('.mediaKitSwiper', {
         modules: [Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, Parallax],
+        autoHeight: true, 
+        breakpoints: {
+          961: {
+            autoHeight: false 
+          }
+        },
         direction: 'horizontal',
         speed: 1100,
         parallax: true,
@@ -434,7 +440,7 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     font-size: 0.8rem; 
     letter-spacing: 2px;
     width: auto;               
-    max-width: 320px;         
+    max-width: 320px;          
     white-space: nowrap;       
     box-sizing: border-box;
     text-align: center;
@@ -514,14 +520,30 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
   }
 
   /* ==========================================================================
-     MOBILE responsive adaptations (Swiper retained)
+     UPDATED MOBILE RESPONSIVE ADAPTATIONS (NATURAL SCROLL)
      ========================================================================== */
   @media(max-width: 960px) {
+    .swiper {
+      height: auto !important; /* Releases strict window restriction */
+    }
+
+    .swiper-slide {
+      display: block !important;
+      height: auto !important; /* Expands contextually to content volume */
+      overflow-y: visible !important; /* Obliterates inside frame scrolling entirely */
+      padding: 6vh 6vw 12vh 6vw; /* Keeps space at bottom to clean up UI/fraction layouts */
+    }
+
+    /* REMOVE NAVIGATION ARROWS ON MOBILE VIEWPORTS */
+    :global(.swiper-button-next), :global(.swiper-button-prev) {
+      display: none !important;
+    }
+
     .screen-constrained {
-      height: 100% !important;
+      height: auto !important;
       flex-direction: column !important;
       align-items: flex-start !important;
-      justify-content: center !important;
+      justify-content: flex-start !important;
       gap: 3vh !important;
     }
 
@@ -534,43 +556,41 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     .editorial-border-right {
       border-right: none !important;
       padding-right: 0 !important;
-      padding-bottom: 3vh !important;
+      padding-bottom: 2vh !important;
       border-bottom: 1px solid var(--light-grey-border);
     }
 
-    .slide-description, .intro-context-text {
-      max-width: 100% !important;
-      margin-bottom: 3vh;
-    }
+    .hero-title { font-size: calc(2.2rem + 1.5vw); }
+    .slide-description, .intro-context-text { max-width: 100% !important; margin-bottom: 3vh; }
+    .metrics-display-grid { grid-template-columns: 1fr !important; gap: 1.5rem; }
 
+    /* UNCOMPROMISED PHOTOGRAPHY LAYOUT */
     .image-constrained-wrapper {
       height: auto !important;
       width: 100% !important;
-      max-height: none !important;
-      margin-top: 1vh;
+      margin-top: 2vh;
     }
 
     .image-mask {
       max-width: 100% !important;
       height: auto !important;
-      aspect-ratio: 4 / 5 !important;
+      aspect-ratio: auto !important; 
     } 
     
     .slide-image {
-      object-fit: cover !important;
+      object-fit: contain !important; 
       width: 100% !important;
-      height: 100% !important;
+      height: auto !important;       
     } 
     
     .cinematic-panel { width: 100% !important; justify-content: center !important; }
     .luxury-video-frame { max-width: 100% !important; width: 100% !important; aspect-ratio: 16 / 9 !important; }
-
+    
     .btn-filled-luxury { 
       font-size: 0.65rem !important;
       padding: 1rem 2rem !important;
-      width: auto !important;         
-      max-width: 280px !important;    
-      margin: 0 auto;              
+      width: 100% !important;          
+      max-width: 100% !important;     
     }
     
     .luxury-watermark { display: none !important; }
