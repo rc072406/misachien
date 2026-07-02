@@ -1,7 +1,5 @@
 ---
-interface Props {
-	// none atm
-}
+interface Props {}
 ---
 
 <section class="clarity-call-banner-system" id="interactive-banner">
@@ -33,7 +31,6 @@ interface Props {
 			width: width,
 			height: height,
 			backgroundAlpha: 0,
-			
 			resolution: Math.min(window.devicePixelRatio || 1, 2),
 			autoDensity: true
 		});
@@ -78,7 +75,6 @@ interface Props {
 
 				const displacementSprite = new PIXI.Sprite(displacementTexture);
 				
-		
 				if (displacementSprite.texture.baseTexture) {
 					displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
 				}
@@ -116,7 +112,6 @@ interface Props {
 				let rippleIndex = -1;
 				let lastTargetTime = 0;
 
-				
 				banner.addEventListener('pointermove', function(ev) {
 					const now = performance.now();
 					if (now - lastTargetTime < 100) return; 
@@ -147,7 +142,7 @@ interface Props {
 				});
 
 			} catch (error) {
-				console.error("Failed to load local water assets from public directory.", error);
+				console.error(error);
 			}
 		}
 
@@ -157,6 +152,8 @@ interface Props {
 
 <style>
 	.clarity-call-banner-system {
+		--white: #FFFFFF;
+		--cream: #FEF4EF;
 
 		position: relative;
 		width: 100%;
@@ -164,6 +161,15 @@ interface Props {
 		box-sizing: border-box;
 		padding: 6rem 3rem;
 		background: transparent;
+	}
+
+	.clarity-call-banner-system::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(circle, rgba(20, 15, 10, 0.45) 0%, rgba(0, 0, 0, 0) 80%);
+		z-index: 2;
+		pointer-events: none;
 	}
 
 	.water-canvas {
@@ -184,8 +190,8 @@ interface Props {
 		text-align: center;
 		gap: 1.5rem;
 		position: relative;
-		z-index: 2;
-       pointer-events: none;
+		z-index: 3;
+		pointer-events: none;
 	}
 
 	.kicker {
@@ -197,27 +203,31 @@ interface Props {
 	}
 
 	.light-text { 
-		color: var(--burgundy); 
+		color: var(--white); 
 		max-width: 600px;
-		text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+		text-shadow: 
+			0 1px 2px rgba(0, 0, 0, 0.6),
+			0 2px 8px rgba(28, 20, 10, 0.4),
+			0 4px 16px rgba(0, 0, 0, 0.3);
 	}
 
 	h2 {
 		font-size: clamp(2rem, 3.5vw, 2.6rem);
 		line-height: 1.25;
-		font-weight: 400;
+		font-weight: 500;
+		letter-spacing: -0.01em;
 	}
-	h2.light-text { color: var(--burgundy); }
+	h2.light-text { color: var(--white); }
 
 	p {
 		font-size: clamp(1rem, 1.5vw, 1.1rem);
 		line-height: 1.7;
 		margin-bottom: 1.5rem;
-		font-weight: 300;
+		font-weight: 400;
 	}
 	p.light-text { color: #FEF4EF; }
 
-	.light-highlight { color: var(--coral); font-weight: 600; }
+	.light-highlight { color: var(--white); font-weight: 600; }
 
 	.cta-link-text {
 		position: relative;
@@ -225,7 +235,7 @@ interface Props {
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		font-weight: 600;
-		color: var(--coral);
+		color: var(--cream);
 		text-decoration: none;
 		display: inline-flex;
 		align-items: center;
@@ -233,7 +243,6 @@ interface Props {
 		pointer-events: auto;
 		z-index: 4;
 		transition: color 0.3s ease;
-      pointer-events: auto;
 	}
 
 	.cta-link-text span {
@@ -247,14 +256,14 @@ interface Props {
 		left: 0;
 		width: 100%;
 		height: 1px;
-		background-color: var(--coral);
+		background-color: var(--cream);
 		transform: scaleX(1);
 		transform-origin: right;
 		transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.cta-link-text:hover {
-		color: var(--coral);
+		color: var(--white);
 	}
 
 	.cta-link-text:hover::after {
