@@ -46,12 +46,18 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
                 <p>LinkedIn: <strong class="stat-highlight">48,300+</strong><br />Instagram: <strong class="stat-highlight">13,000+</strong><br />Newsletter: <strong class="stat-highlight">3,000+</strong></p>
               </div>
             </div>
+<div class="cta-partner desktop-cta" data-swiper-parallax="-50">
+        <a href="mailto:bernadine@theauthenticasian.com" class="gradient-text-link">Want to Partner With Misa?</a>
+      </div>
           </div>
           <div class="slide-visual-panel image-constrained-wrapper">
             <div class="image-mask editorial-clip">
                <img src={slide12Image.src} class="slide-image" alt="Misa Chien Hero">
             </div>
           </div>
+<div class="cta-partner mobile-cta">
+      <a href="mailto:bernadine@theauthenticasian.com" class="gradient-text-link">Want to Partner With Misa?</a>
+    </div>
         </div>
       </div>
 
@@ -1018,7 +1024,29 @@ color: var(--soft-white);
 .audio-toggle-badge.sound-on .pulse-ring {
   background-color: var(--coral); 
 }
+.gradient-text-link {
+    background: linear-gradient(135deg, #4B2737 0%, #8D4150 50%, #DF7A62 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; 
+    font-family: 'GF Didot', serif;
+    font-size: 1.6rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5vh;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
 
+  .gradient-text-link:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+  }
+
+  
+  .mobile-cta {
+    display: none;
+  }
 
   /* ==========================================================================
      MOBILE (NO SLIDER)
@@ -1199,6 +1227,22 @@ color: var(--soft-white);
     width: 100% !important;
     aspect-ratio: 16 / 9 !important; 
   }
+.desktop-cta {
+      display: none !important;
+    }
+
+    .mobile-cta {
+      display: block !important;
+      text-align: center;
+      width: 100%;
+      margin-top: 1vh;
+      margin-bottom: 4vh;
+    }
+    
+    .mobile-cta .gradient-text-link {
+      margin-top: 0;
+      font-size: 1.4rem; 
+    }
 
   }
 </style>
