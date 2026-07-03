@@ -94,11 +94,16 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
              Building our public vending shifts was the main focus during our first two years in business. This included finding an office parking lot to operate from, and getting the permission to tweet our location out. For us, this was our shiny object: something that appeared desirable, but didn’t actually produce reliable profits. It wasn’t until the second year that we decided to focus on the “non-shiny” object instead—catering. This new strategy helped us build a much more profitable business model. Unfortunately, we were too late.
           </p>
         </div>
-        <div class="nn-sticky-container">
+        <div class="nn-sticky-container" style="flex-direction: column; gap: 3rem;">
           <div class="nn-sticky-note nn-rotate-right" style="background-color: #FFCFDF;">
             2. We went for “the shiny object.”
           </div>
-
+          <div class="nn-polaroid nn-rotate-left">
+            <div class="nn-polaroid-img"><img src={night2Image.src} alt="Nom Nom Truck shiny object"></div>
+            <div class="nn-polaroid-caption"><svg class="hollow-heart" viewBox="0 0 24 24">
+            <path d="M12 20s-1-4.5-5-7.5c-3-2.2-4.5-4.5-3.5-7 1.2-3 5-2.5 7 1.5 1.5-3.5 6.5-4 8-1.5 1.5 2.5 0 5-3.5 7.5-4 3-6 7-6 7z" />
+          </svg></div></div>
+          </div>
         </div>
       </div>
     </section>
@@ -286,7 +291,7 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
     align-items: start;
   }
 
- 
+  
   .nn-point-sticky-grid {
     width: 100%;
     max-width: 1200px;
@@ -499,6 +504,12 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
     background-color: #000000;
   }
 
+  .nn-polaroid-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
   .nn-polaroid-caption {
     font-family: 'Reenie Beanie', cursive;
     font-size: 2.3rem; 
@@ -622,7 +633,7 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
       text-align: left; 
     }
 
- 
+  
     .nn-point-sticky-grid > div:nth-child(2) {
       grid-row: 2; 
     }
