@@ -322,7 +322,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     opacity: 0.9;
   }
 
- 
+  
   .nn-section-divider-title {
     background-color: var(--burgundy);
     padding: 8rem 4rem 2rem 4rem;
@@ -389,7 +389,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     opacity: 0.5;
   }
 
-  /* --- Sticky Note Components --- */
+
   .nn-sticky-container {
     display: flex;
     justify-content: center;
@@ -412,7 +412,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     box-sizing: border-box;
   }
 
-  /* Sticky Tape Overlay */
+
   .nn-sticky-note::before {
     content: '';
     position: absolute;
@@ -435,21 +435,21 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     transform: rotate(2.5deg);
   }
 
-  /* --- Polaroid Gallery Styles --- */
+
   .nn-polaroid-gallery {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-    margin-top: 3rem;
+    gap: 3.5rem;
+    margin-top: 3.5rem;
     align-items: flex-start;
     width: 100%;
   }
 
   .nn-polaroid {
     background-color: #ffffff;
-    padding: 1.25rem 1.25rem 2.5rem 1.25rem;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    max-width: 260px;
+    padding: 1.5rem 1.5rem 4rem 1.5rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    max-width: 320px; /* Made bigger on desktop */
     width: 100%;
     box-sizing: border-box;
     border: 1px solid rgba(0,0,0,0.04);
@@ -463,11 +463,15 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
 
   .nn-polaroid-caption {
     font-family: 'Reenie Beanie', cursive;
-    font-size: 2rem;
+    font-size: 2.3rem; 
     color: #333333;
     text-align: center;
-    margin-top: 1.25rem;
-    line-height: 1;
+    margin-top: 1.5rem;
+    line-height: 1.1;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
 
@@ -510,7 +514,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     transform: translateX(6px);
   }
 
-  /* --- Responsive Breakpoint Implementations --- */
+
   .desktop-only {
     display: block;
   }
@@ -578,15 +582,24 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
       font-size: 2.25rem;
     }
 
+
     .nn-polaroid-gallery {
       flex-direction: row;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 2rem;
       margin-top: 2rem;
+      justify-content: flex-start;
     }
 
     .nn-polaroid {
-      max-width: 160px;
+      max-width: calc(50% - 1rem);
+      min-width: 260px; 
+      padding: 1.25rem 1.25rem 3.5rem 1.25rem;
+    }
+
+    .nn-polaroid-caption {
+      font-size: 1.85rem; 
+      margin-top: 1.25rem;
     }
 
     .nn-sticky-note {
@@ -598,6 +611,14 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
       bottom: 1.5rem;
       right: 1.5rem;
       padding: 0.8rem 1.5rem;
+    }
+  }
+
+
+  @media (max-width: 580px) {
+    .nn-polaroid {
+      max-width: 100%;
+      min-width: 100%;
     }
   }
 </style>
