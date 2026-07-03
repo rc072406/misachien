@@ -492,7 +492,7 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
     background-color: #ffffff;
     padding: 1.5rem 1.5rem 4rem 1.5rem;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-    max-width: 320px; /* Made bigger on desktop */
+    max-width: 320px; 
     width: 100%;
     box-sizing: border-box;
     border: 1px solid rgba(0,0,0,0.04);
@@ -522,7 +522,12 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
     word-wrap: break-word;
     word-break: break-word;
   }
-
+.nn-polaroid.nn-polaroid-wide .nn-polaroid-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; 
+}
 
   .nn-floating-btn {
     position: fixed;
