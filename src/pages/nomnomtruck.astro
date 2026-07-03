@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
+import TypeWriter3 from '../components/TypeWriter3.astro';
 const pageTitle = "What Happened to Nom Nom Truck? | Misa Chien";
 const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business. Misa Chien shares the raw truth behind the hype, low food truck margins, and partnership lessons.";
 ---
@@ -25,6 +25,17 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
           <span class="nn-venture-number">Behind The Scenes</span>
           <h3 class="nn-venture-title">Struggling in the Spotlight</h3>
           <div class="nn-venture-divider"></div>
+          
+          <div class="nn-polaroid-gallery">
+            <div class="nn-polaroid nn-rotate-left">
+              <div class="nn-polaroid-img"></div>
+              <div class="nn-polaroid-caption">100+ people lines</div>
+            </div>
+            <div class="nn-polaroid nn-rotate-right">
+              <div class="nn-polaroid-img"></div>
+              <div class="nn-polaroid-caption">Behind the press hype</div>
+            </div>
+          </div>
         </div>
         <div class="nn-venture-content">
           <p class="nn-venture-description">
@@ -55,7 +66,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     <section class="nn-venture-section nn-authentic-asian-section" data-theme="dark">
       <div class="nn-point-sticky-grid reveal-on-scroll">
         <div class="nn-sticky-container">
-          <div class="nn-sticky-note nn-rotate-left">
+          <div class="nn-sticky-note nn-rotate-left" style="background-color: #FEF08A;">
             1. Food trucks are a low-margin business, and we didn't properly plan for the stumbling-blocks that were ahead of us.
           </div>
         </div>
@@ -72,11 +83,11 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
         <div class="nn-venture-content">
            <span class="nn-caption-text">Nom Nom Truck team went for the shiny object</span>
            <p class="nn-venture-description">
-            Building our public vending shifts was the main focus during our first two years in business. This included finding an office parking lot to operate from, and getting the permission to tweet our location out. For us, this was our shiny object: something that appeared desirable, but didn’t actually produce reliable profits. It wasn’t until the second year that we decided to focus on the “non-shiny” object instead—catering. This new strategy helped us build a much more profitable business model. Unfortunately, we were too late.
+             Building our public vending shifts was the main focus during our first two years in business. This included finding an office parking lot to operate from, and getting the permission to tweet our location out. For us, this was our shiny object: something that appeared desirable, but didn’t actually produce reliable profits. It wasn’t until the second year that we decided to focus on the “non-shiny” object instead—catering. This new strategy helped us build a much more profitable business model. Unfortunately, we were too late.
           </p>
         </div>
         <div class="nn-sticky-container">
-          <div class="nn-sticky-note nn-rotate-right" style="background-color: #fcf1d7;">
+          <div class="nn-sticky-note nn-rotate-right" style="background-color: #FFCFDF;">
             2. We went for “the shiny object.”
           </div>
         </div>
@@ -86,7 +97,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     <section class="nn-venture-section nn-authentic-asian-section" data-theme="dark">
       <div class="nn-point-sticky-grid reveal-on-scroll">
         <div class="nn-sticky-container">
-          <div class="nn-sticky-note nn-rotate-left">
+          <div class="nn-sticky-note nn-rotate-left" style="background-color: #D1FAE5;">
             3. We didn’t appoint anyone to call the shots.
           </div>
         </div>
@@ -122,6 +133,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     </a>
 
   </article>
+<TypeWriter3 client:visible />
 </BaseLayout>
 
 <style>
@@ -306,7 +318,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     opacity: 0.9;
   }
 
-  /* Mid-Page Pure Divider block */
+ 
   .nn-section-divider-title {
     background-color: var(--burgundy);
     padding: 8rem 4rem 2rem 4rem;
@@ -319,7 +331,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     margin: 0 auto;
   }
 
-  /* Burgundy Dark Blocks */
+
   .nn-authentic-asian-section {
     background-color: var(--burgundy); 
   }
@@ -417,6 +429,41 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
   
   .nn-rotate-right {
     transform: rotate(2.5deg);
+  }
+
+  /* --- Polaroid Gallery Styles --- */
+  .nn-polaroid-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .nn-polaroid {
+    background-color: #ffffff;
+    padding: 1.25rem 1.25rem 2.5rem 1.25rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    max-width: 260px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .nn-polaroid-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #000000;
+  }
+
+  .nn-polaroid-caption {
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 2rem;
+    color: #333333;
+    text-align: center;
+    margin-top: 1.25rem;
+    line-height: 1;
   }
 
 
@@ -525,6 +572,17 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
 
     .nn-venture-title {
       font-size: 2.25rem;
+    }
+
+    .nn-polaroid-gallery {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .nn-polaroid {
+      max-width: 160px;
     }
 
     .nn-sticky-note {
