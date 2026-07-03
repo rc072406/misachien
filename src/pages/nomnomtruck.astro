@@ -59,10 +59,12 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
           <p class="nn-venture-description">
             For those of you who are facing the same challenges I once experienced, hang in there! I know how difficult it can be to relive and discuss past failures, especially as an entrepreneur. Not only has this blog post been tough to write, but people still email me about Nom Nom Truck on a regular basis, curious about its whereabouts. Imagine how that makes me feel. I hope the lessons I learned from my own mistakes with Nom Nom Truck can help you.
           </p>
- <div class="nn-polaroid nn-rotate-right">
-              <div class="nn-polaroid-img"></div>
-              <div class="nn-polaroid-caption">Behind the press hype</div>
-            </div>
+<div class="nn-inline-polaroid-wrapper nn-wide-wrapper">
+  <div class="nn-polaroid nn-straight nn-polaroid-wide">
+    <div class="nn-polaroid-img"></div>
+    <div class="nn-polaroid-caption">Learning from mistakes</div>
+  </div>
+</div>
         </div>
       </div>
     </section>
@@ -230,6 +232,27 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
 
   .text-center {
     text-align: center;
+  }
+.nn-wide-wrapper {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .nn-polaroid.nn-polaroid-wide {
+    max-width: 480px; 
+    padding: 1.75rem 1.75rem 4.5rem 1.75rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .nn-polaroid.nn-polaroid-wide .nn-polaroid-img {
+    aspect-ratio: 4 / 3; 
+  }
+
+  .nn-polaroid.nn-straight {
+    transform: none !important;
   }
 
 
@@ -536,6 +559,11 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
         #FEF4EF 100%
       );
       padding: calc(5rem + 70px) 1.5rem 6rem 1.5rem;
+    }
+.nn-polaroid.nn-polaroid-wide {
+      max-width: 100%;
+      min-width: 100%;
+      padding: 1.25rem 1.25rem 3.5rem 1.25rem;
     }
 
     .desktop-only {
