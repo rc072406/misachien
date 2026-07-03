@@ -3,6 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeWriter3 from '../components/TypeWriter3.astro';
 const pageTitle = "What Happened to Nom Nom Truck? | Misa Chien";
 const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business. Misa Chien shares the raw truth behind the hype, low food truck margins, and partnership lessons.";
+import misaImage from '../../public/images/nomnomMisa.webp';
+import GFRImage from '../../public/images/nomnomteam.webp';
+import busyImage from '../../public/images/nomnombusy.webp';
+import nightImage from '../../public/images/nomnomatnight.webp';
+import night2Image from '../../public/images/nomnomatnight2.webp';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -28,12 +33,12 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
           
           <div class="nn-polaroid-gallery">
             <div class="nn-polaroid nn-rotate-left">
-              <div class="nn-polaroid-img"></div>
+              <div class="nn-polaroid-img">  <img src={busyImage.src}  alt="Nom Nom Truck serving hundreds of customers"></div>
               <div class="nn-polaroid-caption">100+ people lines</div>
             </div>
             <div class="nn-polaroid nn-rotate-right">
-              <div class="nn-polaroid-img"></div>
-              <div class="nn-polaroid-caption">Behind the press hype</div>
+              <div class="nn-polaroid-img"><img src={GFRImage.src}  alt="Nom Nom Truck at The Great Food Truck Race"></div>
+              <div class="nn-polaroid-caption">Great Foodtruck Race!</div>
             </div>
 
           </div>
@@ -121,8 +126,8 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
           <h2 class="nn-venture-title" style="font-size: 1.8rem; text-transform: none;">It’s now been more than four years since Nom Nom Truck closed.</h2>
           <div class="nn-venture-divider"></div>
 <div class="nn-polaroid nn-rotate-left">
-              <div class="nn-polaroid-img"></div>
-              <div class="nn-polaroid-caption">100+ people lines</div>
+              <div class="nn-polaroid-img"><img src={misaImage.src}  alt="Misa Chien, founder of Nom Nom Truck wearing Nom Nom Merchandise"></div>
+              <div class="nn-polaroid-caption">First Merch!</div>
             </div>
         </div>
         <div class="nn-venture-content">
@@ -134,7 +139,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
             I've also really missed making people happy through food, so in 2018 I've decided to launch Nom-Worthy Food, providing asian-inspired family recipes to the masses.  You can follow nom-worthy food here on Instagram.
           </p>
  <div class="nn-polaroid nn-straight nn-polaroid-wide">
-    <div class="nn-polaroid-img"></div>
+    <div class="nn-polaroid-img"><img src={nightImage.src}  alt="Nom Nom Truck busy even at night"></div>
     <div class="nn-polaroid-caption">Thank You, Nomsters <svg class="hollow-heart" viewBox="0 0 24 24">
             <path d="M12 20s-1-4.5-5-7.5c-3-2.2-4.5-4.5-3.5-7 1.2-3 5-2.5 7 1.5 1.5-3.5 6.5-4 8-1.5 1.5 2.5 0 5-3.5 7.5-4 3-6 7-6 7z" />
           </svg></div>
@@ -560,7 +565,7 @@ const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business.
     stroke-linejoin: round;
     position: relative;
     margin-left: -14px; 
-    margin-top: -10px; 
+    margin-top: -4px; 
     transform: rotate(8deg); 
     opacity: 0.9;
     fill: none !important;
