@@ -584,6 +584,62 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
     display: block; 
 }
 
+.nn-sticky-note, 
+.nn-polaroid {
+   transform-origin: top center; 
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-out, visibility 0.4s;
+}
+
+
+.nn-rotate-left:hover {
+  animation: dangleLeft 2s ease-in-out infinite alternate;
+}
+
+.nn-rotate-right:hover {
+  animation: dangleRight 2s ease-in-out infinite alternate;
+}
+
+
+.nn-straight:hover {
+  animation: dangleStraight 2s ease-in-out infinite alternate;
+}
+
+
+@keyframes dangleLeft {
+  0% {
+    transform: rotate(-3.5deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(-6deg);
+  }
+}
+
+@keyframes dangleRight {
+  0% {
+    transform: rotate(2.5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes dangleStraight {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+  100% {
+    transform: rotate(-2.5deg);
+  }
+}
   @media (max-width: 820px) {
     .nn-hero-gradient {
       background: linear-gradient(
