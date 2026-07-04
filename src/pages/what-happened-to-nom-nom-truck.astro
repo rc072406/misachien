@@ -694,3 +694,15 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
   }
 </style>
 
+<script>
+  const items = document.querySelectorAll('.nn-sticky-note, .nn-polaroid');
+
+  items.forEach(item => {
+  
+    item.style.cursor = 'pointer';
+
+    item.addEventListener('click', function() {
+      this.remove(); 
+    });
+  });
+</script>
