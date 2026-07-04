@@ -698,11 +698,18 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
   const items = document.querySelectorAll('.nn-sticky-note, .nn-polaroid');
 
   items.forEach(item => {
-  
     item.style.cursor = 'pointer';
 
+    item.style.transition = 'opacity 0.4s ease-out';
+
     item.addEventListener('click', function() {
-      this.remove(); 
+    
+      this.style.opacity = '0';
+      
+
+      setTimeout(() => {
+        this.remove();
+      }, 400); 
     });
   });
 </script>
