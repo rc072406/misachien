@@ -258,42 +258,8 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
     max-width: 480px; 
     padding: 1.75rem 1.75rem 4.5rem 1.75rem;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    position: relative;
   }
-.nn-polaroid::before {
-  content: "";
-  position: absolute;
-  top: -12px; 
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10; 
-  
 
-  width: 16px;
-  height: 16px;
-  
-
-  background: radial-gradient(circle at 35% 35%, #ffffff 0%, var(--coral) 40%, #a84632 100%);
-  border-radius: 50%;
-  
-
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.4);
-}
-
-
-.nn-polaroid::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 50%;
-  transform: translateX(-50%) rotate(15deg);
-  z-index: 9;
-  
-  width: 2px;
-  height: 10px;
-  background: linear-gradient(to right, #cccccc, #777777);
-  opacity: 0.8;
-}
 
   .nn-polaroid.nn-polaroid-wide .nn-polaroid-img {
     aspect-ratio: 4 / 3; 
