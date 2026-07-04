@@ -693,3 +693,42 @@ import night2Image from '../../public/images/nomnomatnight2.webp';
     }
   }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const stickyNotes = document.querySelectorAll('.nn-sticky-note');
+
+    stickyNotes.forEach(note => {
+   
+      note.style.cursor = 'pointer';
+      note.title = 'Tap to zap!';
+
+
+      const baseRotation = note.classList.contains('nn-rotate-left') ? -3.5 : 2.5;
+
+
+      setInterval(() => {
+ 
+        if (note.style.opacity !== '0') {
+          const x = (Math.random() - 0.5) * 6; 
+          const y = (Math.random() - 0.5) * 6;
+          const rot = baseRotation + ((Math.random() - 0.5) * 4); 
+          
+          note.style.transition = 'transform 1.5s ease-in-out';
+          note.style.transform = `rotate(${rot}deg) translate(${x}px, ${y}px)`;
+        }
+      }, 1500);
+
+      note.addEventListener('click', function() {
+       
+        this.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'; 
+        this.style.transform = `rotate(${baseRotation + 180}deg) scale(0)`;
+        this.style.opacity = '0';
+
+   
+        setTimeout(() => {
+          this.remove();
+        }, 300);
+      });
+    });
+  });
+</script>
