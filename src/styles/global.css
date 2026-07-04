@@ -78,7 +78,6 @@ a {
   min-height: 600px;
   background-color: var(--burgundy);
   z-index: 1;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3CradialGradient id='shine' cx='20%25' cy='0%25' r='80%25'%3E%3Cstop offset='0%25' stop-color='white' stop-opacity='0.5'/%3E%3Cstop offset='30%25' stop-color='white' stop-opacity='0.1'/%3E%3Cstop offset='100%25' stop-color='white' stop-opacity='0'/%3E%3C/radialGradient%3E%3Crect width='100%25' height='100%25' fill='url(%23shine)'/%3E%3C/svg%3E");
  display: flex;
   flex-direction: column;
   justify-content: space-between; 
