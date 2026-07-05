@@ -12,10 +12,10 @@ const staticNotes = [
 ];
 
 const colorThemes = [
-  { id: 'yellow', label: 'YELLOW', bg: '#FEF08A', zIndex: 25 },
-  { id: 'pink', label: 'PINK', bg: '#FFCFDF', zIndex: 24 },
-  { id: 'teal', label: 'TEAL', bg: '#D1FAE5', zIndex: 23 },
-  { id: 'blue', label: 'BLUE', bg: '#E0F2FE', zIndex: 22 },
+  { id: 'yellow', label: 'YELLOW', bg: '#FEF08A' },
+  { id: 'pink', label: 'PINK', bg: '#FFCFDF' },
+  { id: 'teal', label: 'TEAL', bg: '#D1FAE5' },
+  { id: 'blue', label: 'BLUE', bg: '#E0F2FE' },
 ];
 ---
 
@@ -37,18 +37,17 @@ const colorThemes = [
       ))}
     </div>
 
-    <div class="notebook-tabs">
+    <div class="notebook-tabs" id="tabsContainer">
       {colorThemes.map((theme) => (
         <button 
           class={`tab-btn tab-${theme.id}`} 
           data-color={theme.bg}
-          style={`z-index: ${theme.zIndex};`}
           aria-label={`Switch to ${theme.label} theme`}
         >
           <span>{theme.label}</span>
         </button>
       ))}
-      <button class="tab-btn tab-reset" id="resetBtn" style="z-index: 21;" aria-label="Reset colors">
+      <button class="tab-btn tab-reset" id="resetBtn" aria-label="Reset colors">
         <span>RESET</span>
       </button>
     </div>
@@ -65,16 +64,19 @@ const colorThemes = [
     tab.addEventListener('click', () => {
       const selectedColor = tab.getAttribute('data-color');
       if (grid && selectedColor) {
-      
         grid.style.setProperty('--static-note-override', selectedColor);
+        
+      
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('is-active'));
+        tab.classList.add('is-active');
       }
     });
   });
 
   resetBtn?.addEventListener('click', () => {
     if (grid) {
-     
       grid.style.removeProperty('--static-note-override');
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('is-active'));
     }
   });
 </script>
@@ -85,7 +87,7 @@ const colorThemes = [
     background-color: #FAF8F5;
     background-image: 
       linear-gradient(90deg, transparent 79px, #FF8A8A 79px, #FF8A8A 81px, transparent 81px),
-      linear-gradient(#E8E5E0 .1rem, transparent .1rem);
+      linear-gradient(#E2EBFE 0.15rem, transparent 0.15rem); 
     background-size: 100% 100%, 100% 2.5rem;
     padding: 6rem 4rem 6rem 8rem; 
     width: 100%;
@@ -114,7 +116,6 @@ const colorThemes = [
 
 
   .static-brand-note {
-  
     background-color: var(--static-note-override, var(--static-note-default));
     aspect-ratio: 1 / 1;
     position: relative;
@@ -164,13 +165,14 @@ const colorThemes = [
     box-shadow: 
       0 25px 30px -5px rgba(0, 0, 0, 0.1), 
       0 12px 15px -5px rgba(0, 0, 0, 0.05);
-    z-index: 30; 
+    z-index: 50; 
   }
 
   .static-brand-note:hover .static-brand-img {
     opacity: 1;
   }
 
+ 
   .notebook-tabs {
     position: absolute;
     right: -4rem; 
@@ -178,14 +180,12 @@ const colorThemes = [
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-
     margin-top: 20px; 
   }
 
   .tab-btn {
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.09);
     border-left: none;
- 
     border-radius: 0 8px 14px 0; 
     width: 46px;
     height: 85px;
@@ -198,24 +198,23 @@ const colorThemes = [
     align-items: center;
     justify-content: center;
     position: relative;
-   
-    margin-bottom: -18px; 
+    margin-bottom: -22px; 
     
 
+    z-index: 20;
     box-shadow: 
-      2px 4px 6px rgba(0, 0, 0, 0.05),
-      inset 2px 0 3px rgba(255, 255, 255, 0.4);
+      2px 4px 6px rgba(0, 0, 0, 0.04),
+      inset 2px 0 3px rgba(255, 255, 255, 0.3);
     transition: 
       transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), 
       box-shadow 0.25s ease,
-      z-index 0s;
+      background-color 0.2s ease;
   }
 
 
   .tab-btn span {
     writing-mode: vertical-rl;
     text-transform: uppercase;
-    transform: rotate(180deg);
   }
 
 
@@ -226,28 +225,38 @@ const colorThemes = [
     top: 0;
     bottom: 0;
     width: 3px;
-    background: rgba(0, 0, 0, 0.04);
+    background: rgba(0, 0, 0, 0.05);
   }
 
- 
-  .tab-yellow { background-color: #FEF08A; }
-  .tab-pink   { background-color: #FFCFDF; }
-  .tab-teal   { background-color: #D1FAE5; }
-  .tab-blue   { background-color: #E0F2FE; }
+  .tab-yellow { background-color: #FEF08A; z-index: 25; }
+  .tab-pink   { background-color: #FFCFDF; z-index: 24; }
+  .tab-teal   { background-color: #D1FAE5; z-index: 23; }
+  .tab-blue   { background-color: #E0F2FE; z-index: 22; }
   .tab-reset  { 
     background-color: #FFFFFF; 
     border: 1px solid #E2E8F0; 
     border-left: none; 
     margin-bottom: 0; 
+    z-index: 21;
   }
 
- 
-  .tab-btn:hover {
-    transform: translateX(6px);
-    z-index: 29 !important; 
+
+  .tab-btn.is-active {
+    transform: translateX(10px);
+    z-index: 40 !important; 
     box-shadow: 
-      4px 6px 12px rgba(0, 0, 0, 0.1),
-      inset 2px 0 3px rgba(255, 255, 255, 0.5);
+      5px 8px 16px rgba(0, 0, 0, 0.15),
+      inset 2px 0 4px rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+
+
+  .tab-btn:hover:not(.is-active) {
+    transform: translateX(5px);
+    z-index: 39 !important; 
+    box-shadow: 
+      3px 6px 10px rgba(0, 0, 0, 0.08),
+      inset 2px 0 3px rgba(255, 255, 255, 0.4);
   }
   
   .tab-btn:active {
@@ -282,7 +291,10 @@ const colorThemes = [
       width: 36px;
       height: 65px;
       font-size: 0.55rem;
-      margin-bottom: -14px;
+      margin-bottom: -16px;
+    }
+    .tab-btn.is-active {
+      transform: translateX(6px);
     }
     .static-brand-note {
       transform: rotate(calc(var(--static-note-rotate) * 0.7)) scale(1); 
