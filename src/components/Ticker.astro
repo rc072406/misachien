@@ -5,46 +5,109 @@ import bloombergLogo from '../../public/images/bloomberg.webp';
 import NYTLogo from '../../public/images/nytimes.webp';
 
 const staticNotes = [
-  { src: forbesLogo.src, alt: "Forbes Logo", class: "static-logo-forbes", color: "#FEF08A", rotate: "-3deg" },
-  { src: incLogo.src, alt: "Inc. Magazine Logo", class: "static-logo-inc", color: "#FFCFDF", rotate: "2deg" },
-  { src: bloombergLogo.src, alt: "Bloomberg Logo", class: "static-logo-bloomberg", color: "#D1FAE5", rotate: "-2deg" },
-  { src: NYTLogo.src, alt: "The New York Times Logo", class: "static-logo-nyt", color: "#E0F2FE", rotate: "3deg" },
+  { src: forbesLogo.src, alt: "Forbes Logo", class: "static-logo-forbes", rotate: "-3deg" },
+  { src: incLogo.src, alt: "Inc. Magazine Logo", class: "static-logo-inc", rotate: "2deg" },
+  { src: bloombergLogo.src, alt: "Bloomberg Logo", class: "static-logo-bloomberg", rotate: "-2deg" },
+  { src: NYTLogo.src, alt: "The New York Times Logo", class: "static-logo-nyt", rotate: "3deg" },
+];
+
+const colorThemes = [
+  { id: 'yellow', label: 'YELLOW', bg: '#FEF08A' },
+  { id: 'pink', label: 'PINK', bg: '#FFCFDF' },
+  { id: 'teal', label: 'TEAL', bg: '#D1FAE5' },
+  { id: 'blue', label: 'BLUE', bg: '#E0F2FE' },
 ];
 ---
 
-<section class="static-brand-section">
-  <div class="static-brand-container">
-    {staticNotes.map((note) => (
-      <div class="static-brand-note" style={`--static-note-color: ${note.color}; --static-note-rotate: ${note.rotate};`}>
-        <div class="static-brand-note-inner">
-          <div class="static-brand-content">
-            <img src={note.src} alt={note.alt} class={`static-brand-img ${note.class}`} loading="eager" />
+<section class="notebook-section">
+  <div class="notebook-workspace">
+    
+    <div class="static-brand-container" id="notesGrid" data-current-color="#FEF08A">
+      {staticNotes.map((note) => (
+        <div class="static-brand-note" style={`--static-note-rotate: ${note.rotate};`}>
+          <div class="static-brand-note-inner">
+            <div class="static-brand-content">
+              <img src={note.src} alt={note.alt} class={`static-brand-img ${note.class}`} loading="eager" />
+            </div>
           </div>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
+
+    <div class="notebook-tabs">
+      {colorThemes.map((theme) => (
+        <button 
+          class={`tab-btn tab-${theme.id}`} 
+          data-color={theme.bg}
+          aria-label={`Switch to ${theme.label} theme`}
+        >
+          <span>{theme.label}</span>
+        </button>
+      ))}
+      <button class="tab-btn tab-reset" id="resetBtn" aria-label="Reset colors">
+        <span>RESET</span>
+      </button>
+    </div>
+
   </div>
 </section>
 
+<script>
+
+  const tabs = document.querySelectorAll('.tab-btn:not(#resetBtn)');
+  const resetBtn = document.getElementById('resetBtn');
+  const grid = document.getElementById('notesGrid');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const selectedColor = tab.getAttribute('data-color');
+      if (grid && selectedColor) {
+        grid.style.setProperty('--static-note-color', selectedColor);
+      }
+    });
+  });
+
+  resetBtn?.addEventListener('click', () => {
+ 
+    grid?.style.setProperty('--static-note-color', '#FEF08A');
+  });
+</script>
+
 <style>
-  .static-brand-section {
+
+  .notebook-section {
     background-color: #FAF8F5;
-    padding: 4rem 2rem; 
+  
+    background-image: 
+      linear-gradient(90deg, transparent 79px, #FF8A8A 79px, #FF8A8A 81px, transparent 81px),
+      linear-gradient(#E8E5E0 .1rem, transparent .1rem);
+    background-size: 100% 100%, 100% 2.5rem;
+    padding: 6rem 4rem 6rem 8rem; 
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     box-sizing: border-box;
+    overflow: hidden;
     border-top: 1px solid #EFEBE4;
     border-bottom: 1px solid #EFEBE4;
   }
+
+  .notebook-workspace {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
 
   .static-brand-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2.5rem;
-    max-width: 1200px; 
-    width: 100%;
+    width: calc(100% - 60px); 
+   
+    --static-note-color: #FEF08A;
   }
 
   .static-brand-note {
@@ -53,15 +116,16 @@ const staticNotes = [
     position: relative;
     transform: rotate(var(--static-note-rotate)) scale(1);
     box-sizing: border-box;
-    
-    box-shadow: 
-      0 4px 6px -1px rgba(0, 0, 0, 0.05), 
-      0 10px 20px -5px rgba(0, 0, 0, 0.08),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    
     transition: 
+      background-color 0.4s ease,
       transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
       box-shadow 0.4s ease;
+    
+    
+    box-shadow: 
+      2px 6px 12px rgba(0, 0, 0, 0.06), 
+      0 12px 24px -8px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 
   .static-brand-note-inner {
@@ -95,8 +159,8 @@ const staticNotes = [
   .static-brand-note:hover {
     transform: rotate(0deg) scale(1.08);
     box-shadow: 
-      0 20px 25px -5px rgba(0, 0, 0, 0.12), 
-      0 10px 10px -5px rgba(0, 0, 0, 0.06);
+      0 25px 30px -5px rgba(0, 0, 0, 0.12), 
+      0 12px 15px -5px rgba(0, 0, 0, 0.06);
     z-index: 10;
   }
 
@@ -104,44 +168,93 @@ const staticNotes = [
     opacity: 1;
   }
 
+
+  .notebook-tabs {
+    position: absolute;
+    right: -4rem; 
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 20;
+  }
+
+  .tab-btn {
+    border: 1px solid rgba(0,0,0,0.06);
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    width: 45px;
+    height: 70px;
+    cursor: pointer;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #4A4A4A;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+
+  .tab-btn span {
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+  }
+
+  .tab-yellow { background-color: #FEF08A; }
+  .tab-pink   { background-color: #FFCFDF; }
+  .tab-teal   { background-color: #D1FAE5; }
+  .tab-blue   { background-color: #E0F2FE; }
+  .tab-reset  { background-color: #FFFFFF; border: 1px solid #E2E8F0; border-left: none; }
+
+ 
+  .tab-btn:hover {
+    transform: translateX(4px);
+    box-shadow: 5px 3px 8px rgba(0,0,0,0.08);
+  }
+  
+  .tab-btn:active {
+    transform: translateX(1px);
+  }
+
+
   .static-logo-forbes { width: 105px; }
   .static-logo-inc { width: 60px; }
   .static-logo-bloomberg { width: 115px; }
   .static-logo-nyt { width: 135px; }
 
- 
+  
   @media (max-width: 1024px) {
-    .static-brand-container {
-      gap: 1.5rem;
-    }
+    .static-brand-container { gap: 1.5rem; }
   }
 
-
   @media (max-width: 768px) {
-    .static-brand-section {
-      padding: 3rem 1.5rem;
+    .notebook-section {
+      padding: 4rem 1.5rem 4rem 4.5rem;
+      background-size: 100% 100%, 100% 2rem;
     }
-
     .static-brand-container {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem; 
       max-width: 340px; 
+      width: calc(100% - 40px);
     }
-
+    .notebook-tabs {
+      right: -1.5rem;
+    }
+    .tab-btn {
+      width: 35px;
+      height: 55px;
+      font-size: 0.55rem;
+    }
     .static-brand-note {
-   
       transform: rotate(calc(var(--static-note-rotate) * 0.7)) scale(1); 
     }
-
-    .static-brand-note-inner {
-      padding: 1.25rem; 
-    }
-
-    .static-brand-note:hover {
-      transform: rotate(0deg) scale(1.05);
-    }
-    
-
+    .static-brand-note-inner { padding: 1.25rem; }
+    .static-brand-note:hover { transform: rotate(0deg) scale(1.05); }
     .static-logo-forbes { width: 85px; }
     .static-logo-inc { width: 50px; }
     .static-logo-bloomberg { width: 95px; }
@@ -149,11 +262,8 @@ const staticNotes = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .static-brand-note {
+    .static-brand-note, .tab-btn {
       transition: none;
-      transform: none !important;
-    }
-    .static-brand-note:hover {
       transform: none !important;
     }
   }
