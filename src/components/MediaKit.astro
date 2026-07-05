@@ -125,7 +125,6 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     <div class="swiper-button-next"></div>
   </div>
 </div>
-
 <script>
   import 'swiper/css';
   import 'swiper/css/navigation';
@@ -154,15 +153,12 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     if (swiperEl && !swiperEl.swiper) {
       new Swiper('.mediaKitSwiper', {
         modules: [Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, Parallax],
-        autoHeight: false, 
+        autoHeight: true, 
         observer: true,         
         observeParents: true,  
         breakpoints: {
-          0: {
-            autoHeight: false
-          },
           961: {
-            autoHeight: true 
+            autoHeight: false 
           }
         },
         direction: 'horizontal',
@@ -220,7 +216,6 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     }
   });
 </script>
-
 <style>
   .media-kit-swiper-wrapper {
     --burgundy: #59363a;
