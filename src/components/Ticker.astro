@@ -275,38 +275,59 @@ const colorThemes = [
 
   @media (max-width: 768px) {
     .notebook-section {
-      padding: 4rem 1.5rem 4rem 4.5rem;
+    
+      padding: 4rem 1rem 4rem 3.5rem;
       background-size: 100% 100%, 100% 2rem;
     }
+
+    .notebook-workspace {
+  
+      justify-content: flex-start;
+      width: 100%;
+    }
+
     .static-brand-container {
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem; 
-      max-width: 340px; 
-      width: calc(100% - 40px);
+   
+      gap: 1rem; 
+      max-width: 280px; 
+      width: calc(100% - 45px);
     }
+
     .notebook-tabs {
-      right: -1.5rem;
+
+      right: -1rem;
     }
+
     .tab-btn {
-      width: 36px;
-      height: 65px;
-      font-size: 0.55rem;
-      margin-bottom: -16px;
+      width: 32px;
+      height: 60px;
+      font-size: 0.5rem;
+      margin-bottom: -14px;
     }
+
     .tab-btn.is-active {
-      transform: translateX(6px);
+      transform: translateX(4px);
     }
+
     .static-brand-note {
       transform: rotate(calc(var(--static-note-rotate) * 0.7)) scale(1); 
     }
-    .static-brand-note-inner { padding: 1.25rem; }
-    .static-brand-note:hover { transform: rotate(0deg) scale(1.05); }
-    .static-logo-forbes { width: 85px; }
-    .static-logo-inc { width: 50px; }
-    .static-logo-bloomberg { width: 95px; }
-    .static-logo-nyt { width: 105px; }
-  }
 
+    .static-brand-note-inner { 
+      padding: 1rem; 
+    }
+
+    .static-brand-note:hover { 
+      transform: rotate(0deg) scale(1.05); 
+    }
+
+ 
+    .static-logo-forbes { width: 75px; }
+    .static-logo-inc { width: 42px; }
+    .static-logo-bloomberg { width: 85px; }
+    .static-logo-nyt { width: 90px; }
+  }
   @media (prefers-reduced-motion: reduce) {
     .static-brand-note, .tab-btn {
       transition: none;
