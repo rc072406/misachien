@@ -116,51 +116,36 @@ const staticNotes = [
     }
   }
 
-  
+
   @media (max-width: 768px) {
     .static-brand-section {
-      padding: 2.5rem 0; 
+      padding: 3rem 1.5rem;
     }
 
     .static-brand-container {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding: 1rem 1.5rem 2rem 1.5rem; 
-      gap: 1.25rem;
-    }
-
-
-    .static-brand-container::-webkit-scrollbar {
-      display: none;
-    }
-    .static-brand-container {
-      -ms-overflow-style: none;  
-      scrollbar-width: none;  
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem; 
+      max-width: 340px; 
     }
 
     .static-brand-note {
-      flex: 0 0 140px; /* Forces them to stay as mini squares next to each other */
-      scroll-snap-align: center;
-      transform: rotate(calc(var(--static-note-rotate) * 0.6)) scale(1); 
+   
+      transform: rotate(calc(var(--static-note-rotate) * 0.7)) scale(1); 
     }
 
     .static-brand-note-inner {
-      padding: 1rem; 
+      padding: 1.25rem; 
     }
 
     .static-brand-note:hover {
-      transform: rotate(0deg) scale(1.04);
+      transform: rotate(0deg) scale(1.05);
     }
     
- 
-    .static-logo-forbes { width: 75px; }
-    .static-logo-inc { width: 45px; }
-    .static-logo-bloomberg { width: 85px; }
-    .static-logo-nyt { width: 95px; }
+
+    .static-logo-forbes { width: 85px; }
+    .static-logo-inc { width: 50px; }
+    .static-logo-bloomberg { width: 95px; }
+    .static-logo-nyt { width: 105px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
