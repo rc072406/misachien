@@ -3,124 +3,165 @@ import forbesLogo from '../../public/images/forbes.webp';
 import incLogo from '../../public/images/incmagazine.webp';
 import bloombergLogo from '../../public/images/bloomberg.webp';
 import NYTLogo from '../../public/images/nytimes.webp';
----
-<section class="ticker-section" data-theme="light">
-  <div class="ticker-wrapper">
-    <div class="ticker-track">
-      <div class="ticker-item"><img src={forbesLogo.src} alt="Forbes Logo" class="logo-img logo-forbes" /></div>
-      <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
-      <div class="ticker-item"><img src={incLogo.src} alt="Inc. Magazine Logo" class="logo-img logo-inc" /></div>
-      <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
-      <div class="ticker-item"><img src={bloombergLogo.src} alt="Bloomberg Logo" class="logo-img logo-bloomberg" /></div>
-      <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
-      <div class="ticker-item"><img src={NYTLogo.src} alt="The New York Times Logo" class="logo-img logo-nyt" /></div>
-      <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
 
-      <div class="ticker-item"><img src={forbesLogo.src} alt="Forbes Logo" class="logo-img logo-forbes" /></div>
-      <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
-      <div class="ticker-item"><img src={incLogo.src} alt="Inc. Magazine Logo" class="logo-img logo-inc" /></div>
-      <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
-      <div class="ticker-item"><img src={bloombergLogo.src} alt="Bloomberg Logo" class="logo-img logo-bloomberg" /></div>
-      <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
-      <div class="ticker-item"><img src={NYTLogo.src} alt="The New York Times Logo" class="logo-img logo-nyt" /></div>
-      <div class="ticker-item"><span class="ticker-sparkle">✦</span></div>
-    </div>
+const staticNotes = [
+  { src: forbesLogo.src, alt: "Forbes Logo", class: "static-logo-forbes", color: "#FEF08A", rotate: "-3deg" },
+  { src: incLogo.src, alt: "Inc. Magazine Logo", class: "static-logo-inc", color: "#FFCFDF", rotate: "2deg" },
+  { src: bloombergLogo.src, alt: "Bloomberg Logo", class: "static-logo-bloomberg", color: "#D1FAE5", rotate: "-2deg" },
+  { src: NYTLogo.src, alt: "The New York Times Logo", class: "static-logo-nyt", color: "#E0F2FE", rotate: "3deg" },
+];
+---
+
+<section class="static-brand-section">
+  <div class="static-brand-container">
+    {staticNotes.map((note) => (
+      <div class="static-brand-note" style={`--static-note-color: ${note.color}; --static-note-rotate: ${note.rotate};`}>
+        <div class="static-brand-note-inner">
+          <div class="static-brand-content">
+            <img src={note.src} alt={note.alt} class={`static-brand-img ${note.class}`} loading="eager" />
+          </div>
+        </div>
+      </div>
+    ))}
   </div>
 </section>
 
 <style>
-
-  .ticker-section {
-    background-color: #DFCDC9;
-    padding: 4rem 0;
+  .static-brand-section {
+    background-color: #FAF8F5;
+    padding: 4rem 2rem; 
     width: 100%;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(89, 54, 58, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-top: 1px solid #EFEBE4;
+    border-bottom: 1px solid #EFEBE4;
   }
 
-  .ticker-wrapper {
+  .static-brand-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    max-width: 1200px; 
     width: 100%;
-    overflow: hidden;
-    display: flex;
   }
 
-  .ticker-track {
-    display: flex;
-    align-items: center;
-    gap: 5rem; 
-    width: max-content;
-    animation: scrollTicker 30s linear infinite;
-  }
-
-  .ticker-track:hover {
-    animation-play-state: paused;
-  }
-
-  .ticker-item {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+  .static-brand-note {
+    background-color: var(--static-note-color);
+    aspect-ratio: 1 / 1;
+    position: relative;
+    transform: rotate(var(--static-note-rotate)) scale(1);
+    box-sizing: border-box;
     
-   
-    animation: logoWave 4s ease-in-out infinite;
+
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+      0 10px 20px -5px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    
+
+    transition: 
+      transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+      box-shadow 0.4s ease;
   }
 
-
-  .ticker-item:nth-child(8n + 1) { animation-delay: 0s; }
-  .ticker-item:nth-child(8n + 2) { animation-delay: -0.5s; }
-  .ticker-item:nth-child(8n + 3) { animation-delay: -1s; }
-  .ticker-item:nth-child(8n + 4) { animation-delay: -1.5s; }
-  .ticker-item:nth-child(8n + 5) { animation-delay: -2s; }
-  .ticker-item:nth-child(8n + 6) { animation-delay: -2.5s; }
-  .ticker-item:nth-child(8n + 7) { animation-delay: -3s; }
-  .ticker-item:nth-child(8n + 8) { animation-delay: -3.5s; }
-
-  .ticker-sparkle {
-    color: (var--coral);
-    font-size: 0.9rem;
+  .static-brand-note-inner {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
 
-  .logo-img {
+  .static-brand-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .static-brand-img {
     height: auto;
+    max-height: 40%; 
+    width: auto;
     display: block;
     object-fit: contain;
-    opacity: 0.85; 
-    filter: grayscale(100%); 
-  }
-
-  .logo-forbes { width: 130px; }
-  .logo-inc { width: 75px; }
-  .logo-bloomberg { width: 140px; }
-  .logo-nyt { width: 180px; }
-
-  @keyframes scrollTicker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    opacity: 0.75;
+    transition: opacity 0.3s ease;
   }
 
 
-  @keyframes logoWave {
-    0%, 100% { transform: translateY(25px); }
-    50% { transform: translateY(-25px); }
+  .static-brand-note:hover {
+    transform: rotate(0deg) scale(1.08);
+    box-shadow: 
+      0 20px 25px -5px rgba(0, 0, 0, 0.12), 
+      0 10px 10px -5px rgba(0, 0, 0, 0.06);
+    z-index: 10;
+  }
+
+  .static-brand-note:hover .static-brand-img {
+    opacity: 1;
+  }
+
+  .static-logo-forbes { width: 105px; }
+  .static-logo-inc { width: 60px; }
+  .static-logo-bloomberg { width: 115px; }
+  .static-logo-nyt { width: 135px; }
+
+  @media (max-width: 1024px) {
+    .static-brand-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
   }
 
   @media (max-width: 820px) {
-    .ticker-section {
-      padding: 2.5rem 0;
+    .static-brand-section {
+      padding: 3rem 2rem;
     }
-
-    .ticker-track {
-      gap: 3rem;
+    .static-brand-container {
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 1.5rem;
+      max-width: 100%; 
     }
-
-    .logo-forbes { width: 95px; }
-    .logo-inc { width: 55px; }
-    .logo-bloomberg { width: 105px; }
-    .logo-nyt { width: 130px; }
+    .static-brand-note {
+      padding: 1.5rem;
+      transform: rotate(calc(var(--static-note-rotate) * 0.4)) scale(1); 
+    }
+    .static-brand-note:hover {
+      transform: rotate(0deg) scale(1.06);
+    }
     
-    @keyframes logoWave {
-      0%, 100% { transform: translateY(15px); }
-      50% { transform: translateY(-15px); }
+    .static-logo-forbes { width: 90px; }
+    .static-logo-inc { width: 50px; }
+    .static-logo-bloomberg { width: 100px; }
+    .static-logo-nyt { width: 115px; }
+  }
+
+  @media (max-width: 480px) {
+    .static-brand-container {
+      grid-template-columns: 1fr;
+      max-width: 290px;
+    }
+    .static-brand-note {
+      transform: scale(1);
+    }
+    .static-brand-note:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .static-brand-note {
+      transition: none;
+      transform: none !important;
+    }
+    .static-brand-note:hover {
+      transform: none !important;
     }
   }
 </style>
