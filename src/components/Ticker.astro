@@ -228,41 +228,39 @@ const colorThemes = [
     background: rgba(0, 0, 0, 0.05);
   }
 
-  .tab-yellow { background-color: #FEF08A; z-index: 25; }
-  .tab-pink   { background-color: #FFCFDF; z-index: 24; }
-  .tab-teal   { background-color: #D1FAE5; z-index: 23; }
-  .tab-blue   { background-color: #E0F2FE; z-index: 22; }
+.tab-yellow { background-color: #FEF08A; z-index: 5; }
+  .tab-pink   { background-color: #FFCFDF; z-index: 4; }
+  .tab-teal   { background-color: #D1FAE5; z-index: 3; }
+  .tab-blue   { background-color: #E0F2FE; z-index: 2; }
   .tab-reset  { 
     background-color: #FFFFFF; 
     border: 1px solid #E2E8F0; 
     border-left: none; 
     margin-bottom: 0; 
-    z-index: 21;
+    z-index: 1;
   }
 
 
-  .tab-btn.is-active {
-    transform: translateX(10px);
-    z-index: 40 !important; 
+ .tab-btn.is-active {
+    z-index: 20 !important; 
     box-shadow: 
-      5px 8px 16px rgba(0, 0, 0, 0.15),
-      inset 2px 0 4px rgba(255, 255, 255, 0.5);
+      3px 4px 10px rgba(0, 0, 0, 0.12),
+      inset 2px 0 3px rgba(255, 255, 255, 0.5);
     border-color: rgba(0, 0, 0, 0.15);
   }
 
 
   .tab-btn:hover:not(.is-active) {
-    transform: translateX(5px);
-    z-index: 39 !important; 
+    transform: translateX(3px);
+    z-index: 10 !important; 
     box-shadow: 
-      3px 6px 10px rgba(0, 0, 0, 0.08),
+      3px 4px 8px rgba(0, 0, 0, 0.08),
       inset 2px 0 3px rgba(255, 255, 255, 0.4);
   }
   
-  .tab-btn:active {
-    transform: translateX(2px);
+ .tab-btn:active {
+    transform: translateX(1px);
   }
-
 
   .static-logo-forbes { width: 105px; }
   .static-logo-inc { width: 60px; }
@@ -306,8 +304,8 @@ const colorThemes = [
       margin-bottom: -14px;
     }
 
-    .tab-btn.is-active {
-      transform: translateX(4px);
+  .tab-btn.is-active {
+      transform: translateX(2px);
     }
 
     .static-brand-note {
