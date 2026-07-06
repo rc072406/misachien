@@ -483,33 +483,30 @@ const workshopVideoUrl = `${baseVideoUrl}?autoplay=1&mute=1&modestbranding=1&dis
 
     if (!form || !mainGrid || !videoSection) return;
 
-    const newForm = form.cloneNode(true);
-    form.parentNode.replaceChild(newForm, form);
 
-    newForm.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
 
- 
-      const formData = new FormData(newForm);
+      const formData = new FormData(form);
       const payload = {
         fullName: formData.get('fullName'),
         email: formData.get('email'),
         source: 'Free Workshop' 
       };
 
-      
-     const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/4323182/427ea3z/';
-
-      
-      fetch(ZAPIER_WEBHOOK_URL, {
-        method: 'POST',
-        body: JSON.stringify(payload)
-      }).catch(err => console.error(err));
-      
+      const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/4323182/427ea3z/';
 
      
-      mainGrid.style.display = 'none';
+      fetch(ZAPIER_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      }).catch(err => console.error("Data submission failed:", err));
       
+    
+      mainGrid.style.display = 'none';
       videoSection.style.display = 'block';
       videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
@@ -522,6 +519,7 @@ const workshopVideoUrl = `${baseVideoUrl}?autoplay=1&mute=1&modestbranding=1&dis
     });
   }
 
+  
   setupWorkshopForm();
   document.addEventListener('astro:page-load', setupWorkshopForm);
 </script>
