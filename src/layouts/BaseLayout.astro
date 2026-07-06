@@ -19,6 +19,22 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const socialImageURL = new URL(image, Astro.site ?? Astro.url);
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Misa Chien",
+  "url": Astro.site ?? Astro.url,
+  "description": description,
+  "image": socialImageURL,
+  "publisher": {
+    "@type": "Person",
+    "name": "Misa Chien",
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL("/images/favicon.png", Astro.site ?? Astro.url)
+    }
+  }
+};
 ---
 
 <!doctype html>
