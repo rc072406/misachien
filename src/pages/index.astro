@@ -2,15 +2,56 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeWriter from '../components/TypeWriter.astro';
 import StickyNotes from '../components/StickyNotes.astro';
-
 import TypeWriter3 from '../components/TypeWriter3.astro';
 import ClarityCallBanner from '../components/ClarityCallBanner.astro';
 import Ticker from '../components/Ticker.astro';
 import heroImage from '../../public/images/_51A5829.webp';
+
+const pageTitle = "Misa Chien | Executive Mindset Coach & Authentic Leader";
+const pageDescription = "Release your scarcity mindset with professional coach Misa Chien. Break through subconscious ceilings, heal emotional loops, and shift from survival to abundance.";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const shareImageURL = new URL(heroImage.src, Astro.site ?? Astro.url).href;
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${Astro.site ?? "https://misachien.com"}/#website`,
+      "url": Astro.site ?? "https://misachien.com",
+      "name": "Misa Chien",
+      "description": pageDescription,
+      "publisher": {
+        "@id": `${Astro.site ?? "https://misachien.com"}/#person`
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": `${Astro.site ?? "https://misachien.com"}/#person`,
+      "name": "Misa Chien",
+      "url": Astro.site ?? "https://misachien.com",
+      "image": shareImageURL,
+      "jobTitle": "Founder & Executive Coach",
+      "knowsAbout": [
+        "Entrepreneurship",
+        "AAPI Leadership",
+        "Executive Coaching",
+        "Mindset Coaching",
+        "Subconscious Reprogramming"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/misachien",
+        "https://www.instagram.com/misa_chien/"
+      ]
+    }
+  ]
+};
 ---
 
-<BaseLayout title="Misa Chien | Home page">
-	<main transition:animate="fade">
+<BaseLayout title={pageTitle} description={pageDescription} image={heroImage.src}>
+  <script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
+	<main >
 		<section class="hero-section" id="section-one" data-theme="start" >
 			<div class="hero-container">
 				<div class="hero-content">
@@ -28,8 +69,8 @@ import heroImage from '../../public/images/_51A5829.webp';
 				</div>
 				
 				<div class="hero-image-container">
-					<div class="accent-border-box" transition:name="hero-accent-border"></div>
-					<img src={heroImage.src} alt="Misa Chien" class="visual-canvas-image" transition:name="hero-canvas" />
+					<div class="accent-border-box" ></div>
+					<img src={heroImage.src} alt="Misa Chien" class="visual-canvas-image"  />
 				</div>
 			</div>
 		</section>
