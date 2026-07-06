@@ -1,18 +1,51 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeWriter3 from '../components/TypeWriter3.astro';
+
 const pageTitle = "What Happened to Nom Nom Truck? | Misa Chien";
 const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business. Misa Chien shares the raw truth behind the hype, low food truck margins, and partnership lessons.";
+
 import misaImage from '../../public/images/nomnomMisa.webp';
 import GFRImage from '../../public/images/nomnomteam.webp';
 import busyImage from '../../public/images/nomnombusy.webp';
 import nightImage from '../../public/images/nomnomatnight.webp';
 import night2Image from '../../public/images/nomnomatnight2.webp';
+
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const shareImageURL = new URL(night2Image.src, Astro.site ?? Astro.url).href;
+
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalURL
+  },
+  "headline": "What Happened to Nom Nom Truck? 3 Ways We Failed",
+  "description": pageDescription,
+  "image": shareImageURL,
+  "author": {
+    "@type": "Person",
+    "name": "Misa Chien",
+    "jobTitle": "Founder & Entrepreneur",
+    "url": "https://misachien.com"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Misa Chien"
+  }
+};
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription} image={night2Image.src}>
+
+	<script type="application/ld+json" set:html={JSON-LD stringify(schemaData)} />
 
   <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+
+  <article class="nn-page-container">
 
   <article class="nn-page-container">
     
