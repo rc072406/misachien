@@ -4,9 +4,35 @@ import TypeWriter3 from '../components/TypeWriter3.astro';
 const baseVideoUrl = import.meta.env.PUBLIC_YOUTUBE_URL;
 const workshopVideoUrl = `${baseVideoUrl}?autoplay=1&mute=1&modestbranding=1&disablekb=1&rel=0&vq=hd720`;
 
+const pageTitle = "Free Workshop: Master Your Unconscious Mind | Misa Chien";
+const pageDescription = "Get instant access to Misa Chien's free exclusive training on dismantling deeply rooted limiting beliefs, releasing scarcity mindsets, and processing generational patterns.";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+
+const workshopSchema = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Master Your Unconscious Mind Workshop",
+  "description": pageDescription,
+  "provider": {
+    "@type": "Person",
+    "name": "Misa Chien",
+    "url": "https://misachien.com"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD",
+    "category": "Free",
+    "availability": "https://schema.org/InStock",
+    "url": canonicalURL
+  },
+  "educationalLevel": "Intermediate"
+};
 ---
 
-<BaseLayout title="Free Workshop | Misa Chien">
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(workshopSchema)} />
   <main class="workshop-container" data-theme="start">
     <div class="workshop-gradient-wrapper">
       
