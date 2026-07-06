@@ -1,9 +1,51 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeWriter3 from '../components/TypeWriter3.astro';
+
+
+const pageTitle = "Unconscious Mind Coaching for AAPI Leaders & Entrepreneurs | Misa Chien";
+const pageDescription = "Dismantle the immigrant scarcity mindset, break through internal ceilings, and step into authentic leadership. Explore premium coaching tracks with Misa Chien.";
+
+
+const coachingSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Executive & Mindset Coaching",
+  "provider": {
+    "@type": "Person",
+    "name": "Misa Chien",
+    "url": "https://misachien.com"
+  },
+  "areaServed": "Worldwide",
+  "description": "Unconscious mind coaching specifically engineered for high-achieving individuals of Asian descent to deconstruct deeply rooted limiting beliefs and immigrant scarcity mindsets.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Misa Chien Coaching Frameworks",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Track 01: Scaling Entrepreneurs",
+          "description": "Mindset reprogramming for 6-figure business owners aiming to scale to 7-figures by clearing internal ceilings and shifting out of survival mode."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Track 02: C-Suite & Late-Stage Leaders",
+          "description": "Deep internal clarity and scarcity mindset release for senior corporate executives, C-level leaders, and late-stage founders."
+        }
+      }
+    ]
+  }
+};
 ---
 
-<BaseLayout title="Coaching | Misa Chien">
+<BaseLayout title={pageTitle} description={pageDescription}>
+
+  <script type="application/ld+json" set:html={JSON.stringify(coachingSchema)} />
   <main class="coaching-container">
     
     <div class="coaching-hero-gradient" data-theme="start">
