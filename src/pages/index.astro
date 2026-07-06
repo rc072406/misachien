@@ -52,9 +52,9 @@ const homeSchema = {
 <BaseLayout title={pageTitle} description={pageDescription} image={heroImage.src}>
   <script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
 	<main >
-		<section class="hero-section reveal-on-scroll" id="section-one" data-theme="start" >
+		<section class="hero-section " id="section-one" data-theme="start" >
 			<div class="hero-container">
-				<div class="hero-content">
+				<div class="hero-content reveal-on-scroll">
 					<span class="kicker">Misa Chien | Authentic Leader</span>
 					<TypeWriter 
 						staticText="Together let's " 
@@ -68,7 +68,7 @@ const homeSchema = {
 					</div>
 				</div>
 				
-				<div class="hero-image-container">
+				<div class="hero-image-container reveal-on-scroll">
 					<div class="accent-border-box" ></div>
 					<img src={heroImage.src} alt="Misa Chien" class="visual-canvas-image"  />
 				</div>
