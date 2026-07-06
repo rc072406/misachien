@@ -1,9 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeWriter3 from '../components/TypeWriter3.astro';
+
+const pageTitle = "Scarcity Mindset Quiz: Subconscious Assessment | Misa Chien";
+const pageDescription = "Take the 10-question Scarcity Mindset Quiz by Misa Chien. Discover your subconscious blocks, identify survival loops, and assess your alignment with authentic leadership.";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+
+
+const quizSchema = {
+  "@context": "https://schema.org",
+  "@type": "Quiz",
+  "name": "Scarcity Mindset Quiz",
+  "description": pageDescription,
+  "url": canonicalURL,
+  "educationalAlignment": {
+    "@type": "AlignmentObject",
+    "educationalFramework": "Mindset Coaching & Subconscious Reprogramming",
+    "targetName": "Self-Awareness & Leadership Growth"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Misa Chien",
+    "url": "https://misachien.com"
+  },
+  "assesses": "Scarcity mindset patterns, limiting behaviors, subconscious boundaries"
+};
 ---
 
-<BaseLayout title="Scarcity Mindset Quiz | Misa Chien">
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(quizSchema)} />
   <main class="quiz-page-container">
     
     <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
