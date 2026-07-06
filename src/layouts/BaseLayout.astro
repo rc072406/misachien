@@ -1,63 +1,91 @@
 ---
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
+	type?: "website" | "article";
 }
+
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import Navbar from '../components/Navbar.astro';
 
-const { title } = Astro.props;
+const { 
+	title, 
+	description = "The authentic leader who is known for inspiring others, and helps people feel less alone and more connected through positivity and transparency.", 
+	image = "/misachien.webp", 
+	type = "website" 
+} = Astro.props;
+
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const socialImageURL = new URL(image, Astro.site ?? Astro.url);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Misa Chien | Mindset Coach" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
 		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={socialImageURL} />
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=GF+Didot&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+		
+		<ClientRouter />
 	</head>
 	<body>
-	<Navbar />
+		<Navbar />
 
 		<div class="main-content-wrapper">
 			<slot />
 		</div>
 
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-brand">
-      <h3 class="logo">Misa <em>Chien.</em></h3>
-      <p>The authentic leader who is known for inspiring others, and helps people feel less alone and more connected through positivity and transparency.</p>
-    </div>
-    <div class="footer-group">
-      <h4>Let's Connect</h4>
-      <ul>
-        <li><a href="https://www.instagram.com/misa_chien/" target="_blank">Instagram</a></li>
-        <li><a href="https://www.linkedin.com/in/misachien" target="_blank">Linkedin</a></li>
-        <li><a href="https://substack.com/@misachien" target="_blank">Substack</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="copyright">© 2026 Misa Chien. All Rights Reserved.</p>
-  </div>
-</footer>
+		<footer class="footer">
+			<div class="footer-container">
+				<div class="footer-brand">
+					<h3 class="logo">Misa <em>Chien.</em></h3>
+					<p>The authentic leader who is known for inspiring others, and helps people feel less alone and more connected through positivity and transparency.</p>
+				</div>
+				<div class="footer-group">
+					<h4>Let's Connect</h4>
+					<ul>
+						<li><a href="https://www.instagram.com/misa_chien/" target="_blank">Instagram</a></li>
+						<li><a href="https://www.linkedin.com/in/misachien" target="_blank">Linkedin</a></li>
+						<li><a href="https://substack.com/@misachien" target="_blank">Substack</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p class="copyright">© 2026 Misa Chien. All Rights Reserved.</p>
+			</div>
+		</footer>
 	</body>
 </html>
+
 <script>
 	import { initScrollReveal } from '../scripts/scroll-reveal.js';
 
-
 	initScrollReveal();
-	
 	
 	document.addEventListener('astro:page-load', () => {
 		initScrollReveal();
 	});
 </script>
-
