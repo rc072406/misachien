@@ -1,11 +1,52 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'; 
-
 import aboutImage from '../../public/images/misachien.webp';
 import TypeWriter3 from '../components/TypeWriter3.astro';
+
+
+const pageTitle = "About Misa Chien | Founder of The Authentic Asian";
+const pageDescription = "Meet Misa Chien, a serial entrepreneur, speaker, and founder of The Authentic Asian. Ranked the #1 most viewed Asian American woman nationwide on LinkedIn.";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const shareImageURL = new URL(aboutImage.src, Astro.site ?? Astro.url).href;
+
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Misa Chien",
+  "url": "https://misachien.com",
+  "image": shareImageURL,
+  "jobTitle": "Founder & Executive Coach",
+  "description": pageDescription,
+  "knowsAbout": [
+    "Entrepreneurship",
+    "AAPI Leadership",
+    "Executive Coaching",
+    "Mindset Coaching"
+  ],
+  "founder": [
+    {
+      "@type": "Organization",
+      "name": "The Authentic Asian",
+      "foundingDate": "2023-10",
+      "url": "https://theauthenticasian.com"
+    },
+    {
+      "@type": "Organization",
+      "name": "Nom Nom Truck",
+      "url": "https://misachien.com/what-happened-to-nom-nom-truck"
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/misachien"
+  ]
+};
 ---
 
-<BaseLayout title="About | Misa Chien">
+<BaseLayout title={pageTitle} description={pageDescription} image={aboutImage.src}>
+
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
   <main class="about-container" data-theme="start">
     
     <div class="about-gradient-wrapper">
