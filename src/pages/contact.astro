@@ -1,11 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TypeWriter3 from '../components/TypeWriter3.astro';
-import contactImage from '../../public/images/GL5A6164.webp';
 import StickyNotes2 from '../components/StickyNotes2.astro';
+
+
+const pageTitle = "Contact Misa Chien | Speaking, Press & Coaching Inquiries";
+const pageDescription = "Get in touch with Misa Chien for executive coaching frameworks, keynote speaking engagements, media partnerships, or general inquiries.";
+
+
+const contactImage = "/images/GL5A6164.webp";
+
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Misa Chien",
+  "description": "Official contact and booking channel for Misa Chien, founder of The Authentic Asian.",
+  "url": "https://misachien.com/contact",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Misa Chien",
+    "sameAs": [
+      "https://www.instagram.com/misa_chien/",
+      "https://www.linkedin.com/in/misachien",
+      "https://substack.com/@misachien"
+    ]
+  }
+};
 ---
 
-<BaseLayout title="Contact | Misa Chien">
+<BaseLayout title={pageTitle} description={pageDescription} image={contactImage}>
+  
+  <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
   <main class="contact-container" data-theme="start">
     
     <div class="contact-gradient-wrapper">
@@ -21,7 +47,7 @@ import StickyNotes2 from '../components/StickyNotes2.astro';
         <div class="content-left reveal-on-scroll">
           <div class="hero-image-container">
             <div class="accent-border-box"></div>
-            <img src={contactImage.src}  alt="Misa Chien Contact" class="visual-canvas-image"  />
+            <img src={contactImage}  alt="Misa Chien Contact" class="visual-canvas-image"  />
           </div>
           <StickyNotes2     />
         </div>
