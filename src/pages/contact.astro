@@ -8,7 +8,7 @@ const pageTitle = "Contact Misa Chien | Speaking, Press & Coaching Inquiries";
 const pageDescription = "Get in touch with Misa Chien for executive coaching frameworks, keynote speaking engagements, media partnerships, or general inquiries.";
 
 
-const contactImage = "/images/GL5A6164.webp";
+import contactImage from '../../public/images/GL5A6164.webp';
 
 
 const contactSchema = {
@@ -29,7 +29,7 @@ const contactSchema = {
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} image={contactImage}>
+<BaseLayout title={pageTitle} description={pageDescription} image={contactImage.src}>
   
   <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
   <main class="contact-container" data-theme="start">
@@ -47,7 +47,7 @@ const contactSchema = {
         <div class="content-left reveal-on-scroll">
           <div class="hero-image-container">
             <div class="accent-border-box"></div>
-            <img src={contactImage}  alt="Misa Chien Contact" class="visual-canvas-image"  />
+            <img src={contactImage.src}  alt="Misa Chien Contact" class="visual-canvas-image"  />
           </div>
           <StickyNotes2     />
         </div>
