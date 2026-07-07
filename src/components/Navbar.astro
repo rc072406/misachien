@@ -1,31 +1,31 @@
-<nav class="navbar navbar--dark">
- <a href={import.meta.env.BASE_URL} class="logo">Misa <em>Chien.</em></a>
+<nav class="navbar">
+  <a href={import.meta.env.BASE_URL} class="logo">Misa <em>Chien.</em></a>
   
-<div class="nav-links">
-  <a href={`${import.meta.env.BASE_URL}/about`} class="nav-item">
-    <span class="nav-text" data-text="About Me">About Me</span>
-  </a>
-  
-  <a href={`${import.meta.env.BASE_URL}/work`} class="nav-item">
-    <span class="nav-text" data-text="Work">Work</span>
-  </a>
-  
-  <a href={`${import.meta.env.BASE_URL}/coaching`} class="nav-item">
-    <span class="nav-text" data-text="Coaching">Coaching</span>
-  </a>
+  <div class="nav-links">
+    <a href={`${import.meta.env.BASE_URL}/about`} class="nav-item">
+      <span class="nav-text" data-text="About Me">About Me</span>
+    </a>
+    
+    <a href={`${import.meta.env.BASE_URL}/work`} class="nav-item">
+      <span class="nav-text" data-text="Work">Work</span>
+    </a>
+    
+    <a href={`${import.meta.env.BASE_URL}/coaching`} class="nav-item">
+      <span class="nav-text" data-text="Coaching">Coaching</span>
+    </a>
 
-<a href={`${import.meta.env.BASE_URL}/scarcity-mindset-quiz`} class="nav-item">
-    <span class="nav-text" data-text="Scarcity Mindset Quiz">Scarcity Mindset Quiz</span>
-  </a>
-  
-  <a href={`${import.meta.env.BASE_URL}/contact`} class="nav-button nav-button--mobile">
+    <a href={`${import.meta.env.BASE_URL}/scarcity-mindset-quiz`} class="nav-item">
+      <span class="nav-text" data-text="Scarcity Mindset Quiz">Scarcity Mindset Quiz</span>
+    </a>
+    
+    <a href={`${import.meta.env.BASE_URL}/contact`} class="nav-button nav-button--mobile">
+      <span>Get In Touch</span>
+    </a>
+  </div>
+
+  <a href={`${import.meta.env.BASE_URL}/contact`} class="nav-button nav-button--desktop">
     <span>Get In Touch</span>
   </a>
-</div>
-
-<a href={`${import.meta.env.BASE_URL}/contact`} class="nav-button nav-button--desktop">
-  <span>Get In Touch</span>
-</a>
   
   <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
     <span></span>
@@ -41,10 +41,7 @@
 
   menuToggle?.addEventListener('click', () => {
     const isOpen = navbar?.classList.toggle('navbar--open');
-    
-   
     menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
@@ -64,53 +61,23 @@
     
     lastScrollY = window.scrollY;
   });
-
-  const sections = document.querySelectorAll('[data-theme]');
-  
-  const themeObserver = new IntersectionObserver((entries) => {
-   
-    if (navbar?.classList.contains('navbar--open')) return;
-
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const theme = entry.target.getAttribute('data-theme');
-        
-        navbar?.classList.remove('navbar--start', 'navbar--light', 'navbar--dark');
-        
-        if (theme === 'start') {
-          navbar?.classList.add('navbar--start');
-        } else if (theme === 'light') {
-          navbar?.classList.add('navbar--light');
-        } else {
-          navbar?.classList.add('navbar--dark');
-        }
-      }
-    });
-  }, {
-    rootMargin: '0px 0px -90% 0px'
-  });
-
-  sections.forEach(section => themeObserver.observe(section));
 </script>
 
 <style>
-.navbar {
+  .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 4rem;
     position: fixed;
     top: 0;
-    
     left: 0;
     right: 0;   
-   
-    
     z-index: 100;
     box-sizing: border-box;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #EAE5E0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
   }
 
   .navbar--hidden {
@@ -118,11 +85,18 @@
   }
 
   .logo {
-    font-family: var(--font-logo);
-    font-size: 3.5rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    transition: color 0.3s ease;
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: #1A1A1A;
+  }
+
+  .logo em {
+    font-style: italic;
+    font-weight: 400;
+    color: #8C7E6D;
   }
 
   .nav-links {
@@ -132,120 +106,45 @@
   }
 
   .nav-item {
-    font-size: 0.85rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 500;
     text-decoration: none;
     display: inline-block;
-    overflow: hidden; 
-    vertical-align: middle;
+    color: #55514E;
     transition: color 0.3s ease;
+  }
+
+  .nav-item:hover {
+    color: #1A1A1A;
   }
 
   .nav-text {
     position: relative;
     display: block;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
- 
-  }
-
-  .nav-text::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: block;
-    white-space: nowrap;
-    transition: color 0.3s ease;
-  }
-
-  .nav-item:hover .nav-text {
-    transform: translateY(-100%);
   }
 
   .nav-button {
-    position: relative;
-    padding: 0.75rem 2rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: 0.8rem 1.8rem;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 600;
     display: inline-block;
-    overflow: hidden; 
-    background: transparent;
-    z-index: 1;
-    transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    border: 1px solid #1A1A1A;
     text-decoration: none;
+    transition: all 0.3s ease;
   }
 
-  .nav-button span {
-    position: relative;
-    z-index: 2; 
-  }
-
-  .nav-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scaleX(0); 
-    transform-origin: left; 
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 1;
-  }
-
-  .navbar--dark {
-    background-color: rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .navbar--dark .logo { color: var(--white); }
-  .navbar--dark .nav-item { color: var(--white); }
-  .navbar--dark .nav-text::after { color: var(--coral); } 
-  .navbar--dark .nav-button { color: var(--white); border-color: var(--white); }
-  .navbar--dark .nav-button::before { background-color: var(--coral); } 
-  .navbar--dark .nav-button:hover::before { 
-    transform: scaleX(1); 
-  }
-  .navbar--dark .nav-button:hover { 
-    color: var(--white); 
-    border-color: var(--coral); 
-  }
-
-  .navbar--light {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  .navbar--light .logo { color: var(--coral); }
-  .navbar--light .nav-item { color: var(--coral); }
-  .navbar--light .nav-text::after { color: var(--burgundy); } 
-  .navbar--light .nav-button { color: var(--coral); border-color: var(--coral); }
- .navbar--light .nav-button::before { background-color: var(--white); } 
-.navbar--light .nav-button:hover::before { 
-    transform: scaleX(1); 
-  }
-  .navbar--light .nav-button:hover { 
-    color: var(--burgundy); 
-    border-color: var(--white); 
-  }
-
- .navbar--start {
-    background-color: rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .navbar--start .logo { color: var(--white); }
-  .navbar--start .nav-item { color: var(--coral); }
-  .navbar--start .nav-text::after { color: var(--burgundy); } 
-  .navbar--start .nav-button { color: var(--coral); border-color: var(--coral); }
- .navbar--start .nav-button::before { background-color: var(--white); } 
-.navbar--start .nav-button:hover::before { 
-    transform: scaleX(1); 
-  }
-  .navbar--start .nav-button:hover { 
-    color: var(--burgundy); 
-    border-color: var(--white); 
+  .nav-button:hover {
+    background-color: #8C7E6D;
+    border-color: #8C7E6D;
+    color: #FFFFFF;
   }
 
   .nav-button--mobile {
@@ -262,7 +161,7 @@
     }
 
     .logo {
-      font-size: 2.25rem;
+      font-size: 1.85rem;
       z-index: 110;
     }
 
@@ -279,14 +178,11 @@
 
     .menu-toggle span {
       display: block;
-      width: 26px;
+      width: 24px;
       height: 2px;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, background-color 0.3s ease;
+      background-color: #1A1A1A;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
-
-    .navbar--dark .menu-toggle span { background-color: var(--white); }
-    .navbar--light .menu-toggle span { background-color: var(--coral); }
-    .navbar--start .menu-toggle span { background-color: var(--coral); }
 
     .navbar--open .menu-toggle span:nth-child(1) {
       transform: translateY(8px) rotate(45deg);
@@ -306,16 +202,13 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background-color: var(--burgundy);
+      background-color: #FFFFFF;
       justify-content: center;
       align-items: center;
-      gap: 3rem;
+      gap: 2.5rem;
       transform: translateY(-100%);
-      
-    
       visibility: hidden;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
-      
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
       z-index: 100;
       box-sizing: border-box;
     }
@@ -326,7 +219,8 @@
     }
 
     .nav-item {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
+      color: #1A1A1A;
     }
 
     .nav-button--desktop {
@@ -337,13 +231,5 @@
       display: inline-block;
       margin-top: 1rem;
     }
-
-    .navbar--open .logo { color: var(--white) !important; }
-    .navbar--open .nav-item { color: var(--white) !important; }
-    .navbar--open .nav-text::after { color: var(--coral) !important; }
-    .navbar--open .menu-toggle span { background-color: var(--white) !important; }
-    .navbar--open .nav-button--mobile { color: var(--coral) !important; border-color: var(--coral) !important; }
-    .navbar--open .nav-button--mobile::before { background-color: var(--white) !important; }
-    .navbar--open .nav-button--mobile:hover { color: var(--burgundy) !important; }
   }
 </style>
