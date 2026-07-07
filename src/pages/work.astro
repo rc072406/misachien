@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TypeWriter3 from '../components/TypeWriter3.astro';
+
 import MediaKit from '../components/MediaKit.astro';
 import Ticker from '../components/Ticker.astro';
 import defaultShareImage from '../../public/images/misachien.webp'; 
@@ -50,9 +50,12 @@ const workSchema = {
 
 <BaseLayout title={pageTitle} description={pageDescription} image={defaultShareImage.src}>
   <script type="application/ld+json" set:html={JSON.stringify(workSchema)} />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
   <main class="work-container">
     
-    <div class="work-hero-gradient" data-theme="start">
+    <div class="work-hero-wrapper" data-theme="start">
       <section class="work-hero reveal-on-scroll">
         <span class="subtitle">My Company</span>
         <h1 class="main-title">
@@ -60,13 +63,14 @@ const workSchema = {
           <span class="serif-italic">Impactful Connection</span>
         </h1>
         <p class="hero-intro">
-         The Authentic Asian is a private network built to help Asian American Female Executives and Entrepreneurs feel less alone and more connected. We are the only organization specifically designed to help uplift Asian American female leaders, whether they are on their journey towards breaking the ceiling, an extraordinary leader who just needs support, or a trailblazer who would like to give back and uplift others. 
+          The Authentic Asian is a private network built to help Asian American Female Executives and Entrepreneurs feel less alone and more connected. We are the only organization specifically designed to help uplift Asian American female leaders, whether they are on their journey towards breaking the ceiling, an extraordinary leader who just needs support, or a trailblazer who would like to give back and uplift others. 
         </p>
       </section>
     </div>
-<Ticker />
 
-  <section class="venture-section nomnom-section" data-theme="light">
+    <Ticker />
+
+    <section class="venture-section nomnom-section" data-theme="light">
       <div class="venture-grid reveal-on-scroll">
         <div class="venture-meta">
           <span class="venture-number">01 / LEARNING FROM FAILURES</span>
@@ -76,11 +80,12 @@ const workSchema = {
         
         <div class="venture-content">
           <p class="venture-description">
-           Over 4 years, Nom Nom Truck was featured everywhere from The NY Times to Sunset Magazine, and was even featured on the Food Network, for the reality TV show The Great Food Truck Race. Despite this success, Misa had to close Nom Nom Truck in 2013, due to issues with her business partner. Read the article to learn more. 
+            Over 4 years, Nom Nom Truck was featured everywhere from The NY Times to Sunset Magazine, and was even featured on the Food Network, for the reality TV show The Great Food Truck Race. Despite this success, Misa had to close Nom Nom Truck in 2013, due to issues with her business partner. Read the article to learn more.
+          </p>
           <p class="venture-details">
             <strong>Article Focus:</strong> 3 Ways Nom Nom Truck Failed as a Business
           </p>
-          <a href={`${import.meta.env.BASE_URL}/what-happened-to-nom-nom-truck`}  rel="noopener noreferrer" class="venture-link link--light">
+          <a href={`${import.meta.env.BASE_URL}/what-happened-to-nom-nom-truck`} rel="noopener noreferrer" class="venture-link link--light">
             <span>Read More</span>
             <span class="arrow">→</span>
           </a>
@@ -88,18 +93,17 @@ const workSchema = {
       </div>
     </section>
     
-
     <section class="venture-section authentic-asian-section" data-theme="dark">
       <div class="venture-grid reveal-on-scroll">
         <div class="venture-meta">
           <span class="venture-number">02 / LEADERSHIP ECOSYSTEM</span>
-          <h2 class="venture-title">The Authentic <br /><em>Asian.</em></h2>
+          <h2 class="venture-title">The Authentic <br /><span class="serif-italic-title">Asian.</span></h2>
           <div class="venture-divider"></div>
         </div>
         
         <div class="venture-content">
           <p class="venture-description">
-           The Authentic Asian, founded in 2023, is a private community for accomplished Asian female leaders—executives, entrepreneurs, and changemakers—who seek meaningful connection over transactional networking. We create intentional spaces where you can be fully seen, share openly, and grow alongside leaders who understand the unique intersection of ambition, culture, and identity.
+            The Authentic Asian, founded in 2023, is a private community for accomplished Asian female leaders—executives, entrepreneurs, and changemakers—who seek meaningful connection over transactional networking. We create intentional spaces where you can be fully seen, share openly, and grow alongside leaders who understand the unique intersection of ambition, culture, and identity.
           </p>
           <p class="venture-details">
             <strong>Focus:</strong> Collaborative, Supportive, Success through connection.
@@ -111,106 +115,103 @@ const workSchema = {
         </div>
       </div>
     </section>
-<MediaKit  client:visible />
-<TypeWriter3  client:visible />
-<a href="mailto:bernadine@theauthenticasian.com" id="floating-apply-btn" class="floating-btn">
+
+    <MediaKit client:visible />
+
+
+    <a href="mailto:bernadine@theauthenticasian.com" id="floating-apply-btn" class="floating-btn">
       WANT TO PARTNER WITH MISA? <span class="arrow">→</span>
     </a>
   </main>
 </BaseLayout>
 
 <style>
+  :root {
+  
+    --bg-solid-light: #FBF9F6;  
+    --bg-solid-dark: #1A1A1A;   
+    --text-primary: #1A1A1A;   
+    --text-muted: #55514E;      
+    --accent-gold: #8C7E6D;     
+    --border-color: #EAE5E0;
+    
+    --font-serif: 'Libre Baskerville', Georgia, serif;
+    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
   .work-container {
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
-    background-color: var(--white);
+    background-color: var(--bg-solid-light);
   }
 
-
-  .work-hero-gradient {
+  
+  .work-hero-wrapper {
     position: relative;
     width: 100%;
-    overflow: hidden;
-    background: linear-gradient(
-      to right, 
-      #59363A 0%, 
-      #59363A 6%, 
-      #8A6266 25%,
-      #BA9699 38%,
-      #DFCDC9 48%,
-      #FEF4EF 58%, 
-      #FEF4EF 100%
-    );
-    padding: calc(7rem + 80px) 4rem 8rem 4rem; 
     box-sizing: border-box;
-  }
-
-  .work-hero-gradient::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%; height: 100%;
-    opacity: 0.025; 
-    pointer-events: none;
-    z-index: 5;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='silk'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23silk)'/%3E%3C/svg%3E");
+    background-color: var(--bg-solid-light);
+    border-bottom: 1px solid var(--border-color);
+    padding: calc(9rem + 80px) 4rem 9rem 4rem; 
   }
 
   .work-hero {
     max-width: 1200px;
     margin: 0 auto;
-    color: var(--white);
+    color: var(--text-primary);
   }
 
   .subtitle {
-    font-family: 'Tenor Sans', sans-serif;
+    font-family: var(--font-sans);
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7); 
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    color: var(--accent-gold);
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .main-title {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 4.5rem;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
     text-transform: uppercase;
     margin: 0 0 2rem 0;
-    color: var(--coral);
+    color: var(--text-primary);
   }
 
   .serif-italic {
-    font-family: 'GF Didot', serif;
+    font-family: var(--font-serif);
     font-style: italic;
+    font-weight: 400;
     text-transform: none; 
-    color: #DFCDC9; 
+    color: var(--accent-gold);
+    letter-spacing: 0;
   }
 
   .hero-intro {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 1.15rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.1rem;
     line-height: 1.8;
-    max-width: 600px;
-    color: var(--white);
-    opacity: 0.9;
+    max-width: 650px;
+    color: var(--text-muted);
   }
 
-
-
+  /* Section Alternations - Asymmetric Grid Columns */
   .venture-section {
     width: 100%;
-    padding: 10rem 4rem;
+    padding: 11rem 4rem;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .venture-grid {
@@ -218,7 +219,7 @@ const workSchema = {
     max-width: 1200px;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: 6rem;
+    gap: 7rem;
     align-items: start;
   }
 
@@ -229,23 +230,27 @@ const workSchema = {
   }
 
   .venture-number {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.8rem;
     letter-spacing: 3px;
     text-transform: uppercase;
   }
 
   .venture-title {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 3rem;
-    line-height: 1.2;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 2.75rem;
+    line-height: 1.25;
     text-transform: uppercase;
     margin: 0;
+    letter-spacing: -0.5px;
   }
 
   .venture-divider {
-    width: 60px;
-    height: 1px;
+    width: 40px;
+    height: 2px;
+    background-color: var(--accent-gold);
   }
 
   .venture-content {
@@ -255,31 +260,33 @@ const workSchema = {
   }
 
   .venture-description {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.05rem;
     line-height: 1.8;
-    font-weight: 300;
   }
 
   .venture-details {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 0.95rem;
     line-height: 1.6;
-    font-weight: 300;
   }
 
+  /* Strict Clean Bordered Anchors */
   .venture-link {
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
     gap: 1rem;
-    font-family: 'Tenor Sans', sans-serif;
+    font-family: var(--font-sans);
+    font-weight: 500;
     text-transform: uppercase;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 2px;
     text-decoration: none;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid transparent;
+    padding: 1rem 2rem;
+    border: 1px solid transparent;
     transition: all 0.3s ease;
     margin-top: 1rem;
   }
@@ -289,72 +296,110 @@ const workSchema = {
   }
 
   .venture-link:hover .arrow {
-    transform: translateX(6px);
+    transform: translateX(5px);
   }
 
-  /* ---  (Cream Section) --- */
+  /* --- LIGHT CASE STUDY VARIATION --- */
   .nomnom-section {
-    background-color: #FEF4EF; 
+    background-color: #FFFFFF; 
   }
 
   .nomnom-section .venture-number {
-    color: var(--coral);
+    color: var(--accent-gold);
   }
 
   .nomnom-section .venture-title {
-    color: var(--burgundy);
-  }
-
-  .nomnom-section .venture-divider {
-    background-color: rgba(89, 54, 58, 0.2);
+    color: var(--text-primary);
   }
 
   .nomnom-section .venture-content {
-    color: var(--burgundy);
-  }
-
-  .nomnom-section .venture-description {
-    opacity: 0.9;
+    color: var(--text-muted);
   }
 
   .nomnom-section .venture-details strong {
-    color: var(--coral);
+    color: var(--text-primary);
   }
 
   .link--light {
-    color: var(--burgundy);
-    border-color: rgba(89, 54, 58, 0.3);
+    color: #FFFFFF;
+    background-color: var(--text-primary);
+    border-color: var(--text-primary);
   }
 
   .link--light:hover {
-    color: var(--coral);
-    border-color: var(--coral);
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
   }
-.floating-btn {
+
+  /* --- DARK PLATFORM VARIATION --- */
+  .authentic-asian-section {
+    background-color: var(--bg-solid-dark); 
+    border-bottom: none;
+  }
+
+  .authentic-asian-section .venture-number {
+    color: var(--accent-gold);
+  }
+
+  .authentic-asian-section .venture-title {
+    color: #FFFFFF;
+  }
+
+  .serif-italic-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    color: var(--accent-gold);
+  }
+
+  .authentic-asian-section .venture-content {
+    color: #C5C1BD;
+  }
+
+  .authentic-asian-section .venture-details strong {
+    color: #FFFFFF;
+  }
+
+  .link--dark {
+    color: var(--text-primary);
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+  }
+
+  .link--dark:hover {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: #FFFFFF;
+  }
+
+  /* Geometric Corporate Bottom Banner Element */
+  .floating-btn {
     position: fixed;
     bottom: 2.5rem;
     right: 2.5rem;
-    background-color: var(--coral, #E27A65); 
-    color: var(--white, #FFFFFF);
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.85rem;
+    background-color: var(--text-primary); 
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.8rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 2rem;
+    padding: 1.25rem 2.25rem;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     z-index: 999;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--text-primary);
+    border-radius: 0 !important;
     
-  
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    transform: translateY(15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
   }
-
 
   .floating-btn.is-visible {
     opacity: 1;
@@ -362,159 +407,97 @@ const workSchema = {
     transform: translateY(0);
   }
 
+  .floating-btn:hover {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+  }
+
   .floating-btn .arrow {
-    font-size: 1.2rem;
-    line-height: 1;
     transition: transform 0.3s ease;
   }
 
   .floating-btn:hover .arrow {
-    transform: translateX(6px);
-  }
-  
-
-  /* --- VENTURE TWO: THE AUTHENTIC ASIAN (Burgundy Section) --- */
-  .authentic-asian-section {
-    background-color: var(--burgundy); 
+    transform: translateX(4px);
   }
 
-  .authentic-asian-section .venture-number {
-    color: var(--coral);
-  }
-
-  .authentic-asian-section .venture-title {
-    color: var(--white);
-  }
-
-  .authentic-asian-section .venture-title em {
-    font-family: 'GF Didot', serif;
-    font-style: italic;
-    text-transform: none;
-    color: #DFCDC9;
-  }
-
-  .authentic-asian-section .venture-divider {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
-
-  .authentic-asian-section .venture-content {
-    color: var(--white);
-  }
-
-  .authentic-asian-section .venture-description {
-    opacity: 0.85;
-  }
-
-  .authentic-asian-section .venture-details strong {
-    color: var(--coral);
-  }
-
-  .link--dark {
-    color: var(--white);
-    border-color: rgba(255, 255, 255, 0.3);
-  }
-
-  .link--dark:hover {
-    color: var(--coral);
-    border-color: var(--coral);
-  }
-
-
-
-
-
-
-  /* --- RESPONSIVE WORKFLOWS (Breakpoint Adaptive) --- */
+  /* --- RESPONSIVE WORKFLOWS --- */
   .desktop-only {
     display: block;
   }
 
+  @media (max-width: 992px) {
+    .venture-grid {
+      gap: 4rem;
+    }
+    .main-title {
+      font-size: 3.25rem;
+    }
+  }
+
   @media (max-width: 820px) {
-    .work-hero-gradient {
-      background: linear-gradient(
-        to bottom, 
-        #59363A 0%, 
-        #59363A 22%, 
-        #8A6266 40%,
-        #BA9699 55%,
-        #DFCDC9 70%,
-        #FEF4EF 85%, 
-        #FEF4EF 100%
-      );
-      padding: calc(5rem + 70px) 1.5rem 6rem 1.5rem;
+    .work-hero-wrapper {
+      padding: calc(6rem + 70px) 1.5rem 6rem 1.5rem;
     }
 
     .desktop-only {
       display: none;
     }
 
-    .work-hero {
-      text-align: left; 
-    }
-
     .main-title {
-      font-size: 2.75rem;
+      font-size: 2.5rem;
     }
 
     .hero-intro {
-      margin: 0; 
       font-size: 1.05rem;
-      color: var(--burgundy);
     }
 
     .venture-section {
-      padding: 6rem 1.5rem;
+      padding: 7rem 1.5rem;
     }
 
     .venture-grid {
       grid-template-columns: 1fr;
-      gap: 3rem;
-      text-align: left; 
-    }
-
-    .venture-meta {
-      align-items: flex-start; 
+      gap: 3.5rem;
     }
 
     .venture-title {
       font-size: 2.25rem;
     }
-
+    
     .venture-link {
-      align-self: flex-start; 
+      display: block;
+      text-align: center;
+      align-self: stretch;
+      width: 100%;
     }
-.floating-btn {
+
+    .floating-btn {
       bottom: 1.5rem;
       right: 1.5rem;
-      padding: 0.8rem 1.5rem;
+      left: 1.5rem;
+      justify-content: center;
     }
   }
-  
 </style>
-<script>
 
+<script>
   document.addEventListener('DOMContentLoaded', () => {
-    const heroSection = document.querySelector('.work-hero-gradient');
+    const heroSection = document.querySelector('.work-hero-wrapper');
     const floatingBtn = document.getElementById('floating-apply-btn');
 
     if (heroSection && floatingBtn) {
-  
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-  
           if (entry.isIntersecting) {
             floatingBtn.classList.remove('is-visible');
           } else {
-            // If the hero has left the screen, show the button
             floatingBtn.classList.add('is-visible');
           }
         });
       }, {
-    
         threshold: 0 
       });
 
-    
       observer.observe(heroSection);
     }
   });
