@@ -64,13 +64,11 @@ const schemaData = {
               <div class="nn-image-wrap nn-nostalgia-bw">
                 <img src={busyImage.src} alt="Nom Nom Truck serving hundreds of customers">
               </div>
-             
             </div>
             <div class="nn-media-block">
               <div class="nn-image-wrap nn-nostalgia-bw">
                 <img src={GFRImage.src} alt="Nom Nom Truck at The Great Food Truck Race">
               </div>
-          
             </div>
           </div>
         </div>
@@ -103,7 +101,7 @@ const schemaData = {
 
     <section class="nn-venture-section nn-authentic-asian-section">
       <div class="nn-point-editorial-grid">
-        <div class="nn-editorial-callout" style="--accent-border: #8C7E6D;">
+        <div class="nn-editorial-callout" style="--accent-border: var(--accent-gold);">
           <span class="nn-callout-num">01</span>
           <p>Food trucks are a low-margin business, and we didn't properly plan for the stumbling-blocks that were ahead of us.</p>
         </div>
@@ -117,14 +115,8 @@ const schemaData = {
 
     <section class="nn-venture-section nn-nomnom-section">
       <div class="nn-point-editorial-grid">
-        <div class="nn-venture-content">
-           <span class="nn-caption-text">Nom Nom Truck team went for the shiny object</span>
-           <p class="nn-venture-description">
-             Building our public vending shifts was the main focus during our first two years in business. This included finding an office parking lot to operate from, and getting the permission to tweet our location out. For us, this was our shiny object: something that appeared desirable, but didn’t actually produce reliable profits. It wasn’t until the second year that we decided to focus on the “non-shiny” object instead—catering. This new strategy helped us build a much more profitable business model. Unfortunately, we were too late.
-          </p>
-        </div>
         <div class="nn-editorial-sidebar">
-          <div class="nn-editorial-callout" style="--accent-border: #8C7E6D;">
+          <div class="nn-editorial-callout" style="--accent-border: var(--accent-highlight);">
             <span class="nn-callout-num">02</span>
             <p>We went for “the shiny object.”</p>
           </div>
@@ -132,15 +124,20 @@ const schemaData = {
             <div class="nn-image-wrap nn-aspect-landscape nn-nostalgia-bw">
               <img src={night2Image.src} alt="Nom Nom Truck operational layout">
             </div>
-     
           </div>
+        </div>
+        <div class="nn-venture-content">
+           <span class="nn-caption-text">Nom Nom Truck team went for the shiny object</span>
+           <p class="nn-venture-description">
+             Building our public vending shifts was the main focus during our first two years in business. This included finding an office parking lot to operate from, and getting the permission to tweet our location out. For us, this was our shiny object: something that appeared desirable, but didn’t actually produce reliable profits. It wasn’t until the second year that we decided to focus on the “non-shiny” object instead—catering. This new strategy helped us build a much more profitable business model. Unfortunately, we were too late.
+          </p>
         </div>
       </div>
     </section>
 
     <section class="nn-venture-section nn-authentic-asian-section">
       <div class="nn-point-editorial-grid">
-        <div class="nn-editorial-callout" style="--accent-border: #8C7E6D;">
+        <div class="nn-editorial-callout" style="--accent-border: var(--accent-gold);">
           <span class="nn-callout-num">03</span>
           <p>We didn’t appoint anyone to call the shots.</p>
         </div>
@@ -162,7 +159,6 @@ const schemaData = {
             <div class="nn-image-wrap nn-nostalgia-bw">
               <img src={misaImage.src} alt="Misa Chien, founder of Nom Nom Truck">
             </div>
-        
           </div>
         </div>
         <div class="nn-venture-content">
@@ -178,7 +174,6 @@ const schemaData = {
             <div class="nn-image-wrap nn-aspect-landscape nn-nostalgia-bw">
               <img src={nightImage.src} alt="Nom Nom Truck historical archive">
             </div>
-        
           </div>
         </div>
       </div>
@@ -190,17 +185,16 @@ const schemaData = {
     </a>
 
   </article>
-</article>
 </BaseLayout>
 
 <style>
   :root {
-    
     --bg-solid-light: #FBF9F6;  
-    --text-primary: #1A1A1A;   
-    --text-muted: #55514E;      
-    --accent-gold: #8C7E6D;     
-    
+    --text-primary: #26191B;     
+    --text-muted: #594A4C;       
+    --accent-gold: #8C7E6D;       
+    --accent-highlight: #E7765D;  
+    --border-color: #EAE5E0;
 
     --font-serif: 'Libre Baskerville', Georgia, serif;
     --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -212,7 +206,6 @@ const schemaData = {
     box-sizing: border-box;
     background-color: var(--bg-solid-light);
   }
-
 
   .nn-hero-wrapper {
     position: relative;
@@ -235,7 +228,7 @@ const schemaData = {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.8rem;
-    color: var(--accent-gold);
+    color: var(--accent-highlight); /* Linked up to highlight color rules */
     display: block;
     margin-bottom: 1.5rem;
   }
@@ -273,7 +266,6 @@ const schemaData = {
     text-align: center;
   }
 
-  /* Clean Professional Photo Galleries */
   .nn-editorial-gallery {
     display: flex;
     flex-direction: column;
@@ -308,7 +300,6 @@ const schemaData = {
     aspect-ratio: 16 / 10;
   }
 
-
   .nn-nostalgia-bw img {
     filter: grayscale(100%);
     transition: filter 0.5s ease;
@@ -324,9 +315,6 @@ const schemaData = {
     object-fit: cover;
     display: block;
   }
-
-
-
 
   .nn-venture-section {
     width: 100%;
@@ -364,7 +352,6 @@ const schemaData = {
     width: 100%;
   }
 
-
   .nn-editorial-callout {
     position: relative;
     padding: 3rem 2.5rem;
@@ -386,7 +373,7 @@ const schemaData = {
     font-size: 0.85rem;
     letter-spacing: 2px;
     margin-bottom: 1rem;
-    color: var(--accent-gold);
+    color: var(--accent-highlight);
   }
 
   .nn-editorial-callout p {
@@ -433,7 +420,6 @@ const schemaData = {
     flex-direction: column;
     gap: 2rem;
   }
-
 
   .nn-venture-description {
     font-family: var(--font-sans);
@@ -485,7 +471,7 @@ const schemaData = {
     font-family: var(--font-sans);
     font-weight: 500;
     font-size: 0.85rem;
-    color: var(--accent-gold);
+    color: var(--accent-highlight);
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
@@ -495,7 +481,6 @@ const schemaData = {
   .nn-light-caption {
     color: var(--text-muted);
   }
-
 
   .nn-floating-btn {
     position: fixed;
