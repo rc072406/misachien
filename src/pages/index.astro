@@ -73,6 +73,23 @@ const homeSchema = {
     </section>
 
     <Ticker />
+<section class="testimonial-section">
+      <div class="testimonial-container">
+        <div class="testimonial-decor-quote">“</div>
+        
+        <blockquote class="testimonial-quote">
+          <p>I was at a turning point—ready to scale my business but held back by fear of leaving my old identity behind. I'd done therapy and personal development courses, but I knew I needed someone who'd actually walked that path themselves. That's why I chose Misa.</p>
+          <p>What makes Misa's coaching different is her anchoring energy combined with her lived experience. Her professional background adds depth beyond typical NLP work—she provides practical steps that you can implement right away to create real change, while the subconscious work happens in the background.</p>
+          <p>In just two sessions, something shifted. I made connections between what I wanted and what was blocking me, and realized they weren't as separate as I thought. It's like my body suddenly had room for bigger possibilities, ones I would've ignored or reached much slower.</p>
+          <p>I'm excited to keep working with her and see how much bigger my container can become.</p>
+        </blockquote>
+        
+        <div class="testimonial-attribution">
+          <span class="attribution-name">Emily Liu</span>
+          <span class="attribution-title">Founder of Iris of the Moon</span>
+        </div>
+      </div>
+    </section>
 
     <section class="pillars-section" id="section-three">
       <div class="pillars-container"> 
@@ -119,13 +136,13 @@ const homeSchema = {
     </section>
   </main>
 </BaseLayout>
-
 <style>
  :root {
   --bg-solid-light: #FBF9F6;  
   --bg-card-solid: #FFFFFF;
   --text-primary: #59363B;  
   --text-muted: #6B4E52;     
+  --accent-gold: #8C7E6D; /* Bronze Taupe alignment */
   --accent-highlight: #E7765D; 
   
   --font-serif: 'Libre Baskerville', serif;
@@ -323,6 +340,73 @@ const homeSchema = {
     border-color: var(--accent-gold);
   }
 
+
+  .testimonial-section {
+    width: 100%;
+    background-color: var(--bg-solid-light);
+    padding: 10rem 2rem;
+    box-sizing: border-box;
+    border-top: 1px solid #EAE5E0;
+    border-bottom: 1px solid #EAE5E0;
+  }
+
+  .testimonial-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+  }
+
+  .testimonial-decor-quote {
+    font-family: var(--font-serif);
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--accent-gold);
+    opacity: 0.25;
+    margin-bottom: -1.5rem;
+    user-select: none;
+  }
+
+  .testimonial-quote {
+    margin: 0 0 3rem 0;
+    padding: 0;
+  }
+
+  .testimonial-quote p {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin: 0 0 1.75rem 0;
+    font-weight: 400;
+  }
+
+  .testimonial-quote p:last-child {
+    margin-bottom: 0;
+  }
+
+  .testimonial-attribution {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .attribution-name {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .attribution-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--accent-gold);
+  }
+
   .clarity-call-banner-system {
     position: relative;
     width: 100%;
@@ -333,7 +417,6 @@ const homeSchema = {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .clarity-content {
@@ -374,7 +457,7 @@ const homeSchema = {
   .light-highlight {
     color: #FFFFFF;
     font-weight: 700;
-    border-bottom: 1px dashed var(--accent-gold);
+    border-bottom: 1px dashed var(--accent-highlight);
   }
 
   .cta-link-text {
@@ -408,6 +491,13 @@ const homeSchema = {
     }
     .pillars-section {
       padding: 5rem 1rem;
+    }
+    .testimonial-section {
+      padding: 6rem 1.5rem;
+    }
+    .testimonial-quote p {
+      font-size: 1.15rem;
+      line-height: 1.7;
     }
     .section-lead {
       margin-bottom: 3.5rem;
