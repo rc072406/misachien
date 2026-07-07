@@ -63,7 +63,6 @@ img {
 }
 
 .main-content-wrapper {
-  padding-top: 5.5rem;
   min-height: calc(100vh - 5.5rem);
   box-sizing: border-box;
 }
