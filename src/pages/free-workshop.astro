@@ -106,10 +106,10 @@ const workshopSchema = {
 <style>
   :root {
     --bg-solid-light: #FBF9F6;  
-    --text-primary: #59363B;      /* Elegant dark plum brand primary */
-    --text-muted: #6B4E52;        /* Cohesive plum-grey variant */
-    --accent-gold: #8C7E6D;       /* Signature bronze / taupe */
-    --accent-highlight: #E7765D;  /* Terracotta high-contrast highlight */
+    --text-primary: #59363B;      
+    --text-muted: #6B4E52;        
+    --accent-gold: #8C7E6D;       
+    --accent-highlight: #E7765D;  
     --border-color: #EAE5E0;
     
     --font-serif: 'Libre Baskerville', Georgia, serif;
@@ -155,7 +155,7 @@ const workshopSchema = {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.8rem;
-    color: var(--accent-highlight); /* Updated to match energetic brand contrast rules */
+    color: var(--accent-highlight); 
     display: block;
     margin-bottom: 1.5rem;
   }
@@ -280,7 +280,8 @@ const workshopSchema = {
   .hidden-content {
     width: 100%;
     max-width: 1000px;
-    margin-top: 2rem;
+    /* ADDED AUTO MARGINS TO CENTER THIS SECTION */
+    margin: 2rem auto 0 auto; 
   }
 
   .video-container {
@@ -319,7 +320,7 @@ const workshopSchema = {
     font-weight: 500;
     font-size: 0.75rem;
     letter-spacing: 3px;
-    color: var(--accent-highlight); /* Highlight alignment for user conversions */
+    color: var(--accent-highlight); 
     margin-bottom: 1rem;
     text-transform: uppercase;
   }
@@ -472,7 +473,7 @@ const workshopSchema = {
 
       setTimeout(() => {
         const reveals = videoSection.querySelectorAll('.reveal-on-scroll');
-        reals.forEach(el => {
+        reveals.forEach(el => {
           el.classList.add('is-visible');
         });
       }, 50);
