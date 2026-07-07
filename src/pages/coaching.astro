@@ -151,13 +151,13 @@ So why doesn't it feel that way?</p>
 </BaseLayout>
 
 <style>
-
   :root {
     --bg-solid-light: #FBF9F6;  
-    --bg-solid-dark: #1A1A1A;  
-    --text-primary: #1A1A1A;   
-    --text-muted: #55514E;      
-    --accent-gold: #8C7E6D;     
+    --bg-solid-dark: #1E1415;  
+    --text-primary: #59363B;   
+    --text-muted: #6B4E52;    
+    --accent-gold: #8C7E6D;    
+    --accent-highlight: #E7765D; 
     
     --font-serif: 'Libre Baskerville', serif;
     --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
@@ -194,7 +194,7 @@ So why doesn't it feel that way?</p>
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.8rem;
-    color: var(--accent-gold);
+    color: var(--accent-highlight);
     display: block;
     margin-bottom: 1.5rem;
   }
@@ -214,7 +214,7 @@ So why doesn't it feel that way?</p>
     font-family: var(--font-serif);
     font-style: italic;
     text-transform: none; 
-    color: var(--accent-gold);
+    color: var(--accent-gold); 
     letter-spacing: 0;
   }
 
@@ -228,9 +228,7 @@ So why doesn't it feel that way?</p>
     margin: 0;
   }
 
-  /* ==========================================================
-     METHODOLOGY FRAMEWORK
-     ========================================================== */
+
   .methodology-section {
     width: 100%;
     background-color: var(--bg-solid-light); 
@@ -254,7 +252,7 @@ So why doesn't it feel that way?</p>
     font-weight: 500;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--accent-gold);
+    color: var(--accent-highlight);
     display: block;
     margin-bottom: 1rem;
   }
@@ -283,9 +281,7 @@ So why doesn't it feel that way?</p>
     margin: 0;
   }
 
-  /* ==========================================================
-     TRACKS FRAMEWORK GRID
-     ========================================================== */
+
   .tracks-section {
     width: 100%;
     background-color: var(--bg-solid-dark);
@@ -310,7 +306,7 @@ So why doesn't it feel that way?</p>
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.8rem;
-    color: var(--accent-gold);
+    color: var(--accent-highlight);
     display: block;
     margin-bottom: 1rem;
   }
@@ -387,7 +383,7 @@ So why doesn't it feel that way?</p>
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 1.1rem;
-    color: #EAE5E0;
+    color: var(--accent-gold); 
     line-height: 1.5;
     margin: 0 0 1.5rem 0;
   }
@@ -404,7 +400,7 @@ So why doesn't it feel that way?</p>
     font-size: 1rem;
     line-height: 1.7;
     font-weight: 500;
-    color: #CCCCCC;
+    color: #E2D9DA;
     margin: 0 0 2rem 0;
   }
 
@@ -413,7 +409,7 @@ So why doesn't it feel that way?</p>
     font-size: 0.95rem;
     line-height: 1.6;
     font-weight: 500;
-    color: #BBBBBB;
+    color: #C5C1BD;
     padding-left: 0;
     margin: 0 0 3rem 0;
     list-style: none;
@@ -452,7 +448,6 @@ So why doesn't it feel that way?</p>
     border-color: #FFFFFF;
   }
 
-
   .coaching-cta {
     margin-top: 6rem;
     text-align: center;
@@ -480,14 +475,15 @@ So why doesn't it feel that way?</p>
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    background-color: var(--accent-gold);
-    color: #FFFFFF;
+    background-color: #FFFFFF; 
+    color: var(--bg-solid-dark);
     padding: 1.1rem 2.5rem;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease;
   }
 
   .btn-filled:hover {
-    opacity: 0.9;
+    background-color: var(--accent-highlight);
+    color: #FFFFFF;
   }
 
   .desktop-only {
@@ -551,6 +547,13 @@ So why doesn't it feel that way?</p>
 
     .cta-text {
       font-size: 1.3rem;
+    }
+    
+    .track-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
     }
   }
 </style>
