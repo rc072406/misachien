@@ -1,16 +1,22 @@
 :root {
-  --bg-color-solid: #FDFDFD; 
-  --text-main: #222222; 
-  --accent-color: #8A7B6E; 
+  --bg-color-solid: #D9BFB4;   
+  --text-main: #59363B;       
+  --text-muted: #6B4E52;       
+  --accent-color: #E7765D;     
   
   --font-heading: 'Libre Baskerville', serif; 
   --font-body: 'Helvetica Neue', 'Inter', sans-serif; 
   --font-accent: 'Libre Baskerville', serif; 
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
   background-color: var(--bg-color-solid);
   color: var(--text-main);
   font-family: var(--font-body);
@@ -23,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 400; 
   margin-bottom: 1rem;
-  color: #111111;
+  color: var(--text-main); 
 }
 
 .font-cursive {
@@ -31,12 +37,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.3em;
   color: var(--accent-color);
   font-weight: normal;
-}
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
 }
 
 .btn, button {
@@ -75,7 +75,7 @@ img {
 
 .footer {
   background-color: #FFFFFF;
-  border-top: 1px solid #EAE5E0;
+  border-top: 1px solid rgba(89, 54, 59, 0.15);
   padding: 5rem 4rem 3rem 4rem;
   box-sizing: border-box;
 }
@@ -88,7 +88,7 @@ img {
   align-items: flex-start;
   gap: 4rem;
   padding-bottom: 4rem;
-  border-bottom: 1px solid #EAE5E0;
+  border-bottom: 1px solid rgba(89, 54, 59, 0.15);
 }
 
 .footer-brand {
@@ -101,20 +101,20 @@ img {
   font-weight: 700;
   letter-spacing: -0.5px;
   margin: 0 0 1rem 0;
-  color: #1A1A1A;
+  color: var(--text-main);
 }
 
 .logo em {
   font-style: italic;
   font-weight: 400;
-  color: #8C7E6D;
+  color: var(--accent-color);
 }
 
 .footer-brand p {
   font-family: var(--font-body);
   font-size: 0.95rem;
   line-height: 1.7;
-  color: #55514E;
+  color: var(--text-muted);
   margin: 0;
 }
 
@@ -124,7 +124,7 @@ img {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #8C7E6D;
+  color: var(--accent-color);
   margin: 0 0 1.5rem 0;
 }
 
@@ -140,13 +140,13 @@ img {
 .footer-group a {
   font-family: var(--font-body);
   font-size: 0.9rem;
-  color: #55514E;
+  color: var(--text-muted);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .footer-group a:hover {
-  color: #1A1A1A;
+  color: var(--text-main);
 }
 
 .footer-bottom {
@@ -160,7 +160,7 @@ img {
 .copyright {
   font-family: var(--font-body);
   font-size: 0.8rem;
-  color: #8C7E6D;
+  color: var(--accent-color);
   margin: 0;
 }
 
