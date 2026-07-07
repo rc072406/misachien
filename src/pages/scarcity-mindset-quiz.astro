@@ -1,26 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TypeWriter3 from '../components/TypeWriter3.astro';
+
 
 const pageTitle = "Scarcity Mindset Quiz: Subconscious Assessment | Misa Chien";
 const pageDescription = "Take the 10-question Scarcity Mindset Quiz by Misa Chien. Discover your subconscious blocks, identify survival loops, and assess your alignment with authentic leadership.";
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 
-
 const quizSchema = {
   "@context": "https://schema.org",
-  "@type": "Quiz",
+  "@": "Quiz",
   "name": "Scarcity Mindset Quiz",
   "description": pageDescription,
   "url": canonicalURL,
   "educationalAlignment": {
-    "@type": "AlignmentObject",
+    "@": "AlignmentObject",
     "educationalFramework": "Mindset Coaching & Subconscious Reprogramming",
     "targetName": "Self-Awareness & Leadership Growth"
   },
   "author": {
-    "@type": "Person",
+    "@": "Person",
     "name": "Misa Chien",
     "url": "https://misachien.com"
   },
@@ -29,49 +28,61 @@ const quizSchema = {
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <script type="application/ld+json" set:html={JSON.stringify(quizSchema)} />
+  <script ="application/ld+json" set:html={JSON.stringify(quizSchema)} />
+  
   <main class="quiz-page-container">
     
-    <section id="quiz-intro-section" class="quiz-view-section active" data-theme="start">
-  <div id="quiz-intro" class="quiz-screen active">
-    <div class="intro-grid reveal-on-scroll">
-      
-      <div class="intro-content-left">
-        <span class="subtitle">DISCOVER YOUR PATTERNS</span>
-        <h1 class="intro-title">
-          Mindset <br />
-          <span class="serif-italic">Assessment</span>
-        </h1>
-        <h2 class="intro-subtitle-serif">Do you have a scarcity mindset?</h2>
-        
-        <p class="intro-description">
-          Answer honestly. No one's grading you — <br class="desktop-only" />
-          except your own nervous system.
-        </p>
+    <section id="quiz-intro-section" class="quiz-view-section active">
+      <div id="quiz-intro" class="quiz-screen active">
+        <div class="intro-grid">
+          
+          <div class="intro-content-left">
+            <span class="subtitle">Discover Your Patterns</span>
+            <h1 class="intro-title">
+              Mindset <br />
+              <span class="serif-italic">Assessment</span>
+            </h1>
+            <h2 class="intro-subtitle-serif">Do you have a scarcity mindset?</h2>
+            
+            <p class="intro-description">
+              Answer honestly. No one's grading you — <br class="desktop-only" />
+              except your own nervous system.
+            </p>
 
-        <div class="typewriter-box">
-          <span class="typewriter-label">Current Assessment:</span>
-          <span id="quiz-typewriter" class="typewriter-text"></span>
-         
-        </div>
-      </div>
-
-      <div class="intro-content-right">
-        <div class="start-card">
-          <div class="card-content">
-             <p class="card-hint">Ready to begin your journey toward authentic leadership?</p>
-             <button id="start-quiz-btn" class="quiz-action-btn-large">
-               <span>Start The Assessment</span>
-             </button>
+            <div class="quiz-meta-ribbon">
+              <div class="ribbon-item">
+                <span class="ribbon-num">10</span>
+                <span class="ribbon-txt">Questions</span>
+              </div>
+              <div class="ribbon-divider"></div>
+              <div class="ribbon-item">
+                <span class="ribbon-num">00</span>
+                <span class="ribbon-txt">Need to count</span>
+              </div>
+              <div class="ribbon-divider"></div>
+              <div class="ribbon-item">
+                <span class="ribbon-num">✨</span>
+                <span class="ribbon-txt">Score at end</span>
+              </div>
+            </div>
           </div>
+
+          <div class="intro-content-right">
+            <div class="start-card">
+              <div class="card-content">
+                 <p class="card-hint">Ready to begin your journey toward authentic leadership?</p>
+                 <button id="start-quiz-btn" class="quiz-action-btn-large">
+                   <span>Start The Assessment</span>
+                 </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
+    </section>
 
-    </div>
-  </div>
-</section>
-
-    <section id="quiz-gameplay-section" class="quiz-view-section" data-theme="light">
+    <section id="quiz-gameplay-section" class="quiz-view-section">
       <div id="quiz-gameplay" class="quiz-screen">
         <div class="quiz-top-bar">
           <span id="question-counter" class="counter-text">QUESTION 1 OF 10</span>
@@ -82,15 +93,15 @@ const quizSchema = {
           <div id="question-text-box" class="question-prompt-box"></div>
 
           <div class="options-wrapper">
-            <button class="option-row type-a" data-choice="A">
+            <button class="option-row -a" data-choice="A">
               <span class="option-badge">A</span>
               <p class="option-text"></p>
             </button>
-            <button class="option-row type-b" data-choice="B">
+            <button class="option-row -b" data-choice="B">
               <span class="option-badge">B</span>
               <p class="option-text"></p>
             </button>
-            <button class="option-row type-c" data-choice="C">
+            <button class="option-row -c" data-choice="C">
               <span class="option-badge">C</span>
               <p class="option-text"></p>
             </button>
@@ -110,7 +121,7 @@ const quizSchema = {
       </div>
     </section>
 
-    <section id="quiz-results-section" class="quiz-view-section" data-theme="dark">
+    <section id="quiz-results-section" class="quiz-view-section">
       <div id="quiz-results" class="quiz-screen">
         <div class="results-inner-container">
           <h2 class="results-title">HOW DID YOU SCORE?</h2>
@@ -183,27 +194,28 @@ const quizSchema = {
             </div>
           </div>
 
-        <div class="funnel-coaching-cta">
-  <div class="funnel-visual-accent"></div>
-  
-  <div class="funnel-content-left">
-    <span class="funnel-pre-title">THE NEXT SHIFT</span>
-    <p class="funnel-accent-text">Ready to Work With Misa?</p>
-  </div>
-  
-  <div class="funnel-actions-right">
-    <p class="funnel-supporting-text">
-      Awareness is only step one. Break through the invisible ceiling holding your happiness, pricing, team scaling, and operational boundaries back.
-    </p>
-    <a href="https://ut9kw2xefxf.typeform.com/to/JgPoLbVE" target="_blank" class="btn-filled funnel-cta-button">
-      <span>Apply For Growth Alignment →</span>
-    </a>
-  </div>
-</div>
+          <div class="funnel-coaching-cta">
+            <div class="funnel-visual-accent"></div>
+            <div class="funnel-content-left">
+              <span class="funnel-pre-title">THE NEXT SHIFT</span>
+              <p class="funnel-accent-text">Ready to Work With Misa?</p>
+            </div>
+            <div class="funnel-actions-right">
+              <p class="funnel-supporting-text">
+                Awareness is only step one. Break through the invisible ceiling holding your happiness, pricing, team scaling, and operational boundaries back.
+              </p>
+              <a href="https://ut9kw2xefxf.form.com/to/JgPoLbVE" target="_blank" class="btn-filled funnel-cta-button">
+                <span>Apply For Growth Alignment →</span>
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
     </section>
 
   </main>
-  <TypeWriter3 />
+
 </BaseLayout>
 
 <script>
@@ -432,45 +444,6 @@ const quizSchema = {
       }
     });
   }
-
-const phrases = ["10 questions.", "No need to count.", "Score at the end."];
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  const typingSpeed = 100;
-  const deletingSpeed = 50;
-  const pauseTime = 2000;
-
-  function type() {
-    const currentPhrase = phrases[phraseIndex];
-    const displayTarget = document.getElementById("quiz-typewriter");
-    
-    if (isDeleting) {
-      displayTarget.textContent = currentPhrase.substring(charIndex, 0);
-      charIndex--;
-    } else {
-      displayTarget.textContent = currentPhrase.substring(0, charIndex);
-      charIndex++;
-    }
-
-    if (!isDeleting && charIndex > currentPhrase.length) {
-      isDeleting = true;
-      setTimeout(type, pauseTime);
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      phraseIndex = (phraseIndex + 1) % phrases.length;
-      setTimeout(type, 500);
-    } else {
-      setTimeout(type, isDeleting ? deletingSpeed : typingSpeed);
-    }
-  }
-
- 
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById("quiz-typewriter")) {
-      type();
-    }
-  });
 </script>
 
 <style>
@@ -478,9 +451,9 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
   :root {
     --bg-canvas: #FBF9F6;      
     --text-main: #1A1A1A;      
-    --text-muted: #5E5A56;     
+    --text-muted: #5E5A56;      
     --luxury-gold: #8C7E6D;    
-    --ui-border: #EAE5E0;      
+    --ui-border: #EAE5E0;       
     
     --font-serif: 'Libre Baskerville', serif;
     --font-sans: 'Inter', 'Helvetica Neue', sans-serif;
@@ -496,7 +469,7 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     overflow-x: hidden;
   }
 
-
+  /* Structural Controller Hidden/Active States */
   .quiz-view-section {
     display: none;
     width: 100%;
@@ -505,6 +478,9 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     display: block;
   }
 
+  /* ==========================================================
+     INTRO VIEW MODULE
+     ========================================================== */
   .quiz-screen {
     max-width: 1200px;
     margin: 0 auto;
@@ -601,7 +577,7 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     background-color: var(--ui-border);
   }
 
-
+  /* Intro Card Left Panel */
   .start-card {
     border: 1px solid var(--ui-border);
     background: #FFFFFF;
@@ -637,7 +613,9 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     opacity: 0.9;
   }
 
-
+  /* ==========================================================
+     GAMEPLAY MODULE STYLING
+     ========================================================== */
   #quiz-gameplay-section .quiz-screen {
     max-width: 800px;
     padding-top: 8rem;
@@ -730,7 +708,7 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     color: var(--text-main);
   }
 
-
+  /* Interaction States */
   .option-row.selected {
     background-color: var(--text-main);
     border-color: var(--text-main);
@@ -748,7 +726,7 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     cursor: default;
   }
 
-
+  /* Dynamic Scarcity Signaling Box */
   .scarcity-signal-panel {
     display: none;
     margin-top: 2.5rem;
@@ -809,7 +787,9 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     display: none !important;
   }
 
-
+  /* ==========================================================
+     RESULTS MODULE & METRICS STACK
+     ========================================================== */
   #quiz-results-section .quiz-screen {
     max-width: 900px;
     padding-top: 8rem;
@@ -878,7 +858,7 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     margin: 0;
   }
 
-
+  /* JavaScript Scoring Highlights UI mapping */
   .tier-card.highlighted {
     border-color: var(--text-main);
     background-color: #FFFFFF;
@@ -899,7 +879,9 @@ const phrases = ["10 questions.", "No need to count.", "Score at the end."];
     margin-bottom: 5rem;
   }
 
-
+  /* ==========================================================
+     TRANSFORMATION GRID MATRIX
+     ========================================================== */
   .transformation-matrix {
     border: 1px solid var(--ui-border);
     background-color: #FFFFFF;
