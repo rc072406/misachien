@@ -447,13 +447,13 @@ const quizSchema = {
 </script>
 
 <style>
-
   :root {
     --bg-canvas: #FBF9F6;      
-    --text-main: #1A1A1A;      
-    --text-muted: #5E5A56;      
+    --text-main: #59363B;        
+    --text-muted: #6B4E52;       
     --luxury-gold: #8C7E6D;    
-    --ui-border: #EAE5E0;       
+    --accent-highlight: #E7765D; 
+    --ui-border: #EAE5E0;        
     
     --font-serif: 'Libre Baskerville', serif;
     --font-sans: 'Inter', 'Helvetica Neue', sans-serif;
@@ -469,7 +469,7 @@ const quizSchema = {
     overflow-x: hidden;
   }
 
-  /* Structural Controller Hidden/Active States */
+  
   .quiz-view-section {
     display: none;
     width: 100%;
@@ -501,7 +501,7 @@ const quizSchema = {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.8rem;
-    color: var(--luxury-gold);
+    color: var(--accent-highlight); 
     display: block;
     margin-bottom: 1.5rem;
   }
@@ -514,13 +514,14 @@ const quizSchema = {
     text-transform: uppercase;
     margin: 0 0 1.5rem 0;
     letter-spacing: -1px;
+    color: var(--text-main);
   }
 
   .serif-italic {
     font-family: var(--font-serif);
     font-style: italic;
     text-transform: none;
-    color: var(--luxury-gold);
+    color: var(--luxury-gold); 
     letter-spacing: 0;
   }
 
@@ -539,7 +540,6 @@ const quizSchema = {
     color: var(--text-muted);
     margin: 0 0 3.5rem 0;
   }
-
 
   .quiz-meta-ribbon {
     display: flex;
@@ -577,7 +577,7 @@ const quizSchema = {
     background-color: var(--ui-border);
   }
 
-  /* Intro Card Left Panel */
+
   .start-card {
     border: 1px solid var(--ui-border);
     background: #FFFFFF;
@@ -601,7 +601,7 @@ const quizSchema = {
     letter-spacing: 2px;
     text-transform: uppercase;
     border: none;
-    background-color: var(--text-main);
+    background-color: var(--text-main); 
     color: #FFFFFF;
     padding: 1.25rem 2rem;
     cursor: pointer;
@@ -708,7 +708,7 @@ const quizSchema = {
     color: var(--text-main);
   }
 
-  /* Interaction States */
+
   .option-row.selected {
     background-color: var(--text-main);
     border-color: var(--text-main);
@@ -726,7 +726,7 @@ const quizSchema = {
     cursor: default;
   }
 
-  /* Dynamic Scarcity Signaling Box */
+ 
   .scarcity-signal-panel {
     display: none;
     margin-top: 2.5rem;
@@ -744,7 +744,7 @@ const quizSchema = {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--luxury-gold);
+    color: var(--accent-highlight);
     display: block;
     margin-bottom: 0.4rem;
   }
@@ -787,9 +787,7 @@ const quizSchema = {
     display: none !important;
   }
 
-  /* ==========================================================
-     RESULTS MODULE & METRICS STACK
-     ========================================================== */
+
   #quiz-results-section .quiz-screen {
     max-width: 900px;
     padding-top: 8rem;
@@ -801,6 +799,7 @@ const quizSchema = {
     font-weight: 400;
     letter-spacing: 1px;
     text-align: center;
+    color: var(--text-main);
     margin: 0 0 0.5rem 0;
   }
 
@@ -848,6 +847,7 @@ const quizSchema = {
     font-size: 1.25rem;
     font-weight: 400;
     margin: 0 0 0.4rem 0;
+    color: var(--text-main);
   }
 
   .tier-details p {
@@ -858,11 +858,11 @@ const quizSchema = {
     margin: 0;
   }
 
-  /* JavaScript Scoring Highlights UI mapping */
+  
   .tier-card.highlighted {
     border-color: var(--text-main);
     background-color: #FFFFFF;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    box-shadow: 0 10px 40px rgba(89, 54, 59, 0.04); 
     border-left: 4px solid var(--text-main);
   }
 
@@ -962,7 +962,7 @@ const quizSchema = {
     font-weight: 600;
     font-size: 0.8rem;
     letter-spacing: 2px;
-    color: var(--luxury-gold);
+    color: var(--accent-highlight); /* Highlight accent alignment */
     display: block;
     margin-bottom: 0.75rem;
   }
