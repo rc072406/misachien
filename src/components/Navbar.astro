@@ -76,7 +76,7 @@
     z-index: 100;
     box-sizing: border-box;
     background-color: #FFFFFF;
-    border-bottom: 1px solid #EAE5E0;
+    border-bottom: 1px solid rgba(89, 54, 59, 0.15); /* Balanced overlay matching footer */
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
   }
 
@@ -90,13 +90,13 @@
     font-weight: 700;
     letter-spacing: -0.5px;
     text-decoration: none;
-    color: #1A1A1A;
+    color: var(--text-main);
   }
 
   .logo em {
     font-style: italic;
     font-weight: 400;
-    color: #8C7E6D;
+    color: var(--accent-color);
   }
 
   .nav-links {
@@ -113,12 +113,12 @@
     font-weight: 500;
     text-decoration: none;
     display: inline-block;
-    color: #55514E;
+    color: var(--text-muted);
     transition: color 0.3s ease;
   }
 
   .nav-item:hover {
-    color: #1A1A1A;
+    color: var(--text-main);
   }
 
   .nav-text {
@@ -134,16 +134,16 @@
     letter-spacing: 2px;
     font-weight: 600;
     display: inline-block;
-    background-color: #1A1A1A;
+    background-color: var(--text-main);
     color: #FFFFFF;
-    border: 1px solid #1A1A1A;
+    border: 1px solid var(--text-main);
     text-decoration: none;
     transition: all 0.3s ease;
   }
 
   .nav-button:hover {
-    background-color: #8C7E6D;
-    border-color: #8C7E6D;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
     color: #FFFFFF;
   }
 
@@ -180,7 +180,7 @@
       display: block;
       width: 24px;
       height: 2px;
-      background-color: #1A1A1A;
+      background-color: var(--text-main);
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
@@ -220,7 +220,7 @@
 
     .nav-item {
       font-size: 1.25rem;
-      color: #1A1A1A;
+      color: var(--text-main);
     }
 
     .nav-button--desktop {
