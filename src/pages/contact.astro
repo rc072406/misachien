@@ -117,7 +117,6 @@ const contactSchema = {
       </div>
     </section>
 
-
   </main>
 </BaseLayout>
 
@@ -125,9 +124,10 @@ const contactSchema = {
 
   :root {
     --bg-solid-light: #FBF9F6;  
-    --text-primary: #1A1A1A;   
-    --text-muted: #55514E;      
-    --accent-gold: #8C7E6D;     
+    --text-primary: #59363B;    
+    --text-muted: #6B4E52;        
+    --accent-gold: #8C7E6D;      
+    --accent-highlight: #E7765D;  
     
     --font-serif: 'Libre Baskerville', serif;
     --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
@@ -166,7 +166,7 @@ const contactSchema = {
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 0.8rem;
-    color: var(--accent-gold);
+    color: var(--accent-highlight); 
     display: block;
     margin-bottom: 1.5rem;
   }
@@ -190,9 +190,7 @@ const contactSchema = {
     letter-spacing: 0;
   }
 
-  /* ==========================================================
-     TWO-COLUMN CONTENT FRAMEWORK
-     ========================================================== */
+
   .contact-content-grid {
     position: relative;
     max-width: 1200px;
@@ -220,13 +218,11 @@ const contactSchema = {
     height: auto;
     object-fit: cover; 
     border: 1px solid #EAE5E0;
-    border-radius: 0 !important; /* Forces strict square layout rules */
+    border-radius: 0 !important; 
     display: block;
   }
 
-  /* ==========================================================
-     RIGHT VIEWPORT INTERFACE
-     ========================================================== */
+
   .content-right {
     color: var(--text-primary); 
     display: flex;
@@ -269,7 +265,7 @@ const contactSchema = {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--accent-gold);
+    color: var(--accent-highlight); 
     display: block;
     margin-bottom: 0.4rem;
   }
@@ -284,7 +280,7 @@ const contactSchema = {
   }
 
   .card-line {
-    display: none; /* Removed physical baseline divider decoration */
+    display: none; 
   }
 
   /* ==========================================================
