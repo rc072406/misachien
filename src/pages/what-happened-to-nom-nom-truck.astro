@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import TypeWriter3 from '../components/TypeWriter3.astro';
 
 const pageTitle = "What Happened to Nom Nom Truck? | Misa Chien";
 const pageDescription = "Discover the 3 ways Nom Nom Truck failed as a business. Misa Chien shares the raw truth behind the hype, low food truck margins, and partnership lessons.";
@@ -11,10 +10,8 @@ import busyImage from '../../public/images/nomnombusy.webp';
 import nightImage from '../../public/images/nomnomatnight.webp';
 import night2Image from '../../public/images/nomnomatnight2.webp';
 
-
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 const shareImageURL = new URL(night2Image.src, Astro.site ?? Astro.url).href;
-
 
 const schemaData = {
   "@context": "https://schema.org",
@@ -43,142 +40,146 @@ const schemaData = {
 
 <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
-  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <article class="nn-page-container">
 
-    
-    <div class="nn-hero-gradient" data-theme="start">
-      <section class="nn-hero is-visible">
-        <span class="subtitle reveal-on-scroll">The Truth Behind The Hype</span>
-        <h1 class="main-title reveal-on-scroll">What Happened to <br class="desktop-only" /> <span class="serif-italic">Nom Nom Truck?</span></h1>
-        <h2 class="hero-h2 reveal-on-scroll">3 Ways Nom Nom Truck Failed as a Business</h2>
+    <div class="nn-hero-wrapper">
+      <section class="nn-hero">
+        <span class="subtitle">The Truth Behind The Hype</span>
+        <h1 class="main-title">What Happened to <br class="desktop-only" /> <span class="serif-italic">Nom Nom Truck?</span></h1>
+        <h2 class="hero-h2">3 Ways Nom Nom Truck Failed as a Business</h2>
       </section>
     </div>
 
-    <section class="nn-venture-section nn-nomnom-section" data-theme="light">
+    <section class="nn-venture-section nn-nomnom-section">
       <div class="nn-venture-grid">
         <div class="nn-venture-meta">
-          <span class="nn-venture-number reveal-on-scroll">Behind The Scenes</span>
-          <h3 class="nn-venture-title reveal-on-scroll">Struggling in the Spotlight</h3>
-          <div class="nn-venture-divider reveal-on-scroll"></div>
+          <span class="nn-venture-number">Behind The Scenes</span>
+          <h3 class="nn-venture-title">Struggling in the Spotlight</h3>
+          <div class="nn-venture-divider"></div>
           
-          <div class="nn-polaroid-gallery">
-            <div class="nn-polaroid nn-rotate-left reveal-on-scroll">
-              <div class="nn-polaroid-img">  <img src={busyImage.src}  alt="Nom Nom Truck serving hundreds of customers"></div>
-              <div class="nn-polaroid-caption">100+ people lines</div>
+          <div class="nn-editorial-gallery">
+            <div class="nn-media-block">
+              <div class="nn-image-wrap nn-nostalgia-bw">
+                <img src={busyImage.src} alt="Nom Nom Truck serving hundreds of customers">
+              </div>
+             
             </div>
-            <div class="nn-polaroid nn-rotate-right reveal-on-scroll">
-              <div class="nn-polaroid-img"><img src={GFRImage.src}  alt="Nom Nom Truck at The Great Food Truck Race"></div>
-              <div class="nn-polaroid-caption">Great Foodtruck Race!</div>
+            <div class="nn-media-block">
+              <div class="nn-image-wrap nn-nostalgia-bw">
+                <img src={GFRImage.src} alt="Nom Nom Truck at The Great Food Truck Race">
+              </div>
+          
             </div>
-
           </div>
         </div>
+
         <div class="nn-venture-content">
-          <p class="nn-venture-description reveal-on-scroll">
+          <p class="nn-venture-description">
             While we were running Nom Nom Truck, it looked like we were crushing it from the outside. We found ourselves featured in Forbes Magazine, NY Times, and we even made Inc.’s 30 under 30 list in 2011. Out of all the major publications you can think of, we were featured in quite a few of them at some point in time. We were even runners-up on the Food Network’s “The Great Food Truck Race,” showing the high nationwide demand for fast-casual Vietnamese food. To top it all off, our lines were sometimes even filled with 100+ people, selling out during multiple shifts in a row. Behind the press and hype, however, we had a struggling business.
           </p>
-          <p class="nn-venture-description reveal-on-scroll">
+          <p class="nn-venture-description">
             Despite what people thought, we had trouble surviving on a day-to-day basis. For 3+ years, we didn’t take any weekends off. I was also struggling with imposter syndrome during this difficult period. It looked like we were doing great on the outside; but on the inside, I felt like a fraud. I didn’t think I deserved the press and media we earned, or to be on a pedestal representing the “ideal business owner.” Towards the closing days of the business, there were times when I even had trouble getting out of bed. I was in a dark hole while Nom Nom Truck was failing, and I didn’t know if I could get out of it.
           </p>
           
-          <blockquote class="nn-image-caption-quote reveal-on-scroll">
-            It looked like we were crushing it on “The Great Food Truck Race” (bottom left); but on the inside, I felt like an imposter who was undeserving of the spotlight.
+          <blockquote class="nn-image-caption-quote">
+            It looked like we were crushing it on “The Great Food Truck Race”; but on the inside, I felt like an imposter who was undeserving of the spotlight.
           </blockquote>
 
-          <p class="nn-venture-description reveal-on-scroll">
-            I have come a long way since those dark times. I have since built a profitable, sustainable business that impacts the world more so than Nom Nom Truck, <a href="https://theauthenticasian.com/" target="_blank" style="color:var(--coral);">The Authentic Asian</a>, and I actually get weekends off! My confidence in myself and my business skills have greatly improved. And to be quite honest, it’s also been healthier for my ego.
+          <p class="nn-venture-description">
+            I have come a long way since those dark times. I have since built a profitable, sustainable business that impacts the world more so than Nom Nom Truck, <a href="https://theauthenticasian.com/" target="_blank" class="nn-inline-link">The Authentic Asian</a>, and I actually get weekends off! My confidence in myself and my business skills have greatly improved. And to be quite honest, it’s also been healthier for my ego.
           </p>
-          <p class="nn-venture-description reveal-on-scroll">
+          <p class="nn-venture-description">
             For those of you who are facing the same challenges I once experienced, hang in there! I know how difficult it can be to relive and discuss past failures, especially as an entrepreneur. Not only has this blog post been tough to write, but people still email me about Nom Nom Truck on a regular basis, curious about its whereabouts. Imagine how that makes me feel. I hope the lessons I learned from my own mistakes with Nom Nom Truck can help you.
           </p>
-
-</div>
         </div>
       </div>
     </section>
 
     <div class="nn-section-divider-title text-center">
-       <h2 class="nn-venture-title reveal-on-scroll">3 Mistakes That Led to the Downfall of Nom Nom Truck</h2>
+       <h2 class="nn-venture-title">3 Mistakes That Led to the Downfall of Nom Nom Truck</h2>
     </div>
 
-    <section class="nn-venture-section nn-authentic-asian-section" data-theme="dark">
-      <div class="nn-point-sticky-grid">
-        <div class="nn-sticky-container">
-          <div class="nn-sticky-note nn-rotate-left reveal-on-scroll" style="background-color: #FEF08A;">
-            1. Food trucks are a low-margin business, and we didn't properly plan for the stumbling-blocks that were ahead of us.
-          </div>
+    <section class="nn-venture-section nn-authentic-asian-section">
+      <div class="nn-point-editorial-grid">
+        <div class="nn-editorial-callout" style="--accent-border: #8C7E6D;">
+          <span class="nn-callout-num">01</span>
+          <p>Food trucks are a low-margin business, and we didn't properly plan for the stumbling-blocks that were ahead of us.</p>
         </div>
         <div class="nn-venture-content">
-          <p class="nn-venture-description reveal-on-scroll">
+          <p class="nn-venture-description">
             They’re even lower than restaurants, and almost every other business model out there. Catering can be highly profitable—if done correctly. We learned this later on down the road. At the same time, however, certain circumstances make earning revenue a difficult task. For instance, public lunch shifts on the street were a hard thing to do. A flat tire would put our business in the red for a long period of weeks, which is extremely difficult to recover from. On top of that, limited space hindered us from serving more than 200 customers per shift, even if the demand was high.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="nn-venture-section nn-nomnom-section" data-theme="light">
-      <div class="nn-point-sticky-grid">
+    <section class="nn-venture-section nn-nomnom-section">
+      <div class="nn-point-editorial-grid">
         <div class="nn-venture-content">
-           <span class="nn-caption-text reveal-on-scroll">Nom Nom Truck team went for the shiny object</span>
-           <p class="nn-venture-description reveal-on-scroll">
+           <span class="nn-caption-text">Nom Nom Truck team went for the shiny object</span>
+           <p class="nn-venture-description">
              Building our public vending shifts was the main focus during our first two years in business. This included finding an office parking lot to operate from, and getting the permission to tweet our location out. For us, this was our shiny object: something that appeared desirable, but didn’t actually produce reliable profits. It wasn’t until the second year that we decided to focus on the “non-shiny” object instead—catering. This new strategy helped us build a much more profitable business model. Unfortunately, we were too late.
           </p>
         </div>
-        <div class="nn-sticky-container" style="flex-direction: column; gap: 3rem;">
-          <div class="nn-sticky-note nn-rotate-right reveal-on-scroll" style="background-color: #FFCFDF;">
-            2. We went for “the shiny object.”
+        <div class="nn-editorial-sidebar">
+          <div class="nn-editorial-callout" style="--accent-border: #8C7E6D;">
+            <span class="nn-callout-num">02</span>
+            <p>We went for “the shiny object.”</p>
           </div>
-          <div class="nn-polaroid nn-rotate-left reveal-on-scroll">
-            <div class="nn-polaroid-img"><img src={night2Image.src} alt="Nom Nom Truck shiny object"></div>
-            <div class="nn-polaroid-caption">late nights</div></div>
+          <div class="nn-media-block">
+            <div class="nn-image-wrap nn-aspect-landscape nn-nostalgia-bw">
+              <img src={night2Image.src} alt="Nom Nom Truck operational layout">
+            </div>
+     
           </div>
         </div>
       </div>
     </section>
 
-    <section class="nn-venture-section nn-authentic-asian-section" data-theme="dark">
-      <div class="nn-point-sticky-grid">
-        <div class="nn-sticky-container">
-          <div class="nn-sticky-note nn-rotate-left reveal-on-scroll" style="background-color: #D1FAE5;">
-            3. We didn’t appoint anyone to call the shots.
-          </div>
-     
+    <section class="nn-venture-section nn-authentic-asian-section">
+      <div class="nn-point-editorial-grid">
+        <div class="nn-editorial-callout" style="--accent-border: #8C7E6D;">
+          <span class="nn-callout-num">03</span>
+          <p>We didn’t appoint anyone to call the shots.</p>
         </div>
         <div class="nn-venture-content">
-          <span class="nn-caption-text nn-light-caption reveal-on-scroll">Nom Nom Truck didn't appoint a leader to call the shots</span>
-          <p class="nn-venture-description reveal-on-scroll">
+          <span class="nn-caption-text nn-light-caption">Nom Nom Truck didn't appoint a leader to call the shots</span>
+          <p class="nn-venture-description">
             This put the final nail in the coffin and was probably one of the biggest mistakes I’ve made as an entrepreneur. My business partner and I were very close, and we didn’t think that having a 50/50 partnership was an issue. Things were peachy when the business was thriving, but the biggest mistake that caused us to close our business took a toll on our relationship: when we couldn’t come to a mutual agreement on the selling price for Nom Nom Truck. If there’s one thing you can learn from my failures, it’s this: when running a business, you MUST ensure that you have a financial decision maker in place to call the shots.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="nn-venture-section nn-nomnom-section" data-theme="light">
+    <section class="nn-venture-section nn-nomnom-section">
       <div class="nn-venture-grid">
         <div class="nn-venture-meta">
-          <h2 class="nn-venture-title reveal-on-scroll" style="font-size: 1.8rem; text-transform: none;">It’s now been more than four years since Nom Nom Truck closed.</h2>
-          <div class="nn-venture-divider reveal-on-scroll"></div>
-<div class="nn-polaroid nn-rotate-left reveal-on-scroll">
-              <div class="nn-polaroid-img"><img src={misaImage.src}  alt="Misa Chien, founder of Nom Nom Truck wearing Nom Nom Merchandise"></div>
-              <div class="nn-polaroid-caption">First Merch!</div>
+          <h2 class="nn-venture-title" style="font-size: 1.8rem; text-transform: none; font-weight:700;">It’s now been more than four years since Nom Nom Truck closed.</h2>
+          <div class="nn-venture-divider"></div>
+          <div class="nn-media-block">
+            <div class="nn-image-wrap nn-nostalgia-bw">
+              <img src={misaImage.src} alt="Misa Chien, founder of Nom Nom Truck">
             </div>
+        
+          </div>
         </div>
         <div class="nn-venture-content">
-          <p class="nn-venture-description reveal-on-scroll">
+          <p class="nn-venture-description">
             As of today, I look upon my failures as blessings. It was a great learning experience, and I am now making the most of my mistakes.  
           </p>
 
-          <p class="nn-venture-description reveal-on-scroll">
-     If my story resonated with you—if you know what it feels like to crush it on the outside while secretly struggling on the inside—you don't have to navigate that journey alone. I work with high-achievers to break through their invisible ceilings and heal their relationship with success. Depending on where you are in your leadership journey, we can work together through <a href={`${import.meta.env.BASE_URL}/coaching`} style="color:var(--coral);"> one of two tracks</a>.
+          <p class="nn-venture-description">
+            If my story resonated with you—if you know what it feels like to crush it on the outside while secretly struggling on the inside—you don't have to navigate that journey alone. I work with high-achievers to break through their invisible ceilings and heal their relationship with success. Depending on where you are in your leadership journey, we can work together through <a href={`${import.meta.env.BASE_URL}/coaching`} class="nn-inline-link"> one of two tracks</a>.
           </p>
- <div class="nn-polaroid nn-straight nn-polaroid-wide reveal-on-scroll">
-    <div class="nn-polaroid-img"><img src={nightImage.src}  alt="Nom Nom Truck busy even at night"></div>
-    <div class="nn-polaroid-caption">Thank You, Nomsters <svg class="hollow-heart" viewBox="0 0 24 24">
-            <path d="M12 20s-1-4.5-5-7.5c-3-2.2-4.5-4.5-3.5-7 1.2-3 5-2.5 7 1.5 1.5-3.5 6.5-4 8-1.5 1.5 2.5 0 5-3.5 7.5-4 3-6 7-6 7z" />
-          </svg></div>
-  </div>
+          
+          <div class="nn-media-block nn-wide-block">
+            <div class="nn-image-wrap nn-aspect-landscape nn-nostalgia-bw">
+              <img src={nightImage.src} alt="Nom Nom Truck historical archive">
+            </div>
+        
+          </div>
         </div>
       </div>
     </section>
@@ -189,137 +190,139 @@ const schemaData = {
     </a>
 
   </article>
-<TypeWriter3 client:visible />
+</article>
 </BaseLayout>
 
 <style>
+  :root {
+    
+    --bg-solid-light: #FBF9F6;  
+    --text-primary: #1A1A1A;   
+    --text-muted: #55514E;      
+    --accent-gold: #8C7E6D;     
+    
+
+    --font-serif: 'Libre Baskerville', Georgia, serif;
+    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
 
   .nn-page-container {
     width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
-    background-color: var(--white);
+    background-color: var(--bg-solid-light);
   }
 
 
-  .nn-hero-gradient {
+  .nn-hero-wrapper {
     position: relative;
     width: 100%;
-    overflow: hidden;
-    background: linear-gradient(
-      to right, 
-      #59363A 0%, 
-      #59363A 6%, 
-      #8A6266 25%,
-      #BA9699 38%,
-      #DFCDC9 48%,
-      #FEF4EF 58%, 
-      #FEF4EF 100%
-    );
-    padding: calc(7rem + 80px) 4rem 8rem 4rem; 
+    background-color: var(--bg-solid-light);
+    padding: 10rem 4rem 4rem 4rem; 
     box-sizing: border-box;
-  }
-
-  .nn-hero-gradient::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%; height: 100%;
-    opacity: 0.025; 
-    pointer-events: none;
-    z-index: 5;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='silk'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23silk)'/%3E%3C/svg%3E");
+    border-bottom: 1px solid #EAE5E0;
   }
 
   .nn-hero {
     max-width: 1200px;
     margin: 0 auto;
-    color: var(--white);
+    color: var(--text-primary);
   }
 
   .subtitle {
-    font-family: 'Tenor Sans', sans-serif;
+    font-family: var(--font-sans);
+    font-weight: 500; 
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7); 
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    color: var(--accent-gold);
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   .main-title {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 4.5rem;
-    font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
     text-transform: uppercase;
-    margin: 0 0 2rem 0;
-    color: var(--coral);
+    margin: 0;
+    color: var(--text-primary);
   }
 
   .serif-italic {
-    font-family: 'GF Didot', serif;
+    font-family: var(--font-serif);
     font-style: italic;
+    font-weight: 400;
     text-transform: none; 
-    color: #DFCDC9; 
+    color: var(--accent-gold);
+    letter-spacing: 0;
   }
 
   .hero-h2 {
-    font-family: var(--font-sans);
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: var(--white);
-    opacity: 0.9;
-    margin-top: 1rem;
-    letter-spacing: 1px;
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    line-height: 1.5;
   }
 
   .text-center {
     text-align: center;
   }
-.nn-wide-wrapper {
-    width: 100%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+
+  /* Clean Professional Photo Galleries */
+  .nn-editorial-gallery {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2.5rem;
+    width: 100%;
   }
 
-  .nn-polaroid.nn-polaroid-wide {
-    max-width: 480px; 
-    padding: 1.75rem 1.75rem 4.5rem 1.75rem;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    position: relative;
+  .nn-media-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 340px;
   }
-.nn-polaroid::before {
-  content: "";
-  position: absolute;
-  top: -18px; 
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg); 
-  z-index: 10;
+
+  .nn-media-block.nn-wide-block {
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+
+  .nn-image-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    border: 1px solid #EAE5E0;
+    border-radius: 0 !important; 
+  }
+
+  .nn-image-wrap.nn-aspect-landscape {
+    aspect-ratio: 16 / 10;
+  }
+
+
+  .nn-nostalgia-bw img {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+  }
   
-  width: 120px;
-  height: 32px;
-  
+  .nn-nostalgia-bw:hover img {
+    filter: grayscale(0%);
+  }
 
-  background: linear-gradient(
-    to right, 
-    rgba(254, 240, 138, 0.75) 0%,  
-    rgba(255, 207, 223, 0.8) 50%,  
-    rgba(226, 122, 101, 0.75) 100%   
-  );
-  border-radius: 1px;
-  box-shadow: 
-    inset 0 0 4px rgba(255, 255, 255, 0.2), 
-    0 2px 4px rgba(0, 0, 0, 0.06);
-  pointer-events: none; 
-}
-
-
-  .nn-polaroid.nn-polaroid-wide .nn-polaroid-img {
-    aspect-ratio: 4 / 3; 
+  .nn-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
 
@@ -327,12 +330,13 @@ const schemaData = {
 
   .nn-venture-section {
     width: 100%;
-    padding: 10rem 4rem;
+    padding: 8rem 4rem;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    border-bottom: 1px solid #EAE5E0;
   }
 
   .nn-venture-grid {
@@ -344,14 +348,53 @@ const schemaData = {
     align-items: start;
   }
 
-  
-  .nn-point-sticky-grid {
+  .nn-point-editorial-grid {
     width: 100%;
     max-width: 1200px;
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 5rem;
-    align-items: center;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .nn-editorial-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+  }
+
+
+  .nn-editorial-callout {
+    position: relative;
+    padding: 3rem 2.5rem;
+    border-left: 2px solid var(--accent-border, var(--accent-gold));
+    background: #FFFFFF;
+    border-top: 1px solid #EAE5E0;
+    border-right: 1px solid #EAE5E0;
+    border-bottom: 1px solid #EAE5E0;
+    box-sizing: border-box;
+    max-width: 380px;
+    width: 100%;
+    border-radius: 0 !important;
+  }
+
+  .nn-editorial-callout .nn-callout-num {
+    display: block;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    color: var(--accent-gold);
+  }
+
+  .nn-editorial-callout p {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-primary);
   }
 
   .nn-venture-meta {
@@ -361,23 +404,28 @@ const schemaData = {
   }
 
   .nn-venture-number {
-    font-family: 'Tenor Sans', sans-serif;
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 0.85rem;
     letter-spacing: 3px;
     text-transform: uppercase;
+    color: var(--accent-gold);
   }
 
   .nn-venture-title {
-    font-family: 'Tenor Sans', sans-serif;
-    font-size: 3rem;
-    line-height: 1.2;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.3;
     text-transform: uppercase;
     margin: 0;
+    color: var(--text-primary);
   }
 
   .nn-venture-divider {
     width: 60px;
     height: 1px;
+    background-color: var(--accent-gold);
   }
 
   .nn-venture-content {
@@ -386,83 +434,48 @@ const schemaData = {
     gap: 2rem;
   }
 
+
   .nn-venture-description {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
+    font-family: var(--font-sans);
+    font-weight: 500; 
+    font-size: 1.05rem;
     line-height: 1.8;
-    font-weight: 300;
+    color: var(--text-muted);
   }
 
+  .nn-inline-link {
+    color: var(--text-primary);
+    text-decoration: underline;
+    font-weight: 500;
+  }
 
   .nn-nomnom-section {
-    background-color: #FEF4EF; 
+    background-color: var(--bg-solid-light); 
   }
 
-  .nn-nomnom-section .nn-venture-number {
-    color: var(--coral);
-  }
-
-  .nn-nomnom-section .nn-venture-title {
-    color: var(--burgundy);
-  }
-
-  .nn-nomnom-section .nn-venture-divider {
-    background-color: rgba(89, 54, 58, 0.2);
-  }
-
-  .nn-nomnom-section .nn-venture-content {
-    color: var(--burgundy);
-  }
-
-  .nn-nomnom-section .nn-venture-description {
-    opacity: 0.9;
-  }
-
-  
   .nn-section-divider-title {
-    background-color: var(--burgundy);
-    padding: 8rem 4rem 2rem 4rem;
-    color: var(--white);
+    background-color: var(--text-primary);
+    padding: 6rem 4rem;
+    color: #FFFFFF;
   }
   
   .nn-section-divider-title .nn-venture-title {
-    color: var(--white);
+    color: #FFFFFF;
     max-width: 1200px;
     margin: 0 auto;
   }
 
-
   .nn-authentic-asian-section {
-    background-color: var(--burgundy); 
+    background-color: var(--bg-solid-light); 
   }
-
-  .nn-authentic-asian-section .nn-venture-number {
-    color: var(--coral);
-  }
-
-  .nn-authentic-asian-section .nn-venture-title {
-    color: var(--white);
-  }
-
-  .nn-authentic-asian-section .nn-venture-divider {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
-
-  .nn-authentic-asian-section .nn-venture-content {
-    color: var(--white);
-  }
-
-  .nn-authentic-asian-section .nn-venture-description {
-    opacity: 0.85;
-  }
-
 
   .nn-image-caption-quote {
-    font-family: 'GF Didot', serif;
+    font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.2rem;
-    color: var(--coral);
-    border-left: 2px solid var(--coral);
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: var(--accent-gold);
+    border-left: 2px solid var(--accent-gold);
     padding-left: 1.5rem;
     margin: 1rem 0;
     line-height: 1.6;
@@ -470,109 +483,17 @@ const schemaData = {
 
   .nn-caption-text {
     font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 0.85rem;
-    color: var(--burgundy);
-    opacity: 0.6;
+    color: var(--accent-gold);
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: 600;
   }
 
   .nn-light-caption {
-    color: var(--white);
-    opacity: 0.5;
-  }
-
-
-  .nn-sticky-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-
-  .nn-sticky-note {
-    position: relative;
-    background-color: #fdf5c9; 
-    color: #333;
-    padding: 3.5rem 2.5rem 2.5rem 2.5rem;
-    font-family: 'Reenie Beanie', cursive;
-    font-size: 2.3rem;
-    line-height: 1.2;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15), 5px 5px 15px rgba(0,0,0,0.08);
-    max-width: 360px;
-    width: 100%;
-    background-image: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
-    box-sizing: border-box;
-  }
-
-
-  .nn-sticky-note::before {
-    content: '';
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-3deg);
-    width: 110px;
-    height: 32px;
-    background-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    border: 1px solid rgba(255,255,255,0.4);
-    z-index: 2;
-  }
-
-  .nn-rotate-left {
-    transform: rotate(-3.5deg);
-  }
-  
-  .nn-rotate-right {
-    transform: rotate(2.5deg);
-  }
-
-
-  .nn-polaroid-gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
-    margin-top: 3.5rem;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .nn-polaroid {
-    background: var(--white);
-    padding: 1.5rem 1.5rem 4rem 1.5rem;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-    max-width: 320px; 
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid rgba(0,0,0,0.04);
-  }
-
-  .nn-polaroid-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-  }
-
-  .nn-polaroid-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .nn-polaroid-caption {
-    font-family: 'Reenie Beanie', cursive;
-    font-size: 2.3rem; 
-    color: #333333;
-    text-align: center;
-    margin-top: 1.5rem;
-    line-height: 1.1;
-
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-word;
+    color: var(--text-muted);
   }
 
 
@@ -580,9 +501,10 @@ const schemaData = {
     position: fixed;
     bottom: 2.5rem;
     right: 2.5rem;
-    background-color: var(--coral, #E27A65); 
-    color: var(--white, #FFFFFF);
-    font-family: 'Poppins', sans-serif;
+    background-color: var(--text-primary); 
+    color: #FFFFFF;
+    font-family: var(--font-sans);
+    font-weight: 500;
     font-size: 0.85rem;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -592,11 +514,13 @@ const schemaData = {
     align-items: center;
     gap: 0.75rem;
     z-index: 999;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    border-radius: 0 !important;
   }
 
   .nn-floating-btn-visible {
@@ -612,148 +536,49 @@ const schemaData = {
   }
 
   .nn-floating-btn:hover .arrow {
-    transform: translateX(6px);
+    transform: translateY(-4px);
   }
-
 
   .desktop-only {
     display: block;
   }
-.hollow-heart {
-    width: 1.4em; 
-    height: 1.4em;
-    stroke: #1a1a1a;
-    stroke-width: 1px; 
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    position: relative;
-    margin-left: -14px; 
-    margin-top: -4px; 
-    transform: rotate(8deg); 
-    opacity: 0.9;
-    fill: none !important;
-  }
-.nn-polaroid.nn-polaroid-wide .nn-polaroid-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block; 
-}
 
-.nn-sticky-note, 
-.nn-polaroid {
-   transform-origin: top center; 
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-out, visibility 0.4s;
-}
-
-
-.nn-rotate-left:hover {
-  animation: dangleLeft 2s ease-in-out infinite alternate;
-}
-
-.nn-rotate-right:hover {
-  animation: dangleRight 2s ease-in-out infinite alternate;
-}
-
-
-.nn-straight:hover {
-  animation: dangleStraight 2s ease-in-out infinite alternate;
-}
-
-
-@keyframes dangleLeft {
-  0% {
-    transform: rotate(-3.5deg);
-  }
-  50% {
-    transform: rotate(-1deg);
-  }
-  100% {
-    transform: rotate(-6deg);
-  }
-}
-
-@keyframes dangleRight {
-  0% {
-    transform: rotate(2.5deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes dangleStraight {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(2.5deg);
-  }
-  100% {
-    transform: rotate(-2.5deg);
-  }
-}
   @media (max-width: 820px) {
-    .nn-hero-gradient {
-      background: linear-gradient(
-        to bottom, 
-        #59363A 0%, 
-        #59363A 22%, 
-        #8A6266 40%,
-        #BA9699 55%,
-        #DFCDC9 70%,
-        #FEF4EF 85%, 
-        #FEF4EF 100%
-      );
-      padding: calc(5rem + 70px) 1.5rem 6rem 1.5rem;
-    }
-.nn-polaroid.nn-polaroid-wide {
-      max-width: 100%;
-      min-width: 100%;
-      padding: 1.25rem 1.25rem 3.5rem 1.25rem;
+    .nn-hero-wrapper {
+      padding: calc(5rem + 70px) 1.5rem 4rem 1.5rem;
     }
 
     .desktop-only {
       display: none;
     }
 
-    .nn-hero {
-      text-align: left; 
-    }
-
     .main-title {
-      font-size: 2.75rem;
+      font-size: 2.5rem;
     }
 
     .hero-h2 {
       font-size: 1.1rem;
-    color: var(--burgundy);
     }
 
     .nn-venture-section {
-      padding: 6rem 1.5rem;
+      padding: 5rem 1.5rem;
     }
 
     .nn-section-divider-title {
-      padding: 5rem 1.5rem 1rem 1.5rem;
+      padding: 4rem 1.5rem;
     }
 
     .nn-venture-grid,
-    .nn-point-sticky-grid {
+    .nn-point-editorial-grid {
       grid-template-columns: 1fr;
       gap: 3.5rem;
-      text-align: left; 
     }
 
-  
-    .nn-point-sticky-grid > div:nth-child(2) {
+    .nn-point-editorial-grid > div:nth-child(2) {
       grid-row: 2; 
     }
 
-    .nn-point-sticky-grid > div:nth-child(1) {
+    .nn-point-editorial-grid > div:nth-child(1) {
       grid-row: 1;
     }
 
@@ -762,32 +587,22 @@ const schemaData = {
     }
 
     .nn-venture-title {
-      font-size: 2.25rem;
+      font-size: 2rem;
     }
 
-
-    .nn-polaroid-gallery {
+    .nn-editorial-gallery {
       flex-direction: row;
       flex-wrap: wrap;
       gap: 2rem;
-      margin-top: 2rem;
-      justify-content: flex-start;
     }
 
-    .nn-polaroid {
+    .nn-media-block {
       max-width: calc(50% - 1rem);
-      min-width: 260px; 
-      padding: 1.25rem 1.25rem 3.5rem 1.25rem;
+      min-width: 240px; 
     }
 
-    .nn-polaroid-caption {
-      font-size: 1.85rem; 
-      margin-top: 1.25rem;
-    }
-
-    .nn-sticky-note {
-      font-size: 2rem;
-      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+    .nn-editorial-callout {
+      max-width: 100%;
     }
 
     .nn-floating-btn {
@@ -797,31 +612,10 @@ const schemaData = {
     }
   }
 
-
   @media (max-width: 580px) {
-    .nn-polaroid {
+    .nn-media-block {
       max-width: 100%;
       min-width: 100%;
     }
   }
 </style>
-
-<script>
-  const items = document.querySelectorAll('.nn-sticky-note, .nn-polaroid');
-
-  items.forEach(item => {
-    item.style.cursor = 'pointer';
-    item.style.transition = 'opacity 0.4s ease-out, visibility 0.4s';
-
-    item.addEventListener('click', function() {
-      
-      this.style.opacity = '0';
-      
- 
-      setTimeout(() => {
-        this.style.visibility = 'hidden';
-        this.style.pointerEvents = 'none';
-      }, 400);
-    });
-  });
-</script>
