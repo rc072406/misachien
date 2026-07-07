@@ -71,7 +71,6 @@ img {
   background-color: #FFFFFF;
   border-top: 1px solid #EAE5E0;
   padding: 5rem 4rem 3rem 4rem;
-  width: 100%;
   box-sizing: border-box;
 }
 
@@ -99,11 +98,11 @@ img {
   color: #1A1A1A;
 }
 
-  .logo em {
-    font-style: italic;
-    font-weight: 400;
-    color: #8C7E6D;
-  }
+.logo em {
+  font-style: italic;
+  font-weight: 400;
+  color: #8C7E6D;
+}
 
 .footer-brand p {
   font-family: var(--font-body);
