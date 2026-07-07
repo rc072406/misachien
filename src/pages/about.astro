@@ -112,24 +112,15 @@ const schemaData = {
 <style>
 
   :root {
-    --bg-solid-light: #FBF9F6;  
-    --text-primary: #1A1A1A;   
-    --text-muted: #55514E;     
-    --accent-gold: #8C7E6D;     
-    
-    --font-serif: 'Libre Baskerville', serif;
-    --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
-  }
-
+  --bg-solid-light: #D9BFB4;   
+  --text-primary: #59363B;    
+  --text-muted: #6B4E52;        
+  --accent-gold: #E7765D;       
   
-  .about-container {
-    width: 100%;
-    min-height: 100vh;
-    background-color: var(--bg-solid-light);
-    color: var(--text-primary);
-    padding: 10rem 2rem 8rem 2rem;
-    box-sizing: border-box;
-  }
+  --font-serif: 'Libre Baskerville', serif;
+  --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
+}
+  
 
   .about-hero {
     max-width: 1200px;
@@ -236,15 +227,23 @@ const schemaData = {
     color: var(--text-muted);
   }
 
+.about-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-solid-light);
+  color: var(--text-primary);
+  padding: 10rem 2rem 8rem 2rem;
+  box-sizing: border-box;
+}
 
-  .philosophies {
-    margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    border-top: 1px solid #EAE5E0;
-    padding-top: 3rem;
-  }
+.philosophies {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  border-top: 1px solid rgba(89, 54, 59, 0.15); 
+  padding-top: 3rem;
+}
 
   .philosophy-index {
     font-family: var(--font-sans);
