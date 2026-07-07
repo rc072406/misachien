@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Ticker from '../components/Ticker.astro';
 import heroImage from '../../public/images/misachienmain.webp';
-
+import emilyImage from '../../public/images/emily.webp';
 const pageTitle = "Misa Chien | Executive Mindset Coach & Authentic Leader";
 const pageDescription = "Release your scarcity mindset with professional coach Misa Chien. Break through subconscious ceilings, heal emotional loops, and shift from survival to abundance.";
 
@@ -74,22 +74,32 @@ const homeSchema = {
 
     <Ticker />
 <section class="testimonial-section">
-      <div class="testimonial-container">
-        <div class="testimonial-decor-quote">“</div>
-        
-        <blockquote class="testimonial-quote">
-          <p>I was at a turning point—ready to scale my business but held back by fear of leaving my old identity behind. I'd done therapy and personal development courses, but I knew I needed someone who'd actually walked that path themselves. That's why I chose Misa.</p>
-          <p>What makes Misa's coaching different is her anchoring energy combined with her lived experience. Her professional background adds depth beyond typical NLP work—she provides practical steps that you can implement right away to create real change, while the subconscious work happens in the background.</p>
-          <p>In just two sessions, something shifted. I made connections between what I wanted and what was blocking me, and realized they weren't as separate as I thought. It's like my body suddenly had room for bigger possibilities, ones I would've ignored or reached much slower.</p>
-          <p>I'm excited to keep working with her and see how much bigger my container can become.</p>
-        </blockquote>
-        
-        <div class="testimonial-attribution">
-          <span class="attribution-name">Emily Liu</span>
-          <span class="attribution-title">Founder of Iris of the Moon</span>
-        </div>
+  <div class="testimonial-container">
+    
+    <div class="testimonial-image-wrapper">
+      <div class="image-frame">
+        <img src={emilyImage.src} alt="Emily Liu portrait" class="testimonial-photo" />
       </div>
-    </section>
+    </div>
+    
+    <div class="testimonial-content">
+      <div class="testimonial-decor-quote">“</div>
+      
+      <blockquote class="testimonial-quote">
+        <p>I was at a turning point—ready to scale my business but held back by fear of leaving my old identity behind. I'd done therapy and personal development courses, but I knew I needed someone who'd actually walked that path themselves. That's why I chose Misa.</p>
+        <p>What makes Misa's coaching different is her anchoring energy combined with her lived experience. Her professional background adds depth beyond typical NLP work—she provides practical steps that you can implement right away to create real change, while the subconscious work happens in the background.</p>
+        <p>In just two sessions, something shifted. I made connections between what I wanted and what was blocking me, and realized they weren't as separate as I thought. It's like my body suddenly had room for bigger possibilities, ones I would've ignored or reached much slower.</p>
+        <p>I'm excited to keep working with her and see how much bigger my container can become.</p>
+      </blockquote>
+      
+      <div class="testimonial-attribution">
+        <span class="attribution-name">Emily Liu</span>
+        <span class="attribution-title">Founder of Iris of the Moon</span>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <section class="pillars-section" id="section-three">
       <div class="pillars-container"> 
@@ -337,76 +347,115 @@ const homeSchema = {
   }
 
 
-  .testimonial-section {
-    width: 100%;
-    background-color: var(--bg-solid-light);
-    padding: 10rem 2rem;
-    box-sizing: border-box;
-    border-top: 1px solid #EAE5E0;
-    border-bottom: 1px solid #EAE5E0;
-  }
-
-  .testimonial-container {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
-  }
-
-  .testimonial-decor-quote {
-    font-family: var(--font-serif);
-    font-size: 6rem;
-    line-height: 1;
-    color: var(--accent-gold);
-    opacity: 0.25;
-    margin-bottom: -1.5rem;
-    user-select: none;
-  }
-h1 em {
-  font-style: italic;
-  font-family: var(--font-serif);
-  color: #8C7E6D;
+.testimonial-section {
+  width: 100%;
+  background-color: var(--bg-solid-light);
+  padding: 10rem 2rem;
+  box-sizing: border-box;
+  border-top: 1px solid #EAE5E0;
+  border-bottom: 1px solid #EAE5E0;
 }
 
-  .testimonial-quote {
-    margin: 0 0 3rem 0;
-    padding: 0;
-  }
+.testimonial-container {
+  max-width: 1200px; 
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr; 
+  gap: 5rem;
+  align-items: center;
+}
 
-  .testimonial-quote p {
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    line-height: 1.8;
-    color: var(--text-primary);
-    margin: 0 0 1.75rem 0;
-    font-weight: 400;
-  }
 
-  .testimonial-quote p:last-child {
-    margin-bottom: 0;
-  }
+.testimonial-image-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-  .testimonial-attribution {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
+.image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4 / 5; 
+  overflow: hidden;
+  border: 1px solid #EAE5E0;
+  padding: 12px; 
+  background-color: var(--bg-card-solid);
+}
 
-  .attribution-name {
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 600;
-    color: var(--text-primary);
-  }
+.testimonial-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(15%); 
+  transition: filter 0.5s ease;
+}
 
-  .attribution-title {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--accent-gold);
-  }
+.testimonial-photo:hover {
+  filter: grayscale(0%);
+}
+
+
+.testimonial-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  text-align: left;
+}
+
+.testimonial-decor-quote {
+  font-family: var(--font-serif);
+  font-size: 7rem;
+  line-height: 1;
+  color: var(--accent-gold);
+  opacity: 0.2;
+  margin-bottom: -2.5rem;
+  margin-left: -0.5rem;
+  user-select: none;
+}
+
+.testimonial-quote {
+  margin: 0 0 2.5rem 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-quote p {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.testimonial-quote p:last-child {
+  margin-bottom: 0;
+}
+
+.testimonial-attribution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.attribution-name {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.attribution-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--accent-gold);
+}
 
   .clarity-call-banner-system {
     position: relative;
@@ -493,13 +542,24 @@ h1 em {
     .pillars-section {
       padding: 5rem 1rem;
     }
-    .testimonial-section {
-      padding: 6rem 1.5rem;
-    }
-    .testimonial-quote p {
-      font-size: 1.15rem;
-      line-height: 1.7;
-    }
+  .testimonial-container {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  
+  .testimonial-content {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .testimonial-decor-quote {
+    margin-left: 0;
+    margin-bottom: -1.5rem;
+  }
+  
+  .image-frame {
+    max-width: 280px; 
+  }
     .section-lead {
       margin-bottom: 3.5rem;
     }
