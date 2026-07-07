@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import Ticker from '../components/Ticker.astro';
 import heroImage from '../../public/images/_51A5829.webp';
 
@@ -55,7 +54,7 @@ const homeSchema = {
         <div class="hero-content">
           <span class="kicker">Misa Chien &mdash; Authentic Leadership</span>
           <h1>
-            Together, let’s recondition your <span class="font-cursive">unconscious</span> framework.
+            Together, let’s recondition your <em>unconscious</em> framework.
           </h1>
           <p class="hero-body">
             Release your scarcity mindset with elite executive mindset coach, Misa Chien. Shift away from structural survival loops and step into authentic abundance.
@@ -108,9 +107,7 @@ const homeSchema = {
       </div>
     </section>
 
-<section class="clarity-call-banner-system" id="interactive-banner">
-      <canvas id="canvas" class="water-canvas"></canvas>
-      
+    <section class="clarity-call-banner-system" id="interactive-banner">
       <div class="clarity-content reveal-on-scroll">
         <span class="kicker light-text">Exclusive Invitation</span>
         <h2 class="serif-italic-banner light-text">Ready to recondition your unconscious framework?</h2>
@@ -124,7 +121,6 @@ const homeSchema = {
 </BaseLayout>
 
 <style>
-
   :root {
     --bg-solid-light: #FBF9F6;  
     --bg-card-solid: #FFFFFF;
@@ -134,12 +130,8 @@ const homeSchema = {
     
     --font-serif: 'Libre Baskerville', serif;
     --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
-    --font-serif: 'Libre Baskerville', serif;
   }
 
-  /* ==========================================================
-     HERO SECTION
-     ========================================================== */
   .hero-section {
     position: relative;
     width: 100%;
@@ -182,15 +174,10 @@ const homeSchema = {
     margin: 0;
   }
 
-  .font-cursive {
-    font-family: var(--font-cursive);
-    font-size: 4rem;
+  h1 em {
+    font-style: italic;
+    font-family: var(--font-serif);
     color: var(--accent-gold);
-    text-transform: none;
-    font-weight: 400;
-    display: inline-block;
-   
-    line-height: 1;
   }
 
   .hero-body {
@@ -202,7 +189,6 @@ const homeSchema = {
     max-width: 520px;
     margin: 0;
   }
-
 
   .btn-solid {
     display: inline-block;
@@ -229,7 +215,6 @@ const homeSchema = {
     width: 100%;
   }
 
-
   .hero-main-photo {
     width: 100%;
     height: auto;
@@ -238,9 +223,6 @@ const homeSchema = {
     display: block;
   }
 
-  /* ==========================================================
-     PILLARS SECTION
-     ========================================================== */
   .pillars-section {
     width: 100%;
     background-color: #FFFFFF;
@@ -284,7 +266,6 @@ const homeSchema = {
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
   }
-
 
   .pillar-card {
     border: 1px solid #EAE5E0;
@@ -353,17 +334,6 @@ const homeSchema = {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .water-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    opacity: 0.15; 
-    z-index: 1;
-  }
-
   .clarity-content {
     position: relative;
     z-index: 2;
@@ -405,7 +375,6 @@ const homeSchema = {
     border-bottom: 1px dashed var(--accent-gold);
   }
 
-  
   .cta-link-text {
     display: inline-flex;
     align-items: center;
@@ -429,38 +398,33 @@ const homeSchema = {
     border-color: #FFFFFF;
   }
 
-
-
-  /* ==========================================================
-     RESPONSIVE BREAKPOINTS (Static stacking)
-     ========================================================== */
   @media (max-width: 900px) {
     .hero-container {
       grid-template-columns: 1fr;
       padding: 8rem 2rem 5rem 2rem;
       gap: 4rem;
     }
-   .clarity-call-banner-system {
+    .clarity-call-banner-system {
       padding: 7rem 1.5rem;
     }
     .serif-italic-banner {
       font-size: 2.25rem;
     }
     .cta-link-text {
-      display: block;
+      display: inline-block;
       width: 100%;
       box-sizing: border-box;
       text-align: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
     .pillars-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
-
     h1 {
       font-size: 2.8rem;
     }
-
     .section-lead h2 {
       font-size: 2.2rem;
     }
