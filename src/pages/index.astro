@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ClarityCallBanner from '../components/ClarityCallBanner.astro';
+
 import Ticker from '../components/Ticker.astro';
 import heroImage from '../../public/images/_51A5829.webp';
 
@@ -108,7 +108,18 @@ const homeSchema = {
       </div>
     </section>
 
-    <ClarityCallBanner client:visible />
+<section class="clarity-call-banner-system" id="interactive-banner">
+      <canvas id="canvas" class="water-canvas"></canvas>
+      
+      <div class="clarity-content reveal-on-scroll">
+        <span class="kicker light-text">Exclusive Invitation</span>
+        <h2 class="serif-italic-banner light-text">Ready to recondition your unconscious framework?</h2>
+        <p class="light-text">If you are ready to stop grinding harder and start operating from pure clarity, let's talk. Secure a complimentary, invigorating <strong class="light-highlight">Clarity Call</strong> to map out your blind spots.</p>
+        <a href="https://calendly.com/misachien/clarity-call?month=2026-07" target="_blank" class="cta-link-text">
+          <span>Book Your Clarity Call &rarr;</span>
+        </a>
+      </div>
+    </section>
   </main>
 </BaseLayout>
 
@@ -328,6 +339,97 @@ const homeSchema = {
     border-color: var(--accent-gold);
   }
 
+  .clarity-call-banner-system {
+    position: relative;
+    width: 100%;
+    background-color: var(--text-primary);
+    padding: 10rem 2rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .water-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.15; 
+    z-index: 1;
+  }
+
+  .clarity-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .light-text {
+    color: #FFFFFF !important;
+  }
+
+  .serif-italic-banner {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+
+  .clarity-content p {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-weight: 500;
+    color: #C5C1BD;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  .light-highlight {
+    color: #FFFFFF;
+    font-weight: 700;
+    border-bottom: 1px dashed var(--accent-gold);
+  }
+
+  
+  .cta-link-text {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: var(--text-primary);
+    background-color: #FFFFFF;
+    padding: 1.25rem 2.5rem;
+    border: 1px solid #FFFFFF;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .cta-link-text:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+  }
+
+
+
   /* ==========================================================
      RESPONSIVE BREAKPOINTS (Static stacking)
      ========================================================== */
@@ -337,7 +439,18 @@ const homeSchema = {
       padding: 8rem 2rem 5rem 2rem;
       gap: 4rem;
     }
-
+   .clarity-call-banner-system {
+      padding: 7rem 1.5rem;
+    }
+    .serif-italic-banner {
+      font-size: 2.25rem;
+    }
+    .cta-link-text {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
     .pillars-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
