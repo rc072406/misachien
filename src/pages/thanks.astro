@@ -3,478 +3,77 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "Thank You | Contact Misa Chien";
 const pageDescription = "Release your scarcity mindset with professional coach Misa Chien. Break through subconscious ceilings, heal emotional loops, and shift from survival to abundance.";
-
-
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-
+  <main class="thank-you-section">
+    <div class="thank-you-container">
+      <h1>Thank You.</h1>
+      <p>Talk soon</p>
+    </div>
   </main>
 </BaseLayout>
+
 <style>
- :root {
-  --bg-solid-light: #FBF9F6;  
-  --bg-card-solid: #FFFFFF;
-  --text-primary: #59363B;  
-  --text-muted: #6B4E52;     
-  --accent-gold: #8C7E6D; /* Bronze Taupe alignment */
-  --accent-highlight: #E7765D; 
-  
-  --font-serif: 'Libre Baskerville', serif;
-  --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
-}
+  :root {
+    --text-primary: #59363B;
+    --text-muted: #6B4E52;
+    --bg-solid-light: #FBF9F6;
+    --font-serif: 'Libre Baskerville', serif;
+    --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
+  }
 
-  .hero-section {
-    position: relative;
+  .thank-you-section {
     width: 100%;
     background-color: var(--bg-solid-light);
-    border-bottom: 1px solid #EAE5E0;
-    overflow: hidden;
-  }
-
-  .hero-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10rem 2rem 8rem 2rem;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 6rem;
-    align-items: center;
-  }
-.testimonial-header {
-  text-align: center;
-  margin-bottom: 4rem;
-  width: 100%;
-}
-.testimonial-header h2 {
-  font-family: var(--font-serif);
-  font-size: 2.8rem;
-  color: var(--text-primary);
-  font-weight: 400;
-  margin: 0;
-}
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .kicker {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 500;
-    color: var(--accent-gold);
-  }
-
-  h1 {
-    font-family: var(--font-serif);
-    font-size: 3.5rem;
-    line-height: 1.25;
-    font-weight: 400;
-    color: var(--text-primary);
-    margin: 0;
-  }
-
-h1 em{
-color: var(--accent-gold);
-}
-
-
-  .hero-body {
-    font-family: var(--font-sans);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    font-weight: 500; 
-    color: var(--text-muted);
-    max-width: 520px;
-    margin: 0;
-  }
-
-  .btn-solid {
-    display: inline-block;
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background-color: var(--text-primary);
-    color: #FFFFFF;
-    padding: 1.2rem 2.8rem;
-    border: none;
-    border-radius: 0 !important; 
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-
-  .btn-solid:hover {
-    background-color: var(--accent-gold);
-  }
-
-  .hero-image-container {
-    position: relative;
-    width: 100%;
-  }
-
-  .hero-main-photo {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 0 !important;
-    display: block;
-  }
-
-  .pillars-section {
-    width: 100%;
-    background-color: #FFFFFF;
-    padding: 9rem 2rem;
-    box-sizing: border-box;
-  }
-
-  .pillars-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-lead {
-    text-align: center;
-    margin-bottom: 6rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .section-lead h2 {
-    font-family: var(--font-serif);
-    font-size: 2.8rem;
-    color: var(--text-primary);
-    font-weight: 400;
-    margin: 0;
-  }
-
-  .section-lead p {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 1.05rem;
-    max-width: 560px;
-    line-height: 1.7;
-    color: var(--text-muted);
-    margin: 0;
-  }
-
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
-
-  .pillar-card {
-    border: 1px solid #EAE5E0;
-    padding: 4rem 2.5rem;
-    background-color: var(--bg-solid-light);
-    border-radius: 0 !important;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    box-sizing: border-box;
-  }
-
-  .card-index {
-    font-family: var(--font-serif);
-    color: var(--accent-gold);
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 2rem;
-  }
-
-  .pillar-card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.45rem;
-    font-weight: 400;
-    color: var(--text-primary);
-    margin: 0 0 1.2rem 0;
-  }
-
-  .pillar-card p {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.75;
-    font-weight: 500;
-    color: var(--text-muted);
-    margin: 0 0 2.5rem 0;
-    flex-grow: 1;
-  }
-
-  .card-link {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 500;
-    color: var(--text-primary);
-    text-decoration: none;
-    border-bottom: 1px solid var(--text-primary);
-    padding-bottom: 4px;
-    transition: color 0.3s ease, border-color 0.3s ease;
-  }
-
-  .card-link:hover {
-    color: var(--accent-gold);
-    border-color: var(--accent-gold);
-  }
-
-
-.testimonial-section {
-  width: 100%;
-  background-color: var(--bg-solid-light);
-  padding: 10rem 2rem;
-  box-sizing: border-box;
-  border-top: 1px solid #EAE5E0;
-  border-bottom: 1px solid #EAE5E0;
-}
-
-.testimonial-container {
-  max-width: 1200px; 
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 0.8fr 1.2fr; 
-  gap: 5rem;
-  align-items: center;
-}
-
-
-.testimonial-image-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.image-frame {
-  position: relative;
-  width: 100%;
-  max-width: 380px;
-  aspect-ratio: 4 / 5; 
-  overflow: hidden;
-  border: 1px solid #EAE5E0;
-  padding: 12px; 
-  background-color: var(--bg-card-solid);
-}
-
-.testimonial-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(15%); 
-  transition: filter 0.5s ease;
-}
-
-.testimonial-photo:hover {
-  filter: grayscale(0%);
-}
-
-
-.testimonial-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; 
-  text-align: left;
-}
-
-.testimonial-decor-quote {
-  font-family: var(--font-serif);
-  font-size: 7rem;
-  line-height: 1;
-  color: var(--accent-gold);
-  opacity: 0.2;
-  margin-bottom: -2.5rem;
-  margin-left: -0.5rem;
-  user-select: none;
-}
-
-.testimonial-quote {
-  margin: 0 0 2.5rem 0;
-  padding: 0;
-  position: relative;
-  z-index: 2;
-}
-
-.testimonial-quote p {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  line-height: 1.8;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-}
-
-.testimonial-quote p:last-child {
-  margin-bottom: 0;
-}
-
-.testimonial-attribution {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.attribution-name {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.attribution-title {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--accent-gold);
-}
-
-  .clarity-call-banner-system {
-    position: relative;
-    width: 100%;
-    background-color: var(--text-primary);
     padding: 10rem 2rem;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    min-height: 100vh;
   }
 
-  .clarity-content {
-    position: relative;
-    z-index: 2;
-    max-width: 700px;
+  .thank-you-container {
+    max-width: 600px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.75rem;
+    gap: 1.5rem;
   }
 
-  .light-text {
-    color: #FFFFFF !important;
-  }
-
-  .serif-italic-banner {
+  h1 {
     font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 400;
-    line-height: 1.25;
+    color: var(--text-primary);
     margin: 0;
     letter-spacing: -0.5px;
   }
 
-  .clarity-content p {
-    font-family: var(--font-sans);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    font-weight: 500;
-    color: #C5C1BD;
-    max-width: 600px;
+  p {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-weight: 400;
+    color: var(--text-muted);
     margin: 0;
-  }
-
-  .light-highlight {
-    color: #FFFFFF;
-    font-weight: 700;
-    border-bottom: 1px dashed var(--accent-highlight);
-  }
-
-  .cta-link-text {
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--font-sans);
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    text-decoration: none;
-    color: var(--text-primary);
-    background-color: #FFFFFF;
-    padding: 1.25rem 2.5rem;
-    border: 1px solid #FFFFFF;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
-  }
-
-  .cta-link-text:hover {
-    background-color: transparent;
-    color: #FFFFFF;
-    border-color: #FFFFFF;
+    font-style: italic;
   }
 
   @media (max-width: 900px) {
-    .hero-container {
-      grid-template-columns: 1fr;
-      padding: 8rem 2rem 5rem 2rem;
-      gap: 4rem;
+    .thank-you-section {
+      padding: 6rem 1.5rem;
+      min-height: auto;
     }
-.testimonial-header {
-    margin-bottom: 2.5rem;
-  }
-.testimonial-header h2 {
-    font-size: 2rem;
-  }
-    .pillars-section {
-      padding: 5rem 1rem;
-    }
-  .testimonial-container {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-  }
-  
-  .testimonial-content {
-    align-items: center;
-    text-align: center;
-  }
-  
-  .testimonial-decor-quote {
-    margin-left: 0;
-    margin-bottom: -1.5rem;
-  }
-  
-  .image-frame {
-    max-width: 280px; 
-  }
-    .section-lead {
-      margin-bottom: 3.5rem;
-    }
-    .pillar-card {
-      padding: 3rem 1.5rem;
-      width: 100%;
-    }
-    .clarity-call-banner-system {
-      padding: 7rem 1.5rem;
-    }
-    .serif-italic-banner {
-      font-size: 2.25rem;
-    }
-    .cta-link-text {
-      display: inline-block;
-      width: 100%;
-      box-sizing: border-box;
-      text-align: center;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-    .pillars-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
+
     h1 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
     }
-    .section-lead h2 {
-      font-size: 2.2rem;
+
+    p {
+      font-size: 1rem;
     }
   }
 </style>
