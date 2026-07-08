@@ -4,43 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "Thank You | Contact Misa Chien";
 const pageDescription = "Release your scarcity mindset with professional coach Misa Chien. Break through subconscious ceilings, heal emotional loops, and shift from survival to abundance.";
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 
-
-const homeSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": `${Astro.site ?? "https://misachien.com"}/#website`,
-      "url": Astro.site ?? "https://misachien.com",
-      "name": "Misa Chien",
-      "description": pageDescription,
-      "publisher": {
-        "@id": `${Astro.site ?? "https://misachien.com"}/#person`
-      }
-    },
-    {
-      "@type": "Person",
-      "@id": `${Astro.site ?? "https://misachien.com"}/#person`,
-      "name": "Misa Chien",
-      "url": Astro.site ?? "https://misachien.com",
-      "image": shareImageURL,
-      "jobTitle": "Founder & Executive Coach",
-      "knowsAbout": [
-        "Entrepreneurship",
-        "AAPI Leadership",
-        "Executive Coaching",
-        "Mindset Coaching",
-        "Subconscious Reprogramming"
-      ],
-      "sameAs": [
-        "https://www.linkedin.com/in/misachien",
-        "https://www.instagram.com/misa_chien/"
-      ]
-    }
-  ]
-};
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
