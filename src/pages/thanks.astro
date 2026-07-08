@@ -10,6 +10,9 @@ const pageDescription = "Release your scarcity mindset with professional coach M
     <div class="thank-you-container">
       <h1>Thank You.</h1>
       <p>Talk soon</p>
+    <a href="/index" target="_blank" class="cta-link-text">
+          <span>Back Home &rarr;</span>
+        </a>
     </div>
   </main>
 </BaseLayout>
@@ -32,6 +35,28 @@ const pageDescription = "Release your scarcity mindset with professional coach M
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+  }
+.cta-link-text {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: var(--text-primary);
+    background-color: #FFFFFF;
+    padding: 1.25rem 2.5rem;
+    border: 1px solid #FFFFFF;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .cta-link-text:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
   }
 
   .thank-you-container {
@@ -66,6 +91,14 @@ const pageDescription = "Release your scarcity mindset with professional coach M
     .thank-you-section {
       padding: 6rem 1.5rem;
       min-height: auto;
+    }
+  .cta-link-text {
+      display: inline-block;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     h1 {
