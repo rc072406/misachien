@@ -75,7 +75,9 @@ const homeSchema = {
     <Ticker />
 <section class="testimonial-section">
   <div class="testimonial-container">
-    
+    <div class="testimonial-header">
+<h2>Client Testimonial</h2>
+  </div>
     <div class="testimonial-image-wrapper">
       <div class="image-frame">
         <img src={emilyImage.src} alt="Emily Liu portrait" class="testimonial-photo" />
@@ -177,7 +179,18 @@ const homeSchema = {
     gap: 6rem;
     align-items: center;
   }
-
+.testimonial-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  width: 100%;
+}
+.testimonial-header h2 {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  color: var(--text-primary);
+  font-weight: 400;
+  margin: 0;
+}
   .hero-content {
     display: flex;
     flex-direction: column;
@@ -540,6 +553,12 @@ const homeSchema = {
       padding: 8rem 2rem 5rem 2rem;
       gap: 4rem;
     }
+.testimonial-header {
+    margin-bottom: 2.5rem;
+  }
+.testimonial-header h2 {
+    font-size: 2.2rem;
+  }
     .pillars-section {
       padding: 5rem 1rem;
     }
