@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
+import heroImage from '../../public/images/GL5A4559.webp';
 
 const pageTitle = "Unconscious Mind Coaching for AAPI Leaders & Entrepreneurs | Misa Chien";
 const pageDescription = "Dismantle the immigrant scarcity mindset, break through internal ceilings, and step into authentic leadership. Explore premium coaching tracks with Misa Chien.";
@@ -47,16 +47,22 @@ const coachingSchema = {
   <main class="coaching-container">
     
     <div class="coaching-hero-wrapper">
-      <section class="coaching-hero">
-        <span class="subtitle">Unconscious Rewiring</span>
-        <h1 class="main-title">
-          Reprogram Your <br class="desktop-only" />
-          <span class="serif-italic">Unconscious Mind</span>
-        </h1>
-        <p class="hero-intro">
-          Dismantle deeply rooted limiting beliefs and release the immigrant scarcity mindset. Move beyond survival mode and step fully into authentic leadership.
-        </p>
-      </section>
+     <section class="coaching-hero">
+  <div class="hero-text">
+    <span class="subtitle">Your Journey Begins</span>
+    <h1 class="main-title">
+      Reprogram Your <br class="desktop-only" />
+      <span class="serif-italic">Unconscious Mind</span>
+    </h1>
+    <p class="hero-intro">
+      Dismantle deeply rooted limiting beliefs and release the immigrant scarcity mindset. Move beyond survival mode and step fully into authentic leadership.
+    </p>
+  </div>
+
+  <div class="hero-image-container">
+    <img src={heroImage.src} alt="Misa Chien Unconscious Mind Coaching" class="hero-img" />
+  </div>
+</section>
     </div>
 
     <section class="methodology-section">
@@ -182,11 +188,28 @@ So why doesn't it feel that way?</p>
     border-bottom: 1px solid #EAE5E0;
   }
 
-  .coaching-hero {
-    max-width: 1200px;
-    margin: 0 auto;
-    color: var(--text-primary);
-  }
+.coaching-hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-primary);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; 
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 500px; 
+  height: auto;
+  object-fit: cover;
+}
 
   .subtitle {
     font-family: var(--font-sans);
@@ -497,6 +520,14 @@ So why doesn't it feel that way?</p>
     .coaching-hero-wrapper {
       padding: 8rem 1.5rem 4rem 1.5rem;
     }
+.coaching-hero {
+    grid-template-columns: 1fr; 
+    gap: 3rem;
+  }
+
+  .hero-image-container {
+    justify-content: center; 
+  }
 
     .desktop-only {
       display: none;
