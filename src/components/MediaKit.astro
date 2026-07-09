@@ -41,7 +41,7 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     </div>
   </section>
 
-  <section class="media-section" data-theme="dark">
+  <section class="media-section" data-theme="light">
     <div class="luxury-noise-overlay"></div>
     <div class="luxury-watermark right-align">02</div>
     <div class="section-inner grid-two-col screen-constrained">
@@ -81,7 +81,7 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
       </div>
       <div class="section-visual-panel cinematic-panel">
         <div class="luxury-video-frame">
-          <video muted loop playsinline autoplay class="cinematic-native-video">
+          <video muted loop playsinline class="cinematic-native-video">
             <source src={misaVideo} type="video/mp4" />
           </video>
           <button class="audio-toggle-badge" aria-label="Toggle Audio">
@@ -122,8 +122,19 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const allVideos = document.querySelectorAll('.cinematic-native-video');
+    
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(() => {});
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { threshold: 0.15 });
+
     allVideos.forEach(video => {
-      video.play().catch(() => {});
+      videoObserver.observe(video);
     });
   });
 
@@ -175,6 +186,10 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
     padding: 10vh 6vw;
     position: relative;
     overflow: hidden;
+  }
+
+  .media-section:first-child {
+    border-bottom: 1px solid var(--light-grey-border);
   }
 
   h1 em {
