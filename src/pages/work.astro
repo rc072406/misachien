@@ -54,21 +54,22 @@ const workSchema = {
 
   <main class="work-container">
     
-    <div class="work-hero-wrapper" data-theme="start">
-      <section class="work-hero reveal-on-scroll">
-        <span class="subtitle">MISA'S ECOSYSTEMS</span>
-        <h1 class="main-title">
-          VENTURES<br class="desktop-only" />
-          <span class="serif-italic">And Partnerships</span>
-        </h1>
-        <p class="hero-intro">
-         From weathering the ultimate highs and lows with Nom Nom Truck to commanding stages as a prolific speaker and founding <em>The Authentic Asian</em>, Misa’s journey is a masterclass in resilience. Today, she builds ecosystems that empower leaders to redefine success, heal internal ceilings, and step into true, unshakeable authority.
-        </p>
-<div class="hero-image-container">
+<section class="work-hero reveal-on-scroll">
+  <div class="hero-text-container">
+    <span class="subtitle">MISA'S ECOSYSTEMS</span>
+    <h1 class="main-title">
+      VENTURES<br class="desktop-only" />
+      <span class="serif-italic">And Partnerships</span>
+    </h1>
+    <p class="hero-intro">
+      From weathering the ultimate highs and lows with Nom Nom Truck to commanding stages as a prolific speaker and founding <em>The Authentic Asian</em>, Misa’s journey is a masterclass in resilience. Today, she builds ecosystems that empower leaders to redefine success, heal internal ceilings, and step into true, unshakeable authority.
+    </p>
+  </div>
+  
+  <div class="hero-image-container">
     <img src={heroImage.src} alt="Misa Chien Unconscious Mind Coaching" class="hero-img" />
   </div>
-      </section>
-    </div>
+</section>
 
     <section class="venture-section nomnom-section" data-theme="light">
       <div class="venture-grid reveal-on-scroll">
@@ -271,6 +272,12 @@ const workSchema = {
     flex-direction: column;
     gap: 2rem;
   }
+.hero-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
 
   .venture-description {
     font-family: var(--font-sans);
