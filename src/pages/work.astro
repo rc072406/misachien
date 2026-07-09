@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MediaKit from '../components/MediaKit.astro';
-import heroImage from '../../public/images/workmisa.webp'; 
 import nomnomImage from '../../public/images/misatruck.webp'; 
 import authenticAsianImage from '../../public/images/TAA.webp'; 
+import brandVideo from '../../public/videos/Influencer Reel Video (1).mp4';
+
 const pageTitle = "Work & Ventures: Speaking, Coaching & Ecosystems | Misa Chien";
 const pageDescription = "Explore the professional ecosystem of Misa Chien. From scaling impactful communities like The Authentic Asian to professional keynote speaking, subconscious mindset coaching, and strategic brand partnerships.";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
-const shareImageURL = new URL(heroImage.src, Astro.site ?? Astro.url).href;
 
 const workSchema = {
   "@context": "https://schema.org",
@@ -23,7 +23,6 @@ const workSchema = {
         "@id": `${Astro.site ?? "https://misachien.com"}/#person`,
         "name": "Misa Chien",
         "url": "https://misachien.com",
-        "image": shareImageURL,
         "jobTitle": "Founder & Executive Coach",
         "knowsAbout": [
           "Public Speaking",
@@ -46,30 +45,19 @@ const workSchema = {
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} image={heroImage.src}>
+<BaseLayout title={pageTitle} description={pageDescription}>
   <script type="application/ld+json" set:html={JSON.stringify(workSchema)} />
   
 
   <main class="work-container">
     
-  <div class="work-hero-wrapper" data-theme="start">
-  <section class="work-hero reveal-on-scroll">
-    <div class="hero-text"> <span class="subtitle">MISA'S ECOSYSTEMS</span>
-      <h1 class="main-title">
-        VENTURES<br class="desktop-only" />
-        <span class="serif-italic">And Partnerships</span>
-      </h1>
-      <p class="hero-intro">
-        From weathering the ultimate highs and lows with Nom Nom Truck to commanding stages as a prolific speaker and founding <em>The Authentic Asian</em>, Misa’s journey is a masterclass in resilience. Today, she builds ecosystems that empower leaders to redefine success, heal internal ceilings, and step into true, unshakeable authority.
-      </p>
+    <div class="work-hero-wrapper">
+      <video muted loop playsinline autoplay class="hero-video-bg">
+        <source src={brandVideo} type="video/mp4" />
+      </video>
     </div>
-    
-    <div class="hero-image-container">
-      <img src={heroImage.src} alt="Misa Chien Unconscious Mind Coaching" class="hero-img" />
-    </div>
-  </section>
-</div>
- <section class="methodology-section">
+
+    <section class="methodology-section">
       <div class="methodology-grid">
         <div class="methodology-left">
           <span class="section-label">Misa's Ecosystems</span>
@@ -82,15 +70,16 @@ const workSchema = {
         </div>
       </div>
     </section>
+
     <section class="venture-section nomnom-section" data-theme="light">
       <div class="venture-grid reveal-on-scroll">
         <div class="venture-meta">
           <span class="venture-number">01 / LEARNING FROM FAILURES</span>
           <h2 class="venture-title">What happened to Nom Nom Truck?</h2>
           <div class="venture-divider"></div>
-<div class="venture-image-container">
-        <img src={nomnomImage.src} alt="Nom Nom Truck Food Network History" class="venture-img" />
-      </div>
+          <div class="venture-image-container">
+            <img src={nomnomImage.src} alt="Nom Nom Truck Food Network History" class="venture-img" />
+          </div>
         </div>
         
         <div class="venture-content">
@@ -114,9 +103,9 @@ const workSchema = {
           <span class="venture-number">02 / LEADERSHIP ECOSYSTEM</span>
           <h2 class="venture-title">The Authentic <br />Asian.</h2>
           <div class="venture-divider"></div>
-<div class="venture-image-container">
-        <img src={authenticAsianImage.src} alt="The Authentic Asian Leadership Community" class="venture-img" />
-      </div>
+          <div class="venture-image-container">
+            <img src={authenticAsianImage.src} alt="The Authentic Asian Leadership Community" class="venture-img" />
+          </div>
         </div>
         
         <div class="venture-content">
@@ -166,74 +155,17 @@ const workSchema = {
   .work-hero-wrapper {
     position: relative;
     width: 100%;
-    background-color: var(--bg-solid-light);
-    padding: 10rem 4rem 6rem 4rem; 
-    box-sizing: border-box;
+    height: 70vh; /* Premium presentation aspect ratio height */
+    overflow: hidden;
+    background-color: #000;
     border-bottom: 1px solid var(--border-color);
   }
 
-  .work-hero {
-    max-width: 1200px;
-    margin: 0 auto;
-    color: var(--text-primary);
-    display: grid;
-    grid-template-columns: 1.2fr 1fr; 
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .hero-image-container {
+  .hero-video-bg {
     width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .hero-img {
-    width: 100%;
-    max-width: 500px; 
-    height: auto;
+    height: 100%;
     object-fit: cover;
-  }
-
-  .subtitle {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 0.8rem;
-    color: var(--accent-gold); 
     display: block;
-    margin-bottom: 1.5rem;
-  }
-
-  .main-title {
-    font-family: var(--font-serif);
-    font-size: 4rem;
-    font-weight: 400; 
-    line-height: 1.15;
-    letter-spacing: -1px;
-    text-transform: uppercase;
-    margin: 0 0 2rem 0;
-    color: var(--text-primary);
-  }
-
-  .serif-italic {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
-    text-transform: none; 
-    color: var(--text-serif); 
-    letter-spacing: 0;
-  }
-
-  .hero-intro {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 1.15rem;
-    line-height: 1.8;
-    max-width: 650px;
-    color: var(--text-muted);
-    margin: 0;
   }
 
   .venture-section {
@@ -278,20 +210,21 @@ const workSchema = {
     margin: 0;
     letter-spacing: -0.5px;
   }
-.venture-image-container {
-  width: 100%;
-  margin-top: 1.5rem; 
-  margin-bottom: 0.5rem;
-  overflow: hidden;
-}
 
+  .venture-image-container {
+    width: 100%;
+    margin-top: 1.5rem; 
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+  }
 
-.venture-image-container img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-}
+  .venture-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
   .venture-divider {
     width: 40px;
     height: 2px;
@@ -453,13 +386,10 @@ const workSchema = {
     transform: translateX(4px);
   }
 
-  .desktop-only {
-    display: block;
-  }
-.methodology-section {
+  .methodology-section {
     width: 100%;
     background-color: var(--bg-solid-light); 
-    padding: 5rem 4rem;
+    padding: 7rem 4rem;
     box-sizing: border-box;
     border-bottom: 1px solid #EAE5E0;
   }
@@ -479,7 +409,7 @@ const workSchema = {
     font-weight: 500;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--accent-highlight);
+    color: var(--accent-gold);
     display: block;
     margin-bottom: 1rem;
   }
@@ -512,16 +442,13 @@ const workSchema = {
     .venture-grid {
       gap: 4rem;
     }
-    .main-title {
-      font-size: 3.25rem;
-    }
   }
-
 
   @media (max-width: 900px) {
     .work-hero-wrapper {
-      padding: 8rem 1.5rem 4rem 1.5rem;
+      height: 50vh;
     }
+
     .methodology-section {
       padding: 5rem 1.5rem;
     }
@@ -535,24 +462,6 @@ const workSchema = {
       font-size: 1.8rem;
     }
 
-
-    .work-hero {
-      grid-template-columns: 1fr; 
-      gap: 3rem;
-    }
-
-    .hero-image-container {
-      justify-content: center; 
-    }
-
-    .desktop-only {
-      display: none;
-    }
-
-    .main-title {
-      font-size: 2.8rem;
-    }
-
     .venture-section {
       padding: 3rem 1.5rem;
     }
@@ -562,16 +471,16 @@ const workSchema = {
       gap: 3.5rem;
     }
 
- .venture-title {
-    font-size: 2.25rem;
-  }
+    .venture-title {
+      font-size: 2.25rem;
+    }
     
-  .venture-link {
-    display: inline-flex; 
-    align-self: flex-start;
-    width: auto; 
-    text-align: left;
-  }
+    .venture-link {
+      display: inline-flex; 
+      align-self: flex-start;
+      width: auto; 
+      text-align: left;
+    }
 
     .floating-btn {
       bottom: 1.5rem;
@@ -585,17 +494,32 @@ const workSchema = {
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const heroSection = document.querySelector('.work-hero-wrapper');
+    const heroVideo = document.querySelector('.hero-video-bg') as HTMLVideoElement;
     const floatingBtn = document.getElementById('floating-apply-btn');
-
     const footer = document.querySelector('footer') || document.querySelector('.authentic-asian-section'); 
 
+
+    if (heroVideo) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const video = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.1 });
+
+      videoObserver.observe(heroVideo);
+    }
+
+    
     if (floatingBtn) {
       let isHeroVisible = true;
       let isFooterVisible = false;
 
-     
       const updateButtonVisibility = () => {
-   
         if (!isHeroVisible && !isFooterVisible) {
           floatingBtn.classList.add('is-visible');
         } else {
@@ -618,7 +542,6 @@ const workSchema = {
         threshold: 0 
       });
 
-    
       if (heroSection) observer.observe(heroSection);
       if (footer) observer.observe(footer);
     }
