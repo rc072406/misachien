@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import MediaKit from '../components/MediaKit.astro';
 import defaultShareImage from '../../public/images/misachien.webp'; 
 import heroImage from '../../public/images/workmisa.webp'; 
+import nomnomImage from '../../public/images/misatruck.webp'; 
+import authenticAsianImage from '../../public/images/TAA.webp'; 
 const pageTitle = "Work & Ventures: Speaking, Coaching & Ecosystems | Misa Chien";
 const pageDescription = "Explore the professional ecosystem of Misa Chien. From scaling impactful communities like The Authentic Asian to professional keynote speaking, subconscious mindset coaching, and strategic brand partnerships.";
 
@@ -76,6 +78,9 @@ const workSchema = {
           <span class="venture-number">01 / LEARNING FROM FAILURES</span>
           <h2 class="venture-title">What happened to Nom Nom Truck?</h2>
           <div class="venture-divider"></div>
+<div class="venture-image-container">
+        <img src={nomnomImage.src} alt="Nom Nom Truck Food Network History" class="venture-img" />
+      </div>
         </div>
         
         <div class="venture-content">
@@ -99,6 +104,9 @@ const workSchema = {
           <span class="venture-number">02 / LEADERSHIP ECOSYSTEM</span>
           <h2 class="venture-title">The Authentic <br />Asian.</h2>
           <div class="venture-divider"></div>
+<div class="venture-image-container">
+        <img src={authenticAsianImage.src} alt="The Authentic Asian Leadership Community" class="venture-img" />
+      </div>
         </div>
         
         <div class="venture-content">
@@ -260,7 +268,20 @@ const workSchema = {
     margin: 0;
     letter-spacing: -0.5px;
   }
+.venture-image-container {
+  width: 100%;
+  margin-top: 1.5rem; 
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
 
+
+.venture-image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
   .venture-divider {
     width: 40px;
     height: 2px;
@@ -467,16 +488,16 @@ const workSchema = {
       gap: 3.5rem;
     }
 
-    .venture-title {
-      font-size: 2.25rem;
-    }
+ .venture-title {
+    font-size: 2.25rem;
+  }
     
-    .venture-link {
-      display: inline-flex; 
-      align-self: flex-start;
-      width: auto; 
-      text-align: left;
-    }
+  .venture-link {
+    display: inline-flex; 
+    align-self: flex-start;
+    width: auto; 
+    text-align: left;
+  }
 
     .floating-btn {
       bottom: 1.5rem;
