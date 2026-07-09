@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import heroImage from '../../public/images/GL5A4559.webp';
+import alinaImage from '../../public/images/Alinalee.webp';
 
 const pageTitle = "Unconscious Mind Coaching for AAPI Leaders & Entrepreneurs | Misa Chien";
 const pageDescription = "Dismantle the immigrant scarcity mindset, break through internal ceilings, and step into authentic leadership. Explore premium coaching tracks with Misa Chien.";
@@ -58,7 +59,32 @@ const coachingSchema = {
       Dismantle deeply rooted limiting beliefs and release the immigrant scarcity mindset. Move beyond survival mode and step fully into authentic leadership.
     </p>
   </div>
+<section class="testimonial-section">
+      <div class="testimonial-grid">
+        
+        <div class="testimonial-left">
+          <span class="testimonial-label">Client Testimonial | Track 02 | C-Suite & Late-Stage Leaders</span>
+          
+          <div class="quote-wrapper">
+            <span class="quote-mark">“</span>
+            <blockquote class="testimonial-quote">
+             I highly recommend Misa's 'High Achiever Breakthrough Call' sessions! She helped me to identify one of my core limiting beliefs, which is that "I need to do more" to make up for feeling like 'I'm not doing enough.' She helped me to see that this belief stems from a core insecurity in my childhood, which in itself stems back to my mom and grandmother's childhood traumas. By being able to identify the pain of my ancestors and how that led to my childhood pain, I was able to let go of that belief. By seeing the belief in its totality, it lost much of its power over me. I'm so thankful for Misa's, guidance, vulnerability, and encouragement, which allowed me to feel safe to dive deep into my myself, which was the key to my epiphany. Thank you, Misa! If you feel like you may be holding yourself back despite getting years of therapy, I recommend having a few sessions with Misa! You deserve it!
+          </div>
 
+          <div class="testimonial-attribution">
+            <p class="attribution-name">Alina Lee</p>
+            <p class="attribution-title">Founding Partner, Aspire Law</p>
+          </div>
+        </div>
+
+        <div class="testimonial-right">
+          <div class="testimonial-image-frame">
+            <img src={alinaImage.src} alt="Alina Lee, Founding Partner of Aspire Law" class="testimonial-img" />
+          </div>
+        </div>
+
+      </div>
+    </section>
   <div class="hero-image-container">
     <img src={heroImage.src} alt="Misa Chien Unconscious Mind Coaching" class="hero-img" />
   </div>
@@ -240,7 +266,114 @@ So why doesn't it feel that way?</p>
     color: var(--accent-gold); 
     letter-spacing: 0;
   }
+.testimonial-section {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 7rem 4rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--border-color);
+  }
 
+  .testimonial-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .testimonial-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .testimonial-label {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .quote-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .quote-mark {
+    font-family: var(--font-serif);
+    font-size: 6rem;
+    color: rgba(140, 126, 109, 0.15);
+    position: absolute;
+    top: -2.5rem;
+    left: -1rem;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .testimonial-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .testimonial-attribution {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    width: fit-content;
+  }
+
+  .attribution-name {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .attribution-title {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .testimonial-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .testimonial-image-frame {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 4 / 5;
+    background-color: var(--bg-solid-light);
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+
+  .testimonial-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .hero-intro {
     font-family: var(--font-sans);
     font-weight: 500;
@@ -585,6 +718,26 @@ So why doesn't it feel that way?</p>
       width: 100%;
       text-align: center;
       box-sizing: border-box;
+    }
+.testimonial-section {
+      padding: 5rem 1.5rem;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+
+    .testimonial-right {
+      grid-row: 1; 
+    }
+
+    .testimonial-image-frame {
+      max-width: 100%;
+    }
+
+    .testimonial-quote {
+      font-size: 1.25rem;
     }
   }
 </style>
