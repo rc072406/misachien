@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 import MediaKit from '../components/MediaKit.astro';
 import defaultShareImage from '../../public/images/misachien.webp'; 
-
+import heroImage from '../../public/images/GL5A4634.webp'; 
 const pageTitle = "Work & Ventures: Speaking, Coaching & Ecosystems | Misa Chien";
 const pageDescription = "Explore the professional ecosystem of Misa Chien. From scaling impactful communities like The Authentic Asian to professional keynote speaking, subconscious mindset coaching, and strategic brand partnerships.";
 
@@ -64,6 +64,9 @@ const workSchema = {
         <p class="hero-intro">
          From weathering the ultimate highs and lows with Nom Nom Truck to commanding stages as a prolific speaker and founding <em>The Authentic Asian</em>, Misa’s journey is a masterclass in resilience. Today, she builds ecosystems that empower leaders to redefine success, heal internal ceilings, and step into true, unshakeable authority.
         </p>
+<div class="hero-image-container">
+    <img src={heroImage.src} alt="Misa Chien Unconscious Mind Coaching" class="hero-img" />
+  </div>
       </section>
     </div>
 
@@ -152,11 +155,27 @@ const workSchema = {
     padding: calc(9rem + 80px) 4rem 9rem 4rem; 
   }
 
-  .work-hero {
-    max-width: 1200px;
-    margin: 0 auto;
-    color: var(--text-primary);
-  }
+ max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-primary);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; 
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 500px; 
+  height: auto;
+  object-fit: cover;
+}
 
   .subtitle {
     font-family: var(--font-sans);
@@ -430,6 +449,14 @@ const workSchema = {
     .work-hero-wrapper {
       padding: calc(6rem + 70px) 1.5rem 6rem 1.5rem;
     }
+.work-hero {
+    grid-template-columns: 1fr; 
+    gap: 3rem;
+  }
+
+  .hero-image-container {
+    justify-content: center; 
+  }
 
     .desktop-only {
       display: none;
