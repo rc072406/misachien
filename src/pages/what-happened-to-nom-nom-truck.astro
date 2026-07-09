@@ -595,3 +595,45 @@ const schemaData = {
     }
   }
 </style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroSection = document.querySelector('.work-hero-wrapper');
+    const floatingBtn = document.getElementById('floating-apply-btn');
+
+    const footer = document.querySelector('footer') || document.querySelector('.authentic-asian-section'); 
+
+    if (floatingBtn) {
+      let isHeroVisible = true;
+      let isFooterVisible = false;
+
+     
+      const updateButtonVisibility = () => {
+   
+        if (!isHeroVisible && !isFooterVisible) {
+          floatingBtn.classList.add('is-visible');
+        } else {
+          floatingBtn.classList.remove('is-visible');
+        }
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.target === heroSection) {
+            isHeroVisible = entry.isIntersecting;
+          }
+          if (entry.target === footer) {
+            isFooterVisible = entry.isIntersecting;
+          }
+        });
+        
+        updateButtonVisibility();
+      }, {
+        threshold: 0 
+      });
+
+    
+      if (heroSection) observer.observe(heroSection);
+      if (footer) observer.observe(footer);
+    }
+  });
+</script>
