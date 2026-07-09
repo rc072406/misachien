@@ -54,22 +54,24 @@ const workSchema = {
 
   <main class="work-container">
     
-<section class="work-hero reveal-on-scroll">
-  <div class="hero-text-container">
-    <span class="subtitle">MISA'S ECOSYSTEMS</span>
-    <h1 class="main-title">
-      VENTURES<br class="desktop-only" />
-      <span class="serif-italic">And Partnerships</span>
-    </h1>
-    <p class="hero-intro">
-      From weathering the ultimate highs and lows with Nom Nom Truck to commanding stages as a prolific speaker and founding <em>The Authentic Asian</em>, Misa’s journey is a masterclass in resilience. Today, she builds ecosystems that empower leaders to redefine success, heal internal ceilings, and step into true, unshakeable authority.
-    </p>
-  </div>
-  
-  <div class="hero-image-container">
-    <img src={heroImage.src} alt="Misa Chien Unconscious Mind Coaching" class="hero-img" />
-  </div>
-</section>
+    <div class="work-hero-wrapper" data-theme="start">
+      <section class="work-hero reveal-on-scroll">
+        <div class="hero-text-container">
+          <span class="subtitle">MISA'S ECOSYSTEMS</span>
+          <h1 class="main-title">
+            VENTURES<br class="desktop-only" />
+            <span class="serif-italic">And Partnerships</span>
+          </h1>
+          <p class="hero-intro">
+            From weathering the ultimate highs and lows with Nom Nom Truck to commanding stages as a prolific speaker and founding <em>The Authentic Asian</em>, Misa’s journey is a masterclass in resilience. Today, she builds ecosystems that empower leaders to redefine success, heal internal ceilings, and step into true, unshakeable authority.
+          </p>
+        </div>
+        
+        <div class="hero-image-container">
+          <img src={heroImage.src} alt="Misa Chien Unconscious Mind Coaching" class="hero-img" />
+        </div>
+      </section>
+    </div>
 
     <section class="venture-section nomnom-section" data-theme="light">
       <div class="venture-grid reveal-on-scroll">
@@ -119,7 +121,6 @@ const workSchema = {
 
     <MediaKit client:visible />
 
-
     <a href="mailto:bernadine@theauthenticasian.com" id="floating-apply-btn" class="floating-btn">
       WANT TO PARTNER WITH MISA? <span class="arrow">→</span>
     </a>
@@ -153,30 +154,38 @@ const workSchema = {
     box-sizing: border-box;
     background-color: var(--bg-solid-light);
     border-bottom: 1px solid var(--border-color);
-    padding: calc(9rem + 80px) 4rem 9rem 4rem; 
+    padding: calc(9rem + 120px) 4rem 9rem 4rem; 
   }
 
- .work-hero{ max-width: 1200px;
-  margin: 0 auto;
-  color: var(--text-primary);
-  display: grid;
-  grid-template-columns: 1.2fr 1fr; 
-  gap: 4rem;
-  align-items: center;
-}
+  .work-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--text-primary);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; 
+    gap: 4rem;
+    align-items: center;
+  }
 
-.hero-image-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
+  .hero-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
 
-.hero-img {
-  width: 100%;
-  max-width: 500px; 
-  height: auto;
-  object-fit: cover;
-}
+  .hero-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .hero-img {
+    width: 100%;
+    max-width: 500px; 
+    height: auto;
+    object-fit: cover;
+  }
 
   .subtitle {
     font-family: var(--font-sans);
@@ -272,12 +281,6 @@ const workSchema = {
     flex-direction: column;
     gap: 2rem;
   }
-.hero-text-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
 
   .venture-description {
     font-family: var(--font-sans);
@@ -318,7 +321,6 @@ const workSchema = {
     transform: translateX(5px);
   }
 
-
   .nomnom-section {
     background-color: #FFFFFF; 
   }
@@ -349,7 +351,6 @@ const workSchema = {
     background-color: var(--accent-gold);
     border-color: var(--accent-gold);
   }
-
 
   .authentic-asian-section {
     background-color: var(--bg-solid-dark); 
@@ -391,7 +392,6 @@ const workSchema = {
     border-color: var(--accent-gold);
     color: #FFFFFF;
   }
-
 
   .floating-btn {
     position: fixed;
@@ -454,16 +454,16 @@ const workSchema = {
 
   @media (max-width: 820px) {
     .work-hero-wrapper {
-      padding: calc(6rem + 70px) 1.5rem 6rem 1.5rem;
+      padding: calc(6rem + 100px) 1.5rem 6rem 1.5rem;
     }
-.work-hero {
-    grid-template-columns: 1fr; 
-    gap: 3rem;
-  }
+    .work-hero {
+      grid-template-columns: 1fr; 
+      gap: 3rem;
+    }
 
-  .hero-image-container {
-    justify-content: center; 
-  }
+    .hero-image-container {
+      justify-content: center; 
+    }
 
     .desktop-only {
       display: none;
@@ -492,10 +492,9 @@ const workSchema = {
     
     .venture-link {
       display: inline-flex; 
-    align-self: flex-start;
-    width: auto; 
-    text-align: left;
-  
+      align-self: flex-start;
+      width: auto; 
+      text-align: left;
     }
 
     .floating-btn {
