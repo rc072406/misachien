@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MediaKit from '../components/MediaKit.astro';
-import defaultShareImage from '../../public/images/misachien.webp'; 
 import heroImage from '../../public/images/workmisa.webp'; 
 import nomnomImage from '../../public/images/misatruck.webp'; 
 import authenticAsianImage from '../../public/images/TAA.webp'; 
@@ -47,7 +46,7 @@ const workSchema = {
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} image={defaultShareImage.src}>
+<BaseLayout title={pageTitle} description={pageDescription} image={heroImage.src}>
   <script type="application/ld+json" set:html={JSON.stringify(workSchema)} />
   
 
