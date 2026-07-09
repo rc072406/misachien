@@ -7,202 +7,132 @@ const { className = '' } = Astro.props;
 import slide8Image from '../../public/images/90.webp';
 import slide12Image from '../../public/images/79.webp';
 import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
-import brandVideo from '../../public/videos/Influencer Reel Video.mp4';
 ---
 
-<div class={`media-kit-swiper-wrapper ${className}`}>
-  <div class="swiper mediaKitSwiper">
-    <div class="swiper-wrapper">
-      
-      <div class="swiper-slide" data-theme="light">
-       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark left-align" data-swiper-parallax="-500">01</div>
-        <div class="slide-inner split-layout screen-constrained" data-swiper-parallax="-200">
-          <div class="slide-content reveal-on-scroll">
-            <div class="meta-category-pill" data-swiper-parallax="-50">FOUNDER • COMMUNITY BUILDER • SPEAKER • AUTHOR • ENTREPRENEUR</div>
-            <h1 class="hero-title" data-swiper-parallax="-100">Misa <em>Chien.</em></h1>
-            <h2 class="hero-subtitle" data-swiper-parallax="-150">Authentic Storytelling</h2>
-            <p class="header-note">FOR SELECT BRAND, MEDIA, AND SPEAKING PARTNERSHIPS</p>
-            <p class="slide-description">Misa brings founder-to-founder credibility, trusted community access, and authentic storytelling across leadership, identity, ambition, and belonging.</p>
-            
-            <div class="metrics-display-grid">
-              <div class="metric-group">
-                <h3>PLATFORMS</h3>
-                <p>LinkedIn<br />Instagram<br />Newsletter</p>
-              </div>
-              <div class="metric-group">
-                <h3>AUDIENCE METRICS</h3>
-                <p>LinkedIn: <strong class="stat-highlight">48,300+</strong><br />Instagram: <strong class="stat-highlight">13,000+</strong><br />Newsletter: <strong class="stat-highlight">3,000+</strong></p>
-              </div>
-            </div>
+<div class={`media-kit-wrapper ${className}`}>
+  
+  <section class="media-section" data-theme="light">
+    <div class="luxury-noise-overlay"></div>
+    <div class="luxury-watermark left-align">01</div>
+    <div class="section-inner split-layout screen-constrained">
+      <div class="section-content">
+        <div class="meta-category-pill">FOUNDER • COMMUNITY BUILDER • SPEAKER • AUTHOR • ENTREPRENEUR</div>
+        <h1 class="hero-title">Misa <em>Chien.</em></h1>
+        <h2 class="hero-subtitle">Authentic Storytelling</h2>
+        <p class="header-note">FOR SELECT BRAND, MEDIA, AND SPEAKING PARTNERSHIPS</p>
+        <p class="section-description">Misa brings founder-to-founder credibility, trusted community access, and authentic storytelling across leadership, identity, ambition, and belonging.</p>
+        
+        <div class="metrics-display-grid">
+          <div class="metric-group">
+            <h3>PLATFORMS</h3>
+            <p>LinkedIn<br />Instagram<br />Newsletter</p>
           </div>
-          <div class="slide-visual-panel image-constrained-wrapper">
-            <div class="image-mask editorial-clip">
-               <img src={slide12Image.src} class="slide-image" alt="Misa Chien Hero">
-            </div>
+          <div class="metric-group">
+            <h3>AUDIENCE METRICS</h3>
+            <p>LinkedIn: <strong class="stat-highlight">48,300+</strong><br />Instagram: <strong class="stat-highlight">13,000+</strong><br />Newsletter: <strong class="stat-highlight">3,000+</strong></p>
           </div>
         </div>
       </div>
-
-      <div class="swiper-slide" data-theme="light">
-       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark right-align" data-swiper-parallax="-500">02</div>
-        <div class="slide-inner grid-two-col screen-constrained" data-swiper-parallax="-200">
-          <div class="slide-content editorial-border-right">
-            <h2 class="section-heading">WHY PARTNERS WORK WITH MISA</h2>
-            <h3 class="subsection-subheading">WHAT OUR PARTNERS GET:</h3>
-            <ul class="value-prop-list">
-              <li>Founder-to-founder credibility</li>
-              <li>Trusted audience and community resonance</li>
-              <li>Authentic storytelling</li>
-              <li>Clear communication and professional execution</li>
-              <li>Thoughtful recommendations based on campaign fit</li>
-            </ul>
-          </div>
-          <div class="slide-content alt-column-panel">
-            <div class="content-block-chunk">
-              <h3 class="block-title-heading">BEST-FIT PARTNERSHIPS:</h3>
-              <p class="block-body-text">We partner with brands, teams, and organizers whose goals align with Misa's values, audience, and voice.</p>
-            </div>
-            <div class="content-block-chunk">
-              <h3 class="block-title-heading">PREVIOUS PARTNERS:</h3>
-              <p class="brands-list-paragraph"><strong>Brands:</strong> 1587 Sneakers, Sulwhasoo, Fabletics, GNC, Revitalash</p>
-              <p class="brands-list-paragraph"><strong>TV:</strong> The Great Food Truck Race Season 1</p>
-            </div>
-          </div>
+      <div class="section-visual-panel image-constrained-wrapper">
+        <div class="image-mask">
+          <img src={slide12Image.src} class="section-image" alt="Misa Chien Hero">
         </div>
       </div>
-
-
-      <div class="swiper-slide" data-theme="dark">
-       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark left-align" data-swiper-parallax="-500">03</div>
-        <div class="slide-inner cinematic-video-layout screen-constrained" data-swiper-parallax="-200">
-          <div class="slide-content">
-            <div class="meta-category-pill" data-swiper-parallax="-50">IMPACT • RESONANCE</div>
-            <h2 class="section-heading inverse-text">FEATURED WORK</h2>
-            <h3 class="subsection-subheading">STORIES IN MOTION</h3>
-          </div>
-
-          <div class="slide-visual-panel cinematic-panel">
-            <div class="luxury-video-frame swiper-no-swiping editorial-clip">
-              <video muted loop playsinline class="cinematic-native-video">
-                <source src={misaVideo} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <button class="audio-toggle-badge" aria-label="Toggle Audio">
-                <span class="pulse-ring"></span>
-                <span class="audio-status-text">TAP FOR AUDIO</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="swiper-slide" data-theme="light">
-       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark right-align" data-swiper-parallax="-500">04</div>
-        <div class="slide-inner split-layout inversion-layout screen-constrained" data-swiper-parallax="-200">
-          <div class="slide-visual-panel image-constrained-wrapper">
-            <div class="image-mask editorial-clip">
-              <img src={slide8Image.src} class="slide-image" alt="Misa Chien Contact">
-            </div>
-          </div>
-          <div class="slide-content">
-            <h2 class="section-heading">REQUEST A QUOTE</h2>
-            <p class="intro-context-text">Please share collaboration type, deliverables, location, usage needs, and your budget range.</p>
-            
-            <div class="contact-card-anchor-block">
-              <span class="contact-pre-header-label">PARTNERSHIPS:</span>
-              <p class="agent-contact-name-text">BERNADINE COTE</p>
-              <a href="mailto:BERNADINE@THEAUTHENTICASIAN.COM" class="btn-filled-luxury">
-                <span>BERNADINE@THEAUTHENTICASIAN.COM</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
-    
-    <div class="swiper-scrollbar"></div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
+  </section>
+
+  <section class="media-section" data-theme="light">
+    <div class="luxury-noise-overlay"></div>
+    <div class="luxury-watermark right-align">02</div>
+    <div class="section-inner grid-two-col screen-constrained">
+      <div class="section-content editorial-border-right">
+        <h2 class="section-heading">WHY PARTNERS WORK WITH MISA</h2>
+        <h3 class="subsection-subheading">WHAT OUR PARTNERS GET:</h3>
+        <ul class="value-prop-list">
+          <li>Founder-to-founder credibility</li>
+          <li>Trusted audience and community resonance</li>
+          <li>Authentic storytelling</li>
+          <li>Clear communication and professional execution</li>
+          <li>Thoughtful recommendations based on campaign fit</li>
+        </ul>
+      </div>
+      <div class="section-content alt-column-panel">
+        <div class="content-block-chunk">
+          <h3 class="block-title-heading">BEST-FIT PARTNERSHIPS:</h3>
+          <p class="block-body-text">We partner with brands, teams, and organizers whose goals align with Misa's values, audience, and voice.</p>
+        </div>
+        <div class="content-block-chunk">
+          <h3 class="block-title-heading">PREVIOUS PARTNERS:</h3>
+          <p class="brands-list-paragraph"><strong>Brands:</strong> 1587 Sneakers, Sulwhasoo, Fabletics, GNC, Revitalash</p>
+          <p class="brands-list-paragraph"><strong>TV:</strong> The Great Food Truck Race Season 1</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="media-section" data-theme="dark">
+    <div class="luxury-noise-overlay"></div>
+    <div class="luxury-watermark left-align">03</div>
+    <div class="section-inner cinematic-video-layout screen-constrained">
+      <div class="section-content">
+        <div class="meta-category-pill">IMPACT • RESONANCE</div>
+        <h2 class="section-heading inverse-text">FEATURED WORK</h2>
+        <h3 class="subsection-subheading">STORIES IN MOTION</h3>
+      </div>
+      <div class="section-visual-panel cinematic-panel">
+        <div class="luxury-video-frame">
+          <video muted loop playsinline autoplay class="cinematic-native-video">
+            <source src={misaVideo} type="video/mp4" />
+          </video>
+          <button class="audio-toggle-badge" aria-label="Toggle Audio">
+            <span class="pulse-ring"></span>
+            <span class="audio-status-text">TAP FOR AUDIO</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="media-section" data-theme="light">
+    <div class="luxury-noise-overlay"></div>
+    <div class="luxury-watermark right-align">04</div>
+    <div class="section-inner split-layout inversion-layout screen-constrained">
+      <div class="section-visual-panel image-constrained-wrapper">
+        <div class="image-mask">
+          <img src={slide8Image.src} class="section-image" alt="Misa Chien Contact">
+        </div>
+      </div>
+      <div class="section-content">
+        <h2 class="section-heading">REQUEST A QUOTE</h2>
+        <p class="intro-context-text">Please share collaboration type, deliverables, location, usage needs, and your budget range.</p>
+        
+        <div class="contact-card-anchor-block">
+          <span class="contact-pre-header-label">PARTNERSHIPS:</span>
+          <p class="agent-contact-name-text">BERNADINE COTE</p>
+          <a href="mailto:BERNADINE@THEAUTHENTICASIAN.COM" class="btn-filled-luxury">
+            <span>BERNADINE@THEAUTHENTICASIAN.COM</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </div>
+
 <script>
-  import 'swiper/css';
-  import 'swiper/css/navigation';
-  import 'swiper/css/pagination';
-  import 'swiper/css/scrollbar';
-  import Swiper from 'swiper';
-  import { Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, Parallax } from 'swiper/modules';
-
-  const manageVideos = (swiper) => {
-    const allVideos = swiper.el.querySelectorAll('.cinematic-native-video');
-    allVideos.forEach(video => video.pause());
-
-    const activeSlide = swiper.slides[swiper.activeIndex];
-    if (activeSlide) {
-      const activeVideo = activeSlide.querySelector('.cinematic-native-video');
-      if (activeVideo) {
-        activeVideo.play().catch(err => {
-          console.log("Autoplay waiting for user interaction:", err);
-        });
-      }
-    }
-  };
-
-  const initSwiper = () => {
-    const swiperEl = document.querySelector('.mediaKitSwiper');
-    if (swiperEl && !swiperEl.swiper) {
-      new Swiper('.mediaKitSwiper', {
-        modules: [Navigation, Pagination, Scrollbar, Keyboard, Mousewheel, Parallax],
-        autoHeight: true, 
-        observer: true,         
-        observeParents: true,  
-        breakpoints: {
-          961: {
-            autoHeight: false 
-          }
-        },
-        direction: 'horizontal',
-        speed: 1100,
-        parallax: true,
-        mousewheel: { forceToAxis: true, sensitivity: 0.8 },
-        keyboard: { enabled: true, onlyInViewport: true },
-        scrollbar: { el: '.swiper-scrollbar', draggable: true },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-          type: 'fraction',
-          renderFraction: function (currentClass, totalClass) {
-            return `<span class="${currentClass}"></span><span class="separator">/</span><span class="${totalClass}"></span>`;
-          }
-        },
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        on: {
-          init: function (swiper) {
-            const initialSlide = swiper.slides[swiper.activeIndex];
-            swiper.el.setAttribute('data-current-theme', initialSlide.getAttribute('data-theme') || 'light');
-            manageVideos(swiper);
-          },
-          slideChange: function (swiper) {
-            const activeSlide = swiper.slides[swiper.activeIndex];
-            swiper.el.setAttribute('data-current-theme', activeSlide.getAttribute('data-theme') || 'light');
-            manageVideos(swiper);
-          }
-        }
-      });
-    }
-  };
-
-  document.addEventListener('DOMContentLoaded', initSwiper);
-  setTimeout(initSwiper, 150);
+  document.addEventListener('DOMContentLoaded', () => {
+    const allVideos = document.querySelectorAll('.cinematic-native-video');
+    allVideos.forEach(video => {
+      video.play().catch(() => {});
+    });
+  });
 
   document.addEventListener('click', (e) => {
     const toggleBtn = e.target.closest('.audio-toggle-badge');
     if (!toggleBtn) return;
 
-    const slide = toggleBtn.closest('.swiper-slide');
-    const video = slide ? slide.querySelector('.cinematic-native-video') : null;
+    const section = toggleBtn.closest('.media-section');
+    const video = section ? section.querySelector('.cinematic-native-video') : null;
     const textLabel = toggleBtn.querySelector('.audio-status-text');
 
     if (video) {
@@ -218,8 +148,9 @@ import brandVideo from '../../public/videos/Influencer Reel Video.mp4';
     }
   });
 </script>
+
 <style>
-  .media-kit-swiper-wrapper {
+  .media-kit-wrapper {
     --burgundy: #59363a;
     --coral: #e77860;
     --cream-background: #fef4ef;
@@ -229,52 +160,59 @@ import brandVideo from '../../public/videos/Influencer Reel Video.mp4';
     --font-display: 'Libre Baskerville', serif;
     --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
     width: 100%;
-    position: relative;
     background-color: var(--soft-white);
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
-  .swiper { width: 100%; height: 100vh; }
-
-  .swiper-slide {
+  .media-section {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5vh 6vw;
-    position: relative; 
-    z-index: 2;         
+    padding: 10vh 6vw;
+    position: relative;
     overflow: hidden;
   }
-h1 em{
-color: var(--coral);
-}
 
-  .swiper-slide .luxury-noise-overlay {
+  h1 em {
+    color: var(--coral);
+  }
+
+  .luxury-noise-overlay {
     position: absolute;
     top: 0; 
     left: 0; 
     width: 100%; 
     height: 100%;
     pointer-events: none;
-    z-index: -1;        
+    z-index: 1;        
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  .swiper-slide[data-theme="light"] { 
+  .media-section[data-theme="light"] { 
     background-color: var(--cream-background); 
     color: var(--dark-grey-text); 
   }
 
-  .swiper-slide[data-theme="dark"] { 
-    background:var(--burgundy); 
+  .media-section[data-theme="dark"] { 
+    background: var(--burgundy); 
     color: var(--soft-white); 
   }
 
+  .media-section[data-theme="light"] .luxury-noise-overlay {
+    opacity: 0.1;              
+    mix-blend-mode: multiply;   
+  }
+
+  .media-section[data-theme="dark"] .luxury-noise-overlay {
+    opacity: 0.04;             
+    mix-blend-mode: normal;     
+  }
+
   .screen-constrained {
-    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -285,13 +223,11 @@ color: var(--coral);
     z-index: 5; 
   }
 
-  .slide-content, .slide-visual-panel {
+  .section-content, .section-visual-panel {
     min-width: 0;
   }
 
   .image-constrained-wrapper {
-    height: 100%;
-    max-height: 80vh; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -299,32 +235,35 @@ color: var(--coral);
   }
 
   .image-mask {
-    height: 100%;
     width: 100%;
     max-width: 500px;
-    overflow: hidden;
     position: relative;
   }
 
-  .slide-image { width: 100%; height: 100%; object-fit: cover; }
+  .section-image { 
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+    display: block;
+  }
 
   .luxury-watermark {
     position: absolute;
     font-family: var(--font-display);
     font-size: 32vh;
     line-height: 1;
-    z-index: -2 !important; 
+    z-index: 2; 
     pointer-events: none;
     bottom: 5vh; 
     white-space: nowrap;
   }
   
-  .swiper-slide[data-theme="light"] .luxury-watermark {
+  .media-section[data-theme="light"] .luxury-watermark {
     opacity: 0.35; 
     color: #F1DFDC;
   }
 
-  .swiper-slide[data-theme="dark"] .luxury-watermark {
+  .media-section[data-theme="dark"] .luxury-watermark {
     opacity: 0.03; 
     color: var(--soft-white); 
   }
@@ -341,6 +280,11 @@ color: var(--coral);
     font-size: 0.65rem;
     letter-spacing: 3px;
     margin-bottom: 3vh;
+  }
+
+  .media-section[data-theme="dark"] .meta-category-pill { 
+    color: var(--soft-white); 
+    border-bottom: 1px solid var(--coral); 
   }
 
   .hero-title {
@@ -369,6 +313,7 @@ color: var(--coral);
     margin-bottom: 3.5vh;
     text-transform: uppercase;
   }
+  
   .section-heading.inverse-text { color: var(--soft-white); }
 
   .subsection-subheading {
@@ -391,13 +336,17 @@ color: var(--coral);
     padding-left: 1rem;
   }
 
-  .slide-description, .intro-context-text {
+  .section-description, .intro-context-text {
     font-family: var(--font-sans);
     font-size: 0.95rem;
     line-height: 1.8;
     color: var(--dark-grey-text);
     margin-bottom: 5vh;
     max-width: 480px;
+  }
+
+  .media-section[data-theme="dark"] .section-description { 
+    color: rgba(255, 255, 255, 0.75); 
   }
 
   .split-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 5vw; }
@@ -424,6 +373,7 @@ color: var(--coral);
     color: var(--dark-grey-text);
     margin: 0;
   }
+  
   .brands-list-paragraph { margin-bottom: 2vh; }
 
   .metrics-display-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -435,7 +385,7 @@ color: var(--coral);
 
   .agent-contact-name-text { font-family: var(--font-display); font-size: 2.2rem; color: var(--burgundy); margin: 1vh 0 3.5vh 0; }
   
-.btn-filled-luxury { 
+  .btn-filled-luxury { 
     display: inline-flex; 
     align-items: center;
     justify-content: center;
@@ -458,31 +408,10 @@ color: var(--coral);
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
-
   .btn-filled-luxury:hover {
     background: transparent;
     color: var(--burgundy);
   }
-
-  :global(.swiper-scrollbar) { background: transparent !important; height: 1px !important; bottom: 3vh !important; left: 6vw !important; width: calc(100% - 12vw) !important; }
-  :global(.swiper-scrollbar-drag) { background: var(--coral) !important; border-radius: 0 !important; }
-
-  :global(.media-kit-swiper-wrapper .swiper-pagination-fraction) { font-family: var(--font-display) !important; color: var(--nav-arrow-color, var(--burgundy)) !important; font-size: 1.1rem !important; bottom: 2.2vh !important; left: 6vw !important; width: auto !important; transition: color 0.4s ease; }
-  :global(.swiper-button-next), :global(.swiper-button-prev) { bottom: 2.2vh !important; top: auto !important; }
-  :global(.swiper-button-prev) { right: 10vw !important; left: auto !important; }
-  :global(.swiper-button-next) { right: 6vw !important; }
-
-  :global(.swiper-button-next::after), :global(.swiper-button-prev::after) { 
-    font-size: 0.9rem !important; 
-    color: var(--nav-arrow-color, var(--burgundy)); 
-    font-family: var(--font-sans) !important; 
-    transition: color 0.4s ease; 
-  }
-
-  :global(.mediaKitSwiper[data-current-theme="dark"]) { --nav-arrow-color: var(--soft-white); }
-
-  .editorial-clip { clip-path: inset(100% 0 0 0); transition: clip-path 1.4s cubic-bezier(0.75, 0, 0.25, 1); }
-  .swiper-slide-active .editorial-clip { clip-path: inset(0 0 0 0); }
 
   .cinematic-video-layout { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 4vw; align-items: center; width: 100%; }
   .cinematic-panel { width: 100%; display: flex; align-items: center; justify-content: flex-end; }
@@ -496,19 +425,16 @@ color: var(--coral);
     border: 1px solid rgba(255, 255, 255, 0.08); 
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5); 
     overflow: hidden;
-    z-index: 60; 
+    z-index: 10; 
   }
 
   .luxury-video-frame video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border: 0; }
-
-  .swiper-slide[data-theme="dark"] .meta-category-pill { color: var(--soft-white); border-bottom: 1px solid var(--coral); }
-  .swiper-slide[data-theme="dark"] .slide-description { color: rgba(255, 255, 255, 0.75); }
 
   .audio-toggle-badge {
     position: absolute;
     bottom: 24px;
     right: 24px;
-    z-index: 60;
+    z-index: 20;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -535,55 +461,33 @@ color: var(--coral);
     100% { transform: scale(1.4); opacity: 0; }
   }
 
-  .swiper-slide[data-theme="light"] .luxury-noise-overlay {
-    opacity: 0.1;              
-    mix-blend-mode: multiply;   
-  }
-
-  .swiper-slide[data-theme="dark"] .luxury-noise-overlay {
-    opacity: 0.04;             
-    mix-blend-mode: normal;     
-  }
-
   @media(max-width: 960px) {
-    .swiper {
-      height: auto !important; 
-    }
-
-    .swiper-slide {
-      display: block !important;
-      height: auto !important; 
-      overflow-y: visible !important; 
-      padding: 6vh 6vw 12vh 6vw; 
-    }
-
-    :global(.swiper-button-next), :global(.swiper-button-prev) {
-      display: none !important;
+    .media-section {
+      padding: 10vh 6vw; 
     }
 
     .screen-constrained {
-      height: auto !important;
       flex-direction: column !important;
       align-items: flex-start !important;
       justify-content: flex-start !important;
-      gap: 3vh !important;
+      gap: 5vh !important;
     }
 
     .split-layout, .grid-two-col, .cinematic-video-layout {
       grid-template-columns: 1fr !important;
-      gap: 3vh !important;
+      gap: 5vh !important;
       width: 100%;
     }
     
     .editorial-border-right {
       border-right: none !important;
       padding-right: 0 !important;
-      padding-bottom: 2vh !important;
+      padding-bottom: 4vh !important;
       border-bottom: 1px solid var(--light-grey-border);
     }
 
     .hero-title { font-size: calc(2.2rem + 1.5vw); }
-    .slide-description, .intro-context-text { max-width: 100% !important; margin-bottom: 3vh; }
+    .section-description, .intro-context-text { max-width: 100% !important; margin-bottom: 3vh; }
     
     .metrics-display-grid { 
       grid-template-columns: 1fr 1fr !important; 
@@ -591,27 +495,18 @@ color: var(--coral);
     }
 
     .image-constrained-wrapper {
-      height: auto !important;
       width: 100% !important;
       margin-top: 2vh;
     }
 
     .image-mask {
       max-width: 100% !important;
-      height: auto !important;
-      aspect-ratio: 4 / 5 !important; 
-    } 
-    
-    .slide-image {
-      object-fit: cover !important; 
-      width: 100% !important;
-      height: 100% !important;        
     } 
     
     .cinematic-panel { width: 100% !important; justify-content: center !important; }
     .luxury-video-frame { max-width: 100% !important; width: 100% !important; aspect-ratio: 16 / 9 !important; }
     
-   .btn-filled-luxury { 
+    .btn-filled-luxury { 
       font-size: 0.8rem !important;
       padding: 1.15rem 1.5rem !important; 
       width: 100% !important;          
@@ -619,6 +514,7 @@ color: var(--coral);
       white-space: normal !important;
       line-height: 1.4 !important;
     }
+    
     .luxury-watermark { display: none !important; }
   }
 </style>
