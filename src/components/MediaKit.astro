@@ -7,6 +7,7 @@ const { className = '' } = Astro.props;
 import slide8Image from '../../public/images/90.webp';
 import slide12Image from '../../public/images/79.webp';
 import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
+import brandVideo from '../../public/videos/Influencer Reel Video.mp4';
 ---
 
 <div class={`media-kit-swiper-wrapper ${className}`}>
@@ -41,9 +42,32 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
           </div>
         </div>
       </div>
+ <div class="swiper-slide" data-theme="dark">
+       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark left-align" data-swiper-parallax="-500">02</div>
+        <div class="slide-inner cinematic-video-layout screen-constrained" data-swiper-parallax="-200">
+          <div class="slide-content">
+            <div class="meta-category-pill" data-swiper-parallax="-50">AUTHENTICITY • POWER</div>
+            <h2 class="section-heading inverse-text">GNC X MISA</h2>
+          <h3 class="subsection-subheading">Transformative Messages</h3>
+          </div>
+
+          <div class="slide-visual-panel cinematic-panel">
+            <div class="luxury-video-frame swiper-no-swiping editorial-clip">
+              <video muted loop playsinline class="cinematic-native-video">
+                <source src={brandVideo} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <button class="audio-toggle-badge" aria-label="Toggle Audio">
+                <span class="pulse-ring"></span>
+                <span class="audio-status-text">TAP FOR AUDIO</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="swiper-slide" data-theme="light">
-       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark right-align" data-swiper-parallax="-500">02</div>
+       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark right-align" data-swiper-parallax="-500">03</div>
         <div class="slide-inner grid-two-col screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content editorial-border-right">
             <h2 class="section-heading">WHY PARTNERS WORK WITH MISA</h2>
@@ -70,8 +94,9 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
         </div>
       </div>
 
+
       <div class="swiper-slide" data-theme="dark">
-       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark left-align" data-swiper-parallax="-500">03</div>
+       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark left-align" data-swiper-parallax="-500">04</div>
         <div class="slide-inner cinematic-video-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-content">
             <div class="meta-category-pill" data-swiper-parallax="-50">IMPACT • RESONANCE</div>
@@ -95,7 +120,7 @@ import misaVideo from '../../public/videos/Misa Chien Speaker Reel.mp4';
       </div>
       
       <div class="swiper-slide" data-theme="light">
-       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark right-align" data-swiper-parallax="-500">04</div>
+       <div class="luxury-noise-overlay"></div>  <div class="luxury-watermark right-align" data-swiper-parallax="-500">05</div>
         <div class="slide-inner split-layout inversion-layout screen-constrained" data-swiper-parallax="-200">
           <div class="slide-visual-panel image-constrained-wrapper">
             <div class="image-mask editorial-clip">
