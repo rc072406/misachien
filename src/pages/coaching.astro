@@ -371,10 +371,12 @@ So why doesn't it feel that way?</p>
   }
 
   .testimonial-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block; 
+}
   .hero-intro {
     font-family: var(--font-sans);
     font-weight: 500;
@@ -729,13 +731,19 @@ So why doesn't it feel that way?</p>
       gap: 4rem;
     }
 
-    .testimonial-right {
-      grid-row: 1; 
-    }
+   .testimonial-image-frame {
+    max-width: 320px;      
+    margin: 0 auto;        
+    aspect-ratio: 4 / 5;    
+    width: 100%;
+  }
 
-    .testimonial-image-frame {
-      max-width: 100%;
-    }
+  .testimonial-right {
+    grid-row: 1; 
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+  }
 
     .testimonial-quote {
       font-size: 1.25rem;
