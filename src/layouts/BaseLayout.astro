@@ -30,7 +30,7 @@ const websiteSchema = {
     "name": "Misa Chien",
     "logo": {
       "@type": "ImageObject",
-      "url": new URL("/images/favicon.svg", Astro.site ?? Astro.url)
+      "url": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23E77860'/></svg>"
     }
   }
 };
@@ -46,7 +46,7 @@ const websiteSchema = {
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonicalURL} />
-		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/images/favicon.svg?v=1`} />
+	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23E77860'/></svg>">
 		
 		<meta property="og:type" content={type} />
 		<meta property="og:url" content={canonicalURL} />
