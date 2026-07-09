@@ -179,7 +179,7 @@ const schemaData = {
       </div>
     </section>
 
-    <a href="#" class="nn-floating-btn nn-floating-btn-visible">
+   <a href="#" id="back-to-top-btn" class="nn-floating-btn">
       <span>Back To Top</span>
       <span class="arrow">↑</span>
     </a>
@@ -597,22 +597,23 @@ const schemaData = {
 </style>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const heroSection = document.querySelector('.work-hero-wrapper');
-    const floatingBtn = document.getElementById('floating-apply-btn');
-
-    const footer = document.querySelector('footer') || document.querySelector('.authentic-asian-section'); 
+    
+    const heroSection = document.querySelector('.nn-hero-wrapper');
+    const floatingBtn = document.getElementById('back-to-top-btn');
+    
+  
+    const targetFooter = document.querySelector('footer') || document.querySelector('.nn-nomnom-section:last-of-type'); 
 
     if (floatingBtn) {
       let isHeroVisible = true;
       let isFooterVisible = false;
 
-     
       const updateButtonVisibility = () => {
-   
+       
         if (!isHeroVisible && !isFooterVisible) {
-          floatingBtn.classList.add('is-visible');
+          floatingBtn.classList.add('nn-floating-btn-visible');
         } else {
-          floatingBtn.classList.remove('is-visible');
+          floatingBtn.classList.remove('nn-floating-btn-visible');
         }
       };
 
@@ -621,19 +622,27 @@ const schemaData = {
           if (entry.target === heroSection) {
             isHeroVisible = entry.isIntersecting;
           }
-          if (entry.target === footer) {
+          if (entry.target === targetFooter) {
             isFooterVisible = entry.isIntersecting;
           }
         });
         
         updateButtonVisibility();
       }, {
-        threshold: 0 
+        threshold: 0.1 
       });
 
-    
       if (heroSection) observer.observe(heroSection);
-      if (footer) observer.observe(footer);
+      if (targetFooter) observer.observe(targetFooter);
+
+     
+      floatingBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
     }
   });
 </script>
