@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'; 
 import aboutImage from '../../public/images/misachien.webp';
+
 const pageTitle = "About Misa Chien | Founder of The Authentic Asian";
 const pageDescription = "Meet Misa Chien, a serial entrepreneur, speaker, and founder of The Authentic Asian. Ranked the #1 most viewed Asian American woman nationwide on LinkedIn.";
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 const shareImageURL = new URL(aboutImage.src, Astro.site ?? Astro.url).href;
 
 const schemaData = {
@@ -54,7 +54,6 @@ const schemaData = {
     </section>
 
     <section class="about-content-grid">
-      
       <div class="content-left">
         <div class="about-image-wrapper">
           <img src={aboutImage.src} alt="Misa Chien portrait" class="visual-portrait" />
@@ -90,13 +89,11 @@ const schemaData = {
             As an Asian American female founder for 18+ years, Misa founded and launched The Authentic Asian in October 2023, an AAPI Female Leadership Community, to help AAPI Female Founders and C-Levels feel less alone and more connected.
           </p>
         </div>
-
-      
-</div>
+      </div>
     </section>
-<section class="philosophies-fullwidth">
+
+    <section class="philosophies-fullwidth">
       <div class="philosophies-inner">
-        
         <div class="philosophy-item">
           <h3 class="philosophy-title">Core Mission</h3>
           <p>Through helping clients speak to their unconscious mind, Misa empowers individuals of Asian descent to dismantle deeply rooted limiting beliefs and immigrant scarcity mindsets. Offered across two specialized tracks, her work guides clients to reclaim their unconscious minds and step into authentic leadership.</p>
@@ -106,30 +103,43 @@ const schemaData = {
           <h3 class="philosophy-title">Growth and Rest</h3>
           <p>Misa helps entrepreneurs scale from $250k to $1 million through high-impact business strategy and mindset coaching. For C-level executives and late-stage founders, she provides a space to release immigrant scarcity mindsets, step back from burnout, and truly enjoy their hard-earned success.</p>
         </div>
-
       </div>
     </section>
+
   </main>
 </BaseLayout>
 
 <style>
-
   :root {
-  --bg-solid-light: #FBF9F6;   
-  --text-primary: #59363B;    
-  --text-muted: #6B4E52;        
-  --accent-gold: #E7765D;      
-  --text-serif: #8C7E6D;
+    --bg-solid-light: #FBF9F6;   
+    --text-primary: #59363B;    
+    --text-muted: #6B4E52;        
+    --accent-gold: #E7765D;      
+    --text-serif: #8C7E6D;
+    
+    --font-serif: 'Libre Baskerville', serif;
+    --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
+  }
   
-  --font-serif: 'Libre Baskerville', serif;
-  --font-sans: 'Helvetica Neue', 'Inter', sans-serif;
-}
-  
+  html, body {
+    background-color: var(--bg-solid-light);
+    margin: 0;
+    padding: 0;
+  }
+
+  .about-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-solid-light);
+    color: var(--text-primary);
+    padding: 10rem 2rem 0 2rem; 
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
 
   .about-hero {
     max-width: 1200px;
     margin: 0 auto 5rem auto;
-    text-align: left;
   }
 
   .subtitle {
@@ -158,10 +168,9 @@ const schemaData = {
     font-family: var(--font-serif);
     font-style: italic;
     text-transform: none; 
-     color: var(--text-serif);
+    color: var(--text-serif);
     letter-spacing: 0;
   }
-
 
   .about-content-grid {
     max-width: 1200px;
@@ -187,7 +196,6 @@ const schemaData = {
     width: 100%;
     height: auto;
     object-fit: cover; 
-    border-radius: 0 !important; 
     display: block;
   }
 
@@ -206,7 +214,6 @@ const schemaData = {
     margin: 0;
   }
 
- 
   .content-right {
     display: flex;
     flex-direction: column;
@@ -230,87 +237,65 @@ const schemaData = {
     color: var(--text-muted);
   }
 
-.about-container {
-width: 100%;
-  min-height: 100vh;
-  background-color: var(--bg-solid-light);
-  color: var(--text-primary);
-  padding: 10rem 2rem 0 2rem; 
-  box-sizing: border-box;
-overflow-x: hidden;
-}
+  .philosophies-fullwidth {
+    position: relative;
+    box-sizing: border-box;
+    background-color: #59363B;
+    padding: 6rem 2rem 10rem 2rem; 
+    margin-top: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+  }
 
-.philosophies-fullwidth {
-  width: 100%;
-  position: relative;
-  box-sizing: border-box;
-  background-color: #59363B;
-  padding: 6rem 2rem 10rem 2rem; 
-  margin-top: 6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-left: 0;
-  margin-right: 0;
-  width: 100vw;
-}
+  .philosophies-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
 
+  .philosophy-title {
+    font-family: var(--font-serif); 
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: #FBF9F6; 
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+  }
 
-.philosophies-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-}
-
-
-.philosophy-title {
-  font-family: var(--font-serif); 
-  font-weight: 400;
-  font-size: 1.8rem;
-  color: #FBF9F6; 
-  margin-top: 0;
-  margin-bottom: 1.2rem;
-}
-html, body {
-  background-color: var(--bg-solid-light);
-  margin: 0;
-  padding: 0;
-}
-
-.philosophy-item p {
-  font-family: var(--font-sans); 
-  font-weight: 400;
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: #E2D9DA; 
-  margin: 0;
-}
+  .philosophy-item p {
+    font-family: var(--font-sans); 
+    font-weight: 400;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #E2D9DA; 
+    margin: 0;
+  }
 
   .desktop-only {
     display: block;
   }
 
-
   @media (max-width: 900px) {
     .about-container {
-      padding: 8rem 1.5rem 4rem 1.5rem;
+      padding: 8rem 1.5rem 0 1.5rem; /* Removed bottom padding causing the gap */
     }
-.philosophies-fullwidth {
-    padding: 4rem 1.5rem;
-    margin-top: 4rem;
-    width: 100vw;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .philosophies-inner {
-    grid-template-columns: 1fr; 
-    gap: 3.5rem;
-  }
-  
-  .philosophy-title {
-    font-size: 1.6rem;
-  }
+    
+    .philosophies-fullwidth {
+      padding: 4rem 1.5rem;
+      margin-top: 4rem;
+    }
+    
+    .philosophies-inner {
+      grid-template-columns: 1fr; 
+      gap: 3.5rem;
+    }
+    
+    .philosophy-title {
+      font-size: 1.6rem;
+    }
 
     .desktop-only {
       display: none;
@@ -323,10 +308,6 @@ html, body {
     .about-content-grid {
       grid-template-columns: 1fr;
       gap: 4rem;
-    }
-
-    .editorial-card {
-      max-width: 100%;
     }
 
     .section-heading {
