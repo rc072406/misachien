@@ -150,12 +150,13 @@ const workSchema = {
     min-height: 100vh;
     box-sizing: border-box;
     background-color: var(--bg-solid-light);
+   padding-top: var(--nav-height);
   }
 
   .work-hero-wrapper {
     position: relative;
     width: 100%;
-    height: 90vh; 
+   height: calc(90vh - var(--nav-height));
     overflow: hidden;
     background-color: #000;
     border-bottom: 1px solid var(--border-color);
